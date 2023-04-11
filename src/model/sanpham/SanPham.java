@@ -139,7 +139,7 @@ public class SanPham {
                 result = "Bàn phím";
                 break;
         }
-        return null;
+        return result;
     }
 
     public void setLoai(int loai) throws Exception {

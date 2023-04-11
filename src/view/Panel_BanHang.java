@@ -32,27 +32,35 @@ public class Panel_BanHang extends javax.swing.JPanel {
         // Products
         tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
         }, 0);
+
+        // Carts
+        tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
+        }, 0);
+
         ArrayList<SanPham> list = new ArrayList<>();
         try {
             list.add(new SanPham("sp1", "chuot1", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
             list.add(new SanPham("sp2", "chuot2", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
             list.add(new SanPham("sp3", "chuot3", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
             renderProductTable(list);
+            renderCartTable(list);
         } catch (Exception e) {
 
         }
-
-        // Carts
-        tblModel_carts = new DefaultTableModel(new String[]{
-            "Xóa", "Mã SP", "Tên SP", "Số lượng", "Đơn giá"
-        }, 0);
     }
 
     public void renderProductTable(ArrayList<SanPham> list) {
         tblModel_product.setRowCount(0);
         for (SanPham sp : list) {
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getLoai(), sp.getThuongHieu().getTenTH(), 0, sp.getGiaBan()};
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), sp.getThuongHieu().toString(), 0, sp.getGiaBan()};
             tblModel_product.addRow(row);
+        }
+    }
+
+    public void renderCartTable(ArrayList<SanPham> list) {
+        tblModel_carts.setRowCount(0);
+        for (SanPham sp : list) {
+            tblModel_carts.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), 0, sp.getGiaBan()});
         }
     }
 
@@ -73,15 +81,21 @@ public class Panel_BanHang extends javax.swing.JPanel {
         scr_products = new javax.swing.JScrollPane();
         tbl_products = new javax.swing.JTable();
         pnl_productsControl = new javax.swing.JPanel();
+        pnl_left = new javax.swing.JPanel();
+        btn_reset = new javax.swing.JButton();
         btn_prev = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btn_next = new javax.swing.JButton();
-        btn_reset = new javax.swing.JButton();
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        pnl_addToCart = new javax.swing.JPanel();
+        btn_add = new javax.swing.JButton();
         pnl_cart = new javax.swing.JPanel();
         pnl_cartCenter = new javax.swing.JPanel();
         pnl_cartTable = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scr_cart = new javax.swing.JScrollPane();
         tbl_cart = new javax.swing.JTable();
+        pnl_cartFooter = new javax.swing.JPanel();
+        btn_remove = new javax.swing.JButton();
         pnl_orderInfo = new javax.swing.JPanel();
         pnl_box1 = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
@@ -117,6 +131,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_search.setLayout(new javax.swing.BoxLayout(pnl_search, javax.swing.BoxLayout.X_AXIS));
 
         txt_search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_search.setToolTipText("Vui lòng nhập mã sản phẩm");
         pnl_search.add(txt_search);
 
         btn_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -138,9 +153,12 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_productsTable.setBackground(new java.awt.Color(255, 255, 255));
         pnl_productsTable.setLayout(new java.awt.BorderLayout());
 
+        tbl_products.setAutoCreateRowSorter(true);
         tbl_products.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         tbl_products.setModel(tblModel_product);
         tbl_products.setRowHeight(30);
+        tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_products.setShowGrid(true);
         scr_products.setViewportView(tbl_products);
 
         pnl_productsTable.add(scr_products, java.awt.BorderLayout.CENTER);
@@ -149,15 +167,24 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
         pnl_productsControl.setBackground(new java.awt.Color(255, 255, 255));
         pnl_productsControl.setPreferredSize(new java.awt.Dimension(0, 45));
-        pnl_productsControl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        pnl_productsControl.setLayout(new javax.swing.BoxLayout(pnl_productsControl, javax.swing.BoxLayout.LINE_AXIS));
+
+        pnl_left.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_left.setLayout(new java.awt.GridLayout());
+
+        btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
+        btn_reset.setToolTipText("Tải lại");
+        btn_reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_reset.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnl_left.add(btn_reset);
 
         btn_prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartPrev.png"))); // NOI18N
-        btn_prev.setText("Trang trước");
+        btn_prev.setToolTipText("Trang trước");
         btn_prev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_prev.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_prev.setIconTextGap(10);
-        btn_prev.setPreferredSize(new java.awt.Dimension(150, 45));
-        pnl_productsControl.add(btn_prev);
+        btn_prev.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnl_left.add(btn_prev);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,21 +192,29 @@ public class Panel_BanHang extends javax.swing.JPanel {
         jLabel1.setToolTipText("");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel1.setPreferredSize(new java.awt.Dimension(45, 45));
-        pnl_productsControl.add(jLabel1);
+        pnl_left.add(jLabel1);
 
         btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartNext.png"))); // NOI18N
-        btn_next.setText("Trang tiếp");
-        btn_next.setToolTipText("");
+        btn_next.setToolTipText("Trang kế");
         btn_next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_next.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btn_next.setIconTextGap(10);
-        btn_next.setPreferredSize(new java.awt.Dimension(150, 45));
-        pnl_productsControl.add(btn_next);
+        btn_next.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnl_left.add(btn_next);
 
-        btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
-        btn_reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_reset.setPreferredSize(new java.awt.Dimension(45, 45));
-        pnl_productsControl.add(btn_reset);
+        pnl_productsControl.add(pnl_left);
+        pnl_productsControl.add(filler7);
+
+        pnl_addToCart.setLayout(new java.awt.GridLayout());
+
+        btn_add.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartAdd.png"))); // NOI18N
+        btn_add.setText("Thêm giỏ hàng");
+        btn_add.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_add.setIconTextGap(15);
+        pnl_addToCart.add(btn_add);
+
+        pnl_productsControl.add(pnl_addToCart);
 
         pnl_products.add(pnl_productsControl, java.awt.BorderLayout.SOUTH);
 
@@ -197,9 +232,23 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_cartTable.setLayout(new java.awt.BorderLayout());
 
         tbl_cart.setModel(tblModel_carts);
-        jScrollPane1.setViewportView(tbl_cart);
+        tbl_cart.setRowHeight(30);
+        scr_cart.setViewportView(tbl_cart);
 
-        pnl_cartTable.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnl_cartTable.add(scr_cart, java.awt.BorderLayout.CENTER);
+
+        pnl_cartFooter.setLayout(new java.awt.GridLayout());
+
+        btn_remove.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartRemove.png"))); // NOI18N
+        btn_remove.setText("Xóa khỏi giỏ hàng");
+        btn_remove.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_remove.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btn_remove.setIconTextGap(10);
+        btn_remove.setPreferredSize(new java.awt.Dimension(100, 45));
+        pnl_cartFooter.add(btn_remove);
+
+        pnl_cartTable.add(pnl_cartFooter, java.awt.BorderLayout.PAGE_END);
 
         pnl_cartCenter.add(pnl_cartTable, java.awt.BorderLayout.CENTER);
 
@@ -336,10 +385,12 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_cancel;
     private javax.swing.JButton btn_export;
     private javax.swing.JButton btn_next;
     private javax.swing.JButton btn_prev;
+    private javax.swing.JButton btn_remove;
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_search;
     private javax.swing.Box.Filler filler1;
@@ -348,14 +399,15 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
+    private javax.swing.Box.Filler filler7;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_sdt;
     private javax.swing.JLabel lbl_sdt1;
     private javax.swing.JLabel lbl_sdt3;
     private javax.swing.JLabel lbl_sdt4;
     private javax.swing.JLabel lbl_ten;
     private javax.swing.JLabel lbl_ten1;
+    private javax.swing.JPanel pnl_addToCart;
     private javax.swing.JPanel pnl_box1;
     private javax.swing.JPanel pnl_box2;
     private javax.swing.JPanel pnl_box3;
@@ -363,12 +415,15 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_cart;
     private javax.swing.JPanel pnl_cartCenter;
     private javax.swing.JPanel pnl_cartControl;
+    private javax.swing.JPanel pnl_cartFooter;
     private javax.swing.JPanel pnl_cartTable;
+    private javax.swing.JPanel pnl_left;
     private javax.swing.JPanel pnl_orderInfo;
     private javax.swing.JPanel pnl_products;
     private javax.swing.JPanel pnl_productsControl;
     private javax.swing.JPanel pnl_productsTable;
     private javax.swing.JPanel pnl_search;
+    private javax.swing.JScrollPane scr_cart;
     private javax.swing.JScrollPane scr_products;
     private javax.swing.JTable tbl_cart;
     private javax.swing.JTable tbl_products;
