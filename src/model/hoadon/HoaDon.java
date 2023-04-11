@@ -1,0 +1,118 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package model.hoadon;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Objects;
+import model.connguoi.KhachHang;
+import model.connguoi.NhanVien;
+
+/**
+ *
+ * @author nxnam
+ */
+public class HoaDon {
+
+    private ArrayList<ChiTietHoaDon> lstHoaDon;
+    private String maHoaDon;
+    private LocalDate ngayLap;
+    private String phuongThucThanhToan;
+    private ArrayList<ChiTietHoaDon> chiTietHoaDon;
+    private NhanVien nhanVien;
+    private KhachHang khachHang;
+
+
+    public String getMaHoaDon() {
+        return maHoaDon;
+    }
+
+    public LocalDate getNgayLap() {
+        return ngayLap;
+    }
+
+    public void setNgayLap(LocalDate ngayLap) {
+        this.ngayLap = ngayLap;
+    }
+
+    public String getPhuongThucThanhToan() {
+        return phuongThucThanhToan;
+    }
+
+    public void setPhuongThucThanhToan(String phuongThucThanhToan) {
+        this.phuongThucThanhToan = phuongThucThanhToan;
+    }
+
+    public HoaDon() {
+    }
+
+    public HoaDon(ArrayList<ChiTietHoaDon> lstHoaDon, String maHoaDon, LocalDate ngayLap, String phuongThucThanhToan, ArrayList<ChiTietHoaDon> chiTietHoaDon, NhanVien nhanVien, KhachHang khachHang) {
+        this.lstHoaDon = lstHoaDon;
+        this.maHoaDon = maHoaDon;
+        this.ngayLap = ngayLap;
+        this.phuongThucThanhToan = phuongThucThanhToan;
+        this.chiTietHoaDon = chiTietHoaDon;
+        this.nhanVien = nhanVien;
+        this.khachHang = khachHang;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + Objects.hashCode(this.maHoaDon);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HoaDon other = (HoaDon) obj;
+        return Objects.equals(this.maHoaDon, other.maHoaDon);
+    }
+
+    
+   
+
+
+    public int tinhTongSoLuong() {
+        int tong = 0;
+
+        return tong;
+    }
+
+    ;
+   
+   public double tinhTongTienTruocThue() {
+        double tong = 0;
+
+        return tong;
+    }
+
+    public double tinhTongVAT() {
+        double tong = 0;
+
+        return tong;
+    }
+
+    public double tinhTongTienThanhToan() {
+        double tong = 0;
+
+        return tong;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+    }
+
+}
