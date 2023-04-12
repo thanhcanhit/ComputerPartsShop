@@ -12,11 +12,13 @@ import model.sanpham.SanPham;
  * @author nxnam
  */
 public class PhieuBaoHanh {
+
     private String maPhieu;
     private SanPham sanPham;
     private HoaDon hoaDon;
 
-    public PhieuBaoHanh() {
+    public PhieuBaoHanh(String maPhieu) {
+        this.maPhieu = maPhieu;
     }
 
     public PhieuBaoHanh(String maPhieu, SanPham sanPham, HoaDon hoaDon) {
@@ -25,6 +27,28 @@ public class PhieuBaoHanh {
         this.hoaDon = hoaDon;
     }
 
-    
-    
+    public String getMaPhieu() {
+        return maPhieu;
+    }
+
+    public void setMaPhieu(String maPhieu) {
+        this.maPhieu = maPhieu;
+    }
+
+    public SanPham getSanPham() {
+        return sanPham;
+    }
+
+    public void setSanPham(SanPham sanPham) {
+        this.sanPham = sanPham;
+    }
+
+    public HoaDon getHoaDon() {
+        return hoaDon;
+    }
+
+    public void setHoaDon(HoaDon hoaDon) {
+        this.hoaDon = hoaDon;
+    }
+
 }

@@ -5,6 +5,7 @@
 package model.hoadon;
 
 import java.util.ArrayList;
+import java.util.Objects;
 import model.sanpham.SanPham;
 
 /**
@@ -12,9 +13,9 @@ import model.sanpham.SanPham;
  * @author nxnam
  */
 public class ChiTietHoaDon {
+
     private SanPham sanPham;
     private HoaDon hoaDon;
-    private String maChiTietHoaDon;
     private int soLuong;
     private double giaBan;
 
@@ -34,14 +35,6 @@ public class ChiTietHoaDon {
         this.hoaDon = hoaDon;
     }
 
-    public String getMaChiTietHoaDon() {
-        return maChiTietHoaDon;
-    }
-
-    public void setMaChiTietHoaDon(String maChiTietHoaDon) {
-        this.maChiTietHoaDon = maChiTietHoaDon;
-    }
-
     public int getSoLuong() {
         return soLuong;
     }
@@ -57,32 +50,52 @@ public class ChiTietHoaDon {
     public void setGiaBan(double giaBan) {
         this.giaBan = giaBan;
     }
-    
+
     public ChiTietHoaDon() {
     }
 
-    public ChiTietHoaDon(SanPham sanPham, HoaDon hoaDon, String maChiTietHoaDon, int soLuong, double giaBan) {
+    public ChiTietHoaDon(SanPham sanPham, HoaDon hoaDon, int soLuong, double giaBan) {
         this.sanPham = sanPham;
         this.hoaDon = hoaDon;
-        this.maChiTietHoaDon = maChiTietHoaDon;
         this.soLuong = soLuong;
         this.giaBan = giaBan;
     }
 
-    
-    
-
     public double tinhTongTien() {
         double tong = 0;
-        
+
         return tong;
     }
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.sanPham);
+        hash = 89 * hash + Objects.hashCode(this.hoaDon);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ChiTietHoaDon other = (ChiTietHoaDon) obj;
+        if (!Objects.equals(this.sanPham, other.sanPham)) {
+            return false;
+        }
+        return Objects.equals(this.hoaDon, other.hoaDon);
+    }
+
     @Override
     public String toString() {
         return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
-    
-    
+
 }
