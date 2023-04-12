@@ -64,6 +64,10 @@ public class SanPham {
         setSoThangBaoHanh(soThangBaoHanh);
         setCauHinh(cauHinh);
     }
+    
+    public SanPham(String maSP) {
+        this.maSP = maSP;
+    }
 
     public String getMaSP() {
         return maSP;

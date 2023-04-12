@@ -1,5 +1,7 @@
 package model.sanpham;
 
+import java.util.Objects;
+
 public class ThuongHieu {
 
     /**
@@ -12,6 +14,10 @@ public class ThuongHieu {
     private String maTH;
     private String tenTH;
     private String quocGia;
+    
+    public ThuongHieu(String maTH) {
+        this.maTH = maTH;
+    }
 
     public ThuongHieu(String maTH, String tenTH, String quocGia) throws Exception {
         setMaTH(maTH);
@@ -55,6 +61,30 @@ public class ThuongHieu {
             throw new Exception(QG_EMPTY);
         }
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.maTH);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ThuongHieu other = (ThuongHieu) obj;
+        return Objects.equals(this.maTH, other.maTH);
+    }
+    
+    
 
     @Override
     public String toString() {
