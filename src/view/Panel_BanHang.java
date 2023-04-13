@@ -170,7 +170,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_productsControl.setLayout(new javax.swing.BoxLayout(pnl_productsControl, javax.swing.BoxLayout.LINE_AXIS));
 
         pnl_left.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_left.setLayout(new java.awt.GridLayout());
+        pnl_left.setLayout(new java.awt.GridLayout(1, 0));
 
         btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
         btn_reset.setToolTipText("Tải lại");
@@ -205,7 +205,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_productsControl.add(pnl_left);
         pnl_productsControl.add(filler7);
 
-        pnl_addToCart.setLayout(new java.awt.GridLayout());
+        pnl_addToCart.setLayout(new java.awt.GridLayout(1, 0));
 
         btn_add.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartAdd.png"))); // NOI18N
@@ -237,7 +237,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
         pnl_cartTable.add(scr_cart, java.awt.BorderLayout.CENTER);
 
-        pnl_cartFooter.setLayout(new java.awt.GridLayout());
+        pnl_cartFooter.setLayout(new java.awt.GridLayout(1, 0));
 
         btn_remove.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_remove.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartRemove.png"))); // NOI18N

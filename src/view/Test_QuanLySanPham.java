@@ -15,7 +15,7 @@ public class Test_QuanLySanPham extends JFrame{
 
     public Test_QuanLySanPham() {
         setSize(1000, 700);
-        this.add(new Panel_QLSanPham());
+        this.add(new Panel_QuanLySanPham());
     }
     
     public static void main(String[] args) {
