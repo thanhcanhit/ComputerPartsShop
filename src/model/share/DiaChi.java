@@ -9,6 +9,7 @@ package model.share;
  * @author HP
  */
 public class DiaChi {
+
     private String so;
     private String duong;
     private String quan;
@@ -67,6 +68,5 @@ public class DiaChi {
     public String toString() {
         return "DiaChi{" + "so=" + so + ", duong=" + duong + ", quan=" + quan + ", thanhPho=" + thanhPho + ", quocGia=" + quocGia + '}';
     }
-    
-    
+
 }

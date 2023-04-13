@@ -16,17 +16,32 @@ import model.connguoi.NhanVien;
  */
 public class HoaDon {
 
-    private ArrayList<ChiTietHoaDon> lstHoaDon;
     private String maHoaDon;
     private LocalDate ngayLap;
     private String phuongThucThanhToan;
-    private ArrayList<ChiTietHoaDon> chiTietHoaDon;
     private NhanVien nhanVien;
     private KhachHang khachHang;
+    private ArrayList<ChiTietHoaDon> dsChiTiethoaDon;
 
+    public HoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
+    }
+    
+    public HoaDon(String maHoaDon, LocalDate ngayLap, String phuongThucThanhToan, NhanVien nhanVien, KhachHang khachHang, ArrayList<ChiTietHoaDon> dsChiTiethoaDon) {
+        this.maHoaDon = maHoaDon;
+        this.ngayLap = ngayLap;
+        this.phuongThucThanhToan = phuongThucThanhToan;
+        this.nhanVien = nhanVien;
+        this.khachHang = khachHang;
+        this.dsChiTiethoaDon = dsChiTiethoaDon;
+    }
 
     public String getMaHoaDon() {
         return maHoaDon;
+    }
+
+    public void setMaHoaDon(String maHoaDon) {
+        this.maHoaDon = maHoaDon;
     }
 
     public LocalDate getNgayLap() {
@@ -45,18 +60,31 @@ public class HoaDon {
         this.phuongThucThanhToan = phuongThucThanhToan;
     }
 
-    public HoaDon() {
+    public NhanVien getNhanVien() {
+        return nhanVien;
     }
 
-    public HoaDon(ArrayList<ChiTietHoaDon> lstHoaDon, String maHoaDon, LocalDate ngayLap, String phuongThucThanhToan, ArrayList<ChiTietHoaDon> chiTietHoaDon, NhanVien nhanVien, KhachHang khachHang) {
-        this.lstHoaDon = lstHoaDon;
-        this.maHoaDon = maHoaDon;
-        this.ngayLap = ngayLap;
-        this.phuongThucThanhToan = phuongThucThanhToan;
-        this.chiTietHoaDon = chiTietHoaDon;
+    public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+    }
+
+    public KhachHang getKhachHang() {
+        return khachHang;
+    }
+
+    public void setKhachHang(KhachHang khachHang) {
         this.khachHang = khachHang;
     }
+
+    public ArrayList<ChiTietHoaDon> getDsChiTiethoaDon() {
+        return dsChiTiethoaDon;
+    }
+
+    public void setDsChiTiethoaDon(ArrayList<ChiTietHoaDon> dsChiTiethoaDon) {
+        this.dsChiTiethoaDon = dsChiTiethoaDon;
+    }
+
+    
 
     @Override
     public int hashCode() {
@@ -80,17 +108,11 @@ public class HoaDon {
         return Objects.equals(this.maHoaDon, other.maHoaDon);
     }
 
-    
-   
-
-
     public int tinhTongSoLuong() {
         int tong = 0;
 
         return tong;
     }
-
-    ;
    
    public double tinhTongTienTruocThue() {
         double tong = 0;
