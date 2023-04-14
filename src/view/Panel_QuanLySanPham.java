@@ -22,12 +22,12 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
      * Creates new form Panel_QuanLySanPham
      */
     public Panel_QuanLySanPham() {
+        tbl_ModelProduct = new DefaultTableModel(str_TenCot, 0);
         initComponents();
         initTableModel();
     }
     
     private void initTableModel() {
-        tbl_ModelProduct = new DefaultTableModel(str_TenCot, 0);
         ArrayList<SanPham> list = new ArrayList<>();
         try {
             list.add(new SanPham("sp1", "chuot1", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
@@ -63,54 +63,46 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         pnl_body_TT = new javax.swing.JPanel();
         pnl_Tensp = new javax.swing.JPanel();
-        txt_Tensp = new javax.swing.JTextField();
         lbl_Tensp = new javax.swing.JLabel();
+        txt_Tensp = new javax.swing.JTextField();
         pnl_SoLuong = new javax.swing.JPanel();
         lbl_SoLuong = new javax.swing.JLabel();
         txt_SoLuong = new javax.swing.JTextField();
         pnl_GiaBan = new javax.swing.JPanel();
-        txt_GiaBan = new javax.swing.JTextField();
         lbl_GiaBan = new javax.swing.JLabel();
+        txt_GiaBan = new javax.swing.JTextField();
         pnl_Loaisp = new javax.swing.JPanel();
-        cmp_Loaisp = new javax.swing.JComboBox<>();
         lbl_Loaisp = new javax.swing.JLabel();
+        cmp_Loaisp = new javax.swing.JComboBox<>();
         pnl_ThuongHieu = new javax.swing.JPanel();
-        cmb_ThuongHieu = new javax.swing.JComboBox<>();
         lbl_ThuongHieu = new javax.swing.JLabel();
+        cmb_ThuongHieu = new javax.swing.JComboBox<>();
         pnl_CauHinh = new javax.swing.JPanel();
         lbl_CauHinh = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtarea_CauHinh = new javax.swing.JTextArea();
         pnl_NutQuanLy = new javax.swing.JPanel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         btn_Them = new javax.swing.JButton();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         btn_Xoa = new javax.swing.JButton();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         btn_Sua = new javax.swing.JButton();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         pnl_TimKiem = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 32767));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(40, 32767));
         jLabel3 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel6 = new javax.swing.JPanel();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 0), new java.awt.Dimension(40, 32767));
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(40, 32767));
         jLabel4 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
@@ -128,6 +120,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin.setPreferredSize(new java.awt.Dimension(320, 600));
         pnl_ThongTin.setLayout(new java.awt.BorderLayout());
 
+        pnl_head_TT.setBackground(new java.awt.Color(255, 255, 255));
         pnl_head_TT.setLayout(new java.awt.BorderLayout());
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,10 +132,19 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         pnl_ThongTin.add(pnl_head_TT, java.awt.BorderLayout.NORTH);
 
+        pnl_body_TT.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_body_TT.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_body_TT.setPreferredSize(new java.awt.Dimension(140, 20));
         pnl_body_TT.setLayout(new javax.swing.BoxLayout(pnl_body_TT, javax.swing.BoxLayout.Y_AXIS));
 
-        pnl_Tensp.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_Tensp.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_Tensp.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_Tensp.setLayout(new javax.swing.BoxLayout(pnl_Tensp, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_Tensp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_Tensp.setText("Tên sản phẩm:");
+        lbl_Tensp.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_Tensp.add(lbl_Tensp);
 
         txt_Tensp.setMaximumSize(new java.awt.Dimension(1000, 500));
         txt_Tensp.setMinimumSize(new java.awt.Dimension(140, 16));
@@ -152,224 +154,113 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 txt_TenspActionPerformed(evt);
             }
         });
-
-        lbl_Tensp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbl_Tensp.setText("Tên sản phẩm:");
-        lbl_Tensp.setPreferredSize(new java.awt.Dimension(120, 24));
-
-        javax.swing.GroupLayout pnl_TenspLayout = new javax.swing.GroupLayout(pnl_Tensp);
-        pnl_Tensp.setLayout(pnl_TenspLayout);
-        pnl_TenspLayout.setHorizontalGroup(
-            pnl_TenspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_TenspLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_Tensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_Tensp, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_TenspLayout.setVerticalGroup(
-            pnl_TenspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_TenspLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_TenspLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_Tensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Tensp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_Tensp.add(txt_Tensp);
 
         pnl_body_TT.add(pnl_Tensp);
 
-        pnl_SoLuong.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_SoLuong.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_SoLuong.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_SoLuong.setLayout(new javax.swing.BoxLayout(pnl_SoLuong, javax.swing.BoxLayout.LINE_AXIS));
 
-        lbl_SoLuong.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbl_SoLuong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_SoLuong.setText("Số lượng:");
-        lbl_SoLuong.setPreferredSize(new java.awt.Dimension(120, 24));
+        lbl_SoLuong.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_SoLuong.add(lbl_SoLuong);
 
         txt_SoLuong.setMaximumSize(new java.awt.Dimension(1000, 500));
         txt_SoLuong.setMinimumSize(new java.awt.Dimension(140, 16));
         txt_SoLuong.setPreferredSize(new java.awt.Dimension(160, 24));
-
-        javax.swing.GroupLayout pnl_SoLuongLayout = new javax.swing.GroupLayout(pnl_SoLuong);
-        pnl_SoLuong.setLayout(pnl_SoLuongLayout);
-        pnl_SoLuongLayout.setHorizontalGroup(
-            pnl_SoLuongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_SoLuongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_SoLuongLayout.setVerticalGroup(
-            pnl_SoLuongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_SoLuongLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_SoLuongLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_SoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_SoLuong.add(txt_SoLuong);
 
         pnl_body_TT.add(pnl_SoLuong);
 
-        pnl_GiaBan.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_GiaBan.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_GiaBan.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_GiaBan.setLayout(new javax.swing.BoxLayout(pnl_GiaBan, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_GiaBan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_GiaBan.setText("Giá bán:");
+        lbl_GiaBan.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_GiaBan.add(lbl_GiaBan);
 
         txt_GiaBan.setMaximumSize(new java.awt.Dimension(1000, 500));
         txt_GiaBan.setMinimumSize(new java.awt.Dimension(140, 16));
         txt_GiaBan.setPreferredSize(new java.awt.Dimension(160, 24));
-
-        lbl_GiaBan.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbl_GiaBan.setText("Giá bán:");
-        lbl_GiaBan.setPreferredSize(new java.awt.Dimension(120, 24));
-
-        javax.swing.GroupLayout pnl_GiaBanLayout = new javax.swing.GroupLayout(pnl_GiaBan);
-        pnl_GiaBan.setLayout(pnl_GiaBanLayout);
-        pnl_GiaBanLayout.setHorizontalGroup(
-            pnl_GiaBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_GiaBanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_GiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_GiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_GiaBanLayout.setVerticalGroup(
-            pnl_GiaBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_GiaBanLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_GiaBanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_GiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_GiaBan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_GiaBan.add(txt_GiaBan);
 
         pnl_body_TT.add(pnl_GiaBan);
 
-        pnl_Loaisp.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_Loaisp.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_Loaisp.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_Loaisp.setLayout(new javax.swing.BoxLayout(pnl_Loaisp, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_Loaisp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_Loaisp.setText("Loại sản phẩm:");
+        lbl_Loaisp.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_Loaisp.add(lbl_Loaisp);
 
         cmp_Loaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmp_Loaisp.setMaximumSize(new java.awt.Dimension(1000, 500));
         cmp_Loaisp.setMinimumSize(new java.awt.Dimension(140, 16));
         cmp_Loaisp.setPreferredSize(new java.awt.Dimension(160, 24));
-
-        lbl_Loaisp.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbl_Loaisp.setText("Loại sản phẩm:");
-        lbl_Loaisp.setPreferredSize(new java.awt.Dimension(120, 24));
-
-        javax.swing.GroupLayout pnl_LoaispLayout = new javax.swing.GroupLayout(pnl_Loaisp);
-        pnl_Loaisp.setLayout(pnl_LoaispLayout);
-        pnl_LoaispLayout.setHorizontalGroup(
-            pnl_LoaispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_LoaispLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_Loaisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmp_Loaisp, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_LoaispLayout.setVerticalGroup(
-            pnl_LoaispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_LoaispLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_LoaispLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmp_Loaisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_Loaisp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_Loaisp.add(cmp_Loaisp);
 
         pnl_body_TT.add(pnl_Loaisp);
 
-        pnl_ThuongHieu.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_ThuongHieu.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_ThuongHieu.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_ThuongHieu.setLayout(new javax.swing.BoxLayout(pnl_ThuongHieu, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_ThuongHieu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_ThuongHieu.setText("Thương hiêu:");
+        lbl_ThuongHieu.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_ThuongHieu.add(lbl_ThuongHieu);
 
         cmb_ThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmb_ThuongHieu.setMaximumSize(new java.awt.Dimension(1000, 500));
         cmb_ThuongHieu.setMinimumSize(new java.awt.Dimension(140, 16));
         cmb_ThuongHieu.setPreferredSize(new java.awt.Dimension(160, 24));
-
-        lbl_ThuongHieu.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lbl_ThuongHieu.setText("Thương hiêu:");
-        lbl_ThuongHieu.setPreferredSize(new java.awt.Dimension(120, 24));
-
-        javax.swing.GroupLayout pnl_ThuongHieuLayout = new javax.swing.GroupLayout(pnl_ThuongHieu);
-        pnl_ThuongHieu.setLayout(pnl_ThuongHieuLayout);
-        pnl_ThuongHieuLayout.setHorizontalGroup(
-            pnl_ThuongHieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_ThuongHieuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_ThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmb_ThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_ThuongHieuLayout.setVerticalGroup(
-            pnl_ThuongHieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_ThuongHieuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_ThuongHieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_ThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmb_ThuongHieu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7))
-        );
+        pnl_ThuongHieu.add(cmb_ThuongHieu);
 
         pnl_body_TT.add(pnl_ThuongHieu);
 
-        pnl_CauHinh.setPreferredSize(new java.awt.Dimension(320, 0));
+        pnl_CauHinh.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_CauHinh.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_CauHinh.setLayout(new javax.swing.BoxLayout(pnl_CauHinh, javax.swing.BoxLayout.LINE_AXIS));
 
-        lbl_CauHinh.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lbl_CauHinh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_CauHinh.setText("Cấu hình:");
-        lbl_CauHinh.setPreferredSize(new java.awt.Dimension(120, 24));
+        lbl_CauHinh.setPreferredSize(new java.awt.Dimension(138, 138));
+        pnl_CauHinh.add(lbl_CauHinh);
 
         txtarea_CauHinh.setColumns(20);
         txtarea_CauHinh.setRows(5);
         txtarea_CauHinh.setPreferredSize(new java.awt.Dimension(200, 24));
         jScrollPane2.setViewportView(txtarea_CauHinh);
 
-        javax.swing.GroupLayout pnl_CauHinhLayout = new javax.swing.GroupLayout(pnl_CauHinh);
-        pnl_CauHinh.setLayout(pnl_CauHinhLayout);
-        pnl_CauHinhLayout.setHorizontalGroup(
-            pnl_CauHinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_CauHinhLayout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(lbl_CauHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
-        );
-        pnl_CauHinhLayout.setVerticalGroup(
-            pnl_CauHinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_CauHinhLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_CauHinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_CauHinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_CauHinh.add(jScrollPane2);
 
         pnl_body_TT.add(pnl_CauHinh);
 
         pnl_ThongTin.add(pnl_body_TT, java.awt.BorderLayout.CENTER);
 
-        pnl_NutQuanLy.setLayout(new javax.swing.BoxLayout(pnl_NutQuanLy, javax.swing.BoxLayout.X_AXIS));
-        pnl_NutQuanLy.add(filler9);
+        pnl_NutQuanLy.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_NutQuanLy.setLayout(new java.awt.GridLayout());
 
         btn_Them.setText("Thêm");
         btn_Them.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_Them.setPreferredSize(new java.awt.Dimension(80, 32));
         pnl_NutQuanLy.add(btn_Them);
-        pnl_NutQuanLy.add(filler3);
 
         btn_Xoa.setText("Xóa");
         btn_Xoa.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_Xoa.setPreferredSize(new java.awt.Dimension(80, 40));
         pnl_NutQuanLy.add(btn_Xoa);
-        pnl_NutQuanLy.add(filler4);
 
         btn_Sua.setText("Sửa");
         btn_Sua.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_Sua.setPreferredSize(new java.awt.Dimension(80, 40));
         pnl_NutQuanLy.add(btn_Sua);
-        pnl_NutQuanLy.add(filler5);
 
         pnl_ThongTin.add(pnl_NutQuanLy, java.awt.BorderLayout.SOUTH);
 
@@ -381,18 +272,16 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_TimKiem.setPreferredSize(new java.awt.Dimension(0, 150));
         pnl_TimKiem.setLayout(new javax.swing.BoxLayout(pnl_TimKiem, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(0, 50));
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
-        jPanel1.add(filler8);
-        jPanel1.add(filler2);
-        jPanel1.add(filler10);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Tên sản phẩm:");
         jLabel1.setPreferredSize(new java.awt.Dimension(120, 0));
         jPanel1.add(jLabel1);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(700, 0));
+        jTextField1.setPreferredSize(new java.awt.Dimension(650, 0));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -402,7 +291,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         jPanel7.setMaximumSize(new java.awt.Dimension(4001111, 2147483647));
         jPanel7.setMinimumSize(new java.awt.Dimension(1000, 50));
-        jPanel7.setPreferredSize(new java.awt.Dimension(120, 50));
+        jPanel7.setPreferredSize(new java.awt.Dimension(140, 50));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -411,7 +300,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton1.setMaximumSize(new java.awt.Dimension(400, 1000));
         jButton1.setMinimumSize(new java.awt.Dimension(400, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(240, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(200, 50));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -423,10 +312,11 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         pnl_TimKiem.add(jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new java.awt.GridLayout(1, 2));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel3.add(filler11);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Cấu hình:");
@@ -441,8 +331,10 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         jPanel2.add(jPanel3);
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
         jPanel5.add(filler6);
 
@@ -456,6 +348,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         jPanel4.add(jPanel5);
 
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
         jPanel6.add(filler7);
 
@@ -480,7 +373,10 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_DanhSach.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_DanhSach.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+
         tbl_Products.setModel(tbl_ModelProduct);
+        tbl_Products.setRowHeight(30);
         jScrollPane3.setViewportView(tbl_Products);
 
         pnl_DanhSach.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -508,17 +404,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_ThuongHieu;
     private javax.swing.JComboBox<String> cmp_Loaisp;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler10;
-    private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

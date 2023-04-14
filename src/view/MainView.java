@@ -41,7 +41,6 @@ public class MainView extends javax.swing.JFrame {
         lbl_name = new javax.swing.JLabel();
         pnl_control = new javax.swing.JPanel();
         lbl_home = new javax.swing.JLabel();
-        lbl_search = new javax.swing.JLabel();
         lbl_cart = new javax.swing.JLabel();
         lbl_products = new javax.swing.JLabel();
         lbl_inventory = new javax.swing.JLabel();
@@ -53,10 +52,10 @@ public class MainView extends javax.swing.JFrame {
         pnl_home = new javax.swing.JPanel();
         pnl_search = new javax.swing.JPanel();
         pnl_cart = new javax.swing.JPanel();
-        pnl_products = new javax.swing.JPanel();
-        pnl_inventory = new javax.swing.JPanel();
-        pnl_customers = new javax.swing.JPanel();
-        pnl_employees = new javax.swing.JPanel();
+        pnl_products = new Panel_QuanLySanPham();
+        pnl_inventory = new Panel_QuanLyDonHang();
+        pnl_customers = new Panel_QuanLyKhachHang();
+        pnl_employees = new Panel_QuanLyNhanVien();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Computer Parts Shop");
@@ -108,30 +107,6 @@ public class MainView extends javax.swing.JFrame {
             }
         });
         pnl_control.add(lbl_home);
-
-        lbl_search.setBackground(new java.awt.Color(255, 255, 255));
-        lbl_search.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search.png"))); // NOI18N
-        lbl_search.setToolTipText("Tìm kiếm sản phẩm");
-        lbl_search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbl_search.setDisabledIcon(null);
-        lbl_search.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_search.setMaximumSize(new java.awt.Dimension(70, 50));
-        lbl_search.setMinimumSize(new java.awt.Dimension(70, 50));
-        lbl_search.setOpaque(true);
-        lbl_search.setPreferredSize(new java.awt.Dimension(70, 70));
-        lbl_search.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_searchMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buttonHover(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buttonExitHover(evt);
-            }
-        });
-        pnl_control.add(lbl_search);
 
         lbl_cart.setBackground(new java.awt.Color(255, 255, 255));
         lbl_cart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -280,28 +255,28 @@ public class MainView extends javax.swing.JFrame {
         pnl_main.setPreferredSize(new java.awt.Dimension(1000, 700));
         pnl_main.setLayout(new java.awt.CardLayout());
 
-        pnl_home.setBackground(new java.awt.Color(204, 204, 255));
+        pnl_home.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_home, "home");
 
-        pnl_search.setBackground(new java.awt.Color(255, 204, 204));
+        pnl_search.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_search, "search");
 
-        pnl_cart.setBackground(new java.awt.Color(102, 204, 255));
+        pnl_cart.setBackground(new java.awt.Color(255, 255, 255));
 
         pnl_cart = new Panel_BanHang();
 
         pnl_main.add(pnl_cart, "cart");
 
-        pnl_products.setBackground(new java.awt.Color(0, 204, 204));
+        pnl_products.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_products, "products");
 
-        pnl_inventory.setBackground(new java.awt.Color(0, 204, 153));
+        pnl_inventory.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_inventory, "inventory");
 
-        pnl_customers.setBackground(new java.awt.Color(255, 102, 102));
+        pnl_customers.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_customers, "customers");
 
-        pnl_employees.setBackground(new java.awt.Color(255, 204, 102));
+        pnl_employees.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.add(pnl_employees, "employees");
 
         getContentPane().add(pnl_main, java.awt.BorderLayout.CENTER);
@@ -314,11 +289,6 @@ public class MainView extends javax.swing.JFrame {
         card.show(this.pnl_main, "home");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_homeMouseClicked
-
-    private void lbl_searchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_searchMouseClicked
-        card.show(this.pnl_main, "search");
-        buttonActive(evt.getComponent());
-    }//GEN-LAST:event_lbl_searchMouseClicked
 
     private void lbl_cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cartMouseClicked
         card.show(this.pnl_main, "cart");
@@ -356,7 +326,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonExitHover
 
     private void buttonActive(Component c) {
-        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_home, lbl_inventory, lbl_logout, lbl_products, lbl_search}).forEach(item -> item.setBackground(Color.white));
+        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_home, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setBackground(Color.white));
         c.setBackground(color_active);
     }
 
@@ -384,7 +354,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_logout;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_products;
-    private javax.swing.JLabel lbl_search;
     private javax.swing.JPanel pnl_cart;
     private javax.swing.JPanel pnl_control;
     private javax.swing.JPanel pnl_customers;
