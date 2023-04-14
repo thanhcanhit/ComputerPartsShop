@@ -17,13 +17,24 @@ public class ChiTietDonNhap {
     private SanPham sanPham;
     private NhaCungCap nhaCungCap;
     private int soLuong;
+    private double tongTien;
+
+    public void tinhTongTien(){
+        this.tongTien=sanPham.getGiaBan()*soLuong;
+    }
+  
+
 
     public ChiTietDonNhap(SanPham sanPham, NhaCungCap nhaCungCap, int soLuong) {
         this.sanPham = sanPham;
         this.nhaCungCap = nhaCungCap;
         this.soLuong = soLuong;
+        tinhTongTien();
+        
     }
-
+    public double getTongTien() {
+          return tongTien;
+      }
     public SanPham getSanPham() {
         return sanPham;
     }
