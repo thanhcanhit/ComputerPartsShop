@@ -8,6 +8,7 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,9 +37,9 @@ public class MainView extends javax.swing.JFrame {
 //        logout();
 
 //  Khi ra mắt phải chỉnh lại chưa đăng nhập
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf");
+        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf","dc0");
         try {
-            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", "2003", dc, false);
+            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             login(nhanVien);
         } catch (Exception ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);

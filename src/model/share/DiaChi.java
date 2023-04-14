@@ -15,15 +15,30 @@ public class DiaChi {
     private String quan;
     private String thanhPho;
     private String quocGia;
+    private String maDiaChi;
 
-    public DiaChi(String so, String duong, String quan, String thanhPho, String quocGia) {
+    public String getMaDiaChi() {
+        return maDiaChi;
+    }
+
+    public void setMaDiaChi(String maDiaChi) {
+        this.maDiaChi = maDiaChi;
+    }
+
+    public DiaChi(String so, String duong, String quan, String thanhPho, String quocGia,String maDiaChi) {
         this.so = so;
         this.duong = duong;
         this.quan = quan;
         this.thanhPho = thanhPho;
         this.quocGia = quocGia;
+        this.maDiaChi = maDiaChi;
+        
     }
-
+    public DiaChi(String maDiaChi) {
+      
+        this.maDiaChi = maDiaChi;
+        
+    }
     public String getSo() {
         return so;
     }

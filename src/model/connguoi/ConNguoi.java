@@ -4,6 +4,7 @@
  */
 package model.connguoi;
 
+import java.time.LocalDate;
 import model.share.DiaChi;
 
 /**
@@ -15,7 +16,7 @@ public class ConNguoi {
     private String hoTen;
     private String soDT;
     private String email;
-    private String namSinh;
+    private LocalDate namSinh;
     private DiaChi diaChi;
     private boolean gioiTinh;
 
@@ -68,18 +69,18 @@ public class ConNguoi {
     }
 
 
-    public String getNamSinh() {
+    public LocalDate getNamSinh() {
         return namSinh;
     }
 
-    public void setNamSinh(String namSinh) throws Exception {
-        if(namSinh.trim().length()>0)
+    public void setNamSinh(LocalDate namSinh) throws Exception {
+        if(namSinh.getYear() <= LocalDate.now().getYear())
             this.namSinh = namSinh;
         else
             throw new Exception("Năm sinh không được rỗng !");
     }
 
-    public ConNguoi(String hoTen, String soDT, String email, String namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
+    public ConNguoi(String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
         setHoTen(hoTen);
         setEmail(email);
         setSoDT(soDT);

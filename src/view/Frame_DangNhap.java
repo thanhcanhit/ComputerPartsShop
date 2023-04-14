@@ -6,6 +6,7 @@ package view;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.event.WindowEvent;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -177,9 +178,9 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         // Xu Li
 //        Dang nhap
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf");
+        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf","dc0");
         try {
-            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", "2003", dc, false);
+            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhocalDcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             main.login(nhanVien);
             close();
         } catch (Exception ex) {

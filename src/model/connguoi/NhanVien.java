@@ -4,6 +4,7 @@
  */
 package model.connguoi;
 
+import java.time.LocalDate;
 import model.share.DiaChi;
 
 /**
@@ -18,7 +19,7 @@ public class NhanVien extends ConNguoi {
     public NhanVien() {
     }
 
-    public NhanVien(String maNV, String chucDanh,String hoTen, String soDT, String email, String namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
+    public NhanVien(String maNV, String chucDanh,String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
         super(hoTen,soDT,email,namSinh,diaChi,gioiTinh);
         setChucNang(chucDanh);
         setMaNV(maNV);

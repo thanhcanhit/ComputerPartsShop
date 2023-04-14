@@ -4,6 +4,7 @@
  */
 package model.connguoi;
 
+import java.time.LocalDate;
 import model.share.DiaChi;
 
 /**
@@ -26,7 +27,7 @@ public class KhachHang extends ConNguoi {
             throw new Exception("Điểm thành viên là số nguyên dương");
     }
 
-    public KhachHang(String maKH, String maSoThue,String hoTen, String soDT, String email, String namSinh,DiaChi diaChi,boolean gioiTinh,int diemThanhVien) throws Exception {
+    public KhachHang(String maKH, String maSoThue,String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh,int diemThanhVien) throws Exception {
         super(hoTen,soDT,email,namSinh,diaChi,gioiTinh);
         setMaKH(maKH);
         setMaSoThue(maSoThue);
