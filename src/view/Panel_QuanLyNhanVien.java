@@ -21,30 +21,40 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     /**
      * Creates new form Panel_QuanLyNhanVien
      */
-    public void testData() throws Exception{
-        DiaChi dc1 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "VietNam");
-        NhanVien nv1 = new NhanVien("NV01","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc1, true);
-        DiaChi dc2 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "Japan");
-        NhanVien nv2 = new NhanVien("NV02","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc2, true);
-        DiaChi dc3 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "US");
-        NhanVien nv3 = new NhanVien("NV03","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc3, false);
-        listNV.add(nv1);
-        listNV.add(nv2);
-        listNV.add(nv3);
+    public void testData() {
+        try{
+            DiaChi dc1 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "VietNam");
+            NhanVien nv1 = new NhanVien("NV01","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc1, true);
+            DiaChi dc2 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "Japan");
+            NhanVien nv2 = new NhanVien("NV02","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc2, true);
+            DiaChi dc3 = new DiaChi("7", "Nguyen Anh Thu", "12", "HCM", "US");
+            NhanVien nv3 = new NhanVien("NV03","Quan ly","Tran Dinh Kien","123456789", "bankienthanthien@gmail.com", "2003", dc3, false);
+            listNV.add(nv1);
+            listNV.add(nv2);
+            listNV.add(nv3);
+        }catch(Exception e){
+            
+        }
+        
     }
     
-    public Panel_QuanLyNhanVien() throws Exception {
+    public Panel_QuanLyNhanVien() {
         String col[] = {"Mã nhân viên","Họ tên","Email","Số điện thoại","Địa chỉ","Chức danh","Năm sinh","Giới tính"};
         model_dsNhanVien=new DefaultTableModel(col,0);
-       
         initComponents(); 
         tbl_dsNhanVien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_dsNhanVien.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_dsNhanVien.getColumnModel().getColumn(1).setPreferredWidth(150);
         tbl_dsNhanVien.getColumnModel().getColumn(2).setPreferredWidth(150);
         tbl_dsNhanVien.getColumnModel().getColumn(3).setPreferredWidth(150);
+        
+        try{
+            renderListToTable(listNV);
+        }catch(Exception e2){
+          
+        }
         testData();
-        renderListToTable(listNV);
+        
         
        
     }
