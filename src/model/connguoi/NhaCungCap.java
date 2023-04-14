@@ -4,24 +4,27 @@
  */
 package model.connguoi;
 
+import model.share.DiaChi;
+
 /**
  *
  * @author macbookk
  */
 public class NhaCungCap {
+
     private String maNCC;
     private String tenNCC;
-    private String diaChi;
+    private DiaChi diaChi;
     private String soDT;
     private String maSoThue;
     private String eMail;
 
-    public NhaCungCap(String maNCC, String tenNCC, String diaChi, String soDT, String maSoThue, String eMail) throws Exception{
+    public NhaCungCap(String maNCC, String tenNCC, DiaChi diaChi, String soDT, String maSoThue, String eMail) throws Exception {
         setMaNCC(maNCC);
         setTenNCC(tenNCC);
         setSoDT(soDT);
         setMaSoThue(maSoThue);
-        seteMail(eMail);
+        setEMail(eMail);
         setDiaChi(diaChi);
     }
 
@@ -41,15 +44,12 @@ public class NhaCungCap {
         this.tenNCC = tenNCC;
     }
 
-    public String getDiaChi() {
+    public DiaChi getDiaChi() {
         return diaChi;
     }
 
-    public void setDiaChi(String diaChi) throws Exception {
-        if(diaChi.trim().length()>0)
-            this.diaChi = diaChi;
-        else
-            throw new Exception("Địa chỉ không được rỗng !");
+    public void setDiaChi(DiaChi diaChi) {
+        this.diaChi = diaChi;
     }
 
     public String getSoDT() {
@@ -57,10 +57,11 @@ public class NhaCungCap {
     }
 
     public void setSoDT(String soDT) throws Exception {
-        if(soDT.trim().length()>0)
+        if (soDT.trim().length() > 0) {
             this.soDT = soDT;
-        else
+        } else {
             throw new Exception("Số điện thoại không được rỗng !");
+        }
     }
 
     public String getMaSoThue() {
@@ -68,25 +69,27 @@ public class NhaCungCap {
     }
 
     public void setMaSoThue(String maSoThue) throws Exception {
-        if(maSoThue.trim().length()>0)    
+        if (maSoThue.trim().length() > 0) {
             this.maSoThue = maSoThue;
-        else
+        } else {
             throw new Exception("Mã số thuế không được rỗng !");
-                
+        }
+
     }
 
-    public String geteMail() {
+    public String getEMail() {
         return eMail;
     }
 
-    public void seteMail(String eMail) throws Exception {
-        if(eMail.trim().length()>0)    
+    public void setEMail(String eMail) throws Exception {
+        if (eMail.trim().length() > 0) {
             this.eMail = eMail;
-        else
+        } else {
             throw new Exception("Email không được rỗng !");
+        }
     }
 
     public NhaCungCap() {
     }
-    
+
 }

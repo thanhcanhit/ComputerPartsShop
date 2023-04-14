@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class TaiKhoan {
     private String soTK;
     private String passWord;
-    private ArrayList<NhanVien> listTaiKhoan;
 
     public String getSoTK() {
         return soTK;
@@ -38,7 +37,6 @@ public class TaiKhoan {
     }
 
     public TaiKhoan(String soTK, String passWord) throws Exception{
-        listTaiKhoan = new ArrayList<NhanVien>();
         setPassWord(passWord);
         setSoTK(soTK);
     }

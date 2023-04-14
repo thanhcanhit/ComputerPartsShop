@@ -99,15 +99,16 @@ public class SanPham_dao implements SanPhamInterface {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update SanPham"
                     + " set tenSanPham = ?, giaNhap = ?, giamGia = ?, loai = ?, vat = ?, thuongHieu = ?, soThangBaoHanh = ?, cauHinh = ?"
                     + " where maSanPham = ?");
-            st.setString(1, sanPham.getTenSP());
-            st.setDouble(2, sanPham.getGiaNhap());
-            st.setDouble(3, sanPham.getGiamGia());
-            st.setInt(4, sanPham.getLoai());
-            st.setDouble(5, sanPham.getVAT());
-            st.setString(6, sanPham.getThuongHieu().getMaTH());
-            st.setInt(7, sanPham.getSoThangBaoHanh());
-            st.setString(8, sanPham.getCauHinh());
-            st.setString(9, maSanPham);
+            int i = 1;
+            st.setString(i++, sanPham.getTenSP());
+            st.setDouble(i++, sanPham.getGiaNhap());
+            st.setDouble(i++, sanPham.getGiamGia());
+            st.setInt(i++, sanPham.getLoai());
+            st.setDouble(i++, sanPham.getVAT());
+            st.setString(i++, sanPham.getThuongHieu().getMaTH());
+            st.setInt(i++, sanPham.getSoThangBaoHanh());
+            st.setString(i++, sanPham.getCauHinh());
+            st.setString(i++, maSanPham);
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,16 +124,17 @@ public class SanPham_dao implements SanPhamInterface {
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into SanPham"
                     + " values (?, ?, ?, ?, ?, ?, ?, ?)");
-            st.setString(1, sanPham.getMaSP());
-            st.setString(2, sanPham.getTenSP());
-            st.setDouble(3, sanPham.getGiaNhap());
-            st.setDouble(4, sanPham.getGiamGia());
-            st.setInt(5, sanPham.getLoai());
-            st.setDouble(6, sanPham.getVAT());
-            st.setString(7, sanPham.getThuongHieu().getMaTH());
-            st.setInt(8, sanPham.getSoThangBaoHanh());
-            st.setString(9, sanPham.getCauHinh());
-            
+            int i = 1;
+            st.setString(i++, sanPham.getMaSP());
+            st.setString(i++, sanPham.getTenSP());
+            st.setDouble(i++, sanPham.getGiaNhap());
+            st.setDouble(i++, sanPham.getGiamGia());
+            st.setInt(i++, sanPham.getLoai());
+            st.setDouble(i++, sanPham.getVAT());
+            st.setString(i++, sanPham.getThuongHieu().getMaTH());
+            st.setInt(i++, sanPham.getSoThangBaoHanh());
+            st.setString(i++, sanPham.getCauHinh());
+
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
