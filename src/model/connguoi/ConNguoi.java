@@ -17,11 +17,21 @@ public class ConNguoi {
     private String email;
     private String namSinh;
     private DiaChi diaChi;
+    private boolean gioiTinh;
 
+    public boolean isGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+    
+    
     public DiaChi getDiaChi() {
         return diaChi;
     }
-
+    
     public void setDiaChi(DiaChi diaChi) throws Exception{
  
         this.diaChi = diaChi;
@@ -69,12 +79,13 @@ public class ConNguoi {
             throw new Exception("Năm sinh không được rỗng !");
     }
 
-    public ConNguoi(String hoTen, String soDT, String email, String namSinh,DiaChi diaChi) throws Exception{
+    public ConNguoi(String hoTen, String soDT, String email, String namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
         setHoTen(hoTen);
         setEmail(email);
         setSoDT(soDT);
         setNamSinh(namSinh);
         setDiaChi(diaChi);
+        this.gioiTinh = gioiTinh;
     }
     public ConNguoi() {
     }
