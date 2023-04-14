@@ -4,7 +4,7 @@
  */
 package model.hoadon;
 
-import java.util.Date;
+
 import model.sanpham.SanPham;
 
 /**

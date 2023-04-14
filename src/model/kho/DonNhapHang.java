@@ -7,6 +7,8 @@ package model.kho;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
+import model.connguoi.NhaCungCap;
+import model.connguoi.NhanVien;
 
 /**
  *
@@ -20,24 +22,45 @@ public class DonNhapHang {
     private boolean danhan;
     private KhoHang khoHang;
     private ArrayList<ChiTietDonNhap> chiTietDonNhap;
+    private NhaCungCap nhaCungCap;
+    private NhanVien nhanVien;
 
     public DonNhapHang(String maDonNhap) {
         this.maDonNhap = maDonNhap;
     }
 
-    public DonNhapHang(String maDonNhap, LocalDate ngayNhap, String ghiChu, boolean danhan, KhoHang khoHang, ArrayList<ChiTietDonNhap> chiTietDonNhap) {
+    public DonNhapHang(String maDonNhap, LocalDate ngayNhap, String ghiChu, boolean danhan, KhoHang khoHang, ArrayList<ChiTietDonNhap> chiTietDonNhap, NhaCungCap nhaCungCap, NhanVien nhanVien) {
         this.maDonNhap = maDonNhap;
         this.ngayNhap = ngayNhap;
         this.ghiChu = ghiChu;
         this.danhan = danhan;
         this.khoHang = khoHang;
         this.chiTietDonNhap = chiTietDonNhap;
+        this.nhaCungCap = nhaCungCap;
+        this.nhanVien = nhanVien;
     }
+    
 
     public String getMaDonNhap() {
         return maDonNhap;
     }
 
+    public NhaCungCap getNhaCungCap() {
+        return nhaCungCap;
+    }
+
+    public void setNhaCungCap(NhaCungCap nhaCungCap) {
+        this.nhaCungCap = nhaCungCap;
+    }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+
+    public void setNhanVien(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
+    }
+    
     public void setMaDonNhap(String maDonNhap) {
         this.maDonNhap = maDonNhap;
     }
