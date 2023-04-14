@@ -66,7 +66,7 @@ public class DiaChi {
 
     @Override
     public String toString() {
-        return "DiaChi{" + "so=" + so + ", duong=" + duong + ", quan=" + quan + ", thanhPho=" + thanhPho + ", quocGia=" + quocGia + '}';
+        return "Số " + so + ", " + duong + ", " + quan + ", " + thanhPho + ", " + quocGia;
     }
 
 }
