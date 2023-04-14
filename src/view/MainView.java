@@ -9,6 +9,11 @@ import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import model.connguoi.NhanVien;
+import model.share.DiaChi;
 
 /**
  *
@@ -16,6 +21,7 @@ import java.util.Arrays;
  */
 public class MainView extends javax.swing.JFrame {
 
+    NhanVien nhanVien = null;
     /**
      * Creates new form MainView
      */
@@ -25,7 +31,53 @@ public class MainView extends javax.swing.JFrame {
 
     public MainView() {
         initComponents();
+
         card = (CardLayout) this.pnl_main.getLayout();
+//        logout();
+
+//  Khi ra mắt phải chỉnh lại chưa đăng nhập
+        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf");
+        try {
+            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", "2003", dc, false);
+            login(nhanVien);
+        } catch (Exception ex) {
+            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void logout() {
+        this.nhanVien = null;
+
+        this.lbl_name.setText("");
+        headerRender(this.btn_login);
+        this.card.show(this.pnl_main, "home");
+
+        buttonActive(lbl_home);
+        disableAllFunction();
+    }
+
+    public void login(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
+
+        this.lbl_name.setText(nhanVien.getChucDanh() + ". " + nhanVien.getHoTen());
+        headerRender(this.lbl_name);
+
+        activeAllFunction();
+    }
+
+    public void headerRender(Component comp) {
+        this.pnl_header.removeAll();
+        this.pnl_header.add(comp);
+        this.pnl_header.setVisible(false);
+        this.pnl_header.setVisible(true);
+    }
+
+    public void disableAllFunction() {
+        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setVisible(false));
+    }
+
+    public void activeAllFunction() {
+        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setVisible(true));
     }
 
     /**
@@ -39,6 +91,7 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_header = new javax.swing.JPanel();
         lbl_name = new javax.swing.JLabel();
+        btn_login = new javax.swing.JButton();
         pnl_control = new javax.swing.JPanel();
         lbl_home = new javax.swing.JLabel();
         lbl_cart = new javax.swing.JLabel();
@@ -49,7 +102,8 @@ public class MainView extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         lbl_logout = new javax.swing.JLabel();
         pnl_main = new javax.swing.JPanel();
-        pnl_home = new javax.swing.JPanel();
+        pnl_home = new Panel_Home();
+        lbl_main = new javax.swing.JLabel();
         pnl_search = new javax.swing.JPanel();
         pnl_cart = new javax.swing.JPanel();
         pnl_products = new Panel_QuanLySanPham();
@@ -65,7 +119,7 @@ public class MainView extends javax.swing.JFrame {
         pnl_header.setBackground(new java.awt.Color(65, 165, 238));
         pnl_header.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 10));
         pnl_header.setPreferredSize(new java.awt.Dimension(0, 30));
-        pnl_header.setLayout(new java.awt.GridLayout(1, 0));
+        pnl_header.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
 
         lbl_name.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_name.setForeground(new java.awt.Color(255, 255, 255));
@@ -73,8 +127,19 @@ public class MainView extends javax.swing.JFrame {
         lbl_name.setText("QL.Nguyễn Thanh Cảnh");
         lbl_name.setToolTipText("");
         lbl_name.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_name.setPreferredSize(new java.awt.Dimension(200, 25));
+        lbl_name.setPreferredSize(new java.awt.Dimension(220, 30));
         pnl_header.add(lbl_name);
+
+        btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_login.setForeground(new java.awt.Color(65, 165, 238));
+        btn_login.setText("Đăng nhập");
+        btn_login.setPreferredSize(new java.awt.Dimension(150, 30));
+        btn_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_loginActionPerformed(evt);
+            }
+        });
+        pnl_header.add(btn_login);
 
         getContentPane().add(pnl_header, java.awt.BorderLayout.NORTH);
 
@@ -241,6 +306,9 @@ public class MainView extends javax.swing.JFrame {
         lbl_logout.setOpaque(true);
         lbl_logout.setPreferredSize(new java.awt.Dimension(70, 70));
         lbl_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_logoutMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 buttonHover(evt);
             }
@@ -256,6 +324,14 @@ public class MainView extends javax.swing.JFrame {
         pnl_main.setLayout(new java.awt.CardLayout());
 
         pnl_home.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_home.setLayout(new java.awt.BorderLayout());
+
+        lbl_main.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_main.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HomePage.png"))); // NOI18N
+        lbl_main.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_main.setMaximumSize(new java.awt.Dimension(0, 0));
+        pnl_home.add(lbl_main, java.awt.BorderLayout.CENTER);
+
         pnl_main.add(pnl_home, "home");
 
         pnl_search.setBackground(new java.awt.Color(255, 255, 255));
@@ -325,6 +401,16 @@ public class MainView extends javax.swing.JFrame {
             evt.getComponent().setBackground(Color.white);
     }//GEN-LAST:event_buttonExitHover
 
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        new Frame_DangNhap(this).setVisible(true);
+    }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void lbl_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_logoutMouseClicked
+        if (JOptionPane.showConfirmDialog(this, "Bạn có thật sự muốn đăng xuất?", "Đăng xuất", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            logout();
+        }
+    }//GEN-LAST:event_lbl_logoutMouseClicked
+
     private void buttonActive(Component c) {
         Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_home, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setBackground(Color.white));
         c.setBackground(color_active);
@@ -345,6 +431,7 @@ public class MainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_login;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel lbl_cart;
     private javax.swing.JLabel lbl_customers;
@@ -352,6 +439,7 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_inventory;
     private javax.swing.JLabel lbl_logout;
+    private javax.swing.JLabel lbl_main;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_products;
     private javax.swing.JPanel pnl_cart;
