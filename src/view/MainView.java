@@ -27,8 +27,9 @@ public class MainView extends javax.swing.JFrame {
      * Creates new form MainView
      */
     private final CardLayout card;
-    private final Color color_hover = new Color(227, 242, 253);
+    private final Color color_hover = new Color(216, 238, 255);
     private final Color color_active = new Color(187, 222, 251);
+    private final Color default_color = new Color(242, 242, 242);
 
     public MainView() {
         initComponents();
@@ -144,7 +145,6 @@ public class MainView extends javax.swing.JFrame {
 
         getContentPane().add(pnl_header, java.awt.BorderLayout.NORTH);
 
-        pnl_control.setBackground(new java.awt.Color(255, 255, 255));
         pnl_control.setMaximumSize(new java.awt.Dimension(50, 0));
         pnl_control.setMinimumSize(new java.awt.Dimension(50, 0));
         pnl_control.setPreferredSize(new java.awt.Dimension(70, 0));
@@ -174,7 +174,6 @@ public class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_home);
 
-        lbl_cart.setBackground(new java.awt.Color(255, 255, 255));
         lbl_cart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart.png"))); // NOI18N
         lbl_cart.setToolTipText("Đặt hàng");
@@ -198,7 +197,6 @@ public class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_cart);
 
-        lbl_products.setBackground(new java.awt.Color(255, 255, 255));
         lbl_products.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_products.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product_manager.png"))); // NOI18N
         lbl_products.setToolTipText("Quản lí sản phẩm");
@@ -222,7 +220,6 @@ public class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_products);
 
-        lbl_inventory.setBackground(new java.awt.Color(255, 255, 255));
         lbl_inventory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_inventory.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/packing.png"))); // NOI18N
         lbl_inventory.setToolTipText("Quản lí đơn hàng");
@@ -246,7 +243,6 @@ public class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_inventory);
 
-        lbl_customers.setBackground(new java.awt.Color(255, 255, 255));
         lbl_customers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_customers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
         lbl_customers.setToolTipText("Quản lí khách hàng");
@@ -270,7 +266,6 @@ public class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_customers);
 
-        lbl_employees.setBackground(new java.awt.Color(255, 255, 255));
         lbl_employees.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_employees.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/employees.png"))); // NOI18N
         lbl_employees.setToolTipText("Quản lí nhân viên");
@@ -295,7 +290,6 @@ public class MainView extends javax.swing.JFrame {
         pnl_control.add(lbl_employees);
         pnl_control.add(filler1);
 
-        lbl_logout.setBackground(new java.awt.Color(255, 255, 255));
         lbl_logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         lbl_logout.setToolTipText("Đăng xuất");
@@ -393,13 +387,13 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_employeesMouseClicked
 
     private void buttonHover(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonHover
-        if (evt.getComponent().getBackground().equals(Color.white))
+        if (evt.getComponent().getBackground().equals(default_color))
             evt.getComponent().setBackground(color_hover);
     }//GEN-LAST:event_buttonHover
 
     private void buttonExitHover(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonExitHover
         if (evt.getComponent().getBackground().equals(color_hover))
-            evt.getComponent().setBackground(Color.white);
+            evt.getComponent().setBackground(default_color);
     }//GEN-LAST:event_buttonExitHover
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
@@ -413,7 +407,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_logoutMouseClicked
 
     private void buttonActive(Component c) {
-        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_home, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setBackground(Color.white));
+        Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_home, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setBackground(default_color));
         c.setBackground(color_active);
     }
 
