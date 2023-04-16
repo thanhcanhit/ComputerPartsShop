@@ -13,13 +13,7 @@ import model.kho.KhoHang;
  */
 public interface KhoHangInterface {
 
-    public ArrayList<KhoHang> getAllQuanLy();
+    public ArrayList<KhoHang> getAllKhoHang();
 
-    public ArrayList<KhoHang> getQuanLyTheoMa(String maKho);
-
-    public boolean xoaThuongHieu(String maKho);
-
-    public boolean themThuongHieu(KhoHang kho);
-
-    public boolean capNhatThuongHieu(String maKho, KhoHang kho);
+    public ArrayList<KhoHang> getKhoHangTheoMa(String maKho);
 }

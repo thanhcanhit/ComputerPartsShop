@@ -15,26 +15,33 @@ import model.sanpham.SanPham;
 public class ChiTietDonNhap {
 
     private SanPham sanPham;
-    private NhaCungCap nhaCungCap;
+    private DonNhapHang donNhap;
     private int soLuong;
     private double tongTien;
 
-    public void tinhTongTien(){
-        this.tongTien=sanPham.getGiaBan()*soLuong;
+    public void tinhTongTien() {
+        this.tongTien = sanPham.getGiaBan() * soLuong;
     }
-  
 
-
-    public ChiTietDonNhap(SanPham sanPham, NhaCungCap nhaCungCap, int soLuong) {
+    public ChiTietDonNhap(SanPham sanPham, DonNhapHang donNhap, int soLuong) {
         this.sanPham = sanPham;
-        this.nhaCungCap = nhaCungCap;
+        this.donNhap = donNhap;
         this.soLuong = soLuong;
         tinhTongTien();
-        
+
     }
+
+    public ChiTietDonNhap(SanPham sanPham, DonNhapHang donNhap, int soLuong, double tongTien) {
+        this.sanPham = sanPham;
+        this.donNhap = donNhap;
+        this.soLuong = soLuong;
+        this.tongTien = tongTien;
+    }
+
     public double getTongTien() {
-          return tongTien;
-      }
+        return tongTien;
+    }
+
     public SanPham getSanPham() {
         return sanPham;
     }
@@ -43,12 +50,12 @@ public class ChiTietDonNhap {
         this.sanPham = sanPham;
     }
 
-    public NhaCungCap getNhaCungCap() {
-        return nhaCungCap;
+    public DonNhapHang getDonNhap() {
+        return donNhap;
     }
 
-    public void setNhaCungCap(NhaCungCap nhaCungCap) {
-        this.nhaCungCap = nhaCungCap;
+    public void setDonNhap(DonNhapHang donNhap) {
+        this.donNhap = donNhap;
     }
 
     public int getSoLuong() {
@@ -61,9 +68,9 @@ public class ChiTietDonNhap {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.sanPham);
-        hash = 97 * hash + Objects.hashCode(this.nhaCungCap);
+        int hash = 5;
+        hash = 47 * hash + Objects.hashCode(this.sanPham);
+        hash = 47 * hash + Objects.hashCode(this.donNhap);
         return hash;
     }
 
@@ -82,7 +89,7 @@ public class ChiTietDonNhap {
         if (!Objects.equals(this.sanPham, other.sanPham)) {
             return false;
         }
-        return Objects.equals(this.nhaCungCap, other.nhaCungCap);
+        return Objects.equals(this.donNhap, other.donNhap);
     }
 
 }

@@ -12,9 +12,9 @@ import model.kho.DonNhapHang;
  * @author thanh
  */
 public interface DonNhapHangInterface {
-    public ArrayList<DonNhapHang> getAllThuongHieu();
-    public ArrayList<DonNhapHang> getThuongHieuTheoMa(String maDon);
-    public boolean xoaThuongHieu(String maDon);
-    public boolean themThuongHieu(DonNhapHang donNhap);
-    public boolean capNhatThuongHieu(String maDon, DonNhapHang donNhap);
+    public ArrayList<DonNhapHang> getAllDonNhapHang();
+    public ArrayList<DonNhapHang> getDonNhapHangTheoMa(String maDon);
+    public boolean xoaDonNhapHang(String maDon);
+    public boolean themDonNhapHang(DonNhapHang donNhap);
+    public boolean capNhatDonNhapHang(String maDon, DonNhapHang donNhap);
 }
