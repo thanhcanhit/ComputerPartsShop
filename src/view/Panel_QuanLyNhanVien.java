@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import model.connguoi.NguoiQuanLy;
+
 import model.connguoi.NhanVien;
 import model.share.DiaChi;
 

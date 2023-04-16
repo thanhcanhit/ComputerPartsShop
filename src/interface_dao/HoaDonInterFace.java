@@ -11,7 +11,7 @@ import model.hoadon.HoaDon;
  *
  * @author macbookk
  */
-public interface HoaDonInterFace {
+public interface HoaDonInterface {
     public ArrayList<HoaDon> getAllHoaDon();
     public ArrayList<HoaDon> getHoaDonTheoMa(String maHoaDon);
     public boolean themHoaDon(HoaDon hoaDon);

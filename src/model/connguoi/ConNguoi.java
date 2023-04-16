@@ -11,7 +11,7 @@ import model.share.DiaChi;
  *
  * @author macbookk
  */
-public class ConNguoi {
+public abstract class ConNguoi {
 
     private String hoTen;
     private String soDT;

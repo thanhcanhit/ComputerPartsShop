@@ -35,7 +35,7 @@ public class NhanVien_dao implements NhanVienInterface{
                 String email = rs.getString("email");
                 String chucDanh = rs.getString("chucDanh");
                 
-                DiaChi diaChi = new DiaChi("maDiaChi");
+                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
                 NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
                 result.add(nv);
@@ -60,7 +60,7 @@ public class NhanVien_dao implements NhanVienInterface{
                 LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
                 String email = rs.getString("email");
                 String chucDanh = rs.getString("chucDanh");
-                DiaChi diaChi = new DiaChi("maDiaChi");
+                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
                 NhanVien nv = new NhanVien(ma, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
                 result.add(nv);
@@ -112,7 +112,7 @@ public class NhanVien_dao implements NhanVienInterface{
         int n=0;
         try{
             PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien"
-                    +"set tenNhanVien = ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?" 
+                    +"set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?" 
                     + "where maNhanVien = ?");
             st.setString(1, nhanVien.getHoTen());
             st.setString(2, nhanVien.getEmail());
@@ -128,6 +128,31 @@ public class NhanVien_dao implements NhanVienInterface{
             e.printStackTrace();
         }
         return n>0;
+    }
+
+    @Override
+    public ArrayList<NhanVien> getdsQuanLy() {
+        ArrayList<NhanVien> result = new ArrayList<NhanVien>();
+        try{
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select * from NhanVien where chucDanh = N'Quản Lý'");
+            while(rs.next()){
+                String maNV = rs.getString("maNhanVien");
+                String tenNV = rs.getString("hoTen");
+                String soDT = rs.getString("soDienThoai");
+                LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
+                String email = rs.getString("email");
+                String chucDanh = rs.getString("chucDanh");
+                
+                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
+                boolean gioiTinh = rs.getBoolean("gioiTinh");
+                NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
+                result.add(nv);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return result;
     }
     
     

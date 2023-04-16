@@ -17,5 +17,6 @@ public interface NhanVienInterface {
     public boolean xoaNhanVien(String maNV);
     public boolean themNhanVien(NhanVien nhanVien);
     public boolean capNhatNhanVien(String maNV,NhanVien nhanVien);
+    public ArrayList<NhanVien> getdsQuanLy();
     
 }

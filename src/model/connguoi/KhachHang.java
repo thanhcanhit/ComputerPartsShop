@@ -56,7 +56,8 @@ public class KhachHang extends ConNguoi {
             throw new Exception("Mã số thuế không được rỗng !");
     }
 
-    public KhachHang() {
+    public KhachHang(String maKH) {
+        this.maKH=maKH;
     }
     
 }
