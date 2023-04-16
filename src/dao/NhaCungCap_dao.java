@@ -32,7 +32,7 @@ public class NhaCungCap_dao implements NhaCungCapInterface {
                 String email = rs.getString("email");
                 String maDiaChi = rs.getString("maDiaChi");
 
-                NhaCungCap ncc = new NhaCungCap(ma, ten, new DiaChi(maDiaChi), ten, maSoThue, email);
+                NhaCungCap ncc = new NhaCungCap(ma, ten, new DiaChi(maDiaChi), soDienThoai, maSoThue, email);
 
                 result.add(ncc);
             }
@@ -59,7 +59,7 @@ public class NhaCungCap_dao implements NhaCungCapInterface {
                 String email = rs.getString("email");
                 String maDiaChi = rs.getString("maDiaChi");
 
-                NhaCungCap ncc = new NhaCungCap(ma, ten, new DiaChi(maDiaChi), ten, maSoThue, email);
+                NhaCungCap ncc = new NhaCungCap(ma, ten, new DiaChi(maDiaChi), soDienThoai, maSoThue, email);
 
                 result.add(ncc);
             }

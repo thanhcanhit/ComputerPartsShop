@@ -5,15 +5,18 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.kho.KhoHang;
+import model.kho.ChiTietDonNhap;
 
 /**
  *
  * @author thanh
  */
-public interface KhoHangInterface {
+public interface ChiTietDonNhapInterface {
 
-    public ArrayList<KhoHang> getAllKhoHang();
+    public ArrayList<ChiTietDonNhap> getAll();
 
-    public ArrayList<KhoHang> getKhoHangTheoMa(String maKho);
+    public ArrayList<ChiTietDonNhap> getAllChiTietCuaDonNhap(String maDonNhap);
+
+    public boolean themChiTietDonNhap(ChiTietDonNhap chiTietDN);    
+    
 }

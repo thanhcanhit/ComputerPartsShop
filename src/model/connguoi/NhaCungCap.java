@@ -19,6 +19,10 @@ public class NhaCungCap {
     private String maSoThue;
     private String eMail;
 
+    public NhaCungCap(String maNCC) {
+        this.maNCC = maNCC;
+    }
+
     public NhaCungCap(String maNCC, String tenNCC, DiaChi diaChi, String soDT, String maSoThue, String eMail) throws Exception {
         setMaNCC(maNCC);
         setTenNCC(tenNCC);

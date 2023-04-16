@@ -14,6 +14,7 @@ import model.share.DiaChi;
 public class NhanVien extends ConNguoi {
     private String maNV;
     private String chucDanh;
+
     private TaiKhoan taiKhoan;
 
     public TaiKhoan getTaiKhoan() {
@@ -23,11 +24,13 @@ public class NhanVien extends ConNguoi {
     public void setTaiKhoan(TaiKhoan taiKhoan) {
         this.taiKhoan = taiKhoan;
     }
-    
+
 
     public NhanVien(String maNV) {
         this.maNV=maNV;
     }
+    
+    
 
     public NhanVien(String maNV, String chucDanh,String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
         super(hoTen,soDT,email,namSinh,diaChi,gioiTinh);
