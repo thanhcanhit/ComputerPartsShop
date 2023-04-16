@@ -63,9 +63,10 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         btn_login = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setResizable(false);
+        setType(java.awt.Window.Type.POPUP);
 
         pnl_img.setBackground(new java.awt.Color(255, 255, 255));
         pnl_img.setPreferredSize(new java.awt.Dimension(200, 0));
@@ -104,7 +105,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_username.setLayout(new javax.swing.BoxLayout(pnl_username, javax.swing.BoxLayout.X_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Tên đăng nhập:");
+        jLabel1.setText("Mã nhân viên:");
         jLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
         pnl_username.add(jLabel1);
         pnl_username.add(filler1);
@@ -142,6 +143,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Đăng nhập");
+        btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -151,6 +153,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         btn_cancel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_cancel.setText("Hủy bỏ");
+        btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cancelActionPerformed(evt);

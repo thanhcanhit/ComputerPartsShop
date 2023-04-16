@@ -60,7 +60,6 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin = new javax.swing.JPanel();
         pnl_head_TT = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         pnl_body_TT = new javax.swing.JPanel();
         pnl_Tensp = new javax.swing.JPanel();
         lbl_Tensp = new javax.swing.JLabel();
@@ -121,14 +120,15 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin.setLayout(new java.awt.BorderLayout());
 
         pnl_head_TT.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_head_TT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
         pnl_head_TT.setLayout(new java.awt.BorderLayout());
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QLhanghoa/img_Sanpham (200px).png"))); // NOI18N
         jLabel13.setToolTipText("");
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel13.setPreferredSize(new java.awt.Dimension(200, 250));
         pnl_head_TT.add(jLabel13, java.awt.BorderLayout.CENTER);
-        pnl_head_TT.add(filler1, java.awt.BorderLayout.PAGE_END);
 
         pnl_ThongTin.add(pnl_head_TT, java.awt.BorderLayout.NORTH);
 
@@ -407,7 +407,6 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_headerLoai;
     private javax.swing.JComboBox<String> cmb_headerThuongHieu;
     private javax.swing.JComboBox<String> cmp_Loaisp;
-    private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
