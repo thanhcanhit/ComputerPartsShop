@@ -15,7 +15,7 @@ import model.share.ConnectDB;
  *
  * @author macbookk
  */
-public class ChiTietHoaDon_dao {
+public class ChiTietHoaDon_dao{
     public ArrayList<ChiTietHoaDon> getChiTietHoaDonTheoMaHoaDon(String maHoaDon){
         ArrayList<ChiTietHoaDon> result = new ArrayList<ChiTietHoaDon>();
         try{
@@ -37,10 +37,10 @@ public class ChiTietHoaDon_dao {
         }
         return result;
     }
-    public boolean xoaDiaChi(String maHoaDon) {
+    public boolean xoaChiTietHoaDon(String maHoaDon) {
         int n = 0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("delete from DiaChi where maHoaDon = ?");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("delete from ChiTietHoaDon where maHoaDon = ?");
             st.setString(1, maHoaDon);
             n = st.executeUpdate();
         }catch(Exception e){
