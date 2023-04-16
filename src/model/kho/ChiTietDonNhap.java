@@ -5,7 +5,6 @@
 package model.kho;
 
 import java.util.Objects;
-import model.connguoi.NhaCungCap;
 import model.sanpham.SanPham;
 
 /**
@@ -35,6 +34,10 @@ public class ChiTietDonNhap {
         this.sanPham = sanPham;
         this.donNhap = donNhap;
         this.soLuong = soLuong;
+        this.tongTien = tongTien;
+    }
+    
+    public void setTongTien(double tongTien) {
         this.tongTien = tongTien;
     }
 

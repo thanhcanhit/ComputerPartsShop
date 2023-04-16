@@ -18,7 +18,5 @@ public interface ChiTietDonNhapInterface {
     public ArrayList<ChiTietDonNhap> getAllChiTietCuaDonNhap(String maDonNhap);
 
     public boolean themChiTietDonNhap(ChiTietDonNhap chiTietDN);    
-
-    public boolean capNhatChiTietDonNhap(String maSanPham, String madonNhap, ChiTietDonNhap chiTietDN);
     
 }

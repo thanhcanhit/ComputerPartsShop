@@ -13,8 +13,13 @@ import model.kho.KhoHang;
  *
  * @author thanh
  */
-public class KhoHang_bus implements KhoHangInterface{
-    private KhoHang_dao dao = new KhoHang_dao();
+public class KhoHang_bus implements KhoHangInterface {
+
+    private KhoHang_dao dao;
+
+    public KhoHang_bus() {
+        dao = new KhoHang_dao();
+    }
 
     @Override
     public ArrayList<KhoHang> getAllKhoHang() {
