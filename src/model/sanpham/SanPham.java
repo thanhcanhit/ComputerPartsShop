@@ -112,42 +112,22 @@ public class SanPham {
     public String getTenLoai() {
         String result = "";
         switch (this.loai) {
-            case 0:
-                result = "CPU";
-                break;
-            case 1:
-                result = "MainBoard";
-                break;
-            case 2:
-                result = "VGA";
-                break;
-            case 3:
-                result = "RAM";
-                break;
-            case 4:
-                result = "Ổ cứng";
-                break;
-            case 5:
-                result = "Nguồn";
-                break;
-            case 6:
-                result = "Case";
-                break;
-            case 7:
-                result = "Tản nhiệt";
-                break;
-            case 8:
-                result = "Chuột";
-                break;
-            case 9:
-                result = "Bàn phím";
-                break;
+            case 0 -> result = "CPU";
+            case 1 -> result = "MainBoard";
+            case 2 -> result = "VGA";
+            case 3 -> result = "RAM";
+            case 4 -> result = "Ổ cứng";
+            case 5 -> result = "Nguồn";
+            case 6 -> result = "Case";
+            case 7 -> result = "Tản nhiệt";
+            case 8 -> result = "Chuột";
+            case 9 -> result = "Bàn phím";
         }
         return result;
     }
 
     public void setLoai(int loai) throws Exception {
-        if (loai >= this.CPU && loai <= this.BANPHIM) {
+        if (loai >= SanPham.CPU && loai <= SanPham.BANPHIM) {
             this.loai = loai;
         } else {
             throw new Exception(LOAI_NOT_FOUND);
