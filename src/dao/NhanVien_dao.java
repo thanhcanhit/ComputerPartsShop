@@ -155,5 +155,20 @@ public class NhanVien_dao implements NhanVienInterface{
         return result;
     }
     
+    public static void main(String[] args) {
+        try{
+            NhanVien n = new NhanVien("NV0004", "hello", "kien", "as", "asfaf", LocalDate.MIN, new DiaChi("masd"), true);
+            ConnectDB.connect();
+            NhanVien_dao dao = new NhanVien_dao();
+            boolean t = dao.capNhatNhanVien("NV0004", n);
+            System.out.println(t);
+//            for(NhanVien nv: list){
+//                System.out.println(nv.getHoTen()+" ; "+nv.getMaNV()+" ; "+nv.getSoDT());
+//            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     
 }

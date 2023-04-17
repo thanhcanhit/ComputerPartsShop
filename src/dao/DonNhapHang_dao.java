@@ -86,5 +86,7 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
     public boolean capNhatDonNhapHang(String maDon, DonNhapHang donNhap) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 
 }
