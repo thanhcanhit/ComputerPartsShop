@@ -28,9 +28,9 @@ CREATE TABLE KhoHang (maKho nvarchar(30) NOT NULL, tenKho nvarchar(50) NULL, maH
 CREATE TABLE NhaCungCap (maNhaCungCap nvarchar(30) NOT NULL, tenNhaCungCap nvarchar(40) NULL, soDienThoai nvarchar(10) NULL, maSoThue nvarchar(25) NULL, email nvarchar(40) NULL, maDiaChi nvarchar(30) NOT NULL, PRIMARY KEY (maNhaCungCap));
 CREATE TABLE NhanVien (maNhanVien nvarchar(30) NOT NULL, hoTen nvarchar(40) NOT NULL, soDienThoai nvarchar(10) NOT NULL, ngaySinh date NOT NULL, email nvarchar(50) NULL, chucVu nvarchar(25) NOT NULL, maQuanLy nvarchar(30) NOT NULL, maDiaChi nvarchar(30) NOT NULL, PRIMARY KEY (maNhanVien));
 CREATE TABLE PhieuBaoHanh (maPhieuBaoHanh nvarchar(30) NOT NULL, maHoaDon nvarchar(30) NOT NULL, maSanPham nvarchar(30) NOT NULL, PRIMARY KEY (maPhieuBaoHanh));
-CREATE TABLE SanPham (maSanPham nvarchar(30) NOT NULL, tenSanPham nvarchar(30) NOT NULL, giaNhap float(10) NOT NULL, giamGia float(10) NOT NULL, cauHinh nvarchar(255) NULL, soThangBaoHang int NOT NULL, loai nvarchar(25) NOT NULL, maThuongHieu nvarchar(30) NOT NULL, VAT float(10) NOT NULL, PRIMARY KEY (maSanPham));
+CREATE TABLE SanPham (maSanPham nvarchar(30) NOT NULL, tenSanPham nvarchar(300) NOT NULL, giaNhap float(10) NOT NULL, giamGia float(10) NOT NULL, cauHinh nvarchar(255) NULL, soThangBaoHang int NOT NULL, loai nvarchar(25) NOT NULL, maThuongHieu nvarchar(30) NOT NULL, VAT float(10) NOT NULL, PRIMARY KEY (maSanPham));
 CREATE TABLE TaiKhoan (soTaiKhoan nvarchar(15) NOT NULL, matKhau nvarchar(30) NOT NULL, maNhanVien nvarchar(30) NOT NULL, PRIMARY KEY (soTaiKhoan));
-CREATE TABLE ThuongHieu (maThuongHieu nvarchar(30) NOT NULL, tenThuongHieu nvarchar(40) NOT NULL, quocGia nvarchar(50) NOT NULL, PRIMARY KEY (maThuongHieu));
+CREATE TABLE ThuongHieu (maThuongHieu nvarchar(50) NOT NULL, tenThuongHieu nvarchar(40) NOT NULL, quocGia nvarchar(50) NOT NULL, PRIMARY KEY (maThuongHieu));
 
 --Tạo ràng buộc
 ALTER TABLE DonNhapHang ADD CONSTRAINT FKDonNhapHan397345 FOREIGN KEY (maKho) REFERENCES KhoHang (maKho);

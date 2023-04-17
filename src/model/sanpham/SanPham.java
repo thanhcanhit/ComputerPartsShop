@@ -209,8 +209,12 @@ public class SanPham {
         }
     }
     
+    /**
+     * Giá bán bằng giá nhập cộng 5% tiền lời + thuế - giảm giá
+     * @return 
+     */
     public double getGiaBan() {
-        return (this.VAT/100)*this.giaNhap + (this.giamGia/100) *this.giaNhap;
+        return giaNhap + 0.05*giaNhap + (this.VAT/100)*this.giaNhap - (this.giamGia/100) *this.giaNhap ;
     }
 
     @Override
