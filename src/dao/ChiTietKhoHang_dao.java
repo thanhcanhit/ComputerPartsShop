@@ -13,6 +13,8 @@ import model.kho.KhoHang;
 import model.sanpham.SanPham;
 import model.share.ConnectDB;
 import java.sql.*;
+import model.kho.ChiTietDonNhap;
+import model.kho.DonNhapHang;
 
 /**
  *
@@ -42,7 +44,7 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
     public ArrayList<ChiTietKhoHang> getAllChiTietCuaKhoHang(String maKhoHang) {
         ArrayList<ChiTietKhoHang> result = new ArrayList<ChiTietKhoHang>();
         try {
-            PreparedStatement st = ConnectDB.conn.prepareStatement("SELECT maSanPham, soLuongTon FROM ChiTietKhoHang where maKho = ?");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("SELECT maKho, maSanPham, soLuongTon FROM ChiTietKhoHang where maKho = ?");
             st.setString(1, maKhoHang);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
@@ -76,7 +78,7 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
 
     @Override
     public boolean capNhatChiTietKhoHang(String maKho, String maSanPham, ChiTietKhoHang ct) {
-        
+
         int n = 0;
 
         try {
@@ -90,6 +92,19 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
         }
 
         return n > 0;
+
+    }
+    
+    public static void main(String[] args) {
+        try {
+            ConnectDB.connect();
+            
+            
+            ChiTietDonNhap cc = new ChiTietDonNhap(new SanPham("SP0009"), new DonNhapHang("DNH0001"), 0);
+            System.out.println(new ChiTietDonNhap_dao().themChiTietDonNhap(cc));
+        } catch (Exception e) {
+
+        }
 
     }
 

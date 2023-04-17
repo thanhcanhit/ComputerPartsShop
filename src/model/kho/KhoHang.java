@@ -67,6 +67,14 @@ public class KhoHang {
         this.dienTich = dienTich;
     }
 
+    public ArrayList<ChiTietKhoHang> getDsChiTietKhoHang() {
+        return dsChiTietKhoHang;
+    }
+
+    public void setDsChiTietKhoHang(ArrayList<ChiTietKhoHang> dsChiTietKhoHang) {
+        this.dsChiTietKhoHang = dsChiTietKhoHang;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -93,6 +101,5 @@ public class KhoHang {
     public String toString() {
         return super.toString(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-    
-    
+
 }

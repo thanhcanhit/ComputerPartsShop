@@ -61,7 +61,6 @@ public class KhoHang_dao implements KhoHangInterface {
                 String loai = rs.getString("maDiaChi");
 
                 // Chi tiet kho hang
-                
                 ArrayList<ChiTietKhoHang> list = new ChiTietKhoHang_dao().getAllChiTietCuaKhoHang(ma);
 
                 KhoHang khoHang = new KhoHang(ma, new DiaChi(loai), ten, dienTich, list);
@@ -74,5 +73,4 @@ public class KhoHang_dao implements KhoHangInterface {
 
         return result;
     }
-
 }
