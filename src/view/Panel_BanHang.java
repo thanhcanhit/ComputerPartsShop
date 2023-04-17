@@ -4,9 +4,9 @@
  */
 package view;
 
+import controller.SanPham_bus;
+import controller.ThuongHieu_bus;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
@@ -20,39 +20,62 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
 
+    private SanPham_bus sanPham_bus;
+    private ThuongHieu_bus thuongHieu_bus;
+
     /**
      * Creates new form Panel_BanHang
      */
     public Panel_BanHang() {
+        initDataObject();
         initTableModel();
         initComponents();
     }
 
+    public void initDataObject() {
+
+        sanPham_bus = new SanPham_bus();
+        thuongHieu_bus = new ThuongHieu_bus();
+    }
+
     public void initTableModel() {
         // Products
-        tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
+        tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng tồn", "Giảm giá", "Giá bán"
         }, 0);
 
         // Carts
         tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
         }, 0);
 
-        ArrayList<SanPham> list = new ArrayList<>();
-        try {
-            list.add(new SanPham("sp1", "chuot1", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp2", "chuot2", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp3", "chuot3", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            renderProductTable(list);
-            renderCartTable(list);
-        } catch (Exception e) {
+        renderAll();
+    }
 
+    public void renderAll() {
+        ArrayList<SanPham> list = sanPham_bus.getAllSanPham();
+        renderProductTable(list);
+    }
+
+    public void search() {
+        String input = txt_search.getText().trim();
+
+        if (input.length() > 0) {
+            ArrayList<SanPham> list = sanPham_bus.getSanPhamTheoMa(input);
+            renderProductTable(list);
+        } else {
+            renderAll();
         }
     }
 
     public void renderProductTable(ArrayList<SanPham> list) {
         tblModel_product.setRowCount(0);
         for (SanPham sp : list) {
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), sp.getThuongHieu().toString(), 0, sp.getGiaBan()};
+//            {"Mã"
+//            
+//            
+//            , "Tên", "Loại", "Thương hiệu", "SL" "Giá bán", "Giảm
+//        }
+            ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), 0, sp.getGiamGia(), sp.getGiaBan()};
             tblModel_product.addRow(row);
         }
     }
@@ -141,6 +164,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_search.setMaximumSize(new java.awt.Dimension(75, 50));
         btn_search.setMinimumSize(new java.awt.Dimension(75, 50));
         btn_search.setPreferredSize(new java.awt.Dimension(120, 50));
+        btn_search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_searchActionPerformed(evt);
+            }
+        });
         pnl_search.add(btn_search);
 
         add(pnl_search, java.awt.BorderLayout.NORTH);
@@ -176,6 +204,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_reset.setToolTipText("Tải lại");
         btn_reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_reset.setPreferredSize(new java.awt.Dimension(45, 45));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
         pnl_left.add(btn_reset);
 
         btn_prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartPrev.png"))); // NOI18N
@@ -382,6 +415,15 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
         add(pnl_cart, java.awt.BorderLayout.EAST);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
+        search();
+    }//GEN-LAST:event_btn_searchActionPerformed
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        txt_search.setText("");
+        renderAll();
+    }//GEN-LAST:event_btn_resetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

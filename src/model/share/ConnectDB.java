@@ -4,8 +4,6 @@
  */
 package model.share;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -17,7 +15,7 @@ public class ConnectDB {
     public static void connect() throws SQLException {
         String url = "jdbc:sqlserver://localhost:1433;databasename=ComputerPartsShop";
         String user = "sa";
-        String password = "123456aA@$";
+        String password = "sapassword";
         
         conn = DriverManager.getConnection(url, user, password);
     }

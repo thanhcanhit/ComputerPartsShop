@@ -94,18 +94,4 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
         return n > 0;
 
     }
-    
-    public static void main(String[] args) {
-        try {
-            ConnectDB.connect();
-            
-            
-            ChiTietDonNhap cc = new ChiTietDonNhap(new SanPham("SP0009"), new DonNhapHang("DNH0001"), 0);
-            System.out.println(new ChiTietDonNhap_dao().themChiTietDonNhap(cc));
-        } catch (Exception e) {
-
-        }
-
-    }
-
 }
