@@ -25,10 +25,11 @@ CREATE TABLE HoaDon (maHoaDon nvarchar(30) NOT NULL, ngayLap date NULL, phuongTh
 CREATE TABLE KhachHang (maKhachHang nvarchar(30) NOT NULL, hoTen nvarchar(30) NOT NULL, soDienThoai nvarchar(10) NOT NULL, ngaySinh date NULL, email nvarchar(30) NULL, maSoThue nvarchar(25) NULL, maDiaChi nvarchar(30) NULL, diemThanhVien int NULL, gioiTinh bit NULL, PRIMARY KEY (maKhachHang));
 CREATE TABLE KhoHang (maKho nvarchar(30) NOT NULL, tenKho nvarchar(50) NULL, dienTich float(10) NOT NULL, maDiaChi nvarchar(30) NOT NULL, PRIMARY KEY (maKho));
 CREATE TABLE NhaCungCap (maNhaCungCap nvarchar(30) NOT NULL, tenNhaCungCap nvarchar(40) NULL, soDienThoai nvarchar(15) NULL, maSoThue nvarchar(25) NULL, email nvarchar(40) NULL, maDiaChi nvarchar(30) NOT NULL, PRIMARY KEY (maNhaCungCap));
-CREATE TABLE NhanVien (maNhanVien nvarchar(30) NOT NULL, hoTen nvarchar(50) NOT NULL, soDienThoai nvarchar(15) NOT NULL, ngaySinh date NOT NULL, email nvarchar(50) NULL, chucDanh nvarchar(40) NOT NULL, maQuanLy nvarchar(30) NOT NULL, maDiaChi nvarchar(30) NOT NULL, gioiTinh bit NOT NULL, PRIMARY KEY (maNhanVien));
+CREATE TABLE NhanVien (maNhanVien nvarchar(30) NOT NULL, hoTen nvarchar(50) NOT NULL, soDienThoai nvarchar(15) NOT NULL, ngaySinh date NOT NULL, email nvarchar(50) NULL, chucDanh nvarchar(40) NOT NULL, gioiTinh bit NOT NULL, maDiaChi nvarchar(30) NOT NULL, PRIMARY KEY (maNhanVien));
 CREATE TABLE SanPham (maSanPham nvarchar(30) NOT NULL, tenSanPham nvarchar(100) NOT NULL, giaNhap float(20) NOT NULL, giamGia float(5) NOT NULL, cauHinh nvarchar(1000) NULL, soThangBaoHanh int NOT NULL, maLoai int NOT NULL, VAT float(5) NOT NULL, maThuongHieu nvarchar(30) NOT NULL, PRIMARY KEY (maSanPham));
-CREATE TABLE TaiKhoan (soTaiKhoan nvarchar(30) NOT NULL, matKhau nvarchar(30) NOT NULL, maNhanVien nvarchar(30) NOT NULL, PRIMARY KEY (soTaiKhoan));
+CREATE TABLE TaiKhoan (maNhanVien nvarchar(30) NOT NULL, matKhau nvarchar(30) NOT NULL, PRIMARY KEY (maNhanVien));
 CREATE TABLE ThuongHieu (maThuongHieu nvarchar(30) NOT NULL, tenThuongHieu nvarchar(40) NOT NULL, quocGia nvarchar(50) NOT NULL, PRIMARY KEY (maThuongHieu));
+ALTER TABLE NhanVien ADD CONSTRAINT FKNhanVien617893 FOREIGN KEY (maDiaChi) REFERENCES DiaChi (maDiaChi);
 ALTER TABLE DonNhapHang ADD CONSTRAINT FKDonNhapHan451254 FOREIGN KEY (maNhanVien) REFERENCES NhanVien (maNhanVien);
 ALTER TABLE DonNhapHang ADD CONSTRAINT FKDonNhapHan528637 FOREIGN KEY (maNhaCungCap) REFERENCES NhaCungCap (maNhaCungCap);
 ALTER TABLE DonNhapHang ADD CONSTRAINT FKDonNhapHan502440 FOREIGN KEY (maKho) REFERENCES KhoHang (maKho);
@@ -39,15 +40,12 @@ ALTER TABLE HoaDon ADD CONSTRAINT FKHoaDon550538 FOREIGN KEY (maKhachHang) REFER
 ALTER TABLE SanPham ADD CONSTRAINT FKSanPham473948 FOREIGN KEY (maThuongHieu) REFERENCES ThuongHieu (maThuongHieu);
 ALTER TABLE ChiTietKhoHang ADD CONSTRAINT FKChiTietKho719856 FOREIGN KEY (maSanPham) REFERENCES SanPham (maSanPham);
 ALTER TABLE ChiTietKhoHang ADD CONSTRAINT FKChiTietKho299808 FOREIGN KEY (maKho) REFERENCES KhoHang (maKho);
-ALTER TABLE NhanVien ADD CONSTRAINT FKNhanVien617893 FOREIGN KEY (maDiaChi) REFERENCES DiaChi (maDiaChi);
 ALTER TABLE NhaCungCap ADD CONSTRAINT FKNhaCungCap660119 FOREIGN KEY (maDiaChi) REFERENCES DiaChi (maDiaChi);
 ALTER TABLE ChiTietDonNhap ADD CONSTRAINT FKChiTietDon825282 FOREIGN KEY (maSanPham) REFERENCES SanPham (maSanPham);
 ALTER TABLE TaiKhoan ADD CONSTRAINT FKTaiKhoan954915 FOREIGN KEY (maNhanVien) REFERENCES NhanVien (maNhanVien);
 ALTER TABLE ChiTietHoaDon ADD CONSTRAINT FKChiTietHoa141811 FOREIGN KEY (maSanPham) REFERENCES SanPham (maSanPham);
 ALTER TABLE HoaDon ADD CONSTRAINT FKHoaDon559341 FOREIGN KEY (maNhanVien) REFERENCES NhanVien (maNhanVien);
 ALTER TABLE ChiTietHoaDon ADD CONSTRAINT FKChiTietHoa903135 FOREIGN KEY (maHoaDon) REFERENCES HoaDon (maHoaDon);
-ALTER TABLE NhanVien ADD CONSTRAINT FKNhanVien638696 FOREIGN KEY (maQuanLy) REFERENCES NhanVien (maNhanVien);
-
 
 
 
@@ -145,26 +143,26 @@ VALUES
 ('SP0020', N'Chuột không dây Logitech M325', 450000, 0, 8, 10, 'THHI01', 12, N'Kích thước: 60 x 100 x 33 mm; Trọng lượng sản phẩm: 91 g; Loại chuột: Chuột không dây; Kiểu kết nối: USB; Khoảng cách kết nối: 10 m; Độ phân giải chuột: 1000 dpi; Độ bền nút nhấn: 10 triệu lần nhấn; Thời gian sử dụng pin: 18 tháng'),
 
 --RAM 3
-('SP0021', 'RAM desktop KINGMAX (1 x 16GB) DDR5 4800MHz (KM-LD5-4800-16GS)', 3690000, 24, 3, 10, 'THHI05', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR5; Bus: 48000MHz;'),
-('SP0022', 'RAM desktop KINGMAX (1x8GB) DDR3 1600MHz', 1250000, 20, 3, 10, 'THHI05', 36, 'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR3; Bus: 1600MHz;'),
-('SP0023', 'RAM laptop KINGMAX (1x4GB) DDR3L 1600MHz', 790000, 36, 3, 10, 'THHI05', 36, 'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR3L; Bus: 1600MHz;'),
-('SP0024', 'RAM desktop KINGMAX (1x4GB) DDR4 2400MHz', 690000, 20, 3, 10, 'THHI05', 36, 'Màu sắc: Đỏ; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2400MHz;'),
-('SP0025', 'RAM desktop KINGMAX (1x4GB) DDR4 2666MHz', 790000, 53, 3, 10, 'THHI05', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2666MHz;'),
-('SP0026', 'RAM desktop KINGMAX (1x8GB) DDR4 2666MHz', 859000, 19, 3, 10, 'THHI05', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
-('SP0027', 'RAM laptop KINGMAX (1x8GB) DDR3L 1600MHz', 1350000, 27, 3, 10, 'THHI05', 36, 'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR3L; Bus: 1600MHz;'),
-('SP0028', 'RAM desktop G.SKILL Aegis F4-2666C19S-8GIS (1x8GB) DDR4 2666MHz', 759000, 14, 3, 10, 'THHI06', 36, 'Màu sắc: Đen, Đỏ; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
-('SP0029', 'RAM desktop KLEVV CRAS II KM4Z4GX1N (1x4GB) DDR4 2400MHz', 910000, 2, 3, 10, 'THHI07', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2400MHz;'),
-('SP0030', 'RAM KLEVV Bolt 1x4GB DDR4 3000MHz - KM4B4GX1A', 990000, 12, 3, 10, 'THHI07', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 3000MHz;'),
-('SP0031', 'RAM desktop CORSAIR Vengeance RGB Pro CMW32GX4M2D3000C16 (2x16GB) DDR4 3000MHz', 4790000, 13, 3, 10, 'THHI08', 36, 'Màu sắc: Đen; Đèn LED: RBG; Dung lượng: 2 x 16GB; Thế hệ: DDR4; Bus: 3000MHz;'),
-('SP0032', 'RAM desktop KINGMAX HEATSINK (Zeus) (1 x 8GB) DDR4 3200MHz (KM-LD4-3200-8GHSB)', 1390000, 47, 3, 10, 'THHI05', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 3200MHz;'),
-('SP0033', 'RAM desktop KINGMAX HEATSINK (Zeus) (1 x 16GB) DDR4 3200MHz (KM-LD4-3200-16GHSB)', 2590000, 50, 3, 10, 'THHI05', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR4; Bus: 3200MHz;'),
-('SP0034', 'RAM desktop GIGABYTE GP-ARS32G52D5 (2 x 16GB) DDR5 5200MHz (GP-ARS32G52D5)', 7999000, 7, 3, 10, 'THHI09', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 2 x 16GB; Thế hệ: DDR5; Bus: 5200MHz;'),
-('SP0035', 'RAM desktop Lexar D5DU016G-R4800GS2A (1 x 16GB) DDR5 4800MHz', 4190000, 2, 3, 10, 'THHI10', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR5; Bus: 4800MHz;'),
-('SP0036', 'RAM desktop Lexar LD4AU016G (1 x 16GB) DDR4 3200MHz (B3200GSST)', 1790000, 28, 3, 10, 'THHI10', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR4; Bus: 3200MHz;'),
-('SP0037', 'RAM desktop CRUCIAL CT8G48C40U5 (1 x 8GB) DDR5 4800MHz (CT8G48C40U5)', 1490000, 34, 3, 10, 'THHI11', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR5; Bus: 4800MHz;'),
-('SP0038', 'RAM desktop Lexar LD4AS008G-B2666GSST (1 x 8GB) DDR4 2666MHz (LD4AS008G-B2666GSST)', 790000, 9, 3, 10, 'THHI10', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
-('SP0039', 'RAM desktop CORSAIR CMH64GX5M2B5600C36 (2 x 32GB) DDR5 5600MHz (CMH64GX5M2B5600C36)', 9490000, 5, 3, 10, 'THHI08', 36, 'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 2 x 32GB; Thế hệ: DDR5; Bus: 5600MHz;'),
-('SP0040', 'RAM desktop CORSAIR Ram Desktop Corsair DOMINATOR PLATINUM RGB Black Heatspreader (2 x 8GB)', 4290000, 12, 3, 10, 'THHI08', 36, 'Màu sắc: Đen; Đèn LED: RGB; Dung lượng: 2 x 8GB; Thế hệ: DDR4; Bus: 3200MHz;'),
+('SP0021', 'RAM desktop KINGMAX (1 x 16GB) DDR5 4800MHz (KM-LD5-4800-16GS)', 3690000, 24, 3, 10, 'THHI05', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR5; Bus: 48000MHz;'),
+('SP0022', 'RAM desktop KINGMAX (1x8GB) DDR3 1600MHz', 1250000, 20, 3, 10, 'THHI05', 36, N'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR3; Bus: 1600MHz;'),
+('SP0023', 'RAM laptop KINGMAX (1x4GB) DDR3L 1600MHz', 790000, 36, 3, 10, 'THHI05', 36, N'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR3L; Bus: 1600MHz;'),
+('SP0024', 'RAM desktop KINGMAX (1x4GB) DDR4 2400MHz', 690000, 20, 3, 10, 'THHI05', 36, N'Màu sắc: Đỏ; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2400MHz;'),
+('SP0025', 'RAM desktop KINGMAX (1x4GB) DDR4 2666MHz', 790000, 53, 3, 10, 'THHI05', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2666MHz;'),
+('SP0026', 'RAM desktop KINGMAX (1x8GB) DDR4 2666MHz', 859000, 19, 3, 10, 'THHI05', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
+('SP0027', 'RAM laptop KINGMAX (1x8GB) DDR3L 1600MHz', 1350000, 27, 3, 10, 'THHI05', 36, N'Màu sắc: Xanh lá; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR3L; Bus: 1600MHz;'),
+('SP0028', 'RAM desktop G.SKILL Aegis F4-2666C19S-8GIS (1x8GB) DDR4 2666MHz', 759000, 14, 3, 10, 'THHI06', 36, N'Màu sắc: Đen, Đỏ; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
+('SP0029', 'RAM desktop KLEVV CRAS II KM4Z4GX1N (1x4GB) DDR4 2400MHz', 910000, 2, 3, 10, 'THHI07', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 2400MHz;'),
+('SP0030', 'RAM KLEVV Bolt 1x4GB DDR4 3000MHz - KM4B4GX1A', 990000, 12, 3, 10, 'THHI07', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 4GB; Thế hệ: DDR4; Bus: 3000MHz;'),
+('SP0031', 'RAM desktop CORSAIR Vengeance RGB Pro CMW32GX4M2D3000C16 (2x16GB) DDR4 3000MHz', 4790000, 13, 3, 10, 'THHI08', 36, N'Màu sắc: Đen; Đèn LED: RBG; Dung lượng: 2 x 16GB; Thế hệ: DDR4; Bus: 3000MHz;'),
+('SP0032', 'RAM desktop KINGMAX HEATSINK (Zeus) (1 x 8GB) DDR4 3200MHz (KM-LD4-3200-8GHSB)', 1390000, 47, 3, 10, 'THHI05', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 3200MHz;'),
+('SP0033', 'RAM desktop KINGMAX HEATSINK (Zeus) (1 x 16GB) DDR4 3200MHz (KM-LD4-3200-16GHSB)', 2590000, 50, 3, 10, 'THHI05', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR4; Bus: 3200MHz;'),
+('SP0034', 'RAM desktop GIGABYTE GP-ARS32G52D5 (2 x 16GB) DDR5 5200MHz (GP-ARS32G52D5)', 7999000, 7, 3, 10, 'THHI09', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 2 x 16GB; Thế hệ: DDR5; Bus: 5200MHz;'),
+('SP0035', 'RAM desktop Lexar D5DU016G-R4800GS2A (1 x 16GB) DDR5 4800MHz', 4190000, 2, 3, 10, 'THHI10', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR5; Bus: 4800MHz;'),
+('SP0036', 'RAM desktop Lexar LD4AU016G (1 x 16GB) DDR4 3200MHz (B3200GSST)', 1790000, 28, 3, 10, 'THHI10', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 16GB; Thế hệ: DDR4; Bus: 3200MHz;'),
+('SP0037', 'RAM desktop CRUCIAL CT8G48C40U5 (1 x 8GB) DDR5 4800MHz (CT8G48C40U5)', 1490000, 34, 3, 10, 'THHI11', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR5; Bus: 4800MHz;'),
+('SP0038', 'RAM desktop Lexar LD4AS008G-B2666GSST (1 x 8GB) DDR4 2666MHz (LD4AS008G-B2666GSST)', 790000, 9, 3, 10, 'THHI10', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 1 x 8GB; Thế hệ: DDR4; Bus: 2666MHz;'),
+('SP0039', 'RAM desktop CORSAIR CMH64GX5M2B5600C36 (2 x 32GB) DDR5 5600MHz (CMH64GX5M2B5600C36)', 9490000, 5, 3, 10, 'THHI08', 36, N'Màu sắc: Đen; Đèn LED: Không LED; Dung lượng: 2 x 32GB; Thế hệ: DDR5; Bus: 5600MHz;'),
+('SP0040', 'RAM desktop CORSAIR Ram Desktop Corsair DOMINATOR PLATINUM RGB Black Heatspreader (2 x 8GB)', 4290000, 12, 3, 10, 'THHI08', 36, N'Màu sắc: Đen; Đèn LED: RGB; Dung lượng: 2 x 8GB; Thế hệ: DDR4; Bus: 3200MHz;'),
 
 
 --CPU 0
@@ -404,24 +402,24 @@ VALUES
 ('DC0068','201/23/13', N'Phạm Văn Thuận', N'Phường Bửu Long', N'Tp. Biên Hòa', N'Việt Nam')
 
 --Nhân Viên
-INSERT INTO nhanvien (maNhanVien, hoTen, gioiTinh, soDienThoai, ngaySinh, email, chucDanh, maQuanLy, maDiaChi)
+INSERT INTO nhanvien (maNhanVien, hoTen, gioiTinh, soDienThoai, ngaySinh, email, chucDanh, maDiaChi)
 VALUES
-	('NV0001', N'Nguyễn Thị Hồng Nhung',0, '0987654321', '1995-05-23', 'nhung.nguyen@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0008'),
-	('NV0002', N'Lê Văn Dương',1, '0909123456', '1990-01-12', 'duong.le@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0001'),
-	('NV0003', N'Phạm Hồng Đăng',1, '0918234567', '1985-08-11', 'dang.pham@example.com', N'Quản lý', 'NV0003', 'DC0002'),
-	('NV0004', N'Trần Thị Bích Phương',0, '0976543210', '1992-11-27', 'phuong.tran@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0003'),
-	('NV0005', N'Nguyễn Minh Thảo',0, '0969123456', '1997-04-01', 'thao.nguyen@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0004'),
-	('NV0006', N'Phan Thị Thu Hiền',0, '0908123456', '1988-02-18', 'hien.phan@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0005'),
-	('NV0007', N'Vũ Thị Hoài An',0, '0977654321', '1991-12-31', 'an.vu@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0006'),
-	('NV0008', N'Trần Văn Đức',1, '0912123456', '1995-03-25', 'duc.tran@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0007'),
-	('NV0009', N'Nguyễn Thanh Thúy',0, '0988123456', '1993-07-09', 'thuy.nguyen@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0008'),
-	('NV0010', N'Lê Hoàng Anh',1, '0969123456', '1998-09-10', 'anh.le@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0009'),
-	('NV0011', N'Trần Đức Anh',1, '0978123456', '1996-12-01', 'anh.tran@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0010'),
-	('NV0012', N'Phạm Thanh Hương',0, '0912123456', '1990-05-15', 'huong.pham@example.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0011'),
-	('NV0013', N'Lê Thị Thanh Trúc',0, '0987654321', '1988-02-12', 'trucle@gmail.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0005'),
-    ('NV0014', N'Phạm Thị Ngọc Yến',0, '0987123456', '1992-05-30', 'yentran@gmail.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0005'),
-    ('NV0015', N'Nguyễn Thị Trúc Phương',0, '0908123456', '1995-08-22', 'phuongnguyen2@gmail.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0006'),
-    ('NV0016', N'Lê Hoàng Nam',0, '0978123456', '1986-06-25', 'namle@gmail.com', N'Nhân viên kinh doanh', 'NV0003', 'DC0006')
+	('NV0001', N'Nguyễn Thị Hồng Nhung',0, '0987654321', '1995-05-23', 'nhung.nguyen@example.com', N'Nhân viên kinh doanh', 'DC0008'),
+	('NV0002', N'Lê Văn Dương',1, '0909123456', '1990-01-12', 'duong.le@example.com', N'Nhân viên kinh doanh', 'DC0001'),
+	('NV0003', N'Phạm Hồng Đăng',1, '0918234567', '1985-08-11', 'dang.pham@example.com', N'Quản lý', 'DC0002'),
+	('NV0004', N'Trần Thị Bích Phương',0, '0976543210', '1992-11-27', 'phuong.tran@example.com', N'Nhân viên kinh doanh', 'DC0003'),
+	('NV0005', N'Nguyễn Minh Thảo',0, '0969123456', '1997-04-01', 'thao.nguyen@example.com', N'Nhân viên kinh doanh', 'DC0004'),
+	('NV0006', N'Phan Thị Thu Hiền',0, '0908123456', '1988-02-18', 'hien.phan@example.com', N'Nhân viên kinh doanh', 'DC0005'),
+	('NV0007', N'Vũ Thị Hoài An',0, '0977654321', '1991-12-31', 'an.vu@example.com', N'Nhân viên kinh doanh', 'DC0006'),
+	('NV0008', N'Trần Văn Đức',1, '0912123456', '1995-03-25', 'duc.tran@example.com', N'Nhân viên kinh doanh', 'DC0007'),
+	('NV0009', N'Nguyễn Thanh Thúy',0, '0988123456', '1993-07-09', 'thuy.nguyen@example.com', N'Nhân viên kinh doanh', 'DC0008'),
+	('NV0010', N'Lê Hoàng Anh',1, '0969123456', '1998-09-10', 'anh.le@example.com', N'Nhân viên kinh doanh', 'DC0009'),
+	('NV0011', N'Trần Đức Anh',1, '0978123456', '1996-12-01', 'anh.tran@example.com', N'Nhân viên kinh doanh', 'DC0010'),
+	('NV0012', N'Phạm Thanh Hương',0, '0912123456', '1990-05-15', 'huong.pham@example.com', N'Nhân viên kinh doanh', 'DC0011'),
+	('NV0013', N'Lê Thị Thanh Trúc',0, '0987654321', '1988-02-12', 'trucle@gmail.com', N'Nhân viên kinh doanh', 'DC0005'),
+    ('NV0014', N'Phạm Thị Ngọc Yến',0, '0987123456', '1992-05-30', 'yentran@gmail.com', N'Nhân viên kinh doanh', 'DC0005'),
+    ('NV0015', N'Nguyễn Thị Trúc Phương',0, '0908123456', '1995-08-22', 'phuongnguyen2@gmail.com', N'Nhân viên kinh doanh', 'DC0006'),
+    ('NV0016', N'Lê Hoàng Nam',0, '0978123456', '1986-06-25', 'namle@gmail.com', N'Nhân viên kinh doanh', 'DC0006')
 
 --Khách hàng
 INSERT INTO KhachHang (maKhachHang, hoTen, gioiTinh, soDienThoai, ngaySinh, email, maSoThue, maDiaChi)
@@ -488,24 +486,24 @@ VALUES
 ('NCC02', '	Công ty TNHH An Khang', '039253683', '0310458128', 'binhminhphatlaptop@gmail.com','DC0045')
 
 --Tài khoản
-INSERT INTO TaiKhoan (soTaiKhoan, maNhanVien, matKhau)
+INSERT INTO TaiKhoan (maNhanVien, matKhau)
 VALUES 
-('TKNV01', 'NV0001', '1111'),
-('TKNV02', 'NV0002', '1111'),
-('TKNV03', 'NV0003', '1111'),
-('TKNV04', 'NV0004', '1111'),
-('TKNV05', 'NV0005', '1111'),
-('TKNV06', 'NV0006', '1111'),
-('TKNV07', 'NV0007', '1111'),
-('TKNV08', 'NV0008', '1111'),
-('TKNV09', 'NV0009', '1111'),
-('TKNV10', 'NV0010', '1111'),
-('TKNV11', 'NV0011', '1111'),
-('TKNV12', 'NV0012', '1111'),
-('TKNV13', 'NV0013', '1111'),
-('TKNV14', 'NV0014', '1111'),
-('TKNV15', 'NV0015', '1111'),
-('TKNV16', 'NV0016', '1111')
+('NV0001', '1111'),
+('NV0002', '1111'),
+('NV0003', '1111'),
+('NV0004', '1111'),
+('NV0005', '1111'),
+('NV0006', '1111'),
+('NV0007', '1111'),
+('NV0008', '1111'),
+('NV0009', '1111'),
+('NV0010', '1111'),
+('NV0011', '1111'),
+('NV0012', '1111'),
+('NV0013', '1111'),
+('NV0014', '1111'),
+('NV0015', '1111'),
+('NV0016', '1111')
 
 
 
