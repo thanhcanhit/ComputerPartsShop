@@ -20,6 +20,7 @@ public class SanPham_dao implements SanPhamInterface {
     public SanPham_dao() {
     }
 
+    @Override
     public ArrayList<SanPham> getAllSanPham() {
         ArrayList<SanPham> result = new ArrayList<>();
         try {
@@ -31,7 +32,7 @@ public class SanPham_dao implements SanPhamInterface {
                 String tenSP = rs.getString("tenSanPham");
                 double giaNhap = rs.getDouble("giaNhap");
                 double giamGia = rs.getDouble("giamGia");
-                int loai = rs.getInt("loai");
+                int loai = rs.getInt("maLoai");
                 double vat = rs.getDouble("VAT");
                 ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
                 int soThangBaohanh = rs.getInt("soThangBaoHanh");
@@ -60,7 +61,7 @@ public class SanPham_dao implements SanPhamInterface {
                 String tenSP = rs.getString("tenSanPham");
                 double giaNhap = rs.getDouble("giaNhap");
                 double giamGia = rs.getDouble("giamGia");
-                int loai = rs.getInt("loai");
+                int loai = rs.getInt("maLoai");
                 double vat = rs.getDouble("VAT");
                 ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
                 int soThangBaohanh = rs.getInt("soThangBaoHanh");
@@ -142,4 +143,23 @@ public class SanPham_dao implements SanPhamInterface {
 
         return n > 0;
     }
+
+    public static void main(String[] args) {
+        try {
+            ConnectDB.connect();
+            System.out.println("compleet");
+
+//            ChiTietDonNhap cc = new ChiTietDonNhap(new SanPham("SP0009"), new DonNhapHang("DNH0001"), 0);
+//            System.out.println(new ChiTietDonNhap_dao()));
+            ArrayList<SanPham> list = new SanPham_dao().getSanPhamTheoMa("SP0177");
+
+            for (SanPham i : list) {
+                System.out.println(i.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Error");
+        }
+
+    }
+
 }

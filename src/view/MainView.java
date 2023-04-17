@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
+import model.share.ConnectDB;
 import model.share.DiaChi;
 
 /**
@@ -32,18 +33,28 @@ public class MainView extends javax.swing.JFrame {
     private final Color default_color = new Color(242, 242, 242);
 
     public MainView() {
+        connectDB();
         initComponents();
 
         card = (CardLayout) this.pnl_main.getLayout();
 //        logout();
 
 //  Khi ra mắt phải chỉnh lại chưa đăng nhập
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf","dc0");
+        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
         try {
             NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             login(nhanVien);
         } catch (Exception ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void connectDB() {
+        try {
+            ConnectDB.connect();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
+            System.exit(0);
         }
     }
 
@@ -106,7 +117,6 @@ public class MainView extends javax.swing.JFrame {
         pnl_main = new javax.swing.JPanel();
         pnl_home = new Panel_Home();
         lbl_main = new javax.swing.JLabel();
-        pnl_search = new javax.swing.JPanel();
         pnl_cart = new javax.swing.JPanel();
         pnl_products = new Panel_QuanLySanPham();
         pnl_inventory = new Panel_QuanLyDonHang();
@@ -329,9 +339,6 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_main.add(pnl_home, "home");
 
-        pnl_search.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_main.add(pnl_search, "search");
-
         pnl_cart.setBackground(new java.awt.Color(255, 255, 255));
 
         pnl_cart = new Panel_BanHang();
@@ -446,6 +453,5 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_inventory;
     private javax.swing.JPanel pnl_main;
     private javax.swing.JPanel pnl_products;
-    private javax.swing.JPanel pnl_search;
     // End of variables declaration//GEN-END:variables
 }

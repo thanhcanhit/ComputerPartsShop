@@ -47,7 +47,7 @@ public class ChiTietDonNhap_dao implements ChiTietDonNhapInterface {
             while (rs.next()) {
                 String maDonNhap = rs.getString("maDonNhap");
                 String maSanPham = rs.getString("maSanPham");
-                int sl = rs.getInt("soLuongTon");
+                int sl = rs.getInt("soLuongCungCap");
                 double tongTien = rs.getDouble("tongTien");
                 result.add(new ChiTietDonNhap(new SanPham(maSanPham), new DonNhapHang(maDonNhap), sl, tongTien));
             }
@@ -76,5 +76,4 @@ public class ChiTietDonNhap_dao implements ChiTietDonNhapInterface {
 
         return n > 0;
     }
-
 }

@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import model.kho.KhoHang;
 import java.sql.*;
 import model.kho.ChiTietKhoHang;
-import model.sanpham.SanPham;
 import model.share.ConnectDB;
 import model.share.DiaChi;
 
