@@ -1,5 +1,4 @@
-﻿
--- Tạo database ở đường dẫn sql mặc định
+﻿-- Tạo database ở đường dẫn sql mặc định
 USE master
 GO
 if exists (select * from sysdatabases where name='ComputerPartsShop')
@@ -48,6 +47,9 @@ ALTER TABLE ChiTietHoaDon ADD CONSTRAINT FKChiTietHoa141811 FOREIGN KEY (maSanPh
 ALTER TABLE HoaDon ADD CONSTRAINT FKHoaDon559341 FOREIGN KEY (maNhanVien) REFERENCES NhanVien (maNhanVien);
 ALTER TABLE ChiTietHoaDon ADD CONSTRAINT FKChiTietHoa903135 FOREIGN KEY (maHoaDon) REFERENCES HoaDon (maHoaDon);
 ALTER TABLE NhanVien ADD CONSTRAINT FKNhanVien638696 FOREIGN KEY (maQuanLy) REFERENCES NhanVien (maNhanVien);
+
+
+
 
 DELETE FROM [dbo].[ChiTietHoaDon]
 DELETE FROM [dbo].[ChiTietKhoHang]
