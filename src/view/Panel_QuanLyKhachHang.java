@@ -4,8 +4,10 @@
  */
 package view;
 
-import javax.swing.JTable;
+import java.util.ArrayList;
+
 import javax.swing.table.DefaultTableModel;
+import model.connguoi.KhachHang;
 
 /**
  *
@@ -21,6 +23,14 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         model_dsKhachHang= new DefaultTableModel(col,0);
         
         initComponents();
+    }
+    
+     public void renderListToTable(ArrayList<KhachHang> listNV) {
+        model_dsKhachHang.setRowCount(0);
+        for(KhachHang kh:listNV){
+           model_dsKhachHang.addRow(new Object[] {kh.getMaKH(),kh.getHoTen(),kh.getDiemThanhVien(),kh.getSoDT(),kh.getMaSoThue(),kh.getDiaChi(),kh.getNamSinh(),kh.getEmail()});
+        }
+        
     }
 
     /**
