@@ -1,4 +1,4 @@
-﻿-- Tạo database ở đường dẫn sql mặc định
+-- Tạo database ở đường dẫn sql mặc định
 USE master
 GO
 if exists (select * from sysdatabases where name='ComputerPartsShop')
