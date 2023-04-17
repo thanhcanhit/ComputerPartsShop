@@ -39,19 +39,19 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_maKH = new javax.swing.JPanel();
         lbl_maKH = new javax.swing.JLabel();
         txt_maKH = new javax.swing.JTextField();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
         pnl_tenKH = new javax.swing.JPanel();
         lbl_tenKH = new javax.swing.JLabel();
         txt_tenKH = new javax.swing.JTextField();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
         pnl_hangThanhVien = new javax.swing.JPanel();
         lbl_hangThanhVien = new javax.swing.JLabel();
         txt_hangThanhVien = new javax.swing.JTextField();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
         pnl_soDT = new javax.swing.JPanel();
         lbl_soDT = new javax.swing.JLabel();
         txt_soDT = new javax.swing.JTextField();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
         pnl_maSoThue = new javax.swing.JPanel();
         lbl_maSoThue = new javax.swing.JLabel();
         txt_maSoThue = new javax.swing.JTextField();
@@ -71,7 +71,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         pnl_ttKhachHang.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(65, 165, 238))); // NOI18N
-        pnl_ttKhachHang.setPreferredSize(new java.awt.Dimension(350, 300));
+        pnl_ttKhachHang.setPreferredSize(new java.awt.Dimension(400, 300));
         pnl_ttKhachHang.setLayout(new java.awt.BorderLayout());
 
         pnl_avata.setLayout(new java.awt.BorderLayout());
@@ -83,169 +83,104 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_ttKhachHang.add(pnl_avata, java.awt.BorderLayout.CENTER);
 
         pnl_ttKH.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnl_ttKH.setPreferredSize(new java.awt.Dimension(338, 270));
+        pnl_ttKH.setPreferredSize(new java.awt.Dimension(338, 250));
         pnl_ttKH.setLayout(new javax.swing.BoxLayout(pnl_ttKH, javax.swing.BoxLayout.Y_AXIS));
 
-        pnl_maKH.setPreferredSize(new java.awt.Dimension(338, 63));
+        pnl_maKH.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_maKH.setLayout(new javax.swing.BoxLayout(pnl_maKH, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_maKH.setForeground(new java.awt.Color(102, 102, 102));
         lbl_maKH.setText("Mã khách hàng:");
+        lbl_maKH.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_maKH.add(lbl_maKH);
 
-        txt_maKH.setMinimumSize(new java.awt.Dimension(54, 30));
-        txt_maKH.setPreferredSize(new java.awt.Dimension(65, 30));
+        txt_maKH.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_maKH.setPreferredSize(new java.awt.Dimension(250, 30));
         txt_maKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_maKHActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnl_maKHLayout = new javax.swing.GroupLayout(pnl_maKH);
-        pnl_maKH.setLayout(pnl_maKHLayout);
-        pnl_maKHLayout.setHorizontalGroup(
-            pnl_maKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_maKHLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_maKH, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_maKH, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-        );
-        pnl_maKHLayout.setVerticalGroup(
-            pnl_maKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_maKHLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(pnl_maKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_maKH)
-                    .addComponent(txt_maKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_maKH.add(txt_maKH);
 
         pnl_ttKH.add(pnl_maKH);
+
+        filler8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler8);
+
+        pnl_tenKH.setMinimumSize(new java.awt.Dimension(65, 30));
+        pnl_tenKH.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_tenKH.setLayout(new javax.swing.BoxLayout(pnl_tenKH, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_tenKH.setForeground(new java.awt.Color(102, 102, 102));
         lbl_tenKH.setText("Tên khách hàng: ");
+        lbl_tenKH.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_tenKH.add(lbl_tenKH);
 
-        txt_tenKH.setMinimumSize(new java.awt.Dimension(65, 30));
-        txt_tenKH.setPreferredSize(new java.awt.Dimension(65, 30));
-
-        javax.swing.GroupLayout pnl_tenKHLayout = new javax.swing.GroupLayout(pnl_tenKH);
-        pnl_tenKH.setLayout(pnl_tenKHLayout);
-        pnl_tenKHLayout.setHorizontalGroup(
-            pnl_tenKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_tenKHLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_tenKH)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_tenKH, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_tenKHLayout.setVerticalGroup(
-            pnl_tenKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_tenKHLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_tenKHLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_tenKH)
-                    .addComponent(txt_tenKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7))
-        );
+        txt_tenKH.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_tenKH.setPreferredSize(new java.awt.Dimension(250, 30));
+        pnl_tenKH.add(txt_tenKH);
 
         pnl_ttKH.add(pnl_tenKH);
+
+        filler7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler7);
+
+        pnl_hangThanhVien.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_hangThanhVien.setLayout(new javax.swing.BoxLayout(pnl_hangThanhVien, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_hangThanhVien.setForeground(new java.awt.Color(102, 102, 102));
         lbl_hangThanhVien.setText("Hạng thành viên: ");
+        lbl_hangThanhVien.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_hangThanhVien.add(lbl_hangThanhVien);
 
-        txt_hangThanhVien.setMinimumSize(new java.awt.Dimension(65, 30));
-        txt_hangThanhVien.setPreferredSize(new java.awt.Dimension(65, 30));
+        txt_hangThanhVien.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_hangThanhVien.setPreferredSize(new java.awt.Dimension(250, 30));
         txt_hangThanhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_hangThanhVienActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnl_hangThanhVienLayout = new javax.swing.GroupLayout(pnl_hangThanhVien);
-        pnl_hangThanhVien.setLayout(pnl_hangThanhVienLayout);
-        pnl_hangThanhVienLayout.setHorizontalGroup(
-            pnl_hangThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_hangThanhVienLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_hangThanhVien)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_hangThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnl_hangThanhVienLayout.setVerticalGroup(
-            pnl_hangThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_hangThanhVienLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_hangThanhVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_hangThanhVien)
-                    .addComponent(txt_hangThanhVien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_hangThanhVien.add(txt_hangThanhVien);
 
         pnl_ttKH.add(pnl_hangThanhVien);
+
+        filler6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler6);
+
+        pnl_soDT.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_soDT.setLayout(new javax.swing.BoxLayout(pnl_soDT, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_soDT.setForeground(new java.awt.Color(102, 102, 102));
         lbl_soDT.setText("Số điện thoại:");
+        lbl_soDT.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_soDT.add(lbl_soDT);
 
-        txt_soDT.setMinimumSize(new java.awt.Dimension(65, 30));
-        txt_soDT.setPreferredSize(new java.awt.Dimension(65, 30));
+        txt_soDT.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_soDT.setPreferredSize(new java.awt.Dimension(250, 30));
         txt_soDT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_soDTActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout pnl_soDTLayout = new javax.swing.GroupLayout(pnl_soDT);
-        pnl_soDT.setLayout(pnl_soDTLayout);
-        pnl_soDTLayout.setHorizontalGroup(
-            pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_soDTLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_soDT, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
-                .addComponent(txt_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnl_soDTLayout.setVerticalGroup(
-            pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_soDTLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_soDT)
-                    .addComponent(txt_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-        );
+        pnl_soDT.add(txt_soDT);
 
         pnl_ttKH.add(pnl_soDT);
+
+        filler5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler5);
+
+        pnl_maSoThue.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_maSoThue.setLayout(new javax.swing.BoxLayout(pnl_maSoThue, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_maSoThue.setForeground(new java.awt.Color(102, 102, 102));
         lbl_maSoThue.setText("Mã số thuế: ");
+        lbl_maSoThue.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_maSoThue.add(lbl_maSoThue);
 
-        txt_maSoThue.setMinimumSize(null);
-        txt_maSoThue.setPreferredSize(new java.awt.Dimension(65, 30));
-
-        javax.swing.GroupLayout pnl_maSoThueLayout = new javax.swing.GroupLayout(pnl_maSoThue);
-        pnl_maSoThue.setLayout(pnl_maSoThueLayout);
-        pnl_maSoThueLayout.setHorizontalGroup(
-            pnl_maSoThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_maSoThueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_maSoThue)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(txt_maSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnl_maSoThueLayout.setVerticalGroup(
-            pnl_maSoThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_maSoThueLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnl_maSoThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_maSoThue)
-                    .addComponent(txt_maSoThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
+        txt_maSoThue.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_maSoThue.setPreferredSize(new java.awt.Dimension(250, 30));
+        pnl_maSoThue.add(txt_maSoThue);
 
         pnl_ttKH.add(pnl_maSoThue);
 

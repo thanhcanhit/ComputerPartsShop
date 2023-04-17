@@ -62,8 +62,7 @@ public class ChiTietHoaDon {
     }
 
     public double tinhTongTien() {
-        double tong = 0;
-
+        double tong = soLuong*getGiaBan();
         return tong;
     }
 

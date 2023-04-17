@@ -11,19 +11,20 @@ import java.util.ArrayList;
  * @author macbookk
  */
 public class TaiKhoan {
+
     private String soTK;
     private String passWord;
-    private ArrayList<NhanVien> listTaiKhoan;
 
     public String getSoTK() {
         return soTK;
     }
 
     public void setSoTK(String soTK) throws Exception {
-        if(soTK.trim().length()>0)
+        if (soTK.trim().length() > 0) {
             this.soTK = soTK;
-        else
+        } else {
             throw new Exception("Số tài khoản không được rỗng !");
+        }
     }
 
     public String getPassWord() {
@@ -31,19 +32,19 @@ public class TaiKhoan {
     }
 
     public void setPassWord(String passWord) throws Exception {
-        if(passWord.trim().length()>0)
+        if (passWord.trim().length() > 0) {
             this.passWord = passWord;
-        else
+        } else {
             throw new Exception("PassWord không được rỗng !");
+        }
     }
 
-    public TaiKhoan(String soTK, String passWord) throws Exception{
-        listTaiKhoan = new ArrayList<NhanVien>();
+    public TaiKhoan(String soTK, String passWord) throws Exception {
         setPassWord(passWord);
         setSoTK(soTK);
     }
 
     public TaiKhoan() {
     }
-    
+
 }

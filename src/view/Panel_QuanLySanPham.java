@@ -60,7 +60,6 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin = new javax.swing.JPanel();
         pnl_head_TT = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 20));
         pnl_body_TT = new javax.swing.JPanel();
         pnl_Tensp = new javax.swing.JPanel();
         lbl_Tensp = new javax.swing.JLabel();
@@ -86,25 +85,25 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         btn_Xoa = new javax.swing.JButton();
         btn_Sua = new javax.swing.JButton();
         pnl_TimKiem = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPanel7 = new javax.swing.JPanel();
+        pnl_headerSearch = new javax.swing.JPanel();
+        lbl_headerTen = new javax.swing.JLabel();
+        txt_search = new javax.swing.JTextField();
+        pnl_searchBtn = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        pnl_headerOption = new javax.swing.JPanel();
+        pnl_headerCauHinh = new javax.swing.JPanel();
+        lbl_headerCauHinh = new javax.swing.JLabel();
+        scr_cauHinh = new javax.swing.JScrollPane();
+        txa_headerCauHinh = new javax.swing.JTextArea();
+        pnl_headerLoaiTH = new javax.swing.JPanel();
+        pnl_headerLoai = new javax.swing.JPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(40, 32767));
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jPanel6 = new javax.swing.JPanel();
+        lbl_headerLoai = new javax.swing.JLabel();
+        cmb_headerLoai = new javax.swing.JComboBox<>();
+        pnl_headerTH = new javax.swing.JPanel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(40, 32767));
-        jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        lbl_headerTH = new javax.swing.JLabel();
+        cmb_headerThuongHieu = new javax.swing.JComboBox<>();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         pnl_DanhSach = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -121,14 +120,15 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin.setLayout(new java.awt.BorderLayout());
 
         pnl_head_TT.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_head_TT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
         pnl_head_TT.setLayout(new java.awt.BorderLayout());
 
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QLhanghoa/img_Sanpham (200px).png"))); // NOI18N
         jLabel13.setToolTipText("");
         jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel13.setPreferredSize(new java.awt.Dimension(200, 250));
         pnl_head_TT.add(jLabel13, java.awt.BorderLayout.CENTER);
-        pnl_head_TT.add(filler1, java.awt.BorderLayout.PAGE_END);
 
         pnl_ThongTin.add(pnl_head_TT, java.awt.BorderLayout.NORTH);
 
@@ -199,7 +199,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         lbl_Loaisp.setPreferredSize(new java.awt.Dimension(120, 0));
         pnl_Loaisp.add(lbl_Loaisp);
 
-        cmp_Loaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmp_Loaisp.setMaximumRowCount(6);
+        cmp_Loaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPU", "MainBoard", "VGA", "RAM", "Ổ cứng", "Nguồn", "Case", "Tản nhiệt", "Chuột", "Bàn phím" }));
         cmp_Loaisp.setMaximumSize(new java.awt.Dimension(1000, 500));
         cmp_Loaisp.setMinimumSize(new java.awt.Dimension(140, 16));
         cmp_Loaisp.setPreferredSize(new java.awt.Dimension(160, 24));
@@ -245,7 +246,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin.add(pnl_body_TT, java.awt.BorderLayout.CENTER);
 
         pnl_NutQuanLy.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_NutQuanLy.setLayout(new java.awt.GridLayout());
+        pnl_NutQuanLy.setLayout(new java.awt.GridLayout(1, 0));
 
         btn_Them.setText("Thêm");
         btn_Them.setMaximumSize(new java.awt.Dimension(80, 40));
@@ -272,27 +273,27 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_TimKiem.setPreferredSize(new java.awt.Dimension(0, 150));
         pnl_TimKiem.setLayout(new javax.swing.BoxLayout(pnl_TimKiem, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(0, 50));
-        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.X_AXIS));
+        pnl_headerSearch.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerSearch.setPreferredSize(new java.awt.Dimension(0, 50));
+        pnl_headerSearch.setLayout(new javax.swing.BoxLayout(pnl_headerSearch, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel1.setText("Tên sản phẩm:");
-        jLabel1.setPreferredSize(new java.awt.Dimension(120, 0));
-        jPanel1.add(jLabel1);
+        lbl_headerTen.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_headerTen.setText("Tên sản phẩm:");
+        lbl_headerTen.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_headerSearch.add(lbl_headerTen);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(650, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txt_search.setPreferredSize(new java.awt.Dimension(650, 0));
+        txt_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txt_searchActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1);
+        pnl_headerSearch.add(txt_search);
 
-        jPanel7.setMaximumSize(new java.awt.Dimension(4001111, 2147483647));
-        jPanel7.setMinimumSize(new java.awt.Dimension(1000, 50));
-        jPanel7.setPreferredSize(new java.awt.Dimension(140, 50));
-        jPanel7.setLayout(new java.awt.BorderLayout());
+        pnl_searchBtn.setMaximumSize(new java.awt.Dimension(4001111, 2147483647));
+        pnl_searchBtn.setMinimumSize(new java.awt.Dimension(1000, 50));
+        pnl_searchBtn.setPreferredSize(new java.awt.Dimension(140, 50));
+        pnl_searchBtn.setLayout(new java.awt.BorderLayout());
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
@@ -306,65 +307,66 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton1, java.awt.BorderLayout.CENTER);
+        pnl_searchBtn.add(jButton1, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(jPanel7);
+        pnl_headerSearch.add(pnl_searchBtn);
 
-        pnl_TimKiem.add(jPanel1);
+        pnl_TimKiem.add(pnl_headerSearch);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new java.awt.GridLayout(1, 2));
+        pnl_headerOption.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerOption.setLayout(new java.awt.GridLayout(1, 2));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_headerCauHinh.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerCauHinh.setLayout(new javax.swing.BoxLayout(pnl_headerCauHinh, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Cấu hình:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(120, 0));
-        jPanel3.add(jLabel2);
+        lbl_headerCauHinh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_headerCauHinh.setText("Cấu hình:");
+        lbl_headerCauHinh.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_headerCauHinh.add(lbl_headerCauHinh);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txa_headerCauHinh.setColumns(20);
+        txa_headerCauHinh.setRows(5);
+        scr_cauHinh.setViewportView(txa_headerCauHinh);
 
-        jPanel3.add(jScrollPane1);
+        pnl_headerCauHinh.add(scr_cauHinh);
 
-        jPanel2.add(jPanel3);
+        pnl_headerOption.add(pnl_headerCauHinh);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
+        pnl_headerLoaiTH.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerLoaiTH.setLayout(new javax.swing.BoxLayout(pnl_headerLoaiTH, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel5.add(filler6);
+        pnl_headerLoai.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerLoai.setLayout(new javax.swing.BoxLayout(pnl_headerLoai, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_headerLoai.add(filler6);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Loại sản phẩm:");
-        jLabel3.setPreferredSize(new java.awt.Dimension(120, 0));
-        jPanel5.add(jLabel3);
+        lbl_headerLoai.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_headerLoai.setText("Loại sản phẩm:");
+        lbl_headerLoai.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_headerLoai.add(lbl_headerLoai);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel5.add(jComboBox1);
+        cmb_headerLoai.setMaximumRowCount(10);
+        cmb_headerLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "CPU", "MainBoard", "VGA", "RAM", "Ổ cứng", "Nguồn", "Case", "Tản nhiệt", "Chuột", "Bàn phím" }));
+        pnl_headerLoai.add(cmb_headerLoai);
 
-        jPanel4.add(jPanel5);
+        pnl_headerLoaiTH.add(pnl_headerLoai);
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
-        jPanel6.add(filler7);
+        pnl_headerTH.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_headerTH.setLayout(new javax.swing.BoxLayout(pnl_headerTH, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_headerTH.add(filler7);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Thương hiệu:");
-        jLabel4.setPreferredSize(new java.awt.Dimension(120, 0));
-        jPanel6.add(jLabel4);
+        lbl_headerTH.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_headerTH.setText("Thương hiệu:");
+        lbl_headerTH.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_headerTH.add(lbl_headerTH);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel6.add(jComboBox2);
+        cmb_headerThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnl_headerTH.add(cmb_headerThuongHieu);
 
-        jPanel4.add(jPanel6);
+        pnl_headerLoaiTH.add(pnl_headerTH);
 
-        jPanel2.add(jPanel4);
+        pnl_headerOption.add(pnl_headerLoaiTH);
 
-        pnl_TimKiem.add(jPanel2);
+        pnl_TimKiem.add(pnl_headerOption);
         pnl_TimKiem.add(filler12);
 
         add(pnl_TimKiem, java.awt.BorderLayout.NORTH);
@@ -384,9 +386,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         add(pnl_DanhSach, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txt_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_searchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txt_searchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -402,31 +404,16 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_Xoa;
     private javax.swing.JComboBox<String> cmb_ThuongHieu;
+    private javax.swing.JComboBox<String> cmb_headerLoai;
+    private javax.swing.JComboBox<String> cmb_headerThuongHieu;
     private javax.swing.JComboBox<String> cmp_Loaisp;
-    private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lbl_CauHinh;
     private javax.swing.JLabel lbl_GiaBan;
@@ -434,6 +421,10 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_SoLuong;
     private javax.swing.JLabel lbl_Tensp;
     private javax.swing.JLabel lbl_ThuongHieu;
+    private javax.swing.JLabel lbl_headerCauHinh;
+    private javax.swing.JLabel lbl_headerLoai;
+    private javax.swing.JLabel lbl_headerTH;
+    private javax.swing.JLabel lbl_headerTen;
     private javax.swing.JPanel pnl_CauHinh;
     private javax.swing.JPanel pnl_DanhSach;
     private javax.swing.JPanel pnl_GiaBan;
@@ -446,10 +437,20 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_TimKiem;
     private javax.swing.JPanel pnl_body_TT;
     private javax.swing.JPanel pnl_head_TT;
+    private javax.swing.JPanel pnl_headerCauHinh;
+    private javax.swing.JPanel pnl_headerLoai;
+    private javax.swing.JPanel pnl_headerLoaiTH;
+    private javax.swing.JPanel pnl_headerOption;
+    private javax.swing.JPanel pnl_headerSearch;
+    private javax.swing.JPanel pnl_headerTH;
+    private javax.swing.JPanel pnl_searchBtn;
+    private javax.swing.JScrollPane scr_cauHinh;
     private javax.swing.JTable tbl_Products;
+    private javax.swing.JTextArea txa_headerCauHinh;
     private javax.swing.JTextField txt_GiaBan;
     private javax.swing.JTextField txt_SoLuong;
     private javax.swing.JTextField txt_Tensp;
+    private javax.swing.JTextField txt_search;
     private javax.swing.JTextArea txtarea_CauHinh;
     // End of variables declaration//GEN-END:variables
 

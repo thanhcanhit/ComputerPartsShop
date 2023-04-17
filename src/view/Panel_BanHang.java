@@ -108,11 +108,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         lbl_ten = new javax.swing.JLabel();
         txt_hangTV = new javax.swing.JTextField();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         pnl_box3 = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt4 = new javax.swing.JLabel();
         txt_tongTien = new javax.swing.JTextField();
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         lbl_ten1 = new javax.swing.JLabel();
         txt_giamGia = new javax.swing.JTextField();
         pnl_box4 = new javax.swing.JPanel();
@@ -302,7 +302,6 @@ public class Panel_BanHang extends javax.swing.JPanel {
         txt_hangTV.setText("Vàng");
         txt_hangTV.setPreferredSize(new java.awt.Dimension(0, 0));
         pnl_box2.add(txt_hangTV);
-        pnl_box2.add(filler6);
 
         pnl_orderInfo.add(pnl_box2);
 
@@ -322,6 +321,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         txt_tongTien.setText("1,000,000");
         txt_tongTien.setPreferredSize(new java.awt.Dimension(100, 0));
         pnl_box3.add(txt_tongTien);
+        pnl_box3.add(filler6);
 
         lbl_ten1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_ten1.setForeground(new java.awt.Color(102, 102, 102));
