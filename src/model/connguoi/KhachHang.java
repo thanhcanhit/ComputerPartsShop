@@ -20,11 +20,11 @@ public class KhachHang extends ConNguoi {
         return diemThanhVien;
     }
 
-    public void setDiemThanhVien(int diemThanhVien) throws Exception{
+    public void setDiemThanhVien(int diemThanhVien) {
         if(diemThanhVien>0)
             this.diemThanhVien = diemThanhVien;
         else
-            throw new Exception("Điểm thành viên là số nguyên dương");
+            this.diemThanhVien = 0;
     }
 
     public KhachHang(String maKH, String maSoThue,String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh,int diemThanhVien) throws Exception {
@@ -49,11 +49,11 @@ public class KhachHang extends ConNguoi {
         return maSoThue;
     }
 
-    public void setMaSoThue(String maSoThue) throws Exception  {
-        if(maSoThue.trim().length()>0)
+    public void setMaSoThue(String maSoThue)  {
+        if(maSoThue!=null)
             this.maSoThue = maSoThue;
         else
-            throw new Exception("Mã số thuế không được rỗng !");
+            this.maSoThue = "Null";
     }
 
     public KhachHang(String maKH) {

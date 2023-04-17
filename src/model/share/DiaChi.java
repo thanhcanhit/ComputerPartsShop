@@ -81,7 +81,7 @@ public class DiaChi {
 
     @Override
     public String toString() {
-        return "Số " + so + ", " + duong + ", " + quan + ", " + thanhPho + ", " + quocGia;
+        return   so + ", " + duong + ", " + quan + ", " + thanhPho + ", " + quocGia;
     }
 
 }

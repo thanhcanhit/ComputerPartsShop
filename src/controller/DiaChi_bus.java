@@ -24,7 +24,7 @@ public class DiaChi_bus implements DiaChiInterface{
     }
 
     @Override
-    public ArrayList<DiaChi> getDiaChiTheoMa(String maDiaChi) {
+    public DiaChi getDiaChiTheoMa(String maDiaChi) {
         return dao.getDiaChiTheoMa(maDiaChi);
     }
 

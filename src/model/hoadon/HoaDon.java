@@ -127,8 +127,10 @@ public class HoaDon {
     }
 
     public double tinhTongTienThanhToan() {
-        double tong = 0;
-
+        double tong=0;
+        for(ChiTietHoaDon cthd:dsChiTiethoaDon){
+            tong+=cthd.tinhTongTien();
+        }
         return tong;
     }
 

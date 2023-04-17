@@ -4,7 +4,9 @@
  */
 package view;
 
+import controller.KhachHang_bus;
 import java.util.ArrayList;
+import javax.swing.JTable;
 
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
@@ -14,6 +16,8 @@ import model.connguoi.KhachHang;
  * @author macbookk
  */
 public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
+    private KhachHang_bus KH_bus = new KhachHang_bus();
+    private ArrayList<KhachHang> listKH = new ArrayList<KhachHang>();
     private DefaultTableModel model_dsKhachHang;
     /**
      * Creates new form Panel_QuanLyKhachHang
@@ -22,13 +26,37 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         String col[] = {"Mã khách hàng","Họ tên","Điểm thành viên","Số điện thoại","Mã số thuế","Địa chỉ","Năm sinh","Giới tính","Email"};
         model_dsKhachHang= new DefaultTableModel(col,0);
         
+        listKH = KH_bus.getAllKhachHang();
+        try{
+            renderListToTable(listKH);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
         initComponents();
+        tbl_dsKhachHang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbl_dsKhachHang.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(1).setPreferredWidth(200);
+        tbl_dsKhachHang.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(5).setPreferredWidth(200);
+        tbl_dsKhachHang.getColumnModel().getColumn(6).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(7).setPreferredWidth(100);
+        tbl_dsKhachHang.getColumnModel().getColumn(8).setPreferredWidth(200);
     }
     
      public void renderListToTable(ArrayList<KhachHang> listNV) {
         model_dsKhachHang.setRowCount(0);
-        for(KhachHang kh:listNV){
-           model_dsKhachHang.addRow(new Object[] {kh.getMaKH(),kh.getHoTen(),kh.getDiemThanhVien(),kh.getSoDT(),kh.getMaSoThue(),kh.getDiaChi(),kh.getNamSinh(),kh.getEmail()});
+        for(KhachHang kh:listKH){
+            String gioiTinh="";
+            if(kh.isGioiTinh()){
+                gioiTinh="Nam";
+            }else{
+                gioiTinh="Nữ";
+            }
+           model_dsKhachHang.addRow(new Object[] {kh.getMaKH(),kh.getHoTen(),kh.getDiemThanhVien(),kh.getSoDT(),kh.getMaSoThue(),kh.getDiaChi(),kh.getNamSinh(),gioiTinh,kh.getEmail()});
         }
         
     }

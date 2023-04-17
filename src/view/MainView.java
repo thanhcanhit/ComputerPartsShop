@@ -53,8 +53,8 @@ public class MainView extends javax.swing.JFrame {
         try {
             ConnectDB.connect();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
-            System.exit(0);
+//            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
+//            System.exit(0);
         }
     }
 

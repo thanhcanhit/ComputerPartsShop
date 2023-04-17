@@ -35,7 +35,8 @@ public class NhanVien_dao implements NhanVienInterface{
                 String email = rs.getString("email");
                 String chucDanh = rs.getString("chucDanh");
                 
-                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
+                DiaChi_dao dao = new DiaChi_dao();
+                DiaChi diaChi = dao.getDiaChiTheoMa(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
                 NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
                 result.add(nv);
@@ -77,6 +78,8 @@ public class NhanVien_dao implements NhanVienInterface{
         try{
             PreparedStatement st = ConnectDB.conn.prepareStatement("delete from NhanVien where maNhanVien = ?");
             st.setString(1, maNV);
+            TaiKhoan_dao dao = new TaiKhoan_dao();
+            dao.xoaTaiKhoan(maNV);
             n = st.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -155,20 +158,7 @@ public class NhanVien_dao implements NhanVienInterface{
         return result;
     }
     
-    public static void main(String[] args) {
-        try{
-            NhanVien n = new NhanVien("NV0004", "hello", "kien", "as", "asfaf", LocalDate.MIN, new DiaChi("masd"), true);
-            ConnectDB.connect();
-            NhanVien_dao dao = new NhanVien_dao();
-            boolean t = dao.capNhatNhanVien("NV0004", n);
-            System.out.println(t);
-//            for(NhanVien nv: list){
-//                System.out.println(nv.getHoTen()+" ; "+nv.getMaNV()+" ; "+nv.getSoDT());
-//            }
-        }catch(Exception e){
-            e.printStackTrace();
-        }
-    }
+
 
     
 }

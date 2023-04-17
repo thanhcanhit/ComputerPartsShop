@@ -43,22 +43,21 @@ public class DiaChi_dao implements DiaChiInterface {
     }
 
     @Override
-    public ArrayList<DiaChi> getDiaChiTheoMa(String maDiaChi) {
-        ArrayList<DiaChi> result = new ArrayList<DiaChi>();
+    public DiaChi getDiaChiTheoMa(String maDiaChi) {
+        DiaChi result = null;
         try{
             PreparedStatement st = ConnectDB.conn.prepareStatement("select * from DiaChi where maDiaChi = ?");
             st.setString(1, maDiaChi);
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                String ma = rs.getString("maDiaChi");
+                
                 String soNha = rs.getString("soNha");
                 String duong = rs.getString("duong");
-                
                 String huyen = rs.getString("huyen");
                 String thanhpho = rs.getString("thanhPho");
                 String quocgia = rs.getString("quocGia");
-                DiaChi dc = new DiaChi(maDiaChi,soNha,duong,huyen,thanhpho,quocgia);
-                result.add(dc);
+                result = new DiaChi(maDiaChi,soNha,duong,huyen,thanhpho,quocgia);
+                
             }
         }catch(Exception e){
             e.printStackTrace();

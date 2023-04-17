@@ -13,7 +13,7 @@ import model.share.DiaChi;
  */
 public interface DiaChiInterface {
     public ArrayList<DiaChi> getAllDiaChi();
-    public ArrayList<DiaChi> getDiaChiTheoMa(String maDiaChi);
+    public DiaChi getDiaChiTheoMa(String maDiaChi);
     public boolean themDiaChi(DiaChi diaChi);
     public boolean xoaDiaChi(String maDiaChi);
     public boolean capNhatDiaChi(String maDiaChi, DiaChi diaChi);
