@@ -16,4 +16,6 @@ public interface KhoHangInterface {
     public ArrayList<KhoHang> getAllKhoHang();
 
     public ArrayList<KhoHang> getKhoHangTheoMa(String maKho);
+    
+    public int getSoLuongTon(String maKho, String maSanPham);
 }

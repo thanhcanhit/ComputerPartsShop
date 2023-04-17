@@ -4,10 +4,14 @@
  */
 package view;
 
+import controller.KhoHang_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
+import model.hoadon.ChiTietHoaDon;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
 
@@ -19,9 +23,12 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
+    private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
+    NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
     private SanPham_bus sanPham_bus;
     private ThuongHieu_bus thuongHieu_bus;
+    private KhoHang_bus khoHang_bus;
 
     /**
      * Creates new form Panel_BanHang
@@ -30,18 +37,31 @@ public class Panel_BanHang extends javax.swing.JPanel {
         initDataObject();
         initTableModel();
         initComponents();
+        alterTable();
+    }
+    
+    public void alterTable() {
+        int i = 0;
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(300);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(200);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(200);
     }
 
     public void initDataObject() {
-
         sanPham_bus = new SanPham_bus();
         thuongHieu_bus = new ThuongHieu_bus();
+        khoHang_bus = new KhoHang_bus();
     }
 
     public void initTableModel() {
         // Products
-        tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng tồn", "Giảm giá", "Giá bán"
+        tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng hiện có", "Giảm giá", "Giá bán"
         }, 0);
+        
 
         // Carts
         tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
@@ -69,13 +89,10 @@ public class Panel_BanHang extends javax.swing.JPanel {
     public void renderProductTable(ArrayList<SanPham> list) {
         tblModel_product.setRowCount(0);
         for (SanPham sp : list) {
-//            {"Mã"
-//            
-//            
-//            , "Tên", "Loại", "Thương hiệu", "SL" "Giá bán", "Giảm
-//        }
             ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), 0, sp.getGiamGia(), sp.getGiaBan()};
+            int soLuong = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
+            
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, vnd.format(sp.getGiamGia()), vnd.format(sp.getGiaBan())};
             tblModel_product.addRow(row);
         }
     }
@@ -155,6 +172,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
         txt_search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_search.setToolTipText("Vui lòng nhập mã sản phẩm");
+        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_searchKeyPressed(evt);
+            }
+        });
         pnl_search.add(txt_search);
 
         btn_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -424,6 +446,10 @@ public class Panel_BanHang extends javax.swing.JPanel {
         txt_search.setText("");
         renderAll();
     }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
+        if (evt.getKeyCode() == 10) search();
+    }//GEN-LAST:event_txt_searchKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

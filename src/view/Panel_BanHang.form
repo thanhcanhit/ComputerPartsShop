@@ -47,6 +47,9 @@
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Vui l&#xf2;ng nh&#x1ead;p m&#xe3; s&#x1ea3;n ph&#x1ea9;m"/>
           </Properties>
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_searchKeyPressed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btn_search">
           <Properties>

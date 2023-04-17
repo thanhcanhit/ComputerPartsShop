@@ -72,4 +72,9 @@ public class KhoHang_dao implements KhoHangInterface {
 
         return result;
     }
+
+    @Override
+    public int getSoLuongTon(String maKho, String maSanPham) {
+        return new ChiTietKhoHang_dao().getSoLuongTon(maKho, maSanPham);
+    }
 }

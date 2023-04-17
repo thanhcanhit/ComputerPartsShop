@@ -88,6 +88,6 @@ public class ThuongHieu {
 
     @Override
     public String toString() {
-        return this.tenTH + "-" + this.quocGia;
+        return this.tenTH + " - " + this.quocGia;
     }
 }

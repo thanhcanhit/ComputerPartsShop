@@ -16,6 +16,8 @@ public interface ChiTietKhoHangInterface {
     public ArrayList<ChiTietKhoHang> getAll();
 
     public ArrayList<ChiTietKhoHang> getAllChiTietCuaKhoHang(String maKhoHang);
+    
+    public int getSoLuongTon(String maKhoHang, String maSanPham);
 
     public boolean themChiTietKhoHang(ChiTietKhoHang chiTietKH);
 

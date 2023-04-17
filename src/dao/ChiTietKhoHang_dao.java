@@ -13,8 +13,6 @@ import model.kho.KhoHang;
 import model.sanpham.SanPham;
 import model.share.ConnectDB;
 import java.sql.*;
-import model.kho.ChiTietDonNhap;
-import model.kho.DonNhapHang;
 
 /**
  *
@@ -24,7 +22,7 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
 
     @Override
     public ArrayList<ChiTietKhoHang> getAll() {
-        ArrayList<ChiTietKhoHang> result = new ArrayList<ChiTietKhoHang>();
+        ArrayList<ChiTietKhoHang> result = new ArrayList<>();
         try {
             Statement st = ConnectDB.conn.createStatement();
             ResultSet rs = st.executeQuery("SELECT maKho, maSanPham, soLuongTon FROM ChiTietKhoHang");
@@ -93,5 +91,26 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
 
         return n > 0;
 
+    }
+
+    @Override
+    public int getSoLuongTon(String maKhoHang, String maSanPham) {
+        int result = 0;
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("SELECT soLuongTon FROM ChiTietKhoHang where maKho = ? and maSanPham = ?");
+            st.setString(1, maKhoHang);
+            st.setString(2, maSanPham);
+            
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                int sl = rs.getInt("soLuongTon");
+                result = sl;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            return result;
+        }
     }
 }
