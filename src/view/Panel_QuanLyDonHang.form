@@ -1261,6 +1261,22 @@
                                 <Property name="columns" type="int" value="12"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.Box$Filler" name="filler11">
+                              <Properties>
+                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 32767]"/>
+                                </Property>
+                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 0]"/>
+                                </Property>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 0]"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="pnl_timKiemTheoNgay">
@@ -1297,9 +1313,9 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="lbl_timTuNgay">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="T&#x1eeb; ng&#xe0;y:"/>
+                                <Property name="text" type="java.lang.String" value="Ng&#xe0;y l&#x1ead;p:"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[53, 16]"/>
+                                  <Dimension value="[80, 16]"/>
                                 </Property>
                               </Properties>
                             </Component>
@@ -1323,7 +1339,10 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="lbl_timDenNgay">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;n ng&#xe0;y:"/>
+                                <Property name="text" type="java.lang.String" value="&#x111;&#x1ebf;n"/>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[53, 16]"/>
+                                </Property>
                               </Properties>
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="jdate_denNgay">
@@ -1427,6 +1446,22 @@
                                 <Property name="columns" type="int" value="12"/>
                               </Properties>
                             </Component>
+                            <Component class="javax.swing.Box$Filler" name="filler12">
+                              <Properties>
+                                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 32767]"/>
+                                </Property>
+                                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 0]"/>
+                                </Property>
+                                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                  <Dimension value="[10, 0]"/>
+                                </Property>
+                              </Properties>
+                              <AuxValues>
+                                <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalStrut"/>
+                              </AuxValues>
+                            </Component>
                           </SubComponents>
                         </Container>
                         <Container class="javax.swing.JPanel" name="pnl_timTheoGiaTien">
@@ -1456,9 +1491,9 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="lbl_giaTu">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="T&#x1eeb;:"/>
+                                <Property name="text" type="java.lang.String" value="T&#x1ed5;ng h&#xf3;a &#x111;&#x1a1;n"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                                  <Dimension value="[53, 16]"/>
+                                  <Dimension value="[80, 16]"/>
                                 </Property>
                               </Properties>
                             </Component>
@@ -1482,7 +1517,7 @@
                             </Component>
                             <Component class="javax.swing.JLabel" name="lbl_giaDen">
                               <Properties>
-                                <Property name="text" type="java.lang.String" value="&#x110;&#x1ebf;n:"/>
+                                <Property name="text" type="java.lang.String" value="&#x111;&#x1ebf;n:"/>
                                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                                   <Dimension value="[53, 16]"/>
                                 </Property>
