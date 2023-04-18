@@ -33,7 +33,7 @@ public class DiaChi_dao implements DiaChiInterface {
                 String huyen = rs.getString("huyen");
                 String thanhpho = rs.getString("thanhPho");
                 String quocgia = rs.getString("quocGia");
-                DiaChi dc = new DiaChi(maDiaChi,soNha,duong,huyen,thanhpho,quocgia);
+                DiaChi dc = new DiaChi(soNha, duong, huyen, thanhpho, quocgia, maDiaChi);
                 result.add(dc);
             }
         }catch(Exception e){
@@ -56,7 +56,8 @@ public class DiaChi_dao implements DiaChiInterface {
                 String huyen = rs.getString("huyen");
                 String thanhpho = rs.getString("thanhPho");
                 String quocgia = rs.getString("quocGia");
-                result = new DiaChi(maDiaChi,soNha,duong,huyen,thanhpho,quocgia);
+                DiaChi dc = new DiaChi(soNha, duong, huyen, thanhpho, quocgia, maDiaChi);
+                result = dc;
                 
             }
         }catch(Exception e){
@@ -69,7 +70,7 @@ public class DiaChi_dao implements DiaChiInterface {
     public boolean themDiaChi(DiaChi diaChi) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into DiaChi"
+            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into DiaChi "
                     +"values(?,?,?,?,?,?)");
             st.setString(1, diaChi.getMaDiaChi());
             st.setString(2, diaChi.getSo());
@@ -102,9 +103,9 @@ public class DiaChi_dao implements DiaChiInterface {
     public boolean capNhatDiaChi(String maDiaChi, DiaChi diaChi) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("update DiaChi"
-                    +" so=?, duong=?, huyen=?, thanhPho=?, quocGia = ?"
-                    + "where maDiaChi = ?");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update DiaChi "
+                    +" so=?, duong=?, huyen=?, thanhPho=?, quocGia = ? "
+                    + " where maDiaChi = ?");
             st.setString(1, diaChi.getSo());
             st.setString(2, diaChi.getDuong());
             st.setString(3, diaChi.getQuan());

@@ -6,10 +6,15 @@ package view;
 
 import controller.NhanVien_bus;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
 import model.connguoi.NhanVien;
 import model.share.DiaChi;
 
@@ -30,7 +35,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         String col[] = {"Mã nhân viên","Họ tên","Email","Số điện thoại","Địa chỉ","Chức danh","Năm sinh","Giới tính"};
         model_dsNhanVien=new DefaultTableModel(col,0);
         listNV = NV_bus.getAllNhanVien();
-        
+       
         initComponents(); 
         tbl_dsNhanVien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_dsNhanVien.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -52,11 +57,14 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         
        
     }
-    
-    public void renderListToTable(ArrayList<NhanVien> listNV) {
+    public void renderAll(){
+        ArrayList<NhanVien> list = NV_bus.getAllNhanVien();
+        renderListToTable(list);
+    }
+    public void renderListToTable(ArrayList<NhanVien> list) {
         model_dsNhanVien.setRowCount(0);
-        for(NhanVien nv:listNV){
-            String gioiTinh="";
+        for(NhanVien nv:list){
+            String gioiTinh;
             if(nv.isGioiTinh()){
                 gioiTinh="Nam";
             }else{
@@ -66,6 +74,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         }
         
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,9 +86,11 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private void initComponents() {
 
         pnl_timKiem = new javax.swing.JPanel();
+        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         txt_timKiem = new javax.swing.JTextField();
-        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(32767, 0));
+        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
+        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         pnl_Control = new javax.swing.JPanel();
         pnl_controlgroup = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
@@ -108,7 +120,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_soDT = new javax.swing.JPanel();
         lbl_soDT = new javax.swing.JLabel();
-        txt_spDT = new javax.swing.JTextField();
+        txt_soDT = new javax.swing.JTextField();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_chucVu = new javax.swing.JPanel();
         lbl_chucVu = new javax.swing.JLabel();
@@ -118,7 +130,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_namSinh = new javax.swing.JLabel();
         lbl_gioiTinh = new javax.swing.JLabel();
         cmb_gioiTinh = new javax.swing.JComboBox<>();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        txt_date = new com.toedter.calendar.JDateChooser();
         pnl_dsNhanVien = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_dsNhanVien = new javax.swing.JTable();
@@ -128,8 +140,20 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_timKiem.setPreferredSize(new java.awt.Dimension(1000, 40));
         pnl_timKiem.setLayout(new javax.swing.BoxLayout(pnl_timKiem, javax.swing.BoxLayout.X_AXIS));
+        pnl_timKiem.add(filler12);
 
         txt_timKiem.setToolTipText("Nhập mã nhân viên");
+        txt_timKiem.setPreferredSize(new java.awt.Dimension(300, 23));
+        txt_timKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_timKiemActionPerformed(evt);
+            }
+        });
+        txt_timKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_timKiemKeyPressed(evt);
+            }
+        });
         pnl_timKiem.add(txt_timKiem);
         pnl_timKiem.add(filler11);
 
@@ -139,7 +163,13 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_timKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_timKiem.setMaximumSize(new java.awt.Dimension(151, 340));
         btn_timKiem.setPreferredSize(new java.awt.Dimension(160, 40));
+        btn_timKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_timKiemActionPerformed(evt);
+            }
+        });
         pnl_timKiem.add(btn_timKiem);
+        pnl_timKiem.add(filler13);
 
         add(pnl_timKiem, java.awt.BorderLayout.NORTH);
 
@@ -190,11 +220,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_capNhatMKNV.setIconTextGap(5);
         btn_capNhatMKNV.setMaximumSize(new java.awt.Dimension(145, 50));
         btn_capNhatMKNV.setPreferredSize(new java.awt.Dimension(190, 50));
-        btn_capNhatMKNV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_capNhatMKNVActionPerformed(evt);
-            }
-        });
         pnl_controlgroup.add(btn_capNhatMKNV);
         pnl_controlgroup.add(filler7);
 
@@ -298,11 +323,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         txt_mailNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_mailNV.setPreferredSize(new java.awt.Dimension(65, 30));
-        txt_mailNV.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_mailNVActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_emailLayout = new javax.swing.GroupLayout(pnl_email);
         pnl_email.setLayout(pnl_emailLayout);
@@ -333,13 +353,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_soDT.setText("Số điện thoại: ");
         lbl_soDT.setPreferredSize(new java.awt.Dimension(85, 17));
 
-        txt_spDT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_spDT.setPreferredSize(new java.awt.Dimension(280, 30));
-        txt_spDT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_spDTActionPerformed(evt);
-            }
-        });
+        txt_soDT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_soDT.setPreferredSize(new java.awt.Dimension(280, 30));
 
         javax.swing.GroupLayout pnl_soDTLayout = new javax.swing.GroupLayout(pnl_soDT);
         pnl_soDT.setLayout(pnl_soDTLayout);
@@ -349,7 +364,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbl_soDT, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_spDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(txt_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnl_soDTLayout.setVerticalGroup(
             pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,7 +372,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_spDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -408,7 +423,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         cmb_gioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
         cmb_gioiTinh.setPreferredSize(new java.awt.Dimension(72, 30));
 
-        jDateChooser2.setPreferredSize(new java.awt.Dimension(64, 30));
+        txt_date.setPreferredSize(new java.awt.Dimension(64, 30));
 
         javax.swing.GroupLayout pnl_namSinhLayout = new javax.swing.GroupLayout(pnl_namSinh);
         pnl_namSinh.setLayout(pnl_namSinhLayout);
@@ -418,7 +433,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbl_namSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_gioiTinh)
                 .addGap(8, 8, 8)
@@ -430,12 +445,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_namSinhLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_namSinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(pnl_namSinhLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbl_namSinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lbl_gioiTinh)
                         .addComponent(cmb_gioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(173, 173, 173))
+                .addGap(101, 101, 101))
         );
 
         pnl_formNV.add(pnl_namSinh);
@@ -460,22 +475,57 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         add(pnl_dsNhanVien, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_mailNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_mailNVActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_mailNVActionPerformed
+    private void btn_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timKiemActionPerformed
+        timKiem();
+    }//GEN-LAST:event_btn_timKiemActionPerformed
 
-    private void txt_spDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_spDTActionPerformed
+    private void txt_timKiemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_timKiemKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_spDTActionPerformed
+        if(evt.getKeyCode()==10)
+        {
+            timKiem();
+        }
+    }//GEN-LAST:event_txt_timKiemKeyPressed
 
-    private void btn_capNhatMKNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capNhatMKNVActionPerformed
+    private void txt_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_timKiemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_capNhatMKNVActionPerformed
+    }//GEN-LAST:event_txt_timKiemActionPerformed
 
     private void btn_themNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themNVActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btn_themNVActionPerformed
+        String  maNV = txt_maNV.getText();
+        String hoTen = txt_hoTenNV.getText();
+        String email = txt_mailNV.getText();
+        String soDT = txt_soDT.getText();
+        String chucVu= txt_chucVu.getText();
+        String gt = (String) cmb_gioiTinh.getSelectedItem();
+        boolean gioiTinh;
+        if(gt.equals("Nữ"))
+            gioiTinh=false;
+        else
+            gioiTinh=true;
+        Date ns = txt_date.getDate();
+        LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        try {
+            NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh,new DiaChi("1","1","Tan Binh","HCM","Viet Nam","DC111"), gioiTinh);
+            NV_bus.themNhanVien(nv);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        renderAll();
 
+              
+    }//GEN-LAST:event_btn_themNVActionPerformed
+    public void timKiem(){
+        String ma = txt_timKiem.getText().trim();
+        if(ma.length()>0){
+            ArrayList<NhanVien> list = new ArrayList<NhanVien>();
+            list = NV_bus.getNhanVienTheoMa(ma);
+            renderListToTable(list);
+        }else
+            renderAll();
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_capNhatMKNV;
@@ -487,6 +537,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler10;
     private javax.swing.Box.Filler filler11;
+    private javax.swing.Box.Filler filler12;
+    private javax.swing.Box.Filler filler13;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
@@ -495,7 +547,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_chucVu;
@@ -520,10 +571,11 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_ttNhanVien;
     private javax.swing.JTable tbl_dsNhanVien;
     private javax.swing.JTextField txt_chucVu;
+    private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_hoTenNV;
     private javax.swing.JTextField txt_maNV;
     private javax.swing.JTextField txt_mailNV;
-    private javax.swing.JTextField txt_spDT;
+    private javax.swing.JTextField txt_soDT;
     private javax.swing.JTextField txt_timKiem;
     // End of variables declaration//GEN-END:variables
 }

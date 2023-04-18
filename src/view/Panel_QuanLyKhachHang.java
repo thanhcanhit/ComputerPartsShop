@@ -70,6 +70,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenu1 = new javax.swing.JMenu();
         pnl_ttKhachHang = new javax.swing.JPanel();
         pnl_avata = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -93,17 +94,41 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_maSoThue = new javax.swing.JPanel();
         lbl_maSoThue = new javax.swing.JLabel();
         txt_maSoThue = new javax.swing.JTextField();
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
+        pnl_email = new javax.swing.JPanel();
+        lbl_email = new javax.swing.JLabel();
+        txt_email = new javax.swing.JTextField();
+        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
+        pnl_namSinh = new javax.swing.JPanel();
+        lbl_namSinh = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(3, 0));
+        lbl_gioiTinh = new javax.swing.JLabel();
+        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(10, 0));
+        cmb_gioiTinh = new javax.swing.JComboBox<>();
+        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
+        pnl_capNhat = new javax.swing.JPanel();
+        btn_capNhatKH = new javax.swing.JButton();
+        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 32767));
         pnl_dsKhachHang = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_dsKhachHang = new javax.swing.JTable();
         pnl_control = new javax.swing.JPanel();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        btn_themKH = new javax.swing.JButton();
+        pnl_timKiem = new javax.swing.JPanel();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        btn_timKiem = new javax.swing.JButton();
+        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        txt_timKiem = new javax.swing.JTextField();
+        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        jSeparator1 = new javax.swing.JSeparator();
+        pnl_controlright = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         btn_xoaKH = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
-        btn_capNhatKH = new javax.swing.JButton();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        btn_themKH = new javax.swing.JButton();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+
+        jMenu1.setText("jMenu1");
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new java.awt.BorderLayout());
@@ -121,7 +146,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_ttKhachHang.add(pnl_avata, java.awt.BorderLayout.CENTER);
 
         pnl_ttKH.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        pnl_ttKH.setPreferredSize(new java.awt.Dimension(338, 250));
+        pnl_ttKH.setPreferredSize(new java.awt.Dimension(338, 350));
         pnl_ttKH.setLayout(new javax.swing.BoxLayout(pnl_ttKH, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_maKH.setPreferredSize(new java.awt.Dimension(180, 30));
@@ -222,6 +247,77 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         pnl_ttKH.add(pnl_maSoThue);
 
+        filler9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        pnl_ttKH.add(filler9);
+
+        pnl_email.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_email.setLayout(new javax.swing.BoxLayout(pnl_email, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_email.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_email.setText("Email: ");
+        lbl_email.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_email.add(lbl_email);
+
+        txt_email.setMinimumSize(new java.awt.Dimension(250, 30));
+        txt_email.setPreferredSize(new java.awt.Dimension(250, 30));
+        txt_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_emailActionPerformed(evt);
+            }
+        });
+        pnl_email.add(txt_email);
+
+        pnl_ttKH.add(pnl_email);
+
+        filler11.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        pnl_ttKH.add(filler11);
+
+        pnl_namSinh.setPreferredSize(new java.awt.Dimension(180, 30));
+        pnl_namSinh.setLayout(new javax.swing.BoxLayout(pnl_namSinh, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_namSinh.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_namSinh.setText("Năm sinh: ");
+        lbl_namSinh.setPreferredSize(new java.awt.Dimension(110, 18));
+        pnl_namSinh.add(lbl_namSinh);
+
+        jDateChooser2.setMaximumSize(new java.awt.Dimension(100000, 2147483647));
+        jDateChooser2.setMinimumSize(new java.awt.Dimension(100, 23));
+        jDateChooser2.setPreferredSize(new java.awt.Dimension(55, 30));
+        pnl_namSinh.add(jDateChooser2);
+        pnl_namSinh.add(filler16);
+
+        lbl_gioiTinh.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_gioiTinh.setText("Giới tính:");
+        pnl_namSinh.add(lbl_gioiTinh);
+        pnl_namSinh.add(filler15);
+
+        cmb_gioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
+        cmb_gioiTinh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cmb_gioiTinh.setPreferredSize(new java.awt.Dimension(65, 30));
+        pnl_namSinh.add(cmb_gioiTinh);
+
+        pnl_ttKH.add(pnl_namSinh);
+
+        filler10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        pnl_ttKH.add(filler10);
+
+        pnl_capNhat.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        pnl_capNhat.setMinimumSize(new java.awt.Dimension(65, 30));
+        pnl_capNhat.setPreferredSize(new java.awt.Dimension(180, 50));
+        pnl_capNhat.setLayout(new javax.swing.BoxLayout(pnl_capNhat, javax.swing.BoxLayout.LINE_AXIS));
+
+        btn_capNhatKH.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btn_capNhatKH.setText("Cập Nhật Thông Tin");
+        btn_capNhatKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_capNhatKH.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        btn_capNhatKH.setPreferredSize(new java.awt.Dimension(190, 50));
+        pnl_capNhat.add(btn_capNhatKH);
+
+        pnl_ttKH.add(pnl_capNhat);
+
+        filler12.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        pnl_ttKH.add(filler12);
+
         pnl_ttKhachHang.add(pnl_ttKH, java.awt.BorderLayout.SOUTH);
 
         add(pnl_ttKhachHang, java.awt.BorderLayout.EAST);
@@ -242,17 +338,41 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         pnl_control.setPreferredSize(new java.awt.Dimension(726, 70));
         pnl_control.setLayout(new javax.swing.BoxLayout(pnl_control, javax.swing.BoxLayout.LINE_AXIS));
-        pnl_control.add(filler3);
 
-        btn_themKH.setBackground(new java.awt.Color(65, 165, 238));
-        btn_themKH.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_themKH.setForeground(new java.awt.Color(255, 255, 255));
-        btn_themKH.setText("Thêm Khách Hàng");
-        btn_themKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_themKH.setMaximumSize(new java.awt.Dimension(150, 50));
-        btn_themKH.setPreferredSize(new java.awt.Dimension(160, 50));
-        pnl_control.add(btn_themKH);
-        pnl_control.add(filler2);
+        pnl_timKiem.setMaximumSize(new java.awt.Dimension(2147483647, 40));
+        pnl_timKiem.setPreferredSize(new java.awt.Dimension(500, 50));
+        pnl_timKiem.setLayout(new javax.swing.BoxLayout(pnl_timKiem, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_timKiem.add(filler4);
+
+        btn_timKiem.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btn_timKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
+        btn_timKiem.setText("Tìm kiếm");
+        btn_timKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_timKiem.setMaximumSize(new java.awt.Dimension(151, 340));
+        btn_timKiem.setPreferredSize(new java.awt.Dimension(130, 40));
+        btn_timKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_timKiemActionPerformed(evt);
+            }
+        });
+        pnl_timKiem.add(btn_timKiem);
+        pnl_timKiem.add(filler13);
+
+        txt_timKiem.setPreferredSize(new java.awt.Dimension(300, 40));
+        pnl_timKiem.add(txt_timKiem);
+        pnl_timKiem.add(filler14);
+
+        pnl_control.add(pnl_timKiem);
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 102));
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 102));
+        pnl_control.add(jSeparator1);
+
+        pnl_controlright.setMaximumSize(new java.awt.Dimension(338, 50));
+        pnl_controlright.setMinimumSize(new java.awt.Dimension(338, 24));
+        pnl_controlright.setPreferredSize(new java.awt.Dimension(400, 100));
+        pnl_controlright.setLayout(new javax.swing.BoxLayout(pnl_controlright, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_controlright.add(filler2);
 
         btn_xoaKH.setBackground(new java.awt.Color(255, 153, 153));
         btn_xoaKH.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -260,17 +380,21 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         btn_xoaKH.setText("Xoá Khách Hàng");
         btn_xoaKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_xoaKH.setMaximumSize(new java.awt.Dimension(150, 50));
-        btn_xoaKH.setPreferredSize(new java.awt.Dimension(150, 50));
-        pnl_control.add(btn_xoaKH);
-        pnl_control.add(filler1);
+        btn_xoaKH.setPreferredSize(new java.awt.Dimension(190, 50));
+        pnl_controlright.add(btn_xoaKH);
+        pnl_controlright.add(filler1);
 
-        btn_capNhatKH.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_capNhatKH.setText("Cập Nhật Thông Tin");
-        btn_capNhatKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_capNhatKH.setMaximumSize(new java.awt.Dimension(150, 50));
-        btn_capNhatKH.setPreferredSize(new java.awt.Dimension(170, 50));
-        pnl_control.add(btn_capNhatKH);
-        pnl_control.add(filler4);
+        btn_themKH.setBackground(new java.awt.Color(65, 165, 238));
+        btn_themKH.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        btn_themKH.setForeground(new java.awt.Color(255, 255, 255));
+        btn_themKH.setText("Thêm Khách Hàng");
+        btn_themKH.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_themKH.setMaximumSize(new java.awt.Dimension(150, 50));
+        btn_themKH.setPreferredSize(new java.awt.Dimension(190, 50));
+        pnl_controlright.add(btn_themKH);
+        pnl_controlright.add(filler3);
+
+        pnl_control.add(pnl_controlright);
 
         add(pnl_control, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
@@ -287,12 +411,29 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_soDTActionPerformed
 
+    private void txt_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_emailActionPerformed
+
+    private void btn_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timKiemActionPerformed
+        
+    }//GEN-LAST:event_btn_timKiemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_capNhatKH;
     private javax.swing.JButton btn_themKH;
+    private javax.swing.JButton btn_timKiem;
     private javax.swing.JButton btn_xoaKH;
+    private javax.swing.JComboBox<String> cmb_gioiTinh;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler10;
+    private javax.swing.Box.Filler filler11;
+    private javax.swing.Box.Filler filler12;
+    private javax.swing.Box.Filler filler13;
+    private javax.swing.Box.Filler filler14;
+    private javax.swing.Box.Filler filler15;
+    private javax.swing.Box.Filler filler16;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
@@ -300,28 +441,42 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbl_email;
+    private javax.swing.JLabel lbl_gioiTinh;
     private javax.swing.JLabel lbl_hangThanhVien;
     private javax.swing.JLabel lbl_maKH;
     private javax.swing.JLabel lbl_maSoThue;
+    private javax.swing.JLabel lbl_namSinh;
     private javax.swing.JLabel lbl_soDT;
     private javax.swing.JLabel lbl_tenKH;
     private javax.swing.JPanel pnl_avata;
+    private javax.swing.JPanel pnl_capNhat;
     private javax.swing.JPanel pnl_control;
+    private javax.swing.JPanel pnl_controlright;
     private javax.swing.JPanel pnl_dsKhachHang;
+    private javax.swing.JPanel pnl_email;
     private javax.swing.JPanel pnl_hangThanhVien;
     private javax.swing.JPanel pnl_maKH;
     private javax.swing.JPanel pnl_maSoThue;
+    private javax.swing.JPanel pnl_namSinh;
     private javax.swing.JPanel pnl_soDT;
     private javax.swing.JPanel pnl_tenKH;
+    private javax.swing.JPanel pnl_timKiem;
     private javax.swing.JPanel pnl_ttKH;
     private javax.swing.JPanel pnl_ttKhachHang;
     private javax.swing.JTable tbl_dsKhachHang;
+    private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_hangThanhVien;
     private javax.swing.JTextField txt_maKH;
     private javax.swing.JTextField txt_maSoThue;
     private javax.swing.JTextField txt_soDT;
     private javax.swing.JTextField txt_tenKH;
+    private javax.swing.JTextField txt_timKiem;
     // End of variables declaration//GEN-END:variables
 }

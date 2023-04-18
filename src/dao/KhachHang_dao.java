@@ -74,7 +74,6 @@ public class KhachHang_dao implements KhachHangInterface {
         return result;
     }
 
-    @Override
     public boolean xoaKhachHang(String maKH) {
         int n = 0;
         try {

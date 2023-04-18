@@ -39,8 +39,8 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
     public boolean themTaiKhoan(TaiKhoan taiKhoan) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien"
-                    +"values(?,?,?,?,?,?,?,?)");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into TaiKhoan "
+                    +" values(?,?)");
             st.setString(1, taiKhoan.getSoTK());
             st.setString(2, taiKhoan.getPassWord());
 
@@ -68,9 +68,9 @@ public class TaiKhoan_dao implements TaiKhoanInterface{
     public boolean capNhatTaiKhoan(String soTK, TaiKhoan taiKhoan) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("update TaiKhoan"
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update TaiKhoan "
                     +"set matKhau= ?" 
-                    + "where soTaiKhoan = ?");
+                    + " where soTaiKhoan = ?");
             st.setString(1, taiKhoan.getPassWord());
             st.setString(2, soTK);
             

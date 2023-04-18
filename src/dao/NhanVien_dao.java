@@ -72,7 +72,7 @@ public class NhanVien_dao implements NhanVienInterface{
         return result;
     }
 
-    @Override
+ 
     public boolean xoaNhanVien(String maNV) {
         int n = 0;
         try{
@@ -91,8 +91,10 @@ public class NhanVien_dao implements NhanVienInterface{
     public boolean themNhanVien(NhanVien nhanVien) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien"
-                    +"values(?,?,?,?,?,?,?,?)");
+            DiaChi_dao dao = new DiaChi_dao();
+            dao.themDiaChi(nhanVien.getDiaChi());
+            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien "
+                    +" values(?,?,?,?,?,?,?,?)");
             st.setString(1, nhanVien.getMaNV());
             st.setString(2, nhanVien.getHoTen());
             st.setString(3, nhanVien.getSoDT());
@@ -100,8 +102,8 @@ public class NhanVien_dao implements NhanVienInterface{
             st.setDate(4, Date.valueOf(namSinh));
             st.setString(5, nhanVien.getEmail());
             st.setString(6, nhanVien.getChucDanh());
-            st.setString(7, nhanVien.getDiaChi().getMaDiaChi());
-            st.setBoolean(8, nhanVien.isGioiTinh());
+            st.setString(8, nhanVien.getDiaChi().getMaDiaChi());
+            st.setBoolean(7, nhanVien.isGioiTinh());
            
             n = st.executeUpdate();
         }catch(Exception e){
@@ -114,9 +116,9 @@ public class NhanVien_dao implements NhanVienInterface{
     public boolean capNhatNhanVien(String maNV, NhanVien nhanVien) {
         int n=0;
         try{
-            PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien"
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien "
                     +"set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?" 
-                    + "where maNhanVien = ?");
+                    + " where maNhanVien = ?");
             st.setString(1, nhanVien.getHoTen());
             st.setString(2, nhanVien.getEmail());
             st.setString(3, nhanVien.getChucDanh());
