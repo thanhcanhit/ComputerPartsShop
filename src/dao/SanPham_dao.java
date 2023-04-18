@@ -144,22 +144,52 @@ public class SanPham_dao implements SanPhamInterface {
         return n > 0;
     }
 
-    public static void main(String[] args) {
+    @Override
+    public ArrayList<SanPham> getSanPhamTrang(int soTrang) {
+        ArrayList<SanPham> result = new ArrayList<>();
         try {
-            ConnectDB.connect();
-            System.out.println("compleet");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from SanPham order by maSanPham offset ? rows fetch next 50 rows only");
+            st.setInt(1, (soTrang - 1) * 50);
+            ResultSet rs = st.executeQuery();
 
-//            ChiTietDonNhap cc = new ChiTietDonNhap(new SanPham("SP0009"), new DonNhapHang("DNH0001"), 0);
-//            System.out.println(new ChiTietDonNhap_dao()));
-            ArrayList<SanPham> list = new SanPham_dao().getSanPhamTheoMa("SP0177");
+            while (rs.next()) {
+                String maSP = rs.getString("maSanPham");
+                String tenSP = rs.getString("tenSanPham");
+                double giaNhap = rs.getDouble("giaNhap");
+                double giamGia = rs.getDouble("giamGia");
+                int loai = rs.getInt("maLoai");
+                double vat = rs.getDouble("VAT");
+                ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
+                int soThangBaohanh = rs.getInt("soThangBaoHanh");
+                String cauHinh = rs.getString("cauHinh");
+                SanPham sp = new SanPham(maSP, tenSP, giaNhap, giamGia, loai, vat, thuongHieu, soThangBaohanh, cauHinh);
 
-            for (SanPham i : list) {
-                System.out.println(i.toString());
+                result.add(sp);
             }
         } catch (Exception e) {
-            System.out.println("Error");
+            e.printStackTrace();
         }
 
+        return result;
+    }
+
+    @Override
+    public int getSoTrangMax() {
+
+        int soTrang = 0;
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select count = count(*) from SanPham");
+            rs.next();
+            soTrang = rs.getInt("count");
+
+            soTrang = (int) Math.ceil(Double.valueOf(soTrang) / 50);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return soTrang;
     }
 
 }

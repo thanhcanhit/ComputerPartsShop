@@ -1,6 +1,5 @@
 package controller;
 
-
 import dao.SanPham_dao;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
@@ -10,12 +9,12 @@ import model.sanpham.SanPham;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author thanh
  */
-public class SanPham_bus implements SanPhamInterface{
+public class SanPham_bus implements SanPhamInterface {
+
     private SanPham_dao dao;
 
     public SanPham_bus() {
@@ -46,7 +45,15 @@ public class SanPham_bus implements SanPhamInterface{
     public boolean themSanPham(SanPham sanPham) {
         return dao.themSanPham(sanPham);
     }
-    
-    
-    
+
+    @Override
+    public ArrayList<SanPham> getSanPhamTrang(int soTrang) {
+        return dao.getSanPhamTrang(soTrang);
+    }
+
+    @Override
+    public int getSoTrangMax() {
+        return dao.getSoTrangMax();
+    }
+
 }

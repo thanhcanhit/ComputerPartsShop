@@ -19,4 +19,7 @@ public interface SanPhamInterface {
     public boolean xoaSanPham(String maSanPham);
     public boolean capNhatSanPham(String maSanPham, SanPham sanPham);
     public boolean themSanPham(SanPham sanPham);
+//    moi trang max 
+    public ArrayList<SanPham> getSanPhamTrang(int soTrang);
+    public int getSoTrangMax();
 }

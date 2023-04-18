@@ -31,6 +31,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private DefaultTableModel tblModel_carts;
     private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
+    private int page = 1;
 
     private SanPham_bus sanPham_bus;
     private ThuongHieu_bus thuongHieu_bus;
@@ -44,7 +45,15 @@ public class Panel_BanHang extends javax.swing.JPanel {
         initDataObject();
         initTableModel();
         initComponents();
+        renderPage();
         alterTable();
+    }
+
+    public void renderPage() {
+        if (lbl_soTrang != null) {
+            lbl_soTrang.setText(page + "/" + sanPham_bus.getSoTrangMax());
+        }
+        renderProductTable(sanPham_bus.getSanPhamTrang(page));
     }
 
     public void alterTable() {
@@ -97,13 +106,6 @@ public class Panel_BanHang extends javax.swing.JPanel {
         // Carts
         tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
         }, 0);
-
-        renderAll();
-    }
-
-    public void renderAll() {
-        ArrayList<SanPham> list = sanPham_bus.getAllSanPham();
-        renderProductTable(list);
     }
 
     public void search() {
@@ -113,7 +115,8 @@ public class Panel_BanHang extends javax.swing.JPanel {
             ArrayList<SanPham> list = sanPham_bus.getSanPhamTheoMa(input);
             renderProductTable(list);
         } else {
-            renderAll();
+            page = 1;
+            renderPage();
         }
     }
 
@@ -159,7 +162,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_left = new javax.swing.JPanel();
         btn_reset = new javax.swing.JButton();
         btn_prev = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_soTrang = new javax.swing.JLabel();
         btn_next = new javax.swing.JButton();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         pnl_addToCart = new javax.swing.JPanel();
@@ -175,18 +178,18 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_box1 = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt1 = new javax.swing.JLabel();
-        txt_sdt = new javax.swing.JTextField();
+        txt_sdt = new javax.swing.JTextField("", 10);
         pnl_box2 = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt = new javax.swing.JLabel();
         txt_hoTen = new javax.swing.JTextField();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
-        lbl_ten = new javax.swing.JLabel();
-        txt_hangTV = new javax.swing.JTextField();
         pnl_box3 = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt4 = new javax.swing.JLabel();
         cmb_phuongThucThanhToan = new javax.swing.JComboBox<>();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        lbl_ten = new javax.swing.JLabel();
+        txt_hangTV = new javax.swing.JTextField();
         pnl_box4 = new javax.swing.JPanel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt3 = new javax.swing.JLabel();
@@ -271,15 +274,19 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_prev.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_prev.setIconTextGap(10);
         btn_prev.setPreferredSize(new java.awt.Dimension(45, 45));
+        btn_prev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prevActionPerformed(evt);
+            }
+        });
         pnl_left.add(btn_prev);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("1/3");
-        jLabel1.setToolTipText("");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setPreferredSize(new java.awt.Dimension(45, 45));
-        pnl_left.add(jLabel1);
+        lbl_soTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_soTrang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_soTrang.setToolTipText("");
+        lbl_soTrang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_soTrang.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnl_left.add(lbl_soTrang);
 
         btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartNext.png"))); // NOI18N
         btn_next.setToolTipText("Trang kế");
@@ -287,6 +294,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_next.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btn_next.setIconTextGap(10);
         btn_next.setPreferredSize(new java.awt.Dimension(45, 45));
+        btn_next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nextActionPerformed(evt);
+            }
+        });
         pnl_left.add(btn_next);
 
         pnl_productsControl.add(pnl_left);
@@ -368,13 +380,14 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_box1.add(lbl_sdt1);
 
         txt_sdt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txt_sdt.setText("032242183");
+        txt_sdt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_sdtFocusLost(evt);
+            }
+        });
         txt_sdt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_sdtKeyPressed(evt);
-            }
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_sdtKeyReleased(evt);
             }
         });
         pnl_box1.add(txt_sdt);
@@ -395,18 +408,6 @@ public class Panel_BanHang extends javax.swing.JPanel {
         txt_hoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_hoTen.setPreferredSize(new java.awt.Dimension(100, 0));
         pnl_box2.add(txt_hoTen);
-        pnl_box2.add(filler5);
-
-        lbl_ten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_ten.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_ten.setText("Hạng TV");
-        lbl_ten.setPreferredSize(new java.awt.Dimension(70, 70));
-        pnl_box2.add(lbl_ten);
-
-        txt_hangTV.setEditable(false);
-        txt_hangTV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_hangTV.setPreferredSize(new java.awt.Dimension(0, 0));
-        pnl_box2.add(txt_hangTV);
 
         pnl_orderInfo.add(pnl_box2);
 
@@ -422,7 +423,20 @@ public class Panel_BanHang extends javax.swing.JPanel {
         pnl_box3.add(lbl_sdt4);
 
         cmb_phuongThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "ATM", "Ví điện tử" }));
+        cmb_phuongThucThanhToan.setPreferredSize(new java.awt.Dimension(100, 22));
         pnl_box3.add(cmb_phuongThucThanhToan);
+        pnl_box3.add(filler5);
+
+        lbl_ten.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_ten.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_ten.setText("Hạng TV");
+        lbl_ten.setPreferredSize(new java.awt.Dimension(70, 70));
+        pnl_box3.add(lbl_ten);
+
+        txt_hangTV.setEditable(false);
+        txt_hangTV.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_hangTV.setPreferredSize(new java.awt.Dimension(0, 0));
+        pnl_box3.add(txt_hangTV);
 
         pnl_orderInfo.add(pnl_box3);
 
@@ -457,6 +471,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_cancel.setForeground(new java.awt.Color(242, 242, 242));
         btn_cancel.setText("HỦY BỎ");
         btn_cancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_cancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cancelActionPerformed(evt);
+            }
+        });
         pnl_cartControl.add(btn_cancel);
 
         btn_export.setBackground(new java.awt.Color(65, 165, 238));
@@ -477,7 +496,8 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         txt_search.setText("");
-        renderAll();
+        page = 1;
+        renderPage();
     }//GEN-LAST:event_btn_resetActionPerformed
 
     private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
@@ -542,28 +562,60 @@ public class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_removeActionPerformed
 
     private void txt_sdtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sdtKeyPressed
-
+        if (evt.getKeyCode() == 10) {
+            getKhachHangNeuTonTai();
+        }
     }//GEN-LAST:event_txt_sdtKeyPressed
 
-    private void txt_sdtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sdtKeyReleased
+    private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
+        getKhachHangNeuTonTai();
+    }//GEN-LAST:event_txt_sdtFocusLost
 
-        String sdtInput = txt_sdt.getText();
-
-        if (sdtInput.length() >= 10) {
-            if (Pattern.matches("\\d{10}", sdtInput)) {
-                KhachHang kh = khachHang_bus.getKhachHangTheoSDT(sdtInput);
-                if (kh != null) {
-                    txt_hoTen.setText(kh.getHoTen());
-                    txt_hangTV.setText(kh.getHang());
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ", "Thông báo", JOptionPane.DEFAULT_OPTION);
-                txt_sdt.selectAll();
-                txt_sdt.requestFocus();
-            }
+    private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Hủy bỏ hóa đơn hiện tại?", "Xác nhận hủy hóa đơn", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            gioHang = new ArrayList<>();
+            renderCartTable();
+            txt_thanhTien.setText("");
+            txt_sdt.setText("");
+            txt_hangTV.setText("");
+            txt_hoTen.setText("");
+            cmb_phuongThucThanhToan.setSelectedIndex(0);
         }
-    }//GEN-LAST:event_txt_sdtKeyReleased
+    }//GEN-LAST:event_btn_cancelActionPerformed
 
+    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
+        if (page < sanPham_bus.getSoTrangMax()) {
+            page++;
+            renderPage();
+        }
+    }//GEN-LAST:event_btn_nextActionPerformed
+
+    private void btn_prevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prevActionPerformed
+        if (page > 1) {
+            page--;
+            renderPage();
+        }
+    }//GEN-LAST:event_btn_prevActionPerformed
+
+    private void getKhachHangNeuTonTai() {
+        String sdtInput = txt_sdt.getText();
+        if (Pattern.matches("\\d{10}", sdtInput)) {
+            KhachHang kh = khachHang_bus.getKhachHangTheoSDT(sdtInput);
+            if (kh != null) {
+                txt_hoTen.setEditable(false);
+                txt_hoTen.setText(kh.getHoTen());
+                txt_hangTV.setText(kh.getHang());
+            } else {
+                txt_hoTen.setEditable(true);
+                txt_hoTen.setText("");
+                txt_hoTen.requestFocus();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Số điện thoại không hợp lệ", "Thông báo", JOptionPane.DEFAULT_OPTION);
+            txt_sdt.selectAll();
+            txt_sdt.requestFocus();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_add;
@@ -581,11 +633,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler7;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_sdt;
     private javax.swing.JLabel lbl_sdt1;
     private javax.swing.JLabel lbl_sdt3;
     private javax.swing.JLabel lbl_sdt4;
+    private javax.swing.JLabel lbl_soTrang;
     private javax.swing.JLabel lbl_ten;
     private javax.swing.JPanel pnl_addToCart;
     private javax.swing.JPanel pnl_box1;

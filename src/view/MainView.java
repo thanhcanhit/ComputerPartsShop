@@ -117,7 +117,7 @@ public class MainView extends javax.swing.JFrame {
         pnl_main = new javax.swing.JPanel();
         pnl_home = new Panel_Home();
         lbl_main = new javax.swing.JLabel();
-        pnl_cart = new javax.swing.JPanel();
+        pnl_cart = new Panel_BanHang();
         pnl_products = new javax.swing.JPanel();
         pnl_inventory = new javax.swing.JPanel();
         pnl_customers = new javax.swing.JPanel();
@@ -366,8 +366,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_homeMouseClicked
 
     private void lbl_cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cartMouseClicked
-        pnl_cart = new Panel_BanHang();
-        pnl_main.add(this.pnl_cart, "cart");
+//        pnl_cart = new Panel_BanHang();
+//        pnl_main.add(this.pnl_cart, "cart");
         card.show(this.pnl_main, "cart");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_cartMouseClicked
