@@ -99,7 +99,7 @@ public class SanPham {
 
     public void setGiamGia(double giamGia) throws Exception {
         if (giamGia >= 0) {
-            this.giamGia = giaNhap;
+            this.giamGia = giamGia;
         } else {
             throw new Exception(GIAM_GIA_INVALID);
         }
@@ -194,6 +194,7 @@ public class SanPham {
      * @return 
      */
     public double getGiaBan() {
+//         return (this.giamGia/100);
         return giaNhap + 0.05*giaNhap + (this.VAT/100)*this.giaNhap - (this.giamGia/100) *this.giaNhap ;
     }
 

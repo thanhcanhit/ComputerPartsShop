@@ -92,7 +92,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
             ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
             int soLuong = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
             
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, vnd.format(sp.getGiamGia()), vnd.format(sp.getGiaBan())};
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, Math.round(sp.getGiamGia())+"%", vnd.format(sp.getGiaBan())};
             tblModel_product.addRow(row);
         }
     }
