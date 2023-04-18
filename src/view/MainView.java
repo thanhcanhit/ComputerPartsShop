@@ -118,10 +118,10 @@ public class MainView extends javax.swing.JFrame {
         pnl_home = new Panel_Home();
         lbl_main = new javax.swing.JLabel();
         pnl_cart = new javax.swing.JPanel();
-        pnl_products = new Panel_QuanLySanPham();
-        pnl_inventory = new Panel_QuanLyDonHang();
-        pnl_customers = new Panel_QuanLyKhachHang();
-        pnl_employees = new Panel_QuanLyNhanVien();
+        pnl_products = new javax.swing.JPanel();
+        pnl_inventory = new javax.swing.JPanel();
+        pnl_customers = new javax.swing.JPanel();
+        pnl_employees = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Computer Parts Shop");
@@ -340,9 +340,6 @@ public class MainView extends javax.swing.JFrame {
         pnl_main.add(pnl_home, "home");
 
         pnl_cart.setBackground(new java.awt.Color(255, 255, 255));
-
-        pnl_cart = new Panel_BanHang();
-
         pnl_main.add(pnl_cart, "cart");
 
         pnl_products.setBackground(new java.awt.Color(255, 255, 255));
@@ -369,26 +366,36 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_homeMouseClicked
 
     private void lbl_cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_cartMouseClicked
+        pnl_cart = new Panel_BanHang();
+        pnl_main.add(this.pnl_cart, "cart");
         card.show(this.pnl_main, "cart");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_cartMouseClicked
 
     private void lbl_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_productsMouseClicked
+        pnl_products = new Panel_QuanLySanPham();
+        pnl_main.add(this.pnl_products, "products");
         card.show(this.pnl_main, "products");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_productsMouseClicked
 
     private void lbl_inventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_inventoryMouseClicked
+        pnl_inventory = new Panel_QuanLyDonHang();
+        pnl_main.add(this.pnl_inventory, "inventory");
         card.show(this.pnl_main, "inventory");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_inventoryMouseClicked
 
     private void lbl_customersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_customersMouseClicked
+        pnl_customers = new Panel_QuanLyKhachHang();
+        pnl_main.add(this.pnl_customers, "customers");
         card.show(this.pnl_main, "customers");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_customersMouseClicked
 
     private void lbl_employeesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_employeesMouseClicked
+        pnl_employees = new Panel_QuanLyNhanVien();
+        pnl_main.add(this.pnl_employees, "employees");
         card.show(this.pnl_main, "employees");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_employeesMouseClicked
