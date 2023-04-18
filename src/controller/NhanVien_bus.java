@@ -28,7 +28,7 @@ public class NhanVien_bus implements NhanVienInterface{
         return dao.getNhanVienTheoMa(maNV);
     }
 
-    @Override
+ 
     public boolean xoaNhanVien(String maNV) {
         return dao.xoaNhanVien(maNV);
     }

@@ -17,28 +17,20 @@ public class DiaChi {
     private String quocGia;
     private String maDiaChi;
 
-    public String getMaDiaChi() {
-        return maDiaChi;
-    }
-
-    public void setMaDiaChi(String maDiaChi) {
+    public DiaChi(String maDiaChi) {
         this.maDiaChi = maDiaChi;
+        
     }
 
-    public DiaChi(String so, String duong, String quan, String thanhPho, String quocGia,String maDiaChi) {
+    public DiaChi(String so, String duong, String quan, String thanhPho, String quocGia, String maDiaChi) {
         this.so = so;
         this.duong = duong;
         this.quan = quan;
         this.thanhPho = thanhPho;
         this.quocGia = quocGia;
         this.maDiaChi = maDiaChi;
-        
     }
-    public DiaChi(String maDiaChi) {
-      
-        this.maDiaChi = maDiaChi;
-        
-    }
+
     public String getSo() {
         return so;
     }
@@ -79,9 +71,15 @@ public class DiaChi {
         this.quocGia = quocGia;
     }
 
-    @Override
-    public String toString() {
-        return   so + ", " + duong + ", " + quan + ", " + thanhPho + ", " + quocGia;
+    public String getMaDiaChi() {
+        return maDiaChi;
     }
 
+    public void setMaDiaChi(String maDiaChi) {
+        this.maDiaChi = maDiaChi;
+    }
+    @Override
+    public String toString(){
+        return so+", "+duong+", "+quan+", "+thanhPho+", "+quocGia;
+    }
 }

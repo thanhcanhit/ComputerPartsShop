@@ -28,7 +28,7 @@ public class KhachHang_bus implements KhachHangInterface{
        return dao.getKhachHangTheoMa(maKH);
     }
 
-    @Override
+
     public boolean xoaKhachHang(String maKH) {
         return dao.xoaKhachHang(maKH);
     }
