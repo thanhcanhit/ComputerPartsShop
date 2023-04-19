@@ -5,6 +5,7 @@
 package model.connguoi;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import model.share.DiaChi;
 
 /**
@@ -14,8 +15,25 @@ import model.share.DiaChi;
 public class NhanVien extends ConNguoi {
     private String maNV;
     private String chucDanh;
-
+    private boolean trangThai;
     private TaiKhoan taiKhoan;
+    
+    public NhanVien(String maNV, String chucDanh, String hoTen, String soDT, String email, LocalDate namSinh, DiaChi diaChi, boolean gioiTinh,boolean trangThai) throws Exception {
+        super(hoTen, soDT, email, namSinh, diaChi, gioiTinh);
+        this.maNV = maNV;
+        this.chucDanh = chucDanh;
+        this.trangThai = trangThai;
+
+    }
+
+    public boolean isTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+   
 
     public TaiKhoan getTaiKhoan() {
         return taiKhoan;
@@ -36,6 +54,7 @@ public class NhanVien extends ConNguoi {
         super(hoTen,soDT,email,namSinh,diaChi,gioiTinh);
         setChucNang(chucDanh);
         setMaNV(maNV);
+        this.trangThai=true;
     }
 
     public String getMaNV() {
@@ -60,6 +79,29 @@ public class NhanVien extends ConNguoi {
             throw new Exception("Chức danh không được rỗng !");
             
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.maNV);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NhanVien other = (NhanVien) obj;
+        return Objects.equals(this.maNV, other.maNV);
+    }
+    
 
  
 }

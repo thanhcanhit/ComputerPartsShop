@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import model.connguoi.NhanVien;
 import java.sql.*;
 import java.time.LocalDate;
+import model.connguoi.TaiKhoan;
 import model.share.ConnectDB;
 import model.share.DiaChi;
 
@@ -39,7 +40,8 @@ public class NhanVien_dao implements NhanVienInterface {
                 DiaChi_dao dao = new DiaChi_dao();
                 DiaChi diaChi = dao.getDiaChiTheoMa(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
-                NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
+                boolean trangThai = rs.getBoolean("trangThai");
+                NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh,trangThai);
                 result.add(nv);
             }
         } catch (Exception e) {
@@ -64,7 +66,8 @@ public class NhanVien_dao implements NhanVienInterface {
                 String chucDanh = rs.getString("chucDanh");
                 DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
-                NhanVien nv = new NhanVien(ma, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
+                boolean trangThai = rs.getBoolean("trangThai");
+                NhanVien nv = new NhanVien(ma, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh,trangThai);
                 result.add(nv);
             }
         } catch (Exception e) {
@@ -92,7 +95,9 @@ public class NhanVien_dao implements NhanVienInterface {
         int n = 0;
         try {
             DiaChi_dao dao = new DiaChi_dao();
+            TaiKhoan_dao TK_dao = new TaiKhoan_dao();
             dao.themDiaChi(nhanVien.getDiaChi());
+            TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"123"));
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien "
                     + " values(?,?,?,?,?,?,?,?)");
             st.setString(1, nhanVien.getMaNV());
@@ -117,7 +122,7 @@ public class NhanVien_dao implements NhanVienInterface {
         int n = 0;
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien "
-                    + "set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?"
+                    +"set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?, trangThai=? " 
                     + " where maNhanVien = ?");
             st.setString(1, nhanVien.getHoTen());
             st.setString(2, nhanVien.getEmail());
@@ -127,7 +132,22 @@ public class NhanVien_dao implements NhanVienInterface {
             st.setDate(5, Date.valueOf(namSinh));
             st.setString(6, nhanVien.getDiaChi().getMaDiaChi());
             st.setBoolean(7, nhanVien.isGioiTinh());
-            st.setString(8, maNV);
+            st.setBoolean(8, nhanVien.isTrangThai());
+            st.setString(9, maNV);
+            n = st.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return n>0;
+    }
+    public boolean capNhatTrangThaiNhanVien(String maNV, boolean trangThai) {
+        int n=0;
+        try{
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien "
+                    +"set trangThai=? " 
+                    + " where maNhanVien = ?");
+            st.setBoolean(1, trangThai);
+            st.setString(2, maNV);
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -151,7 +171,8 @@ public class NhanVien_dao implements NhanVienInterface {
 
                 DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
-                NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh);
+                boolean trangThai = rs.getBoolean("trangThai");
+                NhanVien nv = new NhanVien(maNV, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh,trangThai);
                 result.add(nv);
             }
         } catch (Exception e) {
