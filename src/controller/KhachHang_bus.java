@@ -42,5 +42,10 @@ public class KhachHang_bus implements KhachHangInterface{
     public boolean capNhatKhachHang(String maKH, KhachHang khachHang) {
         return dao.capNhatKhachHang(maKH, khachHang);
     }
+
+    @Override
+    public KhachHang getKhachHangTheoSDT(String sdt) {
+        return dao.getKhachHangTheoSDT(sdt);
+    }
     
 }

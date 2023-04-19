@@ -13,24 +13,22 @@ import model.connguoi.NhanVien;
  *
  * @author macbookk
  */
-public class NhanVien_bus implements NhanVienInterface{
+public class NhanVien_bus implements NhanVienInterface {
+
     private NhanVien_dao dao;
-    public NhanVien_bus(){
+
+    public NhanVien_bus() {
         dao = new NhanVien_dao();
     }
+
     @Override
     public ArrayList<NhanVien> getAllNhanVien() {
-       return dao.getAllNhanVien();
+        return dao.getAllNhanVien();
     }
 
     @Override
     public ArrayList<NhanVien> getNhanVienTheoMa(String maNV) {
         return dao.getNhanVienTheoMa(maNV);
-    }
-
- 
-    public boolean xoaNhanVien(String maNV) {
-        return dao.xoaNhanVien(maNV);
     }
 
     @Override
@@ -47,5 +45,5 @@ public class NhanVien_bus implements NhanVienInterface{
     public ArrayList<NhanVien> getdsQuanLy() {
         return dao.getdsQuanLy();
     }
-    
+
 }

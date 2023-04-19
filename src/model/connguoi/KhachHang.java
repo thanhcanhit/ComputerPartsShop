@@ -19,6 +19,18 @@ public class KhachHang extends ConNguoi {
     public int getDiemThanhVien() {
         return diemThanhVien;
     }
+    
+    public String getHang() {
+        if (diemThanhVien >= 5000 && diemThanhVien< 15000) {
+            return "Bạc";
+        } else if (diemThanhVien >= 15000 && diemThanhVien <= 30000 ) {
+            return "Vàng";
+        } else if (diemThanhVien > 30000) {
+            return "Kim cương";
+        } else {
+            return "Không";
+        }
+    }
 
     public void setDiemThanhVien(int diemThanhVien) {
         if(diemThanhVien>0)

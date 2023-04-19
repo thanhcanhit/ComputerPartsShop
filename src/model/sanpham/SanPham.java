@@ -64,7 +64,7 @@ public class SanPham {
         setSoThangBaoHanh(soThangBaoHanh);
         setCauHinh(cauHinh);
     }
-    
+
     public SanPham(String maSP) {
         this.maSP = maSP;
     }
@@ -112,16 +112,26 @@ public class SanPham {
     public String getTenLoai() {
         String result = "";
         switch (this.loai) {
-            case 0 -> result = "CPU";
-            case 1 -> result = "MainBoard";
-            case 2 -> result = "VGA";
-            case 3 -> result = "RAM";
-            case 4 -> result = "Ổ cứng";
-            case 5 -> result = "Nguồn";
-            case 6 -> result = "Case";
-            case 7 -> result = "Tản nhiệt";
-            case 8 -> result = "Chuột";
-            case 9 -> result = "Bàn phím";
+            case 0 ->
+                result = "CPU";
+            case 1 ->
+                result = "MainBoard";
+            case 2 ->
+                result = "VGA";
+            case 3 ->
+                result = "RAM";
+            case 4 ->
+                result = "Ổ cứng";
+            case 5 ->
+                result = "Nguồn";
+            case 6 ->
+                result = "Case";
+            case 7 ->
+                result = "Tản nhiệt";
+            case 8 ->
+                result = "Chuột";
+            case 9 ->
+                result = "Bàn phím";
         }
         return result;
     }
@@ -188,14 +198,15 @@ public class SanPham {
             throw new Exception(GIA_NHAP_INVALID);
         }
     }
-    
+
     /**
      * Giá bán bằng giá nhập cộng 5% tiền lời + thuế - giảm giá
-     * @return 
+     *
+     * @return
      */
     public double getGiaBan() {
 //         return (this.giamGia/100);
-        return giaNhap + 0.05*giaNhap + (this.VAT/100)*this.giaNhap - (this.giamGia/100) *this.giaNhap ;
+        return giaNhap + 0.05 * giaNhap + (this.VAT / 100) * this.giaNhap - (this.giamGia / 100) * this.giaNhap;
     }
 
     @Override

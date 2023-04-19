@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.SanPham_bus;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.sanpham.SanPham;
@@ -17,6 +18,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
     private DefaultTableModel tbl_ModelProduct;
     private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Thương hiệu", "Cấu hình", "Giá cả", "Số lượng"};
+    private SanPham_bus sanPham_bus = new SanPham_bus();
 
     /**
      * Creates new form Panel_QuanLySanPham
@@ -29,14 +31,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     
     private void initTableModel() {
         ArrayList<SanPham> list = new ArrayList<>();
-        try {
-            list.add(new SanPham("sp1", "chuot1", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp2", "chuot2", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp3", "chuot3", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            renderProductTable(list);
-        } catch(Exception e) {
-        
-        }
+        renderProductTable(sanPham_bus.getAllSanPham());
     }
     
     private void renderProductTable(ArrayList<SanPham> list) {
