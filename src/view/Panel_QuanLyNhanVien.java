@@ -6,17 +6,22 @@ package view;
 
 import controller.DiaChi_bus;
 import controller.NhanVien_bus;
+import controller.TaiKhoan_bus;
 import dao.NhanVien_dao;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.NhanVien;
+import model.connguoi.TaiKhoan;
 import model.share.DiaChi;
 
 /**
@@ -273,6 +278,11 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_capNhatMKNV.setIconTextGap(5);
         btn_capNhatMKNV.setMaximumSize(new java.awt.Dimension(145, 50));
         btn_capNhatMKNV.setPreferredSize(new java.awt.Dimension(190, 50));
+        btn_capNhatMKNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_capNhatMKNVActionPerformed(evt);
+            }
+        });
         pnl_controlgroup.add(btn_capNhatMKNV);
         pnl_controlgroup.add(filler7);
 
@@ -290,6 +300,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.setIconTextGap(10);
         jLabel1.setPreferredSize(new java.awt.Dimension(200, 200));
         pnl_avata.add(jLabel1, java.awt.BorderLayout.CENTER);
@@ -555,18 +566,17 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_formNV.add(pnl_namSinh);
         pnl_formNV.add(filler15);
 
-        pnl_submit.setMaximumSize(new java.awt.Dimension(32767, 32767));
         pnl_submit.setMinimumSize(new java.awt.Dimension(78, 30));
         pnl_submit.setPreferredSize(new java.awt.Dimension(180, 70));
         pnl_submit.setLayout(new javax.swing.BoxLayout(pnl_submit, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn_xoaTrang.setBackground(new java.awt.Color(255, 153, 153));
-        btn_xoaTrang.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btn_xoaTrang.setBackground(new java.awt.Color(204, 204, 255));
+        btn_xoaTrang.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
         btn_xoaTrang.setForeground(new java.awt.Color(255, 255, 255));
         btn_xoaTrang.setText("Xoá trắng");
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(32767, 32767));
-        btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 30));
-        btn_xoaTrang.setPreferredSize(new java.awt.Dimension(150, 30));
+        btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 40));
+        btn_xoaTrang.setPreferredSize(new java.awt.Dimension(150, 70));
         btn_xoaTrang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xoaTrangActionPerformed(evt);
@@ -689,7 +699,36 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_diaChiMouseClicked
 
     private void btn_suaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaNVActionPerformed
-                        
+            String  maNV = txt_maNV.getText();
+            String hoTen = txt_hoTenNV.getText();
+            String email = txt_mailNV.getText();
+            String soDT = txt_soDT.getText();
+            String chucVu= txt_chucVu.getText();
+            String gt = (String) cmb_gioiTinh.getSelectedItem();
+
+            DiaChi dc = frame_diaChi.getDiaChi();
+            dc.setMaDiaChi(NV_bus.getMaDiaChi(maNV));
+        
+            boolean gioiTinh;
+            if(gt.equals("Nữ"))
+                gioiTinh=false;
+            else
+                gioiTinh=true;
+            Date ns = txt_date.getDate();
+            LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();    
+        try {
+            NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh,dc, gioiTinh);
+            if(NV_bus.capNhatNhanVien(maNV, nv))
+                JOptionPane.showMessageDialog(this, "Cập nhật thành công !");
+            else
+                JOptionPane.showMessageDialog(this, "Cập nhật thất bại !");
+            renderAll();
+            
+            
+                    
+        } catch (Exception ex) {
+           ex.printStackTrace();
+        }
     }//GEN-LAST:event_btn_suaNVActionPerformed
 
     private void btn_xoaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaTrangActionPerformed
@@ -703,6 +742,26 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         cmb_gioiTinh.setSelectedIndex(0);
         
     }//GEN-LAST:event_btn_xoaTrangActionPerformed
+
+    private void btn_capNhatMKNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capNhatMKNVActionPerformed
+        // TODO add your handling code here:
+        String soTK = JOptionPane.showInputDialog(this, "Nhập số tài khoản cần đổi mật khẩu !");
+        String mk = JOptionPane.showInputDialog(this, "Nhập mật khấu mới !");
+        TaiKhoan_bus TK_bus = new TaiKhoan_bus();
+        TaiKhoan taiKhoan;
+        try {
+            taiKhoan = new TaiKhoan(soTK, mk);
+            if(TK_bus.capNhatTaiKhoan(soTK, taiKhoan))
+                JOptionPane.showMessageDialog(this, "Thay đổi mật khẩu thành công !");
+            else 
+                JOptionPane.showConfirmDialog(this, "Số tài khoản không tồn tại !");
+                  
+        } catch (Exception ex) {
+            Logger.getLogger(Panel_QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }//GEN-LAST:event_btn_capNhatMKNVActionPerformed
     public void timKiem(){
         String ma = txt_timKiem.getText().trim();
         if(ma.length()>0){
