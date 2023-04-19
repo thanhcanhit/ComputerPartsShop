@@ -41,7 +41,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_dsNhanVien.getColumnModel().getColumn(1).setPreferredWidth(200);
         tbl_dsNhanVien.getColumnModel().getColumn(2).setPreferredWidth(200);
-        tbl_dsNhanVien.getColumnModel().getColumn(3).setPreferredWidth(180);
+        tbl_dsNhanVien.getColumnModel().getColumn(3).setPreferredWidth(100);
         tbl_dsNhanVien.getColumnModel().getColumn(4).setPreferredWidth(200);
         tbl_dsNhanVien.getColumnModel().getColumn(5).setPreferredWidth(150);
         tbl_dsNhanVien.getColumnModel().getColumn(6).setPreferredWidth(100);
