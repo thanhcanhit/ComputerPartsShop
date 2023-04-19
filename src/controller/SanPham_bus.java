@@ -4,6 +4,8 @@ import dao.SanPham_dao;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
 import model.sanpham.SanPham;
+import model.share.ConnectDB;
+import model.share.Utility;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -56,4 +58,18 @@ public class SanPham_bus implements SanPhamInterface {
         return dao.getSoTrangMax();
     }
 
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "SP", 4);
+    }
+
+    public static void main(String[] args) {
+        try {
+
+            ConnectDB.connect();
+            System.out.println(new SanPham_bus().sinhMa());
+        } catch (Exception e) {
+        }
+    }
 }

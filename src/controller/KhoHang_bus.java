@@ -9,6 +9,8 @@ import dao.KhoHang_dao;
 import interface_dao.KhoHangInterface;
 import java.util.ArrayList;
 import model.kho.KhoHang;
+import model.share.ConnectDB;
+import model.share.Utility;
 
 /**
  *
@@ -35,6 +37,21 @@ public class KhoHang_bus implements KhoHangInterface {
     @Override
     public int getSoLuongTon(String maKho, String maSanPham) {
         return new ChiTietKhoHang_dao().getSoLuongTon(maKho, maSanPham);
+    }
+
+     public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "KHO", 2);
+    }
+
+    public static void main(String[] args) {
+        try {
+
+            ConnectDB.connect();
+            System.out.println(new KhoHang_bus().sinhMa());
+        } catch (Exception e) {
+        }
     }
 
 }

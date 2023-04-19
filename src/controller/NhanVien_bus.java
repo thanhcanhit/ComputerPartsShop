@@ -8,6 +8,8 @@ import dao.NhanVien_dao;
 import interface_dao.NhanVienInterface;
 import java.util.ArrayList;
 import model.connguoi.NhanVien;
+import model.share.ConnectDB;
+import model.share.Utility;
 
 /**
  *
@@ -46,4 +48,9 @@ public class NhanVien_bus implements NhanVienInterface {
         return dao.getdsQuanLy();
     }
 
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "NV", 4);
+    }
 }

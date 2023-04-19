@@ -8,16 +8,21 @@ import dao.KhachHang_dao;
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
 import model.connguoi.KhachHang;
+import model.share.ConnectDB;
+import model.share.Utility;
 
 /**
  *
  * @author macbookk
  */
-public class KhachHang_bus implements KhachHangInterface{
+public class KhachHang_bus implements KhachHangInterface {
+
     private KhachHang_dao dao;
-    public KhachHang_bus(){
+
+    public KhachHang_bus() {
         dao = new KhachHang_dao();
     }
+
     @Override
     public ArrayList<KhachHang> getAllKhachHang() {
         return dao.getAllKhachHang();
@@ -25,9 +30,8 @@ public class KhachHang_bus implements KhachHangInterface{
 
     @Override
     public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
-       return dao.getKhachHangTheoMa(maKH);
+        return dao.getKhachHangTheoMa(maKH);
     }
-
 
     public boolean xoaKhachHang(String maKH) {
         return dao.xoaKhachHang(maKH);
@@ -35,7 +39,7 @@ public class KhachHang_bus implements KhachHangInterface{
 
     @Override
     public boolean themKhachHang(KhachHang khachHang) {
-       return dao.themKhachHang(khachHang);
+        return dao.themKhachHang(khachHang);
     }
 
     @Override
@@ -47,5 +51,11 @@ public class KhachHang_bus implements KhachHangInterface{
     public KhachHang getKhachHangTheoSDT(String sdt) {
         return dao.getKhachHangTheoSDT(sdt);
     }
-    
+
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "KH", 5);
+    }
+
 }

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.DiaChi_bus;
 import controller.KhachHang_bus;
 import controller.KhoHang_bus;
 import controller.SanPham_bus;
@@ -25,7 +26,7 @@ import model.sanpham.ThuongHieu;
  *
  * @author thanh
  */
-public class Panel_BanHang extends javax.swing.JPanel {
+public final class Panel_BanHang extends javax.swing.JPanel {
 
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
@@ -37,6 +38,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private ThuongHieu_bus thuongHieu_bus;
     private KhoHang_bus khoHang_bus;
     private KhachHang_bus khachHang_bus;
+    private DiaChi_bus diaChi_bus;
 
     /**
      * Creates new form Panel_BanHang
@@ -96,6 +98,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
         thuongHieu_bus = new ThuongHieu_bus();
         khoHang_bus = new KhoHang_bus();
         khachHang_bus = new KhachHang_bus();
+        diaChi_bus = new DiaChi_bus();
     }
 
     public void initTableModel() {
@@ -568,7 +571,8 @@ public class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_sdtKeyPressed
 
     private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
-        getKhachHangNeuTonTai();
+        if (txt_sdt.getText().length() >= 10)
+            getKhachHangNeuTonTai();
     }//GEN-LAST:event_txt_sdtFocusLost
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
