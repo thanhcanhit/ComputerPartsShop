@@ -21,13 +21,14 @@ import model.connguoi.KhachHang;
 import model.hoadon.ChiTietHoaDon;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
+import model.share.DiaChi;
 
 /**
  *
  * @author thanh
  */
 public final class Panel_BanHang extends javax.swing.JPanel {
-
+    private final Frame_InputDiaChi frame_diaChi = new Frame_InputDiaChi(this);
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
     private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
@@ -535,6 +536,10 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             search();
     }//GEN-LAST:event_txt_searchKeyPressed
 
+    public void updateDiaChi(DiaChi dc) {
+        txt_diaChi.setText(dc.toString());
+    }
+    
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", "Nhập thông tin", JOptionPane.PLAIN_MESSAGE);
 
@@ -630,9 +635,8 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_prevActionPerformed
 
     private void txt_diaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_diaChiMouseClicked
-        Frame_InputDiaChi kk = new Frame_InputDiaChi();
-        kk.setVisible(true);
-        kk.getDiaChi();
+        frame_diaChi.setVisible(true);
+        frame_diaChi.getDiaChi();
     }//GEN-LAST:event_txt_diaChiMouseClicked
 
     private void getKhachHangNeuTonTai() {

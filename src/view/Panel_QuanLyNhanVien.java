@@ -649,7 +649,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
     private void txt_diaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_diaChiMouseClicked
         // TODO add your handling code here:
-        new Frame_InputDiaChi().setVisible(true);
+//        new Frame_InputDiaChi().setVisible(true);
     }//GEN-LAST:event_txt_diaChiMouseClicked
     public void timKiem(){
         String ma = txt_timKiem.getText().trim();

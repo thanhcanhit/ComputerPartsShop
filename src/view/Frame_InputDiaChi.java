@@ -5,8 +5,11 @@
 package view;
 
 import controller.DiaChi_bus;
+import java.awt.AWTEvent;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import model.share.DiaChi;
 
@@ -19,8 +22,19 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     /**
      * Creates new form Frame_InputDiaChi
      */
-    public Frame_InputDiaChi() {
+    private JPanel container;
+
+    public Frame_InputDiaChi(JPanel container) {
         initComponents();
+        this.container = container;
+        
+        // Reset khi đóng
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+
+            }
+        });
     }
 
     /**
@@ -132,6 +146,11 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         txt_duong.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_duong.setMinimumSize(new java.awt.Dimension(70, 0));
         txt_duong.setPreferredSize(new java.awt.Dimension(70, 30));
+        txt_duong.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_duongKeyPressed(evt);
+            }
+        });
         b_1.add(txt_duong);
 
         pnl_container.add(b_1);
@@ -159,6 +178,15 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_commitActionPerformed
+        validateAndSubmit();
+    }//GEN-LAST:event_btn_commitActionPerformed
+
+    private void txt_duongKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_duongKeyPressed
+        if (evt.getKeyCode() == 10)
+            validateAndSubmit();
+    }//GEN-LAST:event_txt_duongKeyPressed
+
+    public void validateAndSubmit() {
 
         String so = txt_so.getText().trim();
         String duong = txt_duong.getText().trim();
@@ -191,8 +219,16 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
             return;
         }
 
+        if (container instanceof Panel_BanHang) {
+            ((Panel_BanHang) container).updateDiaChi(getDiaChi());
+        }
         this.setVisible(false);
-    }//GEN-LAST:event_btn_commitActionPerformed
+    }
+
+    public void reset() {
+        javax.swing.JTextField[] list = {txt_duong, txt_quan, txt_quocGia, txt_so, txt_tp};
+        Arrays.stream(list).forEach(txt -> txt.setText(""));
+    }
 
     public void showMessageFocus(String msg, JTextField txt) {
         JOptionPane.showMessageDialog(this, msg);

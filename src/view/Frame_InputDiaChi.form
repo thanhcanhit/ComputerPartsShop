@@ -276,6 +276,9 @@
                   <Dimension value="[70, 30]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_duongKeyPressed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
