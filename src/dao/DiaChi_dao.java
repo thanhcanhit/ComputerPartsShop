@@ -103,7 +103,7 @@ public class DiaChi_dao implements DiaChiInterface {
         int n = 0;
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update DiaChi "
-                    + " so=?, duong=?, huyen=?, thanhPho=?, quocGia = ? "
+                    + "set soNha=?, duong=?, huyen=?, thanhPho=?, quocGia = ? "
                     + " where maDiaChi = ?");
             st.setString(1, diaChi.getSo());
             st.setString(2, diaChi.getDuong());

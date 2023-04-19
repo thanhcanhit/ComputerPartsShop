@@ -49,6 +49,22 @@ public class NhanVien_dao implements NhanVienInterface {
         }
         return result;
     }
+    
+    public String getMaDiaChi(String maNV){
+        String maDC = null;
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from NhanVien where maNhanVien = ?");
+            st.setString(1, maNV);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                maDC = rs.getString("maDiaChi");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return maDC;
+    }
 
     @Override
     public ArrayList<NhanVien> getNhanVienTheoMa(String maNV) {
@@ -96,10 +112,10 @@ public class NhanVien_dao implements NhanVienInterface {
         try {
             DiaChi_dao dao = new DiaChi_dao();
             TaiKhoan_dao TK_dao = new TaiKhoan_dao();
-            dao.themDiaChi(nhanVien.getDiaChi());
-            TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"123"));
+            System.out.println(dao.themDiaChi(nhanVien.getDiaChi()));
+           
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien "
-                    + " values(?,?,?,?,?,?,?,?)");
+                    + " values(?,?,?,?,?,?,?,?,?)");
             st.setString(1, nhanVien.getMaNV());
             st.setString(2, nhanVien.getHoTen());
             st.setString(3, nhanVien.getSoDT());
@@ -107,10 +123,12 @@ public class NhanVien_dao implements NhanVienInterface {
             st.setDate(4, Date.valueOf(namSinh));
             st.setString(5, nhanVien.getEmail());
             st.setString(6, nhanVien.getChucDanh());
-            st.setString(8, nhanVien.getDiaChi().getMaDiaChi());
-            st.setBoolean(7, nhanVien.isGioiTinh());
-
+            st.setString(7, nhanVien.getDiaChi().getMaDiaChi());
+            st.setBoolean(8, nhanVien.isGioiTinh()); 
+            st.setBoolean(9, nhanVien.isTrangThai());
             n = st.executeUpdate();
+            System.out.println(TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"111")));
+           
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -122,7 +140,7 @@ public class NhanVien_dao implements NhanVienInterface {
         int n = 0;
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update NhanVien "
-                    +"set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, maDiaChi = ?, gioiTinh=?, trangThai=? " 
+                    +"set hoTen= ?, email=?, chucDanh=?, soDienThoai=?, ngaySinh=?, gioiTinh=?, trangThai=? " 
                     + " where maNhanVien = ?");
             st.setString(1, nhanVien.getHoTen());
             st.setString(2, nhanVien.getEmail());
@@ -130,10 +148,12 @@ public class NhanVien_dao implements NhanVienInterface {
             st.setString(4, nhanVien.getSoDT());
             LocalDate namSinh = nhanVien.getNamSinh();
             st.setDate(5, Date.valueOf(namSinh));
-            st.setString(6, nhanVien.getDiaChi().getMaDiaChi());
-            st.setBoolean(7, nhanVien.isGioiTinh());
-            st.setBoolean(8, nhanVien.isTrangThai());
-            st.setString(9, maNV);
+            st.setBoolean(6, nhanVien.isGioiTinh());
+            st.setBoolean(7, nhanVien.isTrangThai());
+            st.setString(8, maNV);
+            
+            DiaChi_dao dao = new DiaChi_dao();
+            dao.capNhatDiaChi(nhanVien.getDiaChi().getMaDiaChi(), nhanVien.getDiaChi());
             n = st.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();

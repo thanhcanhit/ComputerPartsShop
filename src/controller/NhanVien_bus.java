@@ -53,4 +53,8 @@ public class NhanVien_bus implements NhanVienInterface {
 
         return Utility.sinhMaTang(last, "NV", 4);
     }
+    
+    public String getMaDiaChi(String maNV){
+        return dao.getMaDiaChi(maNV);
+    }
 }
