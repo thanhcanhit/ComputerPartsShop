@@ -222,6 +222,9 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         if (container instanceof Panel_BanHang) {
             ((Panel_BanHang) container).updateDiaChi(getDiaChi());
         }
+        if(container instanceof Panel_QuanLyNhanVien){
+            ((Panel_QuanLyNhanVien) container).updateDiaChi(getDiaChi());
+        }
         this.setVisible(false);
     }
 
