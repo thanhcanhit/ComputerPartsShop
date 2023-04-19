@@ -5,11 +5,15 @@
 package view;
 
 import controller.NhanVien_bus;
+import dao.NhanVien_dao;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.NhanVien;
 import model.share.DiaChi;
@@ -28,11 +32,15 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
     
     public Panel_QuanLyNhanVien() {
-        String col[] = {"Mã nhân viên","Họ tên","Email","Số điện thoại","Địa chỉ","Chức danh","Năm sinh","Giới tính"};
+        String col[] = {"Mã nhân viên","Họ tên","Email","Số điện thoại","Địa chỉ","Chức danh","Năm sinh","Giới tính","Trạng thái"};
         model_dsNhanVien=new DefaultTableModel(col,0);
         listNV = NV_bus.getAllNhanVien();
        
         initComponents(); 
+        
+        DefaultTableCellRenderer rightAlign = new DefaultTableCellRenderer();
+        rightAlign.setHorizontalAlignment(JLabel.RIGHT);
+        
         tbl_dsNhanVien.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_dsNhanVien.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_dsNhanVien.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -42,6 +50,32 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.getColumnModel().getColumn(5).setPreferredWidth(150);
         tbl_dsNhanVien.getColumnModel().getColumn(6).setPreferredWidth(100);
         tbl_dsNhanVien.getColumnModel().getColumn(7).setPreferredWidth(100);
+        
+        tbl_dsNhanVien.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        
+        tbl_dsNhanVien.setDefaultEditor(Object.class, null);
+        
+        tbl_dsNhanVien.getSelectionModel().addListSelectionListener((e)->{
+            int row = tbl_dsNhanVien.getSelectedRow();
+            if(row!=-1){
+                 txt_maNV.setText(model_dsNhanVien.getValueAt(row, 0).toString());
+                txt_hoTenNV.setText(model_dsNhanVien.getValueAt(row, 1).toString());
+                txt_mailNV.setText(model_dsNhanVien.getValueAt(row, 2).toString());
+                txt_soDT.setText(model_dsNhanVien.getValueAt(row, 3).toString());
+                txt_chucVu.setText(model_dsNhanVien.getValueAt(row, 5).toString());
+                txt_diaChi.setText(model_dsNhanVien.getValueAt(row, 4).toString());
+                LocalDate ngaySinh = (LocalDate) model_dsNhanVien.getValueAt(row, 6);
+                //convert LocalDate to Date
+                txt_date.setDate(Date.from(ngaySinh.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+                String gt = model_dsNhanVien.getValueAt(row, 7).toString();
+                if(gt.equals("Nam"))
+                    cmb_gioiTinh.setSelectedItem("Nam");
+                else
+                    cmb_gioiTinh.setSelectedItem("Nữ");
+            }
+           
+        });
+        
         
         try{
             renderListToTable(listNV);
@@ -66,7 +100,13 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             }else{
                 gioiTinh="Nữ";
             }
-           model_dsNhanVien.addRow(new Object[] {nv.getMaNV(),nv.getHoTen(),nv.getEmail(),nv.getSoDT(),nv.getDiaChi().toString(),nv.getChucDanh(),nv.getNamSinh(),gioiTinh});
+            String tt;
+            if(nv.isTrangThai()){
+                tt="Đang làm";
+            }else{
+                tt="Đã nghĩ";
+            }
+           model_dsNhanVien.addRow(new Object[] {nv.getMaNV(),nv.getHoTen(),nv.getEmail(),nv.getSoDT(),nv.getDiaChi().toString(),nv.getChucDanh(),nv.getNamSinh(),gioiTinh,tt});
         }
         
     }
@@ -118,6 +158,9 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_soDT = new javax.swing.JLabel();
         txt_soDT = new javax.swing.JTextField();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        pnl_diaChi = new javax.swing.JPanel();
+        lbl_diaChi = new javax.swing.JLabel();
+        txt_diaChi = new javax.swing.JTextField();
         pnl_chucVu = new javax.swing.JPanel();
         lbl_chucVu = new javax.swing.JLabel();
         txt_chucVu = new javax.swing.JTextField();
@@ -193,11 +236,16 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(filler4);
 
         btn_xoaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user.png"))); // NOI18N
-        btn_xoaNV.setText("Xoá Nhân Viên");
+        btn_xoaNV.setText("Xoá trạng thái");
         btn_xoaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_xoaNV.setIconTextGap(8);
         btn_xoaNV.setMaximumSize(new java.awt.Dimension(115, 50));
         btn_xoaNV.setPreferredSize(new java.awt.Dimension(180, 50));
+        btn_xoaNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_xoaNVActionPerformed(evt);
+            }
+        });
         pnl_controlgroup.add(btn_xoaNV);
         pnl_controlgroup.add(filler5);
 
@@ -241,7 +289,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_formNV.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_formNV.setMaximumSize(new java.awt.Dimension(390, 100));
-        pnl_formNV.setPreferredSize(new java.awt.Dimension(390, 280));
+        pnl_formNV.setPreferredSize(new java.awt.Dimension(390, 300));
         pnl_formNV.setLayout(new javax.swing.BoxLayout(pnl_formNV, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_maNV.setPreferredSize(new java.awt.Dimension(180, 70));
@@ -375,6 +423,50 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_formNV.add(pnl_soDT);
         pnl_formNV.add(filler9);
 
+        pnl_diaChi.setPreferredSize(new java.awt.Dimension(180, 70));
+
+        lbl_diaChi.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_diaChi.setText("Địa chỉ:");
+        lbl_diaChi.setPreferredSize(new java.awt.Dimension(85, 17));
+
+        txt_diaChi.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_diaChi.setMaximumSize(new java.awt.Dimension(280, 30));
+        txt_diaChi.setMinimumSize(new java.awt.Dimension(65, 30));
+        txt_diaChi.setPreferredSize(new java.awt.Dimension(280, 30));
+        txt_diaChi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_diaChiMouseClicked(evt);
+            }
+        });
+        txt_diaChi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_diaChiActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnl_diaChiLayout = new javax.swing.GroupLayout(pnl_diaChi);
+        pnl_diaChi.setLayout(pnl_diaChiLayout);
+        pnl_diaChiLayout.setHorizontalGroup(
+            pnl_diaChiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_diaChiLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbl_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txt_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_diaChiLayout.setVerticalGroup(
+            pnl_diaChiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_diaChiLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnl_diaChiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6))
+        );
+
+        pnl_formNV.add(pnl_diaChi);
+
         pnl_chucVu.setPreferredSize(new java.awt.Dimension(180, 70));
 
         lbl_chucVu.setForeground(new java.awt.Color(102, 102, 102));
@@ -464,6 +556,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         tbl_dsNhanVien.setModel(model_dsNhanVien);
         tbl_dsNhanVien.setMaximumSize(new java.awt.Dimension(100, 0));
+        tbl_dsNhanVien.setRowHeight(30);
         jScrollPane1.setViewportView(tbl_dsNhanVien);
 
         pnl_dsNhanVien.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -503,8 +596,23 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         Date ns = txt_date.getDate();
         LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         try {
-            NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh,new DiaChi("1","1","Tan Binh","HCM","Viet Nam","DC111"), gioiTinh);
-            NV_bus.themNhanVien(nv);
+            NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh,new DiaChi("1","1","Tan Binh","HCM","Viet Nam","DC1112"), gioiTinh);
+            int count=0;
+            for(NhanVien n:listNV){
+                if(nv.getSoDT().equals(n.getSoDT()))
+                {
+                    JOptionPane.showMessageDialog(this, "Số điện thoại đã tồn tại !");
+                    count++;
+                }
+            }
+            if(count==0 && NV_bus.themNhanVien(nv)){
+                JOptionPane.showMessageDialog(this, "Thêm thành công !");
+                txt_maNV.setText("");
+                txt_hoTenNV.setText("");
+                txt_mailNV.setText("");
+                txt_soDT.setText("");
+                txt_chucVu.setText("");
+            }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -512,6 +620,37 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
               
     }//GEN-LAST:event_btn_themNVActionPerformed
+    
+    private void btn_xoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaNVActionPerformed
+        // TODO add your handling code here:
+        int row = tbl_dsNhanVien.getSelectedRow();
+        String maNV = model_dsNhanVien.getValueAt(row, 0).toString();
+        String trangThai = model_dsNhanVien.getValueAt(row, 8).toString();
+        boolean tt;
+        if(trangThai.equals("Đang làm")){
+            NhanVien_dao dao = new NhanVien_dao();
+            tt=false;
+            if(JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái làm việc nhân viên?","Chú ý!!", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION)
+                if(dao.capNhatTrangThaiNhanVien(maNV, tt)){
+                    JOptionPane.showMessageDialog(this, "Cập nhật trạng thái thành công !");
+                    renderAll(); 
+                }        
+                    
+        }else{
+            JOptionPane.showMessageDialog(this, "Nhân viên đã nghĩ làm !");
+        }
+        
+        
+    }//GEN-LAST:event_btn_xoaNVActionPerformed
+
+    private void txt_diaChiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_diaChiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_diaChiActionPerformed
+
+    private void txt_diaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_diaChiMouseClicked
+        // TODO add your handling code here:
+        new Frame_InputDiaChi().setVisible(true);
+    }//GEN-LAST:event_txt_diaChiMouseClicked
     public void timKiem(){
         String ma = txt_timKiem.getText().trim();
         if(ma.length()>0){
@@ -546,6 +685,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_chucVu;
+    private javax.swing.JLabel lbl_diaChi;
     private javax.swing.JLabel lbl_gioiTinh;
     private javax.swing.JLabel lbl_hoTen;
     private javax.swing.JLabel lbl_maNV;
@@ -556,6 +696,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_avata;
     private javax.swing.JPanel pnl_chucVu;
     private javax.swing.JPanel pnl_controlgroup;
+    private javax.swing.JPanel pnl_diaChi;
     private javax.swing.JPanel pnl_dsNhanVien;
     private javax.swing.JPanel pnl_email;
     private javax.swing.JPanel pnl_formNV;
@@ -568,6 +709,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JTable tbl_dsNhanVien;
     private javax.swing.JTextField txt_chucVu;
     private com.toedter.calendar.JDateChooser txt_date;
+    private javax.swing.JTextField txt_diaChi;
     private javax.swing.JTextField txt_hoTenNV;
     private javax.swing.JTextField txt_maNV;
     private javax.swing.JTextField txt_mailNV;

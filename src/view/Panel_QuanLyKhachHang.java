@@ -6,7 +6,9 @@ package view;
 
 import controller.KhachHang_bus;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
@@ -35,6 +37,10 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         
         
         initComponents();
+        
+        DefaultTableCellRenderer rightAlign = new DefaultTableCellRenderer();
+        rightAlign.setHorizontalAlignment(JLabel.RIGHT);
+        // set chieu dai cot
         tbl_dsKhachHang.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_dsKhachHang.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_dsKhachHang.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -45,6 +51,13 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         tbl_dsKhachHang.getColumnModel().getColumn(6).setPreferredWidth(100);
         tbl_dsKhachHang.getColumnModel().getColumn(7).setPreferredWidth(100);
         tbl_dsKhachHang.getColumnModel().getColumn(8).setPreferredWidth(200);
+        // set canh le trai
+        tbl_dsKhachHang.getColumnModel().getColumn(2).setCellRenderer(rightAlign);
+        tbl_dsKhachHang.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        tbl_dsKhachHang.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
+        
+        // set khong chinh sua dong trong table
+        tbl_dsKhachHang.setDefaultEditor(Object.class, null);
     }
     
      public void renderListToTable(ArrayList<KhachHang> listNV) {
@@ -333,6 +346,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         tbl_dsKhachHang.setModel(model_dsKhachHang);
+        tbl_dsKhachHang.setRowHeight(30);
         jScrollPane1.setViewportView(tbl_dsKhachHang);
 
         pnl_dsKhachHang.add(jScrollPane1, java.awt.BorderLayout.CENTER);

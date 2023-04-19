@@ -5,6 +5,7 @@
 package model.connguoi;
 
 import java.time.LocalDate;
+import java.util.Objects;
 import model.share.DiaChi;
 
 /**
@@ -71,5 +72,28 @@ public class KhachHang extends ConNguoi {
     public KhachHang(String maKH) {
         this.maKH=maKH;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.maKH);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final KhachHang other = (KhachHang) obj;
+        return Objects.equals(this.maKH, other.maKH);
+    }
+    
     
 }
