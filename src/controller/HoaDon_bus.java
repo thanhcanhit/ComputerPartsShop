@@ -8,7 +8,6 @@ import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
 import java.util.ArrayList;
 import model.hoadon.HoaDon;
-import model.share.ConnectDB;
 import model.share.Utility;
 
 /**

@@ -17,14 +17,14 @@ import model.share.DiaChi;
  * @author thanh
  */
 public class KhoHang_dao implements KhoHangInterface {
-
+    
     @Override
     public ArrayList<KhoHang> getAllKhoHang() {
         ArrayList<KhoHang> result = new ArrayList<>();
         try {
             Statement st = ConnectDB.conn.createStatement();
             ResultSet rs = st.executeQuery("select * from KhoHang");
-
+            
             while (rs.next()) {
                 String ma = rs.getString("maKho");
                 String ten = rs.getString("tenKho");
@@ -33,18 +33,18 @@ public class KhoHang_dao implements KhoHangInterface {
 
                 // Chi tiet kho hang
                 ArrayList<ChiTietKhoHang> list = new ChiTietKhoHang_dao().getAllChiTietCuaKhoHang(ma);
-
+                
                 KhoHang khoHang = new KhoHang(ma, new DiaChi(loai), ten, dienTich, list);
-
+                
                 result.add(khoHang);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         return result;
     }
-
+    
     @Override
     public ArrayList<KhoHang> getKhoHangTheoMa(String maKho) {
         ArrayList<KhoHang> result = new ArrayList<>();
@@ -52,7 +52,7 @@ public class KhoHang_dao implements KhoHangInterface {
             PreparedStatement st = ConnectDB.conn.prepareStatement("select * from KhoHang where maKho = ?");
             st.setString(1, maKho);
             ResultSet rs = st.executeQuery();
-
+            
             while (rs.next()) {
                 String ma = rs.getString("maKho");
                 String ten = rs.getString("tenKho");
@@ -61,18 +61,18 @@ public class KhoHang_dao implements KhoHangInterface {
 
                 // Chi tiet kho hang
                 ArrayList<ChiTietKhoHang> list = new ChiTietKhoHang_dao().getAllChiTietCuaKhoHang(ma);
-
+                
                 KhoHang khoHang = new KhoHang(ma, new DiaChi(loai), ten, dienTich, list);
-
+                
                 result.add(khoHang);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         return result;
     }
-
+    
     @Override
     public int getSoLuongTon(String maKho, String maSanPham) {
         return new ChiTietKhoHang_dao().getSoLuongTon(maKho, maSanPham);
@@ -80,7 +80,7 @@ public class KhoHang_dao implements KhoHangInterface {
     
     public String getMaLonNhat() {
         String s = "KHO00";
-
+        
         try {
             Statement st = ConnectDB.conn.createStatement();
             ResultSet rs = st.executeQuery("select top 1 maKho from KhoHang order by maKho desc");

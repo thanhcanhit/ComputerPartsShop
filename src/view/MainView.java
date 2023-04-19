@@ -42,7 +42,7 @@ public class MainView extends javax.swing.JFrame {
         DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
         try {
 //            Nhân viên kinh doanh
-            NhanVien nhanVien = new NhanVien("000", "Nhân viên kinh doanh", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
+            NhanVien nhanVien = new NhanVien("NV0001", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             login(nhanVien);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -69,8 +69,8 @@ public class MainView extends javax.swing.JFrame {
         try {
             ConnectDB.connect();
         } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
-//            System.exit(0);
+            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
+            System.exit(0);
         }
     }
 
@@ -87,6 +87,8 @@ public class MainView extends javax.swing.JFrame {
 
     public void login(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+        pnl_cart = new Panel_BanHang(nhanVien);
+        pnl_main.add(this.pnl_cart, "cart");
 
         this.lbl_name.setText(nhanVien.getChucDanh() + ". " + nhanVien.getHoTen());
         headerRender(this.lbl_name);
@@ -107,7 +109,9 @@ public class MainView extends javax.swing.JFrame {
 
     public void activeAllFunction() {
         Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setVisible(true));
-        if (nhanVien.getChucDanh().equalsIgnoreCase("Nhân viên kinh doanh")) lbl_employees.setVisible(false);
+        if (nhanVien.getChucDanh().equalsIgnoreCase("Nhân viên kinh doanh")) {
+            lbl_employees.setVisible(false);
+        }
     }
 
     /**
@@ -134,7 +138,7 @@ public class MainView extends javax.swing.JFrame {
         pnl_main = new javax.swing.JPanel();
         pnl_home = new Panel_Home();
         lbl_main = new javax.swing.JLabel();
-        pnl_cart = new Panel_BanHang();
+        pnl_cart = new javax.swing.JPanel();
         pnl_products = new javax.swing.JPanel();
         pnl_inventory = new javax.swing.JPanel();
         pnl_customers = new javax.swing.JPanel();

@@ -4,6 +4,9 @@
  */
 package model.share;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 /**
  *
  * @author thanh
@@ -15,14 +18,23 @@ public class Utility {
         num++;
 
         // Mac dinh la 3
-        String nextNum = String.format("%03d", num);
-        if (soHauTo == 4) {
-            nextNum = String.format("%04d", num);
-        } else if (soHauTo == 5) {
-            nextNum = String.format("%05d", num);
-        } else if (soHauTo == 2) {
-            nextNum = String.format("%02d", num);
+        String nextNum = "";
+        switch (soHauTo) {
+            case 2 ->
+                nextNum = String.format("%02d", num);
+            case 4 ->
+                nextNum = String.format("%04d", num);
+            case 5 ->
+                nextNum = String.format("%05d", num);
+            default -> {
+                nextNum = String.format("%03d", num);
+            }
         }
         return tienTo + nextNum;
+    }
+
+    public static String getVND(Double money) {
+        NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
+        return vnd.format(vnd);
     }
 }

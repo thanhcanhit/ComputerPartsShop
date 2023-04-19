@@ -100,7 +100,7 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
             PreparedStatement st = ConnectDB.conn.prepareStatement("SELECT soLuongTon FROM ChiTietKhoHang where maKho = ? and maSanPham = ?");
             st.setString(1, maKhoHang);
             st.setString(2, maSanPham);
-            
+
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 int sl = rs.getInt("soLuongTon");
@@ -112,5 +112,24 @@ public class ChiTietKhoHang_dao implements ChiTietKhoHangInterface {
 
             return result;
         }
+    }
+
+    @Override
+    public boolean truSoLuongChiTietKhoHang(String maKho, String maSanPham, int soLuong) {
+        int n = 0;
+
+        try {
+            int soLuongMoi = getSoLuongTon(maKho, maSanPham) - soLuong;
+            
+            PreparedStatement st = ConnectDB.conn.prepareStatement("UPDATE ChiTietKhoHang SET soLuongTon = ? WHERE maKho = ? AND maSanPham = ?;");
+            st.setInt(1, soLuongMoi);
+            st.setString(2, maKho);
+            st.setString(3, maSanPham);
+            n = st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return n > 0;
     }
 }

@@ -22,4 +22,6 @@ public interface ChiTietKhoHangInterface {
     public boolean themChiTietKhoHang(ChiTietKhoHang chiTietKH);
 
     public boolean capNhatChiTietKhoHang(String maKho, String maSanPham, ChiTietKhoHang ct);
+    
+    public boolean truSoLuongChiTietKhoHang(String maKho, String maSanPham, int soLuong);
 }

@@ -22,18 +22,28 @@ public class HoaDon {
     private NhanVien nhanVien;
     private KhachHang khachHang;
     private ArrayList<ChiTietHoaDon> dsChiTiethoaDon;
+    private double tongTien;
 
     public HoaDon(String maHoaDon) {
         this.maHoaDon = maHoaDon;
     }
-    
-    public HoaDon(String maHoaDon, LocalDate ngayLap, String phuongThucThanhToan, NhanVien nhanVien, KhachHang khachHang, ArrayList<ChiTietHoaDon> dsChiTiethoaDon) {
+
+    public HoaDon(String maHoaDon, LocalDate ngayLap, String phuongThucThanhToan, NhanVien nhanVien, KhachHang khachHang, ArrayList<ChiTietHoaDon> dsChiTiethoaDon, double tongTien) {
         this.maHoaDon = maHoaDon;
         this.ngayLap = ngayLap;
         this.phuongThucThanhToan = phuongThucThanhToan;
         this.nhanVien = nhanVien;
         this.khachHang = khachHang;
         this.dsChiTiethoaDon = dsChiTiethoaDon;
+        this.tongTien = tongTien;
+    }
+
+    public double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
     }
 
     public String getMaHoaDon() {
@@ -84,8 +94,6 @@ public class HoaDon {
         this.dsChiTiethoaDon = dsChiTiethoaDon;
     }
 
-    
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -108,28 +116,10 @@ public class HoaDon {
         return Objects.equals(this.maHoaDon, other.maHoaDon);
     }
 
-    public int tinhTongSoLuong() {
-        int tong = 0;
-
-        return tong;
-    }
-   
-   public double tinhTongTienTruocThue() {
-        double tong = 0;
-
-        return tong;
-    }
-
-    public double tinhTongVAT() {
-        double tong = 0;
-
-        return tong;
-    }
-
     public double tinhTongTienThanhToan() {
-        double tong=0;
-        for(ChiTietHoaDon cthd:dsChiTiethoaDon){
-            tong+=cthd.tinhTongTien();
+        double tong = 0;
+        for (ChiTietHoaDon cthd : dsChiTiethoaDon) {
+            tong += cthd.tinhTongTien();
         }
         return tong;
     }

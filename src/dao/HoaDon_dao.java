@@ -14,6 +14,7 @@ import model.connguoi.NhanVien;
 import model.hoadon.HoaDon;
 import model.share.ConnectDB;
 import java.sql.*;
+import model.hoadon.ChiTietHoaDon;
 
 /**
  *
@@ -33,7 +34,8 @@ public class HoaDon_dao implements HoaDonInterface {
                 String maKH = rs.getString("maKhachHang");
                 LocalDate ngayLap = rs.getDate("ngayLap").toLocalDate();
                 String pttt = rs.getString("phuongThucThanhToan");
-                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
+                double tongTien = rs.getDouble("tongTien");
+                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD), tongTien);
                 result.add(hd);
             }
 
@@ -56,7 +58,8 @@ public class HoaDon_dao implements HoaDonInterface {
                 String maKH = rs.getString("maKhachHang");
                 LocalDate ngayLap = rs.getDate("ngayLap").toLocalDate();
                 String pttt = rs.getString("phuongThucThanhToan");
-                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
+                double tongTien = rs.getDouble("tongTien");
+                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD), tongTien);
                 result.add(hd);
             }
 
@@ -77,8 +80,14 @@ public class HoaDon_dao implements HoaDonInterface {
             st.setString(3, hoaDon.getPhuongThucThanhToan());
             st.setString(4, hoaDon.getNhanVien().getMaNV());
             st.setString(5, hoaDon.getKhachHang().getMaKH());
-            st.setDouble(6, hoaDon.tinhTongTienThanhToan());
+            st.setDouble(6, hoaDon.getTongTien());
+
             n = st.executeUpdate();
+            for (ChiTietHoaDon ct : hoaDon.getDsChiTiethoaDon()) {
+                ct.setHoaDon(hoaDon);
+                new ChiTietHoaDon_dao().themChiTietHoaDon(ct);
+                new ChiTietKhoHang_dao().truSoLuongChiTietKhoHang("KHO01", ct.getSanPham().getMaSP(), ct.getSoLuong());
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
