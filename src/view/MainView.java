@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
 import model.share.ConnectDB;
@@ -47,6 +48,22 @@ public class MainView extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+//        Sự kiện đóng
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(null,
+                        "Bạn có thật sự muốn tắt ComputerPartsShop?", "Đóng ứng dụng?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+//                    Đóng kết nối
+                    ConnectDB.disconnect();
+                    System.exit(0);
+                }
+            }
+        });
     }
 
     public void connectDB() {

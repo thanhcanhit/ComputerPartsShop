@@ -4,6 +4,10 @@
  */
 package view;
 
+import controller.DiaChi_bus;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import model.share.DiaChi;
 
 /**
@@ -32,28 +36,29 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         b_5 = new javax.swing.JPanel();
         lbl_quocGia = new javax.swing.JLabel();
         txt_quocGia = new javax.swing.JTextField();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        lbl_tp = new javax.swing.JLabel();
-        txt_tp = new javax.swing.JTextField();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
         b_3 = new javax.swing.JPanel();
+        lbl_tp = new javax.swing.JLabel();
+        txt_tp = new javax.swing.JTextField();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_quan = new javax.swing.JLabel();
         txt_quan = new javax.swing.JTextField();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        lbl_duong = new javax.swing.JLabel();
-        txt_duong = new javax.swing.JTextField();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
         b_1 = new javax.swing.JPanel();
         lbl_so = new javax.swing.JLabel();
         txt_so = new javax.swing.JTextField();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        lbl_duong = new javax.swing.JLabel();
+        txt_duong = new javax.swing.JTextField();
         pnl_footer = new javax.swing.JPanel();
         btn_commit = new javax.swing.JButton();
 
         setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(500, 200));
+        setPreferredSize(new java.awt.Dimension(500, 250));
 
         pnl_container.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        pnl_container.setPreferredSize(new java.awt.Dimension(20, 250));
         pnl_container.setLayout(new javax.swing.BoxLayout(pnl_container, javax.swing.BoxLayout.Y_AXIS));
 
         b_5.setPreferredSize(new java.awt.Dimension(0, 50));
@@ -65,24 +70,29 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         b_5.add(lbl_quocGia);
 
         txt_quocGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_quocGia.setText("Việt Nam");
         txt_quocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_quocGia.setPreferredSize(new java.awt.Dimension(70, 70));
         b_5.add(txt_quocGia);
-        b_5.add(filler1);
-
-        lbl_tp.setText("Tỉnh/Thành phố:");
-        lbl_tp.setToolTipText("");
-        lbl_tp.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_5.add(lbl_tp);
-
-        txt_tp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_tp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        b_5.add(txt_tp);
 
         pnl_container.add(b_5);
         pnl_container.add(filler3);
 
         b_3.setPreferredSize(new java.awt.Dimension(0, 50));
         b_3.setLayout(new javax.swing.BoxLayout(b_3, javax.swing.BoxLayout.X_AXIS));
+
+        lbl_tp.setText("Tỉnh/Thành phố:");
+        lbl_tp.setToolTipText("");
+        lbl_tp.setPreferredSize(new java.awt.Dimension(100, 0));
+        b_3.add(lbl_tp);
+
+        txt_tp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_tp.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_tp.setPreferredSize(new java.awt.Dimension(70, 30));
+        txt_tp.requestFocus();
+        b_3.add(txt_tp);
+        b_3.add(filler2);
 
         lbl_quan.setText("Quận/Huyện:");
         lbl_quan.setToolTipText("");
@@ -91,17 +101,9 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
 
         txt_quan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_quan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_quan.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_quan.setPreferredSize(new java.awt.Dimension(70, 30));
         b_3.add(txt_quan);
-        b_3.add(filler2);
-
-        lbl_duong.setText("Đường:");
-        lbl_duong.setToolTipText("");
-        lbl_duong.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_3.add(lbl_duong);
-
-        txt_duong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_duong.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        b_3.add(txt_duong);
 
         pnl_container.add(b_3);
         pnl_container.add(filler4);
@@ -116,7 +118,21 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
 
         txt_so.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_so.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_so.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_so.setPreferredSize(new java.awt.Dimension(70, 30));
         b_1.add(txt_so);
+        b_1.add(filler1);
+
+        lbl_duong.setText("Đường:");
+        lbl_duong.setToolTipText("");
+        lbl_duong.setPreferredSize(new java.awt.Dimension(100, 0));
+        b_1.add(lbl_duong);
+
+        txt_duong.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_duong.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_duong.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_duong.setPreferredSize(new java.awt.Dimension(70, 30));
+        b_1.add(txt_duong);
 
         pnl_container.add(b_1);
 
@@ -139,11 +155,50 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         getContentPane().add(pnl_footer, java.awt.BorderLayout.SOUTH);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_commitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_commitActionPerformed
+
+        String so = txt_so.getText().trim();
+        String duong = txt_duong.getText().trim();
+        String quan = txt_quan.getText().trim();
+        String tp = txt_tp.getText().trim();
+        String qg = txt_quocGia.getText().trim();
+
+        if (!Pattern.matches(".+", qg)) {
+            showMessageFocus("Quốc gia không được rỗng", txt_quocGia);
+            return;
+        }
+
+        if (!Pattern.matches(".+", tp)) {
+            showMessageFocus("Tỉnh/Thành Phố không được rỗng", txt_tp);
+            return;
+        }
+
+        if (!Pattern.matches(".+", quan)) {
+            showMessageFocus("Quận/Huyện không được rỗng", txt_quan);
+            return;
+        }
+
+        if (!Pattern.matches(".+", duong)) {
+            showMessageFocus("Đường không được rỗng", txt_duong);
+            return;
+        }
+
+        if (!Pattern.matches(".+", so)) {
+            showMessageFocus("Số nhà không được rỗng", txt_so);
+            return;
+        }
+
         this.setVisible(false);
     }//GEN-LAST:event_btn_commitActionPerformed
+
+    public void showMessageFocus(String msg, JTextField txt) {
+        JOptionPane.showMessageDialog(this, msg);
+        txt.selectAll();
+        txt.requestFocus();
+    }
 
     public DiaChi getDiaChi() {
         String so = txt_so.getText().trim();
@@ -151,44 +206,11 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         String quan = txt_quan.getText().trim();
         String tp = txt_tp.getText().trim();
         String qg = txt_quocGia.getText().trim();
-        
-        DiaChi dc = new DiaChi(so, duong, quan, tp, qg, "");
+
+        DiaChi dc = new DiaChi(so, duong, quan, tp, qg, new DiaChi_bus().sinhMa());
         return dc;
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Frame_InputDiaChi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Frame_InputDiaChi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Frame_InputDiaChi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Frame_InputDiaChi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Frame_InputDiaChi().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel b_1;
