@@ -37,5 +37,10 @@ public class TaiKhoan_bus implements TaiKhoanInterface{
     public boolean capNhatTaiKhoan(String soTK, TaiKhoan taiKhoan) {
         return dao.capNhatTaiKhoan(soTK, taiKhoan);
     }
+
+    @Override
+    public boolean kiemTraTaiKhoan(String tk, String mk) {
+        return dao.kiemTraTaiKhoan(tk, mk);
+    }
     
 }

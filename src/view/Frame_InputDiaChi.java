@@ -5,7 +5,6 @@
 package view;
 
 import controller.DiaChi_bus;
-import java.awt.AWTEvent;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -27,14 +26,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     public Frame_InputDiaChi(JPanel container) {
         initComponents();
         this.container = container;
-        
-        // Reset khi đóng
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
 
-            }
-        });
     }
 
     /**
@@ -70,6 +62,11 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(500, 250));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                formComponentShown(evt);
+            }
+        });
 
         pnl_container.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_container.setPreferredSize(new java.awt.Dimension(20, 250));
@@ -186,6 +183,10 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
             validateAndSubmit();
     }//GEN-LAST:event_txt_duongKeyPressed
 
+    private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
+        reset();
+    }//GEN-LAST:event_formComponentShown
+
     public void validateAndSubmit() {
 
         String so = txt_so.getText().trim();
@@ -228,6 +229,8 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     public void reset() {
         javax.swing.JTextField[] list = {txt_duong, txt_quan, txt_quocGia, txt_so, txt_tp};
         Arrays.stream(list).forEach(txt -> txt.setText(""));
+        txt_quocGia.setText("Việt Nam");
+        txt_tp.requestFocus();
     }
 
     public void showMessageFocus(String msg, JTextField txt) {

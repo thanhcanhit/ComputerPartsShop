@@ -10,8 +10,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
@@ -43,10 +41,11 @@ public class MainView extends javax.swing.JFrame {
 //  Khi ra mắt phải chỉnh lại chưa đăng nhập
         DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
         try {
-            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
+//            Nhân viên kinh doanh
+            NhanVien nhanVien = new NhanVien("000", "Nhân viên kinh doanh", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             login(nhanVien);
         } catch (Exception ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
 //        Sự kiện đóng
@@ -108,6 +107,7 @@ public class MainView extends javax.swing.JFrame {
 
     public void activeAllFunction() {
         Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setVisible(true));
+        if (nhanVien.getChucDanh().equalsIgnoreCase("Nhân viên kinh doanh")) lbl_employees.setVisible(false);
     }
 
     /**
@@ -147,16 +147,19 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_header.setBackground(new java.awt.Color(65, 165, 238));
         pnl_header.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        pnl_header.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_header.setMinimumSize(new java.awt.Dimension(500, 27));
+        pnl_header.setPreferredSize(new java.awt.Dimension(500, 30));
         pnl_header.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
 
         lbl_name.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_name.setForeground(new java.awt.Color(255, 255, 255));
         lbl_name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_name.setText("QL.Nguyễn Thanh Cảnh");
+        lbl_name.setText("Nhân viên kinh doanh .Nguyễn Thanh Cảnh");
         lbl_name.setToolTipText("");
         lbl_name.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_name.setPreferredSize(new java.awt.Dimension(220, 30));
+        lbl_name.setMaximumSize(new java.awt.Dimension(500, 30));
+        lbl_name.setMinimumSize(new java.awt.Dimension(500, 30));
+        lbl_name.setPreferredSize(new java.awt.Dimension(500, 30));
         pnl_header.add(lbl_name);
 
         btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
