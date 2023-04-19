@@ -40,8 +40,11 @@
             <EmptyBorder bottom="0" left="10" right="10" top="0"/>
           </Border>
         </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[500, 27]"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[0, 30]"/>
+          <Dimension value="[500, 30]"/>
         </Property>
       </Properties>
       <Constraints>
@@ -65,11 +68,17 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="QL.Nguy&#x1ec5;n Thanh C&#x1ea3;nh"/>
+            <Property name="text" type="java.lang.String" value="Nh&#xe2;n vi&#xea;n kinh doanh .Nguy&#x1ec5;n Thanh C&#x1ea3;nh"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
+            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[500, 30]"/>
+            </Property>
+            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[500, 30]"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[220, 30]"/>
+              <Dimension value="[500, 30]"/>
             </Property>
           </Properties>
         </Component>

@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
+import model.connguoi.NhanVien;
 import model.hoadon.ChiTietHoaDon;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
@@ -33,7 +34,12 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private DefaultTableModel tblModel_carts;
     private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
+    
+    // variable
     private int page = 1;
+    private double subTotal = 0;
+    private KhachHang khach = null;
+    private NhanVien nhanVien = null;
 
     private SanPham_bus sanPham_bus;
     private ThuongHieu_bus thuongHieu_bus;
