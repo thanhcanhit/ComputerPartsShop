@@ -8,6 +8,8 @@ import dao.DonNhapHang_dao;
 import interface_dao.DonNhapHangInterface;
 import java.util.ArrayList;
 import model.kho.DonNhapHang;
+import model.share.ConnectDB;
+import model.share.Utility;
 
 /**
  *
@@ -45,5 +47,12 @@ public class DonNhapHang_bus implements DonNhapHangInterface {
     public boolean capNhatDonNhapHang(String maDon, DonNhapHang donNhap) {
         return dao.capNhatDonNhapHang(maDon, donNhap);
     }
+
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "DNH", 4);
+    }
+
 
 }

@@ -14,32 +14,30 @@ import model.connguoi.NhanVien;
 import model.hoadon.HoaDon;
 import model.share.ConnectDB;
 import java.sql.*;
-import model.hoadon.ChiTietHoaDon;
-
 
 /**
  *
  * @author macbookk
  */
-public class HoaDon_dao implements HoaDonInterface{
+public class HoaDon_dao implements HoaDonInterface {
 
     @Override
     public ArrayList<HoaDon> getAllHoaDon() {
         ArrayList<HoaDon> result = new ArrayList<HoaDon>();
-        try{
+        try {
             Statement st = ConnectDB.conn.createStatement();
             ResultSet rs = st.executeQuery("Select * from HoaDon");
-            while(rs.next()){
+            while (rs.next()) {
                 String maHD = rs.getString("maHoaDon");
                 String maNV = rs.getString("maNhanVien");
                 String maKH = rs.getString("maKhachHang");
                 LocalDate ngayLap = rs.getDate("ngayLap").toLocalDate();
                 String pttt = rs.getString("phuongThucThanhToan");
-                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH),new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
+                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
                 result.add(hd);
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -48,21 +46,21 @@ public class HoaDon_dao implements HoaDonInterface{
     @Override
     public ArrayList<HoaDon> getHoaDonTheoMa(String maHoaDon) {
         ArrayList<HoaDon> result = new ArrayList<HoaDon>();
-        try{
+        try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from HoaDon where maHoaDon = ?");
             st.setString(1, maHoaDon);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 String maHD = rs.getString("maHoaDon");
                 String maNV = rs.getString("maNhanVien");
                 String maKH = rs.getString("maKhachHang");
                 LocalDate ngayLap = rs.getDate("ngayLap").toLocalDate();
                 String pttt = rs.getString("phuongThucThanhToan");
-                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH),new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
+                HoaDon hd = new HoaDon(maHD, ngayLap, pttt, new NhanVien(maNV), new KhachHang(maKH), new ChiTietHoaDon_dao().getChiTietHoaDonTheoMaHoaDon(maHD));
                 result.add(hd);
             }
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
@@ -70,10 +68,10 @@ public class HoaDon_dao implements HoaDonInterface{
 
     @Override
     public boolean themHoaDon(HoaDon hoaDon) {
-        int n=0;
-        try{
+        int n = 0;
+        try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into HoaDon "
-                    +"values(?,?,?,?,?,?)");
+                    + "values(?,?,?,?,?,?)");
             st.setString(1, hoaDon.getMaHoaDon());
             st.setDate(2, Date.valueOf(hoaDon.getNgayLap()));
             st.setString(3, hoaDon.getPhuongThucThanhToan());
@@ -81,30 +79,43 @@ public class HoaDon_dao implements HoaDonInterface{
             st.setString(5, hoaDon.getKhachHang().getMaKH());
             st.setDouble(6, hoaDon.tinhTongTienThanhToan());
             n = st.executeUpdate();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return n>0;
+        return n > 0;
     }
 
     @Override
     public boolean xoaHoaDon(String maHoaDon) {
-       int n = 0;
-        try{
+        int n = 0;
+        try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("delete from HoaDon where maHoaDon = ?");
             st.setString(1, maHoaDon);
             n = st.executeUpdate();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        return n>0;
+        return n > 0;
     }
 
     @Override
     public boolean capNhatHoaDon(String maHoaDon, HoaDon hoaDon) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 
-    
+    public String getMaLonNhat() {
+        String s = "HD00000";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maHoaDon from HoaDon order by maHoaDon desc");
+            rs.next();
+            s = rs.getString("maHoaDon");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
+
 }

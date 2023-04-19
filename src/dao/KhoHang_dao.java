@@ -77,4 +77,19 @@ public class KhoHang_dao implements KhoHangInterface {
     public int getSoLuongTon(String maKho, String maSanPham) {
         return new ChiTietKhoHang_dao().getSoLuongTon(maKho, maSanPham);
     }
+    
+    public String getMaLonNhat() {
+        String s = "KHO00";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maKho from KhoHang order by maKho desc");
+            rs.next();
+            s = rs.getString("maKho");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return s;
+    }
 }
