@@ -216,4 +216,34 @@ public class KhachHang_dao implements KhachHangInterface {
         return n > 0;
     }
 
+
+    @Override
+    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
+        ArrayList<KhachHang> result = new ArrayList<KhachHang>();
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from KhachHang where maKhachHang = ?");
+            st.setString(1, maKH);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                String ma = rs.getString("maKhachHang");
+                String tenKH = rs.getString("hoTen");
+                String soDT = rs.getString("soDienThoai");
+                LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
+                String email = rs.getString("email");
+                String maSoThue = rs.getString("maSoThue");
+                int diem = rs.getInt("diemThanhVien");
+                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
+                boolean gioiTinh = rs.getBoolean("gioiTinh");
+
+                KhachHang kh = new KhachHang(maKH, maSoThue, tenKH, soDT, email, ngaySinh, diaChi, gioiTinh, diem);
+                result.add(kh);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
 }
+
