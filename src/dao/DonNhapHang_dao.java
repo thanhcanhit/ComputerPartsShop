@@ -41,7 +41,7 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
 
                 ArrayList<ChiTietDonNhap> list = new ChiTietDonNhap_dao().getAllChiTietCuaDonNhap(maDonNhap);
 
-                result.add(new DonNhapHang(maDonNhap, ngayNhap, ghiChu, daNhan, new KhoHang(maKho), list, new NhaCungCap(maKho), new NhanVien(maNhanVien)));
+                result.add(new DonNhapHang(maDonNhap, ngayNhap, ghiChu, daNhan, new KhoHang(maKho), list, new NhaCungCap(maNhaCungCap), new NhanVien(maNhanVien), tongTien));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -57,18 +57,22 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
             PreparedStatement st = ConnectDB.conn.prepareStatement("SELECT maDonNhap, ngayNhap, maKho, maNhaCungCap, ghiChu, tongTien, daNhan, maNhanVien FROM DonNhapHang where maDonNhap = ?");
             st.setString(1, maDon);
             ResultSet rs = st.executeQuery();
-            String maDonNhap = rs.getString("maDonNhap");
-            String maNhanVien = rs.getString("maNhanVien");
-            LocalDate ngayNhap = rs.getDate("ngayNhap").toLocalDate();
-            String maKho = rs.getString("maKho");
-            String maNhaCungCap = rs.getString("maNhaCungCap");
-            String ghiChu = rs.getString("ghiChu");
-            double tongTien = rs.getDouble("tongTien");
-            boolean daNhan = rs.getBoolean("daNhan");
 
-            ArrayList<ChiTietDonNhap> list = new ChiTietDonNhap_dao().getAllChiTietCuaDonNhap(maDonNhap);
+            while (rs.next()) {
 
-            result.add(new DonNhapHang(maDonNhap, ngayNhap, ghiChu, daNhan, new KhoHang(maKho), list, new NhaCungCap(maKho), new NhanVien(maNhanVien)));
+                String maDonNhap = rs.getString("maDonNhap");
+                String maNhanVien = rs.getString("maNhanVien");
+                LocalDate ngayNhap = rs.getDate("ngayNhap").toLocalDate();
+                String maKho = rs.getString("maKho");
+                String maNhaCungCap = rs.getString("maNhaCungCap");
+                String ghiChu = rs.getString("ghiChu");
+                double tongTien = rs.getDouble("tongTien");
+                boolean daNhan = rs.getBoolean("daNhan");
+
+                ArrayList<ChiTietDonNhap> list = new ChiTietDonNhap_dao().getAllChiTietCuaDonNhap(maDonNhap);
+
+                result.add(new DonNhapHang(maDonNhap, ngayNhap, ghiChu, daNhan, new KhoHang(maKho), list, new NhaCungCap(maNhaCungCap), new NhanVien(maNhanVien), tongTien));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

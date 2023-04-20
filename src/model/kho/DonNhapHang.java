@@ -24,12 +24,13 @@ public class DonNhapHang {
     private ArrayList<ChiTietDonNhap> chiTietDonNhap;
     private NhaCungCap nhaCungCap;
     private NhanVien nhanVien;
+    private double tongTien;
 
     public DonNhapHang(String maDonNhap) {
         this.maDonNhap = maDonNhap;
     }
 
-    public DonNhapHang(String maDonNhap, LocalDate ngayNhap, String ghiChu, boolean danhan, KhoHang khoHang, ArrayList<ChiTietDonNhap> chiTietDonNhap, NhaCungCap nhaCungCap, NhanVien nhanVien) {
+    public DonNhapHang(String maDonNhap, LocalDate ngayNhap, String ghiChu, boolean danhan, KhoHang khoHang, ArrayList<ChiTietDonNhap> chiTietDonNhap, NhaCungCap nhaCungCap, NhanVien nhanVien, double tongTien) {
         this.maDonNhap = maDonNhap;
         this.ngayNhap = ngayNhap;
         this.ghiChu = ghiChu;
@@ -38,8 +39,16 @@ public class DonNhapHang {
         this.chiTietDonNhap = chiTietDonNhap;
         this.nhaCungCap = nhaCungCap;
         this.nhanVien = nhanVien;
+        this.tongTien = tongTien;
     }
-    
+
+    public double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
 
     public String getMaDonNhap() {
         return maDonNhap;
@@ -60,7 +69,7 @@ public class DonNhapHang {
     public void setNhanVien(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
     }
-    
+
     public void setMaDonNhap(String maDonNhap) {
         this.maDonNhap = maDonNhap;
     }

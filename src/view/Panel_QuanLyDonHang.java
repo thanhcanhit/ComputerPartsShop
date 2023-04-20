@@ -4,7 +4,6 @@
  */
 package view;
 
-
 import controller.DonNhapHang_bus;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -14,21 +13,21 @@ import model.kho.ChiTietDonNhap;
 import model.kho.DonNhapHang;
 import model.sanpham.SanPham;
 
-
 /**
  *
  * @author HP
  */
 public class Panel_QuanLyDonHang extends javax.swing.JPanel {
-    private DefaultTableModel tblModel_danhSachHangHoa;
-    private DefaultTableModel tblModel_chiTietDonNhap;
-    private DefaultTableModel tblModel_danhSachDonDaDat;
-    private DefaultTableModel tblModel_chiTietDonDaDat;
-    private DefaultTableModel tblModel_danhSachHoaDon;
-    private DefaultTableModel tblModel_chiTietHoaDon;
-    
+
+    private DefaultTableModel tblModel_tab1DanhSachHangHoa;
+    private DefaultTableModel tblModel_tab1ChiTietDonNhap;
+    private DefaultTableModel tblModel_tab2danhSachDonNhap;
+    private DefaultTableModel tblModel_tab2ChiTietDonNhap;
+    private DefaultTableModel tblModel_tab3DanhSachHoaDon;
+    private DefaultTableModel tblModel_tab3ChiTietHoaDon;
+
     private DonNhapHang_bus donNhap_bus;
-        
+
     /**
      * Creates new form Panel_QuanLyDonHang
      */
@@ -36,71 +35,78 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         initDataObject();
         initTableModel();
         initComponents();
-        
-        renderAllDanhSachDonNhap();
+        addCustomEvent();
+
+        renderAllTab2DanhSachDonNhap();
     }
-    
+
+    public void addCustomEvent() {
+        tbl_tab2DanhSachDonNhap.getSelectionModel().addListSelectionListener(e -> {
+            int row = tbl_tab2DanhSachDonNhap.getSelectedRow();
+            if (row != -1) {
+                String id = tbl_tab2DanhSachDonNhap.getValueAt(row, 0).toString();
+                DonNhapHang dn = donNhap_bus.getDonNhapHangTheoMa(id).get(0);
+                System.out.println(dn.getChiTietDonNhap().size());
+                renderTab2ChiTietDonNhap(dn.getChiTietDonNhap());
+            }
+        });
+    }
+
     public void initDataObject() {
         donNhap_bus = new DonNhapHang_bus();
     }
 
     public void initTableModel() {
-       tblModel_chiTietDonNhap = new DefaultTableModel(new String[]{"Mã đơn nhập", " Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình Trạng", "Kho"}, 0);
+        tblModel_tab1ChiTietDonNhap = new DefaultTableModel(new String[]{"Mã đơn nhập", " Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình Trạng", "Kho"}, 0);
     }
-    
-    public void renderAllDanhSachDonNhap() {
-        renderDanhSachDonNhap(donNhap_bus.getAllDonNhapHang());
+
+    public void renderAllTab2DanhSachDonNhap() {
+        renderTab2DanhSachDonNhap(donNhap_bus.getAllDonNhapHang());
     }
-//
-    public void renderDanhSachHangHoa(ArrayList<SanPham> list) {
-        tblModel_danhSachHangHoa.setRowCount(0);
+
+    public void renderTab1DanhSachHangHoa(ArrayList<SanPham> list) {
+        tblModel_tab1DanhSachHangHoa.setRowCount(0);
         for (SanPham sp : list) {
             Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), sp.getThuongHieu().toString(), 0, sp.getGiaBan()};
-            tblModel_danhSachHangHoa.addRow(row);
+            tblModel_tab1DanhSachHangHoa.addRow(row);
         }
     }
-//
-    public void renderChiTietDonNhap(ArrayList<ChiTietDonNhap> list) {
-        tblModel_chiTietDonNhap.setRowCount(0);
+
+    public void renderTab1ChiTietDonNhap(ArrayList<ChiTietDonNhap> list) {
+        tblModel_tab1ChiTietDonNhap.setRowCount(0);
         for (ChiTietDonNhap sp : list) {
-            tblModel_chiTietDonNhap.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSanPham().getLoai(), sp.getSanPham().getGiaNhap(),});
+            tblModel_tab1ChiTietDonNhap.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSanPham().getLoai(), sp.getSanPham().getGiaNhap(),});
         }
     }
-    
-    public void renderDanhSachDonNhap(ArrayList<DonNhapHang> list){
-        tblModel_danhSachDonDaDat.setRowCount(0);
+
+    public void renderTab2DanhSachDonNhap(ArrayList<DonNhapHang> list) {
+        tblModel_tab2danhSachDonNhap.setRowCount(0);
         for (DonNhapHang donNhapHang : list) {
-            tblModel_danhSachDonDaDat.addRow(new Object[]{donNhapHang.getMaDonNhap(), donNhapHang.getNhanVien().getMaNV(), donNhapHang.getNhaCungCap().getMaNCC(), donNhapHang.getNgayNhap(), donNhapHang.isDanhan(), donNhapHang.getKhoHang().getMaKho()});
+            tblModel_tab2danhSachDonNhap.addRow(new Object[]{donNhapHang.getMaDonNhap(), donNhapHang.getNhanVien().getMaNV(), donNhapHang.getNhaCungCap().getMaNCC(), donNhapHang.getNgayNhap(), donNhapHang.isDanhan() ? "Đã nhận" : "Chưa nhận", donNhapHang.getKhoHang().getMaKho()});
         }
     }
-    
-    public void renderChiTietDonDaDat(ArrayList<ChiTietDonNhap> list){
-        tblModel_chiTietDonDaDat.setRowCount(0);
+
+    public void renderTab2ChiTietDonNhap(ArrayList<ChiTietDonNhap> list) {
+        tblModel_tab2ChiTietDonNhap.setRowCount(0);
         for (ChiTietDonNhap chiTietDonDaNhap : list) {
-            tblModel_chiTietDonDaDat.addRow(new Object[]{chiTietDonDaNhap.getSanPham().getMaSP(), chiTietDonDaNhap.getSanPham().getTenSP(), chiTietDonDaNhap.getSanPham().getLoai(), chiTietDonDaNhap.getSoLuong(), chiTietDonDaNhap.getSanPham().getGiaBan(), chiTietDonDaNhap.getSoLuong()*chiTietDonDaNhap.getSanPham().getGiaBan()});
+            tblModel_tab2ChiTietDonNhap.addRow(new Object[]{chiTietDonDaNhap.getSanPham().getMaSP(), chiTietDonDaNhap.getSanPham().getTenSP(), chiTietDonDaNhap.getSanPham().getLoai(), chiTietDonDaNhap.getSoLuong(), chiTietDonDaNhap.getSanPham().getGiaBan(), chiTietDonDaNhap.getSoLuong() * chiTietDonDaNhap.getSanPham().getGiaBan()});
         }
     }
-    
-    public void renderDanhSachHoaDon(ArrayList<HoaDon> list){
-        tblModel_danhSachHoaDon.setRowCount(0);
+
+    public void renderTab3DanhSachHoaDon(ArrayList<HoaDon> list) {
+        tblModel_tab3DanhSachHoaDon.setRowCount(0);
         for (HoaDon hoaDon : list) {
-            tblModel_danhSachHoaDon.addRow(new Object[] {hoaDon.getMaHoaDon(), hoaDon.getNhanVien().getHoTen(), hoaDon.getKhachHang().getHoTen(), hoaDon.getPhuongThucThanhToan(), hoaDon.getNgayLap()});
+            tblModel_tab3DanhSachHoaDon.addRow(new Object[]{hoaDon.getMaHoaDon(), hoaDon.getNhanVien().getHoTen(), hoaDon.getKhachHang().getHoTen(), hoaDon.getPhuongThucThanhToan(), hoaDon.getNgayLap()});
         }
     }
-    
-    public void renderChiTietHoaDon(ArrayList<ChiTietHoaDon> list){
-        tblModel_chiTietHoaDon.setRowCount(0);
+
+    public void renderTab3ChiTietHoaDon(ArrayList<ChiTietHoaDon> list) {
+        tblModel_tab3ChiTietHoaDon.setRowCount(0);
         for (ChiTietHoaDon chiTietHoaDon : list) {
-            tblModel_chiTietHoaDon.addRow(new Object[]{chiTietHoaDon.getSanPham().getMaSP(), chiTietHoaDon.getSanPham().getTenSP(), chiTietHoaDon.getSanPham().getLoai(), chiTietHoaDon.getSoLuong(), chiTietHoaDon.getSanPham().getGiaBan(),chiTietHoaDon.getSoLuong()*chiTietHoaDon.getSanPham().getGiaBan()});
+            tblModel_tab3ChiTietHoaDon.addRow(new Object[]{chiTietHoaDon.getSanPham().getMaSP(), chiTietHoaDon.getSanPham().getTenSP(), chiTietHoaDon.getSanPham().getLoai(), chiTietHoaDon.getSoLuong(), chiTietHoaDon.getSanPham().getGiaBan(), chiTietHoaDon.getSoLuong() * chiTietHoaDon.getSanPham().getGiaBan()});
         }
     }
-    
-//    public void renderDanhSachDonDaDat(ArrayList<SanPham> list) {
-//        tblModel_chiTietDonNhap1.setRowCount(0);
-//        for (SanPham sp : list) {
-//            tblModel_chiTietDonNhap1.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), 0, sp.getGiaBan()});
-//        }
-//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -118,10 +124,10 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_themDonHangCenter = new javax.swing.JPanel();
         pnl_danhSachHangHoa1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tbl_danhSachHangHoa = new javax.swing.JTable();
+        tbl_tab1DanhSachHangHoa = new javax.swing.JTable();
         pnl_chiTietDonNhap1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_chiTietDonNhap1 = new javax.swing.JTable();
+        tbl_tab1ChiTietDonNhap = new javax.swing.JTable();
         pnl_thongTinDonNhapLine2 = new javax.swing.JPanel();
         btn_themHang = new javax.swing.JButton();
         btn_xoaHang = new javax.swing.JButton();
@@ -132,43 +138,43 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jPanel8 = new javax.swing.JPanel();
         lbl_nhaCungCap = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
-        cbo_nhaCungCap = new javax.swing.JComboBox<>();
+        cbo_tab1NhaCungCap = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         lbl_ghiChuDonNhap = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        txa_ghiChuDonNhap = new javax.swing.JTextArea();
+        txa_tab1GhiChuDonNhap = new javax.swing.JTextArea();
         pnl_tongTienPhieuNhap = new javax.swing.JPanel();
         lbl_tongPhieuNhap = new javax.swing.JLabel();
-        txt_tongTienPhieuNhap = new javax.swing.JTextField();
+        txt_tab1TongTien = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        btn_nhapHang = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btn_tab1HuyDon = new javax.swing.JButton();
+        btn_tab1NhapHang = new javax.swing.JButton();
         pnl_timKiemTheoMaSanPham = new javax.swing.JPanel();
         pnl_search = new javax.swing.JPanel();
-        txt_search = new javax.swing.JTextField();
+        txt_tab1Search = new javax.swing.JTextField();
         btn_search = new javax.swing.JButton();
         pnl_donDatHang = new javax.swing.JPanel();
         pnl_danhSachDon = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_danhSachDonDaDat = new javax.swing.JTable();
+        tbl_tab2DanhSachDonNhap = new javax.swing.JTable();
         pnl_chiTietDonNhap = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbl_chiTietDonNhap = new javax.swing.JTable();
+        tbl_tab2ChiTietDonNhap = new javax.swing.JTable();
         pnl_thongTinDon = new javax.swing.JPanel();
         pnl_ngayNhaptinhTrang = new javax.swing.JPanel();
         b_ngayNhap = new javax.swing.JPanel();
         lbl_ngayNhap = new javax.swing.JLabel();
-        txt_ngayNhap = new javax.swing.JTextField();
+        txt_tab2NgayNhap = new javax.swing.JTextField();
         b_tinhTrang = new javax.swing.JPanel();
         filler22 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_tinhTrang = new javax.swing.JLabel();
-        txt_tinhTrang = new javax.swing.JTextField();
+        txt_tab2TinhTrang = new javax.swing.JTextField();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 8));
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         lbl_nhaCungCap1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        cbo_tab2NhaCungCap = new javax.swing.JComboBox<>();
         jPanel5 = new javax.swing.JPanel();
         lbl_ghiChuDonNhap1 = new javax.swing.JLabel();
         jTextField4 = new javax.swing.JTextField();
@@ -177,7 +183,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         b_tongTien = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lbl_tongTien = new javax.swing.JLabel();
-        txt_tongTien = new javax.swing.JTextField();
+        txt_tab2TongTien = new javax.swing.JTextField();
         pnl_hoaDon = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         pnl_timKiemHoaDon = new javax.swing.JPanel();
@@ -187,15 +193,15 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_timKiemTheoMaKhachHang = new javax.swing.JLabel();
         filler25 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        txt_timKiemTheoMaKhachHang = new javax.swing.JTextField();
+        txt_tab3SDT = new javax.swing.JTextField();
         filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         pnl_timKiemTheoNgay = new javax.swing.JPanel();
         filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_timTuNgay = new javax.swing.JLabel();
-        jdate_tuNgay = new com.toedter.calendar.JDateChooser();
+        jdate_tab3TuNgay = new com.toedter.calendar.JDateChooser();
         filler27 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_timDenNgay = new javax.swing.JLabel();
-        jdate_denNgay = new com.toedter.calendar.JDateChooser();
+        jdate_tab3DenNgay = new com.toedter.calendar.JDateChooser();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 5));
         jPanel9 = new javax.swing.JPanel();
@@ -203,25 +209,25 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         filler26 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_maNhanVien = new javax.swing.JLabel();
         filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        txt_maNhanVien = new javax.swing.JTextField();
+        txt_tab3MaNhanVien = new javax.swing.JTextField();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         pnl_timTheoGiaTien = new javax.swing.JPanel();
         filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_giaTu = new javax.swing.JLabel();
-        txt_giaTu = new javax.swing.JTextField();
+        txt_tab3GiaTu = new javax.swing.JTextField();
         filler28 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_giaDen = new javax.swing.JLabel();
-        txt_giaDen = new javax.swing.JTextField();
+        txt_tab3GiaDen = new javax.swing.JTextField();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jPanel16 = new javax.swing.JPanel();
-        btn_search2 = new javax.swing.JButton();
-        btn_search1 = new javax.swing.JButton();
+        btn_tab3Search = new javax.swing.JButton();
+        btn_tab3Reset = new javax.swing.JButton();
         pnl_center = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        table_danhSachHangHoa2 = new javax.swing.JTable();
+        table_tab3DanhSachHangHoa = new javax.swing.JTable();
         pnl_thongTinHoaDon = new javax.swing.JPanel();
         jScrollPane8 = new javax.swing.JScrollPane();
-        table_danhSachHoaDon = new javax.swing.JTable();
+        table_tab3ChiTietHoaDon = new javax.swing.JTable();
         pnl_thongTinChiTietDon = new javax.swing.JPanel();
         b_tongTien1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -274,10 +280,10 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        tbl_danhSachHangHoa.setModel(tblModel_danhSachHangHoa= new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
+        tbl_tab1DanhSachHangHoa.setModel(tblModel_tab1DanhSachHangHoa= new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
         }, 0));
-        tbl_danhSachHangHoa.setRowHeight(30);
-        jScrollPane3.setViewportView(tbl_danhSachHangHoa);
+        tbl_tab1DanhSachHangHoa.setRowHeight(30);
+        jScrollPane3.setViewportView(tbl_tab1DanhSachHangHoa);
 
         pnl_danhSachHangHoa1.add(jScrollPane3, java.awt.BorderLayout.CENTER);
 
@@ -289,12 +295,12 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiếp đơn nhập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        table_chiTietDonNhap1.setModel(tblModel_chiTietDonNhap = new DefaultTableModel(new String[]{"Mã", "Tên", "Số lượng", "Đơn giá", "Tổng"
+        tbl_tab1ChiTietDonNhap.setModel(tblModel_tab1ChiTietDonNhap = new DefaultTableModel(new String[]{"Mã", "Tên", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
-        table_chiTietDonNhap1.setRowHeight(30);
-        jScrollPane4.setViewportView(table_chiTietDonNhap1);
-        if (table_chiTietDonNhap1.getColumnModel().getColumnCount() > 0) {
-            table_chiTietDonNhap1.getColumnModel().getColumn(0).setResizable(false);
+        tbl_tab1ChiTietDonNhap.setRowHeight(30);
+        jScrollPane4.setViewportView(tbl_tab1ChiTietDonNhap);
+        if (tbl_tab1ChiTietDonNhap.getColumnModel().getColumnCount() > 0) {
+            tbl_tab1ChiTietDonNhap.getColumnModel().getColumn(0).setResizable(false);
         }
 
         pnl_chiTietDonNhap1.add(jScrollPane4);
@@ -341,9 +347,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jPanel8.add(lbl_nhaCungCap);
         jPanel8.add(filler3);
 
-        cbo_nhaCungCap.setMaximumRowCount(5);
-        cbo_nhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel8.add(cbo_nhaCungCap);
+        cbo_tab1NhaCungCap.setMaximumRowCount(5);
+        cbo_tab1NhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel8.add(cbo_tab1NhaCungCap);
 
         jPanel4.add(jPanel8);
 
@@ -366,9 +372,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         jPanel15.setLayout(new java.awt.GridLayout(1, 0));
 
-        txa_ghiChuDonNhap.setColumns(20);
-        txa_ghiChuDonNhap.setRows(5);
-        jScrollPane5.setViewportView(txa_ghiChuDonNhap);
+        txa_tab1GhiChuDonNhap.setColumns(20);
+        txa_tab1GhiChuDonNhap.setRows(5);
+        jScrollPane5.setViewportView(txa_tab1GhiChuDonNhap);
 
         jPanel15.add(jScrollPane5);
 
@@ -387,40 +393,40 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_tongPhieuNhap.setPreferredSize(new java.awt.Dimension(70, 20));
         pnl_tongTienPhieuNhap.add(lbl_tongPhieuNhap);
 
-        txt_tongTienPhieuNhap.setEditable(false);
-        txt_tongTienPhieuNhap.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tongTienPhieuNhap.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txt_tongTienPhieuNhap.setForeground(new java.awt.Color(65, 165, 238));
-        txt_tongTienPhieuNhap.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txt_tongTienPhieuNhap.setText("99999999");
-        txt_tongTienPhieuNhap.setToolTipText("");
-        txt_tongTienPhieuNhap.setBorder(null);
-        pnl_tongTienPhieuNhap.add(txt_tongTienPhieuNhap);
+        txt_tab1TongTien.setEditable(false);
+        txt_tab1TongTien.setBackground(new java.awt.Color(255, 255, 255));
+        txt_tab1TongTien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txt_tab1TongTien.setForeground(new java.awt.Color(65, 165, 238));
+        txt_tab1TongTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_tab1TongTien.setText("99999999");
+        txt_tab1TongTien.setToolTipText("");
+        txt_tab1TongTien.setBorder(null);
+        pnl_tongTienPhieuNhap.add(txt_tab1TongTien);
 
         pnl_thongTinDon1.add(pnl_tongTienPhieuNhap);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 50));
         jPanel3.setLayout(new java.awt.GridLayout(1, 2));
 
-        btn_nhapHang.setBackground(new java.awt.Color(65, 165, 238));
-        btn_nhapHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_nhapHang.setForeground(new java.awt.Color(255, 255, 255));
-        btn_nhapHang.setText("Nhập hàng");
-        btn_nhapHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_nhapHang.setMaximumSize(new java.awt.Dimension(155, 30));
-        btn_nhapHang.setPreferredSize(new java.awt.Dimension(100, 60));
-        jPanel3.add(btn_nhapHang);
-
-        jButton1.setBackground(new java.awt.Color(255, 138, 138));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Hủy đơn");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_tab1HuyDon.setBackground(new java.awt.Color(255, 138, 138));
+        btn_tab1HuyDon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_tab1HuyDon.setForeground(new java.awt.Color(255, 255, 255));
+        btn_tab1HuyDon.setText("Hủy đơn");
+        btn_tab1HuyDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_tab1HuyDonActionPerformed(evt);
             }
         });
-        jPanel3.add(jButton1);
+        jPanel3.add(btn_tab1HuyDon);
+
+        btn_tab1NhapHang.setBackground(new java.awt.Color(65, 165, 238));
+        btn_tab1NhapHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_tab1NhapHang.setForeground(new java.awt.Color(255, 255, 255));
+        btn_tab1NhapHang.setText("Nhập hàng");
+        btn_tab1NhapHang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tab1NhapHang.setMaximumSize(new java.awt.Dimension(155, 30));
+        btn_tab1NhapHang.setPreferredSize(new java.awt.Dimension(100, 60));
+        jPanel3.add(btn_tab1NhapHang);
 
         pnl_thongTinDon1.add(jPanel3);
 
@@ -436,9 +442,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_search.setPreferredSize(new java.awt.Dimension(0, 50));
         pnl_search.setLayout(new javax.swing.BoxLayout(pnl_search, javax.swing.BoxLayout.X_AXIS));
 
-        txt_search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_search.setToolTipText("Vui lòng nhập mã sản phẩm");
-        pnl_search.add(txt_search);
+        txt_tab1Search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tab1Search.setToolTipText("Vui lòng nhập mã sản phẩm");
+        pnl_search.add(txt_tab1Search);
 
         btn_search.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
@@ -461,11 +467,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_danhSachDon.setLayout(new javax.swing.BoxLayout(pnl_danhSachDon, javax.swing.BoxLayout.X_AXIS));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đơn đã đặt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đơn nhập hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        tbl_danhSachDonDaDat.setModel(tblModel_danhSachDonDaDat = new DefaultTableModel(new String[]{"Mã", "Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình trạng", "Kho"
+        tbl_tab2DanhSachDonNhap.setModel(tblModel_tab2danhSachDonNhap = new DefaultTableModel(new String[]{"Mã", "Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình trạng", "Kho"
         }, 0));
-        jScrollPane1.setViewportView(tbl_danhSachDonDaDat);
+        jScrollPane1.setViewportView(tbl_tab2DanhSachDonNhap);
 
         pnl_danhSachDon.add(jScrollPane1);
 
@@ -478,11 +484,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết đơn nhập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        tbl_chiTietDonNhap.setModel(tblModel_chiTietDonDaDat = new DefaultTableModel(new String[]{"Mã", "Tên hàng", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
+        tbl_tab2ChiTietDonNhap.setModel(tblModel_tab2ChiTietDonNhap = new DefaultTableModel(new String[]{"Mã", "Tên hàng", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
-        jScrollPane2.setViewportView(tbl_chiTietDonNhap);
-        if (tbl_chiTietDonNhap.getColumnModel().getColumnCount() > 0) {
-            tbl_chiTietDonNhap.getColumnModel().getColumn(0).setResizable(false);
+        jScrollPane2.setViewportView(tbl_tab2ChiTietDonNhap);
+        if (tbl_tab2ChiTietDonNhap.getColumnModel().getColumnCount() > 0) {
+            tbl_tab2ChiTietDonNhap.getColumnModel().getColumn(0).setResizable(false);
         }
 
         pnl_chiTietDonNhap.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -504,9 +510,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_ngayNhap.setPreferredSize(new java.awt.Dimension(87, 16));
         b_ngayNhap.add(lbl_ngayNhap);
 
-        txt_ngayNhap.setEditable(false);
-        txt_ngayNhap.setColumns(30);
-        b_ngayNhap.add(txt_ngayNhap);
+        txt_tab2NgayNhap.setEditable(false);
+        txt_tab2NgayNhap.setColumns(30);
+        b_ngayNhap.add(txt_tab2NgayNhap);
 
         pnl_ngayNhaptinhTrang.add(b_ngayNhap);
 
@@ -520,9 +526,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_tinhTrang.setPreferredSize(new java.awt.Dimension(65, 16));
         b_tinhTrang.add(lbl_tinhTrang);
 
-        txt_tinhTrang.setEditable(false);
-        txt_tinhTrang.setColumns(34);
-        b_tinhTrang.add(txt_tinhTrang);
+        txt_tab2TinhTrang.setEditable(false);
+        txt_tab2TinhTrang.setColumns(34);
+        b_tinhTrang.add(txt_tab2TinhTrang);
 
         pnl_ngayNhaptinhTrang.add(b_tinhTrang);
 
@@ -543,8 +549,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_nhaCungCap1.setPreferredSize(new java.awt.Dimension(87, 16));
         jPanel14.add(lbl_nhaCungCap1);
 
-        jTextField1.setEditable(false);
-        jPanel14.add(jTextField1);
+        cbo_tab2NhaCungCap.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel14.add(cbo_tab2NhaCungCap);
 
         jPanel13.add(jPanel14);
 
@@ -599,15 +605,15 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_tongTien.setPreferredSize(new java.awt.Dimension(100, 40));
         jPanel6.add(lbl_tongTien);
 
-        txt_tongTien.setEditable(false);
-        txt_tongTien.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tongTien.setColumns(20);
-        txt_tongTien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        txt_tongTien.setForeground(new java.awt.Color(65, 165, 238));
-        txt_tongTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txt_tongTien.setText("89999999");
-        txt_tongTien.setBorder(null);
-        jPanel6.add(txt_tongTien);
+        txt_tab2TongTien.setEditable(false);
+        txt_tab2TongTien.setBackground(new java.awt.Color(255, 255, 255));
+        txt_tab2TongTien.setColumns(20);
+        txt_tab2TongTien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txt_tab2TongTien.setForeground(new java.awt.Color(65, 165, 238));
+        txt_tab2TongTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txt_tab2TongTien.setText("89999999");
+        txt_tab2TongTien.setBorder(null);
+        jPanel6.add(txt_tab2TongTien);
 
         b_tongTien.add(jPanel6);
 
@@ -642,8 +648,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_timKiemTheoMa.add(lbl_timKiemTheoMaKhachHang);
         pnl_timKiemTheoMa.add(filler25);
 
-        txt_timKiemTheoMaKhachHang.setColumns(12);
-        pnl_timKiemTheoMa.add(txt_timKiemTheoMaKhachHang);
+        txt_tab3SDT.setColumns(12);
+        pnl_timKiemTheoMa.add(txt_tab3SDT);
         pnl_timKiemTheoMa.add(filler11);
 
         jPanel10.add(pnl_timKiemTheoMa);
@@ -656,13 +662,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_timTuNgay.setText("Ngày lập:");
         lbl_timTuNgay.setPreferredSize(new java.awt.Dimension(80, 16));
         pnl_timKiemTheoNgay.add(lbl_timTuNgay);
-        pnl_timKiemTheoNgay.add(jdate_tuNgay);
+        pnl_timKiemTheoNgay.add(jdate_tab3TuNgay);
         pnl_timKiemTheoNgay.add(filler27);
 
         lbl_timDenNgay.setText("đến");
         lbl_timDenNgay.setPreferredSize(new java.awt.Dimension(53, 16));
         pnl_timKiemTheoNgay.add(lbl_timDenNgay);
-        pnl_timKiemTheoNgay.add(jdate_denNgay);
+        pnl_timKiemTheoNgay.add(jdate_tab3DenNgay);
         pnl_timKiemTheoNgay.add(filler14);
 
         jPanel10.add(pnl_timKiemTheoNgay);
@@ -683,8 +689,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_timTheoNhaVienThanhToan.add(lbl_maNhanVien);
         pnl_timTheoNhaVienThanhToan.add(filler17);
 
-        txt_maNhanVien.setColumns(12);
-        pnl_timTheoNhaVienThanhToan.add(txt_maNhanVien);
+        txt_tab3MaNhanVien.setColumns(12);
+        pnl_timTheoNhaVienThanhToan.add(txt_tab3MaNhanVien);
         pnl_timTheoNhaVienThanhToan.add(filler12);
 
         jPanel9.add(pnl_timTheoNhaVienThanhToan);
@@ -696,13 +702,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_giaTu.setText("Tổng hóa đơn");
         lbl_giaTu.setPreferredSize(new java.awt.Dimension(80, 16));
         pnl_timTheoGiaTien.add(lbl_giaTu);
-        pnl_timTheoGiaTien.add(txt_giaTu);
+        pnl_timTheoGiaTien.add(txt_tab3GiaTu);
         pnl_timTheoGiaTien.add(filler28);
 
         lbl_giaDen.setText("đến:");
         lbl_giaDen.setPreferredSize(new java.awt.Dimension(53, 16));
         pnl_timTheoGiaTien.add(lbl_giaDen);
-        pnl_timTheoGiaTien.add(txt_giaDen);
+        pnl_timTheoGiaTien.add(txt_tab3GiaDen);
         pnl_timTheoGiaTien.add(filler13);
 
         jPanel9.add(pnl_timTheoGiaTien);
@@ -717,21 +723,21 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jPanel16.setPreferredSize(new java.awt.Dimension(0, 70));
         jPanel16.setLayout(new java.awt.GridLayout(1, 0));
 
-        btn_search2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_search2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
-        btn_search2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_search2.setMaximumSize(new java.awt.Dimension(75, 50));
-        btn_search2.setMinimumSize(new java.awt.Dimension(75, 50));
-        btn_search2.setPreferredSize(new java.awt.Dimension(10, 20));
-        jPanel16.add(btn_search2);
+        btn_tab3Search.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_tab3Search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
+        btn_tab3Search.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tab3Search.setMaximumSize(new java.awt.Dimension(75, 50));
+        btn_tab3Search.setMinimumSize(new java.awt.Dimension(75, 50));
+        btn_tab3Search.setPreferredSize(new java.awt.Dimension(10, 20));
+        jPanel16.add(btn_tab3Search);
 
-        btn_search1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btn_search1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
-        btn_search1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_search1.setMaximumSize(new java.awt.Dimension(75, 50));
-        btn_search1.setMinimumSize(new java.awt.Dimension(75, 50));
-        btn_search1.setPreferredSize(new java.awt.Dimension(30, 40));
-        jPanel16.add(btn_search1);
+        btn_tab3Reset.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_tab3Reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
+        btn_tab3Reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_tab3Reset.setMaximumSize(new java.awt.Dimension(75, 50));
+        btn_tab3Reset.setMinimumSize(new java.awt.Dimension(75, 50));
+        btn_tab3Reset.setPreferredSize(new java.awt.Dimension(30, 40));
+        jPanel16.add(btn_tab3Reset);
 
         pnl_timKiemHoaDon.add(jPanel16);
 
@@ -742,9 +748,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         jScrollPane7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        table_danhSachHangHoa2.setModel(tblModel_danhSachHoaDon = new DefaultTableModel(new String[]{"Mã", "Nhân viên","Khách hàng", "Hình thức thanh toán", "Ngày",
+        table_tab3DanhSachHangHoa.setModel(tblModel_tab3DanhSachHoaDon = new DefaultTableModel(new String[]{"Mã", "Nhân viên","Khách hàng", "Hình thức thanh toán", "Ngày",
         }, 0));
-        jScrollPane7.setViewportView(table_danhSachHangHoa2);
+        jScrollPane7.setViewportView(table_tab3DanhSachHangHoa);
 
         pnl_center.add(jScrollPane7);
 
@@ -754,11 +760,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jScrollPane8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         jScrollPane8.setPreferredSize(new java.awt.Dimension(500, 427));
 
-        table_danhSachHoaDon.setModel(tblModel_chiTietHoaDon = new DefaultTableModel(new String[]{"Mã", "Tên", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
+        table_tab3ChiTietHoaDon.setModel(tblModel_tab3ChiTietHoaDon = new DefaultTableModel(new String[]{"Mã", "Tên", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
-        jScrollPane8.setViewportView(table_danhSachHoaDon);
-        if (table_danhSachHoaDon.getColumnModel().getColumnCount() > 0) {
-            table_danhSachHoaDon.getColumnModel().getColumn(0).setResizable(false);
+        jScrollPane8.setViewportView(table_tab3ChiTietHoaDon);
+        if (table_tab3ChiTietHoaDon.getColumnModel().getColumnCount() > 0) {
+            table_tab3ChiTietHoaDon.getColumnModel().getColumn(0).setResizable(false);
         }
 
         pnl_thongTinHoaDon.add(jScrollPane8, java.awt.BorderLayout.CENTER);
@@ -895,9 +901,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_tab1HuyDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab1HuyDonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_tab1HuyDonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -908,13 +914,15 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private javax.swing.JPanel b_tongTien;
     private javax.swing.JPanel b_tongTien1;
     private javax.swing.JPanel b_tongTien2;
-    private javax.swing.JButton btn_nhapHang;
     private javax.swing.JButton btn_search;
-    private javax.swing.JButton btn_search1;
-    private javax.swing.JButton btn_search2;
+    private javax.swing.JButton btn_tab1HuyDon;
+    private javax.swing.JButton btn_tab1NhapHang;
+    private javax.swing.JButton btn_tab3Reset;
+    private javax.swing.JButton btn_tab3Search;
     private javax.swing.JButton btn_themHang;
     private javax.swing.JButton btn_xoaHang;
-    private javax.swing.JComboBox<String> cbo_nhaCungCap;
+    private javax.swing.JComboBox<String> cbo_tab1NhaCungCap;
+    private javax.swing.JComboBox<String> cbo_tab2NhaCungCap;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
@@ -941,7 +949,6 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -969,12 +976,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private com.toedter.calendar.JDateChooser jdate_denNgay;
-    private com.toedter.calendar.JDateChooser jdate_tuNgay;
+    private com.toedter.calendar.JDateChooser jdate_tab3DenNgay;
+    private com.toedter.calendar.JDateChooser jdate_tab3TuNgay;
     private javax.swing.JLabel lbl_ghiChuDonNhap;
     private javax.swing.JLabel lbl_ghiChuDonNhap1;
     private javax.swing.JLabel lbl_giaDen;
@@ -1017,25 +1023,25 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_timTheoNhaVienThanhToan;
     private javax.swing.JPanel pnl_tongTienPhieuNhap;
     private javax.swing.JTabbedPane tab_donHang;
-    private javax.swing.JTable table_chiTietDonNhap1;
-    private javax.swing.JTable table_danhSachHangHoa2;
-    private javax.swing.JTable table_danhSachHoaDon;
-    private javax.swing.JTable tbl_chiTietDonNhap;
-    private javax.swing.JTable tbl_danhSachDonDaDat;
-    private javax.swing.JTable tbl_danhSachHangHoa;
-    private javax.swing.JTextArea txa_ghiChuDonNhap;
+    private javax.swing.JTable table_tab3ChiTietHoaDon;
+    private javax.swing.JTable table_tab3DanhSachHangHoa;
+    private javax.swing.JTable tbl_tab1ChiTietDonNhap;
+    private javax.swing.JTable tbl_tab1DanhSachHangHoa;
+    private javax.swing.JTable tbl_tab2ChiTietDonNhap;
+    private javax.swing.JTable tbl_tab2DanhSachDonNhap;
     private javax.swing.JTextArea txa_ghiChuDonNhap1;
-    private javax.swing.JTextField txt_giaDen;
-    private javax.swing.JTextField txt_giaTu;
-    private javax.swing.JTextField txt_maNhanVien;
-    private javax.swing.JTextField txt_ngayNhap;
+    private javax.swing.JTextArea txa_tab1GhiChuDonNhap;
     private javax.swing.JTextField txt_ngayNhap2;
-    private javax.swing.JTextField txt_search;
-    private javax.swing.JTextField txt_timKiemTheoMaKhachHang;
-    private javax.swing.JTextField txt_tinhTrang;
+    private javax.swing.JTextField txt_tab1Search;
+    private javax.swing.JTextField txt_tab1TongTien;
+    private javax.swing.JTextField txt_tab2NgayNhap;
+    private javax.swing.JTextField txt_tab2TinhTrang;
+    private javax.swing.JTextField txt_tab2TongTien;
+    private javax.swing.JTextField txt_tab3GiaDen;
+    private javax.swing.JTextField txt_tab3GiaTu;
+    private javax.swing.JTextField txt_tab3MaNhanVien;
+    private javax.swing.JTextField txt_tab3SDT;
     private javax.swing.JTextField txt_tinhTrang2;
-    private javax.swing.JTextField txt_tongTien;
     private javax.swing.JTextField txt_tongTien1;
-    private javax.swing.JTextField txt_tongTienPhieuNhap;
     // End of variables declaration//GEN-END:variables
 }
