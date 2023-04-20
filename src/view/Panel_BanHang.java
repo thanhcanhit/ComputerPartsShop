@@ -4,44 +4,64 @@
  */
 package view;
 
+import controller.DiaChi_bus;
+import controller.HoaDon_bus;
 import controller.KhachHang_bus;
 import controller.KhoHang_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
 import java.text.NumberFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
+import model.connguoi.NhanVien;
 import model.hoadon.ChiTietHoaDon;
+import model.hoadon.HoaDon;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
+import model.share.DiaChi;
 
 /**
  *
  * @author thanh
  */
-public class Panel_BanHang extends javax.swing.JPanel {
+public final class Panel_BanHang extends javax.swing.JPanel {
 
+    private final Frame_InputDiaChi frame_diaChi = new Frame_InputDiaChi(this);
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
     private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
+
+    // variable
     private int page = 1;
+    private double subTotal = 0;
+    private KhachHang khach = null;
+    private NhanVien nhanVien = null;
 
     private SanPham_bus sanPham_bus;
     private ThuongHieu_bus thuongHieu_bus;
     private KhoHang_bus khoHang_bus;
     private KhachHang_bus khachHang_bus;
+    private DiaChi_bus diaChi_bus;
+    private HoaDon_bus hoaDon_bus;
 
     /**
      * Creates new form Panel_BanHang
+     *
+     * @param nhanVien: Nhân viên đang sử dụng phầm mềm
      */
-    public Panel_BanHang() {
+    public Panel_BanHang(NhanVien nhanVien) {
+        this.nhanVien = nhanVien;
+
         initDataObject();
         initTableModel();
         initComponents();
@@ -96,6 +116,8 @@ public class Panel_BanHang extends javax.swing.JPanel {
         thuongHieu_bus = new ThuongHieu_bus();
         khoHang_bus = new KhoHang_bus();
         khachHang_bus = new KhachHang_bus();
+        diaChi_bus = new DiaChi_bus();
+        hoaDon_bus = new HoaDon_bus();
     }
 
     public void initTableModel() {
@@ -134,7 +156,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
     public void renderCartTable() {
         ArrayList<ChiTietHoaDon> list = gioHang;
         tblModel_carts.setRowCount(0);
-        double subTotal = 0;
+        subTotal = 0;
         for (ChiTietHoaDon sp : list) {
             tblModel_carts.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSoLuong(), vnd.format(sp.getGiaBan())});
             subTotal += sp.getGiaBan() * sp.getSoLuong();
@@ -183,6 +205,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt = new javax.swing.JLabel();
         txt_hoTen = new javax.swing.JTextField();
+        cmb_gender = new javax.swing.JComboBox<>();
+        pnl_box5 = new javax.swing.JPanel();
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
+        lbl_sdt2 = new javax.swing.JLabel();
+        txt_diaChi = new javax.swing.JTextField();
         pnl_box3 = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_sdt4 = new javax.swing.JLabel();
@@ -365,7 +392,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
 
         pnl_orderInfo.setBackground(new java.awt.Color(255, 255, 255));
         pnl_orderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
-        pnl_orderInfo.setPreferredSize(new java.awt.Dimension(400, 200));
+        pnl_orderInfo.setPreferredSize(new java.awt.Dimension(400, 250));
         pnl_orderInfo.setLayout(new javax.swing.BoxLayout(pnl_orderInfo, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_box1.setBackground(new java.awt.Color(255, 255, 255));
@@ -409,7 +436,33 @@ public class Panel_BanHang extends javax.swing.JPanel {
         txt_hoTen.setPreferredSize(new java.awt.Dimension(100, 0));
         pnl_box2.add(txt_hoTen);
 
+        cmb_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nữ", "Nam" }));
+        pnl_box2.add(cmb_gender);
+
         pnl_orderInfo.add(pnl_box2);
+
+        pnl_box5.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_box5.setPreferredSize(new java.awt.Dimension(400, 30));
+        pnl_box5.setLayout(new javax.swing.BoxLayout(pnl_box5, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_box5.add(filler6);
+
+        lbl_sdt2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_sdt2.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_sdt2.setText("Địa chỉ");
+        lbl_sdt2.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box5.add(lbl_sdt2);
+
+        txt_diaChi.setEditable(false);
+        txt_diaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_diaChi.setPreferredSize(new java.awt.Dimension(100, 0));
+        txt_diaChi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txt_diaChiMouseClicked(evt);
+            }
+        });
+        pnl_box5.add(txt_diaChi);
+
+        pnl_orderInfo.add(pnl_box5);
 
         pnl_box3.setBackground(new java.awt.Color(255, 255, 255));
         pnl_box3.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -483,6 +536,11 @@ public class Panel_BanHang extends javax.swing.JPanel {
         btn_export.setForeground(new java.awt.Color(242, 242, 242));
         btn_export.setText("XUẤT");
         btn_export.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_export.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exportActionPerformed(evt);
+            }
+        });
         pnl_cartControl.add(btn_export);
 
         pnl_cart.add(pnl_cartControl, java.awt.BorderLayout.SOUTH);
@@ -504,6 +562,10 @@ public class Panel_BanHang extends javax.swing.JPanel {
         if (evt.getKeyCode() == 10)
             search();
     }//GEN-LAST:event_txt_searchKeyPressed
+
+    public void updateDiaChi(DiaChi dc) {
+        txt_diaChi.setText(dc.toString());
+    }
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", "Nhập thông tin", JOptionPane.PLAIN_MESSAGE);
@@ -568,7 +630,8 @@ public class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_sdtKeyPressed
 
     private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
-        getKhachHangNeuTonTai();
+        if (txt_sdt.getText().length() >= 10)
+            getKhachHangNeuTonTai();
     }//GEN-LAST:event_txt_sdtFocusLost
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
@@ -579,7 +642,10 @@ public class Panel_BanHang extends javax.swing.JPanel {
             txt_sdt.setText("");
             txt_hangTV.setText("");
             txt_hoTen.setText("");
+            txt_diaChi.setText("");
             cmb_phuongThucThanhToan.setSelectedIndex(0);
+            khach = null;
+            subTotal = 0;
         }
     }//GEN-LAST:event_btn_cancelActionPerformed
 
@@ -597,17 +663,74 @@ public class Panel_BanHang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_prevActionPerformed
 
+    private void txt_diaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_diaChiMouseClicked
+        frame_diaChi.setVisible(true);
+        frame_diaChi.getDiaChi();
+    }//GEN-LAST:event_txt_diaChiMouseClicked
+
+    private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
+        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn này không", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            if (khach == null) {
+                String sdt = txt_sdt.getText().trim();
+                String hoTen = txt_hoTen.getText().trim();
+                DiaChi dc = frame_diaChi.getDiaChi();
+                boolean gioiTinh = cmb_gender.getSelectedIndex() == 0;
+
+                try {
+                    KhachHang kh = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "", null, dc, gioiTinh, 0);
+                } catch (Exception ex) {
+                    Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+//        Phat sinh hoa don
+            String maHoaDon = hoaDon_bus.sinhMa();
+            HoaDon hoaDon = new HoaDon(maHoaDon, LocalDate.now(), cmb_phuongThucThanhToan.getSelectedItem().toString(), nhanVien, khach, gioHang, subTotal);
+
+            if (hoaDon_bus.themHoaDon(hoaDon)) {
+                JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
+                // Reset
+                gioHang = new ArrayList<>();
+                renderCartTable();
+                txt_thanhTien.setText("");
+                txt_sdt.setText("");
+                txt_hangTV.setText("");
+                txt_hoTen.setText("");
+                txt_diaChi.setText("");
+                cmb_phuongThucThanhToan.setSelectedIndex(0);
+                khach = null;
+                subTotal = 0;
+                renderPage();
+            } else {
+                JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
+            }
+        }
+    }//GEN-LAST:event_btn_exportActionPerformed
+
+    private void renderKhachHang() {
+        txt_hoTen.setEditable(false);
+        txt_hoTen.setText(khach.getHoTen());
+        txt_hangTV.setText(khach.getHang());
+        cmb_gender.setSelectedIndex(khach.isGioiTinh() ? 1 : 0);
+        String diaChi = diaChi_bus.getDiaChiTheoMa(khach.getDiaChi().getMaDiaChi()).toString();
+        txt_diaChi.setText(diaChi);
+    }
+
     private void getKhachHangNeuTonTai() {
         String sdtInput = txt_sdt.getText();
         if (Pattern.matches("\\d{10}", sdtInput)) {
             KhachHang kh = khachHang_bus.getKhachHangTheoSDT(sdtInput);
             if (kh != null) {
-                txt_hoTen.setEditable(false);
-                txt_hoTen.setText(kh.getHoTen());
-                txt_hangTV.setText(kh.getHang());
+                this.khach = kh;
+                cmb_gender.setEnabled(false);
+                renderKhachHang();
             } else {
+                this.khach = null;
                 txt_hoTen.setEditable(true);
                 txt_hoTen.setText("");
+                txt_diaChi.setText("");
+                cmb_gender.setEnabled(true);
                 txt_hoTen.requestFocus();
             }
         } else {
@@ -626,15 +749,18 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JButton btn_remove;
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_search;
+    private javax.swing.JComboBox<String> cmb_gender;
     private javax.swing.JComboBox<String> cmb_phuongThucThanhToan;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.JLabel lbl_sdt;
     private javax.swing.JLabel lbl_sdt1;
+    private javax.swing.JLabel lbl_sdt2;
     private javax.swing.JLabel lbl_sdt3;
     private javax.swing.JLabel lbl_sdt4;
     private javax.swing.JLabel lbl_soTrang;
@@ -644,6 +770,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_box2;
     private javax.swing.JPanel pnl_box3;
     private javax.swing.JPanel pnl_box4;
+    private javax.swing.JPanel pnl_box5;
     private javax.swing.JPanel pnl_cart;
     private javax.swing.JPanel pnl_cartCenter;
     private javax.swing.JPanel pnl_cartControl;
@@ -659,6 +786,7 @@ public class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JScrollPane scr_products;
     private javax.swing.JTable tbl_cart;
     private javax.swing.JTable tbl_products;
+    private javax.swing.JTextField txt_diaChi;
     private javax.swing.JTextField txt_hangTV;
     private javax.swing.JTextField txt_hoTen;
     private javax.swing.JTextField txt_sdt;

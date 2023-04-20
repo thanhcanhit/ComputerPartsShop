@@ -10,8 +10,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
 import model.share.ConnectDB;
@@ -42,19 +41,36 @@ public class MainView extends javax.swing.JFrame {
 //  Khi ra mắt phải chỉnh lại chưa đăng nhập
         DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
         try {
-            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
+//            Nhân viên kinh doanh
+            NhanVien nhanVien = new NhanVien("NV0001", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
             login(nhanVien);
         } catch (Exception ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
+
+//        Sự kiện đóng
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(null,
+                        "Bạn có thật sự muốn tắt ComputerPartsShop?", "Đóng ứng dụng?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+//                    Đóng kết nối
+                    ConnectDB.disconnect();
+                    System.exit(0);
+                }
+            }
+        });
     }
 
     public void connectDB() {
         try {
             ConnectDB.connect();
         } catch (Exception e) {
-//            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
-//            System.exit(0);
+            JOptionPane.showMessageDialog(this, "Không thể kết nối đến server!", "Lỗi", JOptionPane.DEFAULT_OPTION);
+            System.exit(0);
         }
     }
 
@@ -71,6 +87,8 @@ public class MainView extends javax.swing.JFrame {
 
     public void login(NhanVien nhanVien) {
         this.nhanVien = nhanVien;
+        pnl_cart = new Panel_BanHang(nhanVien);
+        pnl_main.add(this.pnl_cart, "cart");
 
         this.lbl_name.setText(nhanVien.getChucDanh() + ". " + nhanVien.getHoTen());
         headerRender(this.lbl_name);
@@ -91,6 +109,9 @@ public class MainView extends javax.swing.JFrame {
 
     public void activeAllFunction() {
         Arrays.stream(new Component[]{lbl_cart, lbl_customers, lbl_employees, lbl_inventory, lbl_logout, lbl_products}).forEach(item -> item.setVisible(true));
+        if (nhanVien.getChucDanh().equalsIgnoreCase("Nhân viên kinh doanh")) {
+            lbl_employees.setVisible(false);
+        }
     }
 
     /**
@@ -117,7 +138,7 @@ public class MainView extends javax.swing.JFrame {
         pnl_main = new javax.swing.JPanel();
         pnl_home = new Panel_Home();
         lbl_main = new javax.swing.JLabel();
-        pnl_cart = new Panel_BanHang();
+        pnl_cart = new javax.swing.JPanel();
         pnl_products = new javax.swing.JPanel();
         pnl_inventory = new javax.swing.JPanel();
         pnl_customers = new javax.swing.JPanel();
@@ -130,16 +151,19 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_header.setBackground(new java.awt.Color(65, 165, 238));
         pnl_header.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 10, 0, 10));
-        pnl_header.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_header.setMinimumSize(new java.awt.Dimension(500, 27));
+        pnl_header.setPreferredSize(new java.awt.Dimension(500, 30));
         pnl_header.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
 
         lbl_name.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_name.setForeground(new java.awt.Color(255, 255, 255));
         lbl_name.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbl_name.setText("QL.Nguyễn Thanh Cảnh");
+        lbl_name.setText("Nhân viên kinh doanh .Nguyễn Thanh Cảnh");
         lbl_name.setToolTipText("");
         lbl_name.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_name.setPreferredSize(new java.awt.Dimension(220, 30));
+        lbl_name.setMaximumSize(new java.awt.Dimension(500, 30));
+        lbl_name.setMinimumSize(new java.awt.Dimension(500, 30));
+        lbl_name.setPreferredSize(new java.awt.Dimension(500, 30));
         pnl_header.add(lbl_name);
 
         btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

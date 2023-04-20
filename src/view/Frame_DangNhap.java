@@ -4,14 +4,10 @@
  */
 package view;
 
-import com.formdev.flatlaf.FlatIntelliJLaf;
-import java.awt.event.WindowEvent;
-import java.time.LocalDate;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
+import controller.NhanVien_bus;
+import controller.TaiKhoan_bus;
+import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
-import model.share.DiaChi;
 
 /**
  *
@@ -19,16 +15,16 @@ import model.share.DiaChi;
  */
 public class Frame_DangNhap extends javax.swing.JFrame {
 
-    MainView main;
+    private MainView main;
 
-    /**
-     * Creates new form Frame_DangNhap
-     */
+    private TaiKhoan_bus taiKhoan_bus = new TaiKhoan_bus();
+    private NhanVien_bus nhanVien_bus = new NhanVien_bus();
+
     public Frame_DangNhap(MainView main) {
         this.main = main;
         initComponents();
     }
-    
+
     public void close() {
         this.setVisible(false);
         this.dispose();
@@ -111,7 +107,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_username.add(filler1);
 
         txt_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_username.setText("QL001");
+        txt_username.setText("NV0003");
         txt_username.setToolTipText("");
         pnl_username.add(txt_username);
 
@@ -129,7 +125,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_password.add(filler6);
 
         txt_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_password.setText("123456");
+        txt_password.setText("1111");
         pnl_password.add(txt_password);
 
         pnl_formInput.add(pnl_password);
@@ -179,15 +175,21 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         String username = txt_username.getText().trim();
         String password = new String(txt_password.getPassword());
 
-        // Xu Li
+        boolean isValid = taiKhoan_bus.kiemTraTaiKhoan(username, password);
+
 //        Dang nhap
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf","dc0");
-        try {
-            NhanVien nhanVien = new NhanVien("000", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhocalDcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
-            main.login(nhanVien);
-            close();
-        } catch (Exception ex) {
-            Logger.getLogger(MainView.class.getName()).log(Level.SEVERE, null, ex);
+        if (isValid) {
+            try {
+                NhanVien nhanVien = nhanVien_bus.getNhanVienTheoMa(username).get(0);
+                main.login(nhanVien);
+                close();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Tài khoản, mật khẩu không chính xác", "Đăng nhập sai", JOptionPane.DEFAULT_OPTION);
+            txt_username.selectAll();
+            txt_username.requestFocus();
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

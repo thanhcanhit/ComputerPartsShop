@@ -86,7 +86,20 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
     public boolean capNhatDonNhapHang(String maDon, DonNhapHang donNhap) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    
+
+    public String getMaLonNhat() {
+        String s = "DNH0001";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maDonNhap from DonNhapHang order by maDonNhap desc");
+            rs.next();
+            s = rs.getString("maDonNhap");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
 
 }

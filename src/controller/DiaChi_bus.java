@@ -8,16 +8,20 @@ import dao.DiaChi_dao;
 import interface_dao.DiaChiInterface;
 import java.util.ArrayList;
 import model.share.DiaChi;
+import model.share.Utility;
 
 /**
  *
  * @author macbookk
  */
-public class DiaChi_bus implements DiaChiInterface{
+public class DiaChi_bus implements DiaChiInterface {
+
     private DiaChi_dao dao;
-    public DiaChi_bus(){
+
+    public DiaChi_bus() {
         dao = new DiaChi_dao();
     }
+
     @Override
     public ArrayList<DiaChi> getAllDiaChi() {
         return dao.getAllDiaChi();
@@ -42,5 +46,10 @@ public class DiaChi_bus implements DiaChiInterface{
     public boolean capNhatDiaChi(String maDiaChi, DiaChi diaChi) {
         return dao.capNhatDiaChi(maDiaChi, diaChi);
     }
-    
+
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+        return Utility.sinhMaTang(last, "DC", 4);
+    }
+
 }

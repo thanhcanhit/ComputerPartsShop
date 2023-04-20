@@ -8,6 +8,7 @@ import dao.TaiKhoan_dao;
 import interface_dao.TaiKhoanInterface;
 import java.util.ArrayList;
 import model.connguoi.TaiKhoan;
+import model.share.Utility;
 
 /**
  *
@@ -37,5 +38,11 @@ public class TaiKhoan_bus implements TaiKhoanInterface{
     public boolean capNhatTaiKhoan(String soTK, TaiKhoan taiKhoan) {
         return dao.capNhatTaiKhoan(soTK, taiKhoan);
     }
+
+    @Override
+    public boolean kiemTraTaiKhoan(String tk, String mk) {
+        return dao.kiemTraTaiKhoan(tk, mk);
+    }
     
+ 
 }

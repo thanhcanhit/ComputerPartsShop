@@ -8,6 +8,7 @@ import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
 import java.util.ArrayList;
 import model.hoadon.HoaDon;
+import model.share.Utility;
 
 /**
  *
@@ -46,4 +47,10 @@ public class HoaDon_bus implements HoaDonInterface{
         return dao.capNhatHoaDon(maHoaDon, hoaDon);
     }
     
+    public String sinhMa() {
+        String last = dao.getMaLonNhat();
+
+        return Utility.sinhMaTang(last, "HD", 5);
+    }
+
 }

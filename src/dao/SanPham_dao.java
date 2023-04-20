@@ -4,12 +4,14 @@
  */
 package dao;
 
+import controller.NhanVien_bus;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
 import model.sanpham.SanPham;
 import java.sql.*;
 import model.sanpham.ThuongHieu;
 import model.share.ConnectDB;
+import model.share.Utility;
 
 /**
  *
@@ -220,4 +222,18 @@ public class SanPham_dao implements SanPhamInterface {
         return result;
     }
 
+    public String getMaLonNhat() {
+        String s = "SP0001";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maSanPham from SanPham order by maSanPham desc");
+            rs.next();
+            s = rs.getString("maSanPham");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
 }

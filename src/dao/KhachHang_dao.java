@@ -167,5 +167,20 @@ public class KhachHang_dao implements KhachHangInterface {
         }
         return i;
     }
+    
+    public String getMaLonNhat() {
+        String s = "KH00000";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maKhachHang from KhachHang order by maKhachHang desc");
+            rs.next();
+            s = rs.getString("maKhachHang");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return s;
+    }
 
 }

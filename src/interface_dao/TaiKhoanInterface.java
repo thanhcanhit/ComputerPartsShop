@@ -16,4 +16,5 @@ public interface TaiKhoanInterface {
     public boolean themTaiKhoan(TaiKhoan taiKhoan);
     public boolean xoaTaiKhoan(String soTK);
     public boolean capNhatTaiKhoan(String soTK, TaiKhoan taiKhoan);
+    public boolean kiemTraTaiKhoan(String tk, String mk);
 }
