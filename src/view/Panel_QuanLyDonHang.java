@@ -5,6 +5,7 @@
 package view;
 
 
+import controller.DonNhapHang_bus;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import model.hoadon.ChiTietHoaDon;
@@ -12,7 +13,6 @@ import model.hoadon.HoaDon;
 import model.kho.ChiTietDonNhap;
 import model.kho.DonNhapHang;
 import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
 
 
 /**
@@ -21,53 +21,35 @@ import model.sanpham.ThuongHieu;
  */
 public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private DefaultTableModel tblModel_danhSachHangHoa;
-    private DefaultTableModel tblModel_chiTietDonNhap1;
+    private DefaultTableModel tblModel_chiTietDonNhap;
     private DefaultTableModel tblModel_danhSachDonDaDat;
     private DefaultTableModel tblModel_chiTietDonDaDat;
     private DefaultTableModel tblModel_danhSachHoaDon;
     private DefaultTableModel tblModel_chiTietHoaDon;
+    
+    private DonNhapHang_bus donNhap_bus;
         
     /**
      * Creates new form Panel_QuanLyDonHang
      */
     public Panel_QuanLyDonHang() {
-        initComponents();
+        initDataObject();
         initTableModel();
+        initComponents();
+        
+        renderAllDanhSachDonNhap();
+    }
+    
+    public void initDataObject() {
+        donNhap_bus = new DonNhapHang_bus();
     }
 
-    
-//    public class Panel_BanHang extends javax.swing.JPanel {
-//
-//    private DefaultTableModel tblModel_product;
-//    private DefaultTableModel tblModel_carts;
-//
-//    /**
-//     * Creates new form Panel_BanHang
-//     */
-//    public Panel_BanHang() {
-//        initTableModel();
-//        initComponents();
-//    }
-//
     public void initTableModel() {
-        // Products
-//        tblModel_product = new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
-//        }, 0);
-//
-//        // Carts
-//        tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
-//        }, 0);
-
-        ArrayList<SanPham> list = new ArrayList<>();
-        try {
-            list.add(new SanPham("sp1", "chuot1", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp2", "chuot2", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            list.add(new SanPham("sp3", "chuot3", 200, 10, SanPham.CHUOT, 8, new ThuongHieu("th1", "Itel", "Trung"), 5, "DPI:3000"));
-            renderDanhSachHangHoa(list);
-//            renderChiTietDonNhap(list);
-        } catch (Exception e) {
-
-        }
+       tblModel_chiTietDonNhap = new DefaultTableModel(new String[]{"Mã đơn nhập", " Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình Trạng", "Kho"}, 0);
+    }
+    
+    public void renderAllDanhSachDonNhap() {
+        renderDanhSachDonNhap(donNhap_bus.getAllDonNhapHang());
     }
 //
     public void renderDanhSachHangHoa(ArrayList<SanPham> list) {
@@ -79,16 +61,16 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     }
 //
     public void renderChiTietDonNhap(ArrayList<ChiTietDonNhap> list) {
-        tblModel_chiTietDonNhap1.setRowCount(0);
+        tblModel_chiTietDonNhap.setRowCount(0);
         for (ChiTietDonNhap sp : list) {
-            tblModel_chiTietDonNhap1.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSanPham().getLoai(), sp.getSanPham().getGiaNhap(),});
+            tblModel_chiTietDonNhap.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSanPham().getLoai(), sp.getSanPham().getGiaNhap(),});
         }
     }
     
-    public void renderDanhSachDonDaDat(ArrayList<DonNhapHang> list){
+    public void renderDanhSachDonNhap(ArrayList<DonNhapHang> list){
         tblModel_danhSachDonDaDat.setRowCount(0);
         for (DonNhapHang donNhapHang : list) {
-            tblModel_chiTietDonDaDat.addRow(new Object[]{donNhapHang.getMaDonNhap(), "donNhapHang.getNhanVien().getMaNhanVien", "donNhapHang.getNhaCungCap().getMaNhaCungCap", donNhapHang.getNgayNhap(), donNhapHang.isDanhan()});
+            tblModel_danhSachDonDaDat.addRow(new Object[]{donNhapHang.getMaDonNhap(), donNhapHang.getNhanVien().getMaNV(), donNhapHang.getNhaCungCap().getMaNCC(), donNhapHang.getNgayNhap(), donNhapHang.isDanhan(), donNhapHang.getKhoHang().getMaKho()});
         }
     }
     
@@ -286,8 +268,10 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_themDonHangCenter.setLayout(new javax.swing.BoxLayout(pnl_themDonHangCenter, javax.swing.BoxLayout.X_AXIS));
 
+        pnl_danhSachHangHoa1.setBackground(new java.awt.Color(255, 255, 255));
         pnl_danhSachHangHoa1.setLayout(new java.awt.BorderLayout());
 
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
         tbl_danhSachHangHoa.setModel(tblModel_danhSachHangHoa= new DefaultTableModel(new String[]{"Mã", "Tên", "Loại", "Thương hiệu", "Số lượng", "Giá bán"
@@ -299,12 +283,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_themDonHangCenter.add(pnl_danhSachHangHoa1);
 
+        pnl_chiTietDonNhap1.setBackground(new java.awt.Color(255, 255, 255));
         pnl_chiTietDonNhap1.setPreferredSize(new java.awt.Dimension(500, 0));
         pnl_chiTietDonNhap1.setLayout(new javax.swing.BoxLayout(pnl_chiTietDonNhap1, javax.swing.BoxLayout.Y_AXIS));
 
         jScrollPane4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiếp đơn nhập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
-        table_chiTietDonNhap1.setModel(tblModel_chiTietDonNhap1 = new DefaultTableModel(new String[]{"Mã", "Tên", "Số lượng", "Đơn giá", "Tổng"
+        table_chiTietDonNhap1.setModel(tblModel_chiTietDonNhap = new DefaultTableModel(new String[]{"Mã", "Tên", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
         table_chiTietDonNhap1.setRowHeight(30);
         jScrollPane4.setViewportView(table_chiTietDonNhap1);
@@ -472,8 +457,10 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_donDatHang.setLayout(new java.awt.GridLayout(1, 2));
 
+        pnl_danhSachDon.setBackground(new java.awt.Color(255, 255, 255));
         pnl_danhSachDon.setLayout(new javax.swing.BoxLayout(pnl_danhSachDon, javax.swing.BoxLayout.X_AXIS));
 
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách đơn đã đặt", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
         tbl_danhSachDonDaDat.setModel(tblModel_danhSachDonDaDat = new DefaultTableModel(new String[]{"Mã", "Nhân viên", "Nhà cung cấp", "Ngày đặt", "Tình trạng", "Kho"
@@ -484,6 +471,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_donDatHang.add(pnl_danhSachDon);
 
+        pnl_chiTietDonNhap.setBackground(new java.awt.Color(255, 255, 255));
         pnl_chiTietDonNhap.setPreferredSize(new java.awt.Dimension(500, 640));
         pnl_chiTietDonNhap.setLayout(new java.awt.BorderLayout());
 
@@ -499,12 +487,14 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_chiTietDonNhap.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
+        pnl_thongTinDon.setBackground(new java.awt.Color(255, 255, 255));
         pnl_thongTinDon.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_thongTinDon.setLayout(new javax.swing.BoxLayout(pnl_thongTinDon, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_ngayNhaptinhTrang.setPreferredSize(new java.awt.Dimension(0, 30));
         pnl_ngayNhaptinhTrang.setLayout(new javax.swing.BoxLayout(pnl_ngayNhaptinhTrang, javax.swing.BoxLayout.X_AXIS));
 
+        b_ngayNhap.setBackground(new java.awt.Color(255, 255, 255));
         b_ngayNhap.setLayout(new javax.swing.BoxLayout(b_ngayNhap, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_ngayNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -520,6 +510,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         pnl_ngayNhaptinhTrang.add(b_ngayNhap);
 
+        b_tinhTrang.setBackground(new java.awt.Color(255, 255, 255));
         b_tinhTrang.setLayout(new javax.swing.BoxLayout(b_tinhTrang, javax.swing.BoxLayout.LINE_AXIS));
         b_tinhTrang.add(filler22);
 
