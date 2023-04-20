@@ -22,7 +22,20 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
      * Creates new form Frame_InputDiaChi
      */
     private JPanel container;
+    private DiaChi dc = null;
+    public Frame_InputDiaChi(JPanel container, DiaChi dc) {
+        this.dc=dc;
+        initComponents();
+        txt_duong.setText(dc.getDuong());
+        txt_so.setText(dc.getSo());
+        txt_quan.setText(dc.getQuan());
+        txt_quocGia.setText(dc.getQuocGia());
+        txt_tp.setText(dc.getThanhPho());
+        
+        this.container = container;
+        
 
+    }
     public Frame_InputDiaChi(JPanel container) {
         initComponents();
         this.container = container;
@@ -184,7 +197,8 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_duongKeyPressed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        reset();
+        if(dc==null)
+            reset();
     }//GEN-LAST:event_formComponentShown
 
     public void validateAndSubmit() {
@@ -225,6 +239,9 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         }
         if(container instanceof Panel_QuanLyNhanVien){
             ((Panel_QuanLyNhanVien) container).updateDiaChi(getDiaChi());
+        }
+        if(container instanceof Panel_QuanLyKhachHang){
+            ((Panel_QuanLyKhachHang) container).updateDiaChi(getDiaChi());
         }
         this.setVisible(false);
     }

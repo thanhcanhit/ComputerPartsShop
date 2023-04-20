@@ -45,18 +45,33 @@ public class KhachHang_dao implements KhachHangInterface {
         }
         return result;
     }
-
-    @Override
-    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
-        ArrayList<KhachHang> result = new ArrayList<KhachHang>();
+    public String getMaDiaChi(String maKH){
+        String maDC = null;
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from KhachHang where maKhachHang = ?");
             st.setString(1, maKH);
             ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                maDC = rs.getString("maDiaChi");
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return maDC;
+    }
+
+    @Override
+    public ArrayList<KhachHang> getKhachHangTheoSoDT(String soDT) {
+        ArrayList<KhachHang> result = new ArrayList<KhachHang>();
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from KhachHang where soDienThoai = ?");
+            st.setString(1, soDT);
+            ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 String ma = rs.getString("maKhachHang");
                 String tenKH = rs.getString("hoTen");
-                String soDT = rs.getString("soDienThoai");
+                
                 LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
                 String email = rs.getString("email");
                 String maSoThue = rs.getString("maSoThue");
@@ -64,7 +79,7 @@ public class KhachHang_dao implements KhachHangInterface {
                 DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
 
-                KhachHang kh = new KhachHang(maKH, maSoThue, tenKH, soDT, email, ngaySinh, diaChi, gioiTinh, diem);
+                KhachHang kh = new KhachHang(ma, maSoThue, tenKH, soDT, email, ngaySinh, diaChi, gioiTinh, diem);
                 result.add(kh);
             }
 
@@ -90,6 +105,9 @@ public class KhachHang_dao implements KhachHangInterface {
     public boolean themKhachHang(KhachHang khachHang) {
         int n = 0;
         try {
+            DiaChi_dao DC_dao = new DiaChi_dao();
+            DC_dao.themDiaChi(khachHang.getDiaChi());
+            
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into KhachHang values(?,?,?,?,?,?,?,?,?)");
             st.setString(1, khachHang.getMaKH());
             st.setString(2, khachHang.getHoTen());
@@ -113,8 +131,8 @@ public class KhachHang_dao implements KhachHangInterface {
     public boolean capNhatKhachHang(String maKH, KhachHang khachHang) {
         int n = 0;
         try {
-            PreparedStatement st = ConnectDB.conn.prepareStatement("update KhachHang"
-                    + "set hoTen = ?, email=?, soDienThoai=?, ngaySinh=?,maSoThue=?, maDiaChi = ?,diemThanhVien=?, gioiTinh=?"
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update KhachHang "
+                    + "set hoTen = ?, email=?, soDienThoai=?, ngaySinh=?,maSoThue=?, diemThanhVien=?, gioiTinh=? "
                     + "where maKhachHang= ?");
             st.setString(1, khachHang.getHoTen());
             st.setString(2, khachHang.getEmail());
@@ -122,10 +140,12 @@ public class KhachHang_dao implements KhachHangInterface {
             LocalDate namSinh = khachHang.getNamSinh();
             st.setDate(4, Date.valueOf(namSinh));
             st.setString(5, khachHang.getMaSoThue());
-            st.setString(6, khachHang.getDiaChi().getMaDiaChi());
-            st.setInt(7, khachHang.getDiemThanhVien());
-            st.setBoolean(8, khachHang.isGioiTinh());
-            st.setString(9, maKH);
+            
+            st.setInt(6, khachHang.getDiemThanhVien());
+            st.setBoolean(7, khachHang.isGioiTinh());
+            st.setString(8, maKH);
+            DiaChi_dao dao = new DiaChi_dao();
+            dao.capNhatDiaChi(khachHang.getDiaChi().getMaDiaChi(), khachHang.getDiaChi());
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
