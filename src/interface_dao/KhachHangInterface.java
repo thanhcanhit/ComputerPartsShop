@@ -13,7 +13,7 @@ import model.connguoi.KhachHang;
  */
 public interface KhachHangInterface {
     public ArrayList<KhachHang> getAllKhachHang();
-    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH);
+    public ArrayList<KhachHang> getKhachHangTheoSoDT(String soDT);
     public KhachHang getKhachHangTheoSDT(String sdt);
     public boolean xoaKhachHang(String maKH);
     public boolean themKhachHang(KhachHang khachHang);

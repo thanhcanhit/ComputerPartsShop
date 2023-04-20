@@ -112,7 +112,7 @@ public class NhanVien_dao implements NhanVienInterface {
         try {
             DiaChi_dao dao = new DiaChi_dao();
             TaiKhoan_dao TK_dao = new TaiKhoan_dao();
-            System.out.println(dao.themDiaChi(nhanVien.getDiaChi()));
+            dao.themDiaChi(nhanVien.getDiaChi());
            
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into NhanVien "
                     + " values(?,?,?,?,?,?,?,?,?)");
@@ -127,7 +127,7 @@ public class NhanVien_dao implements NhanVienInterface {
             st.setBoolean(8, nhanVien.isGioiTinh()); 
             st.setBoolean(9, nhanVien.isTrangThai());
             n = st.executeUpdate();
-            System.out.println(TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"111")));
+            TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"111"));
            
         } catch (Exception e) {
             e.printStackTrace();
