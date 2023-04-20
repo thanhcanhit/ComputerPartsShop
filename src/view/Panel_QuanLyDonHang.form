@@ -1615,6 +1615,9 @@
                           <Dimension value="[10, 20]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tab3SearchActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btn_tab3Reset">
                       <Properties>
@@ -1637,6 +1640,9 @@
                           <Dimension value="[30, 40]"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_tab3ResetActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

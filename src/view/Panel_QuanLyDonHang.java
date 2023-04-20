@@ -4,6 +4,7 @@
  */
 package view;
 
+import com.toedter.calendar.JDateChooser;
 import controller.ChiTietHoaDon_bus;
 import controller.DonNhapHang_bus;
 import controller.HoaDon_bus;
@@ -11,7 +12,10 @@ import controller.KhachHang_bus;
 import controller.NhaCungCap_bus;
 import controller.NhanVien_bus;
 import controller.SanPham_bus;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -818,6 +822,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         btn_tab3Search.setMaximumSize(new java.awt.Dimension(75, 50));
         btn_tab3Search.setMinimumSize(new java.awt.Dimension(75, 50));
         btn_tab3Search.setPreferredSize(new java.awt.Dimension(10, 20));
+        btn_tab3Search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tab3SearchActionPerformed(evt);
+            }
+        });
         jPanel16.add(btn_tab3Search);
 
         btn_tab3Reset.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -826,6 +835,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         btn_tab3Reset.setMaximumSize(new java.awt.Dimension(75, 50));
         btn_tab3Reset.setMinimumSize(new java.awt.Dimension(75, 50));
         btn_tab3Reset.setPreferredSize(new java.awt.Dimension(30, 40));
+        btn_tab3Reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_tab3ResetActionPerformed(evt);
+            }
+        });
         jPanel16.add(btn_tab3Reset);
 
         pnl_timKiemHoaDon.add(jPanel16);
@@ -992,6 +1006,81 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private void btn_tab1HuyDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab1HuyDonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_tab1HuyDonActionPerformed
+
+    private void btn_tab3SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3SearchActionPerformed
+// TODO add your handling code here:
+        ArrayList<HoaDon> list = new ArrayList<>();
+        ArrayList<HoaDon> xoa = new ArrayList<>();
+        list = hoaDon_bus.getAllHoaDon();
+        String sdt = txt_tab3SDT.getText();
+        String manv = txt_tab3MaNhanVien.getText();
+        String giaTu = txt_tab3GiaTu.getText();
+        String giaDen = txt_tab3GiaDen.getText();
+        if (sdt.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+                KhachHang kh = khachHang_bus.getKhachHangTheoMa(hoaDon.getKhachHang().getMaKH()).get(0);
+                if (!kh.getSoDT().equals(sdt)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (manv.trim().length() > 0) {
+
+            for (HoaDon hoaDon : list) {
+                if (!hoaDon.getNhanVien().getMaNV().equals(manv)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaTu.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() < Double.parseDouble(giaTu)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaDen.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() > Double.parseDouble(giaDen)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+//        Date begin = jdate_tab3TuNgay.getDate();
+//        LocalDate tuNgay = begin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        for (HoaDon hoaDon : list) {
+//            HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+//            if (hd.getNgayLap().isAfter(tuNgay)) {
+//                xoa.add(hoaDon);
+//            }
+//        }
+//        list.removeAll(xoa);
+//        xoa.clear();
+//        Date end = jdate_tab3DenNgay.getDate();
+//        LocalDate denNgay = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//        for (HoaDon hoaDon : list) {
+//            HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+//            if (hd.getNgayLap().isBefore(denNgay)) {
+//                xoa.add(hoaDon);
+//            }
+//        }
+//        list.removeAll(xoa);
+        renderTab3DanhSachHoaDon(list);        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tab3SearchActionPerformed
+
+    private void btn_tab3ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3ResetActionPerformed
+        // TODO add your handling code here:
+        renderTab3DanhSachHoaDon(hoaDon_bus.getAllHoaDon());
+    }//GEN-LAST:event_btn_tab3ResetActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

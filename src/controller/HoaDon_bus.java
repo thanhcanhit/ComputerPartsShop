@@ -6,6 +6,7 @@ package controller;
 
 import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import model.hoadon.HoaDon;
 import model.share.Utility;
@@ -51,6 +52,26 @@ public class HoaDon_bus implements HoaDonInterface{
         String last = dao.getMaLonNhat();
 
         return Utility.sinhMaTang(last, "HD", 5);
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoSoDienThoaiKhach(String soDienThoai) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoNgay(LocalDate begin, LocalDate end) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoMaNV(String maNV) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoTong(Double begin, Double end) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

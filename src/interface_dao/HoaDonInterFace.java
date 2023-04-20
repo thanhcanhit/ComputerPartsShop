@@ -4,6 +4,7 @@
  */
 package interface_dao;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import model.hoadon.HoaDon;
 
@@ -17,5 +18,9 @@ public interface HoaDonInterface {
     public boolean themHoaDon(HoaDon hoaDon);
     public boolean xoaHoaDon(String maHoaDon);
     public boolean capNhatHoaDon(String maHoaDon, HoaDon hoaDon);
+    public ArrayList<HoaDon> getHoaDonTheoSoDienThoaiKhach(String soDienThoai);
+    public ArrayList<HoaDon> getHoaDonTheoNgay(LocalDate begin, LocalDate end);
+    public ArrayList<HoaDon> getHoaDonTheoMaNV(String maNV);
+    public ArrayList<HoaDon> getHoaDonTheoTong(Double begin, Double end);
     
 }

@@ -127,4 +127,24 @@ public class HoaDon_dao implements HoaDonInterface {
         return s;
     }
 
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoSoDienThoaiKhach(String soDienThoai) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoNgay(LocalDate begin, LocalDate end) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoMaNV(String maNV) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoTong(Double begin, Double end) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
