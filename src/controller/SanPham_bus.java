@@ -58,6 +58,10 @@ public class SanPham_bus implements SanPhamInterface {
         return dao.getSoTrangMax();
     }
 
+    public ArrayList<SanPham> timSanPhamTheoTen(String tenSanPham) {
+        return dao.timSanPhamTheoTen(tenSanPham);
+    }
+
     public String sinhMa() {
         String last = dao.getMaLonNhat();
 

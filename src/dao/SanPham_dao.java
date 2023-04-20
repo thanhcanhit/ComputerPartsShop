@@ -193,6 +193,34 @@ public class SanPham_dao implements SanPhamInterface {
 
         return soTrang;
     }
+    
+    public ArrayList<SanPham> timSanPhamTheoTen(String tenSanPham) {
+        ArrayList<SanPham> result = new ArrayList<>();
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from SanPham where tenSanPham like N'%" + tenSanPham + "%'");
+//            st.setString(1, tenSanPham);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSP = rs.getString("maSanPham");
+                String tenSP = rs.getString("tenSanPham");
+                double giaNhap = rs.getDouble("giaNhap");
+                double giamGia = rs.getDouble("giamGia");
+                int loai = rs.getInt("maLoai");
+                double vat = rs.getDouble("VAT");
+                ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
+                int soThangBaohanh = rs.getInt("soThangBaoHanh");
+                String cauHinh = rs.getString("cauHinh");
+                SanPham sp = new SanPham(maSP, tenSP, giaNhap, giamGia, loai, vat, thuongHieu, soThangBaohanh, cauHinh);
+
+                result.add(sp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
     public String getMaLonNhat() {
         String s = "SP0001";
