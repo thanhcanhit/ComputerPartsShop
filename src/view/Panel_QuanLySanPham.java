@@ -4,8 +4,13 @@
  */
 package view;
 
+import controller.KhoHang_bus;
 import controller.SanPham_bus;
+import controller.ThuongHieu_bus;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
@@ -17,8 +22,10 @@ import model.sanpham.ThuongHieu;
 public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
     private DefaultTableModel tbl_ModelProduct;
-    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Loại sản phẩm", "Thương hiệu", "Cấu hình", "Giá cả", "Số lượng"};
+    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Giá bán", "Giảm giá", "VAT", "Loại sản phẩm", "Số tháng bảo hành", "Cấu hình"};
     private SanPham_bus sanPham_bus = new SanPham_bus();
+    private ThuongHieu_bus thuongHieu_bus = new ThuongHieu_bus();
+    NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
     /**
      * Creates new form Panel_QuanLySanPham
@@ -27,6 +34,17 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_ModelProduct = new DefaultTableModel(str_TenCot, 0);
         initComponents();
         initTableModel();
+        tbl_Products.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbl_Products.getColumnModel().getColumn(0).setPreferredWidth(100);
+        tbl_Products.getColumnModel().getColumn(1).setPreferredWidth(250);
+        tbl_Products.getColumnModel().getColumn(2).setPreferredWidth(100);
+        tbl_Products.getColumnModel().getColumn(3).setPreferredWidth(100);
+        tbl_Products.getColumnModel().getColumn(4).setPreferredWidth(60);
+        tbl_Products.getColumnModel().getColumn(5).setPreferredWidth(60);
+        tbl_Products.getColumnModel().getColumn(6).setPreferredWidth(100);
+        tbl_Products.getColumnModel().getColumn(7).setPreferredWidth(120);
+        tbl_Products.getColumnModel().getColumn(8).setPreferredWidth(200);
+        
     }
     
     private void initTableModel() {
@@ -34,10 +52,20 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         renderProductTable(sanPham_bus.getAllSanPham());
     }
     
+    public void searchTheoTen() {
+        String input = txt_search.getText().trim();
+        if (input.length() > 0) {
+            ArrayList<SanPham> list = sanPham_bus.timSanPhamTheoTen(input);
+            renderProductTable(list);
+        } 
+    }
+    
     private void renderProductTable(ArrayList<SanPham> list) {
         tbl_ModelProduct.setRowCount(0);
+        
         for (SanPham sp : list) {
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), sp.getThuongHieu().toString(), 0, sp.getGiaBan()};
+            ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), th.get(0).toString(), vnd.format(sp.getGiaBan()), Math.round(sp.getGiamGia()) + "%", sp.getVAT(), sp.getTenLoai(), sp.getSoThangBaoHanh(), sp.getCauHinh()};
             tbl_ModelProduct.addRow(row);
         }
     }
@@ -283,6 +311,11 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 txt_searchActionPerformed(evt);
             }
         });
+        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_searchKeyReleased(evt);
+            }
+        });
         pnl_headerSearch.add(txt_search);
 
         pnl_searchBtn.setMaximumSize(new java.awt.Dimension(4001111, 2147483647));
@@ -371,6 +404,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_DanhSach.setLayout(new java.awt.BorderLayout());
 
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         tbl_Products.setModel(tbl_ModelProduct);
         tbl_Products.setRowHeight(30);
@@ -392,6 +427,11 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private void txt_TenspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TenspActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_TenspActionPerformed
+
+    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
+        // TODO add your handling code here:
+        searchTheoTen();
+    }//GEN-LAST:event_txt_searchKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
