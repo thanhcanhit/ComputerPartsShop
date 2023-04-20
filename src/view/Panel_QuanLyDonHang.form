@@ -27,6 +27,11 @@
       </Layout>
     </Container>
   </NonVisualComponents>
+  <Properties>
+    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -47,6 +52,15 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="66" green="66" red="66" type="rgb"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="13" style="1"/>
+        </Property>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -59,8 +73,8 @@
         <Container class="javax.swing.JPanel" name="pnl_themDonDatHang">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Nh&#x1ead;p h&#xe0;ng">
-                <Property name="tabTitle" type="java.lang.String" value="Nh&#x1ead;p h&#xe0;ng"/>
+              <JTabbedPaneConstraints tabName="T&#x1ea1;o &#x111;&#x1a1;n nh&#x1ead;p h&#xe0;ng">
+                <Property name="tabTitle" type="java.lang.String" value="T&#x1ea1;o &#x111;&#x1a1;n nh&#x1ead;p h&#xe0;ng"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -121,6 +135,9 @@
                               <TableColumnModel selectionModel="0"/>
                             </Property>
                             <Property name="rowHeight" type="int" value="30"/>
+                            <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                              <JTableSelectionModel selectionMode="0"/>
+                            </Property>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
@@ -206,6 +223,9 @@
                               </TableColumnModel>
                             </Property>
                             <Property name="rowHeight" type="int" value="30"/>
+                            <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                              <JTableSelectionModel selectionMode="0"/>
+                            </Property>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                             </Property>
@@ -620,8 +640,8 @@
         <Container class="javax.swing.JPanel" name="pnl_donDatHang">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="&#x110;&#x1a1;n nh&#x1ead;p h&#xe0;ng">
-                <Property name="tabTitle" type="java.lang.String" value="&#x110;&#x1a1;n nh&#x1ead;p h&#xe0;ng"/>
+              <JTabbedPaneConstraints tabName="Th&#xf4;ng tin &#x111;&#x1a1;n nh&#x1ead;p h&#xe0;ng">
+                <Property name="tabTitle" type="java.lang.String" value="Th&#xf4;ng tin &#x111;&#x1a1;n nh&#x1ead;p h&#xe0;ng"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -665,7 +685,7 @@
                     <Component class="javax.swing.JTable" name="tbl_tab2DanhSachDonNhap">
                       <Properties>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="tblModel_tab2danhSachDonNhap = new DefaultTableModel(new String[]{&quot;M&#xe3;&quot;, &quot;Nh&#xe2;n vi&#xea;n&quot;, &quot;Nh&#xe0; cung c&#x1ea5;p&quot;, &quot;Ng&#xe0;y &#x111;&#x1eb7;t&quot;, &quot;T&#xec;nh tr&#x1ea1;ng&quot;, &quot;Kho&quot;&#xa;}, 0)" type="code"/>
+                          <Connection code="tblModel_tab2DanhSachDonNhap = new DefaultTableModel(new String[]{&quot;M&#xe3;&quot;, &quot;Nh&#xe2;n vi&#xea;n&quot;, &quot;Nh&#xe0; cung c&#x1ea5;p&quot;, &quot;Ng&#xe0;y &#x111;&#x1eb7;t&quot;, &quot;T&#xec;nh tr&#x1ea1;ng&quot;, &quot;Kho&quot;&#xa;}, 0)" type="code"/>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
@@ -700,6 +720,10 @@
                               <Renderer/>
                             </Column>
                           </TableColumnModel>
+                        </Property>
+                        <Property name="rowHeight" type="int" value="30"/>
+                        <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                          <JTableSelectionModel selectionMode="0"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -790,6 +814,10 @@
                               <Renderer/>
                             </Column>
                           </TableColumnModel>
+                        </Property>
+                        <Property name="rowHeight" type="int" value="30"/>
+                        <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                          <JTableSelectionModel selectionMode="0"/>
                         </Property>
                         <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
@@ -973,20 +1001,10 @@
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JComboBox" name="cbo_tab2NhaCungCap">
+                            <Component class="javax.swing.JTextField" name="txt_tab2NCC">
                               <Properties>
-                                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                                  <StringArray count="4">
-                                    <StringItem index="0" value="Item 1"/>
-                                    <StringItem index="1" value="Item 2"/>
-                                    <StringItem index="2" value="Item 3"/>
-                                    <StringItem index="3" value="Item 4"/>
-                                  </StringArray>
-                                </Property>
+                                <Property name="editable" type="boolean" value="false"/>
                               </Properties>
-                              <AuxValues>
-                                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                              </AuxValues>
                             </Component>
                           </SubComponents>
                         </Container>
@@ -1050,7 +1068,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="txa_ghiChuDonNhap1">
+                        <Component class="javax.swing.JTextArea" name="txa_tab2GhiChuDonNhap">
                           <Properties>
                             <Property name="editable" type="boolean" value="false"/>
                             <Property name="columns" type="int" value="20"/>
@@ -1117,7 +1135,6 @@
                                   <Color blue="ee" green="a5" red="41" type="rgb"/>
                                 </Property>
                                 <Property name="horizontalAlignment" type="int" value="4"/>
-                                <Property name="text" type="java.lang.String" value="89999999"/>
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
@@ -1136,8 +1153,8 @@
         <Container class="javax.swing.JPanel" name="pnl_hoaDon">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="H&#xf3;a &#x111;&#x1a1;n b&#xe1;n h&#xe0;ng">
-                <Property name="tabTitle" type="java.lang.String" value="H&#xf3;a &#x111;&#x1a1;n b&#xe1;n h&#xe0;ng"/>
+              <JTabbedPaneConstraints tabName="Th&#xf4;ng tin h&#xf3;a &#x111;&#x1a1;n b&#xe1;n h&#xe0;ng">
+                <Property name="tabTitle" type="java.lang.String" value="Th&#xf4;ng tin h&#xf3;a &#x111;&#x1a1;n b&#xe1;n h&#xe0;ng"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>

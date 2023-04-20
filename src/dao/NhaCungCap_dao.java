@@ -52,9 +52,9 @@ public class NhaCungCap_dao implements NhaCungCapInterface {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                String ma = rs.getString("NhaCungCap");
-                String ten = rs.getString("NhaCungCap");
-                String soDienThoai = rs.getString("NhaCungCap");
+                String ma = rs.getString("maNhaCungCap");
+                String ten = rs.getString("tenNhaCungCap");
+                String soDienThoai = rs.getString("soDienThoai");
                 String maSoThue = rs.getString("maSoThue");
                 String email = rs.getString("email");
                 String maDiaChi = rs.getString("maDiaChi");
@@ -119,7 +119,7 @@ public class NhaCungCap_dao implements NhaCungCapInterface {
             st.setString(i++, ncc.getMaSoThue());
             st.setString(i++, ncc.getEMail());
             st.setString(i++, ncc.getDiaChi().getMaDiaChi());
-            
+
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
