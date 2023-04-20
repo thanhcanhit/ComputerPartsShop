@@ -28,17 +28,16 @@ public abstract class ConNguoi {
     public void setGioiTinh(boolean gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-    
-    
+
     public DiaChi getDiaChi() {
         return diaChi;
     }
-    
-    public void setDiaChi(DiaChi diaChi) throws Exception{
- 
+
+    public void setDiaChi(DiaChi diaChi) throws Exception {
+
         this.diaChi = diaChi;
     }
-            
+
     public String getHoTen() {
         return hoTen;
     }
@@ -52,10 +51,11 @@ public abstract class ConNguoi {
     }
 
     public void setSoDT(String soDT) throws Exception {
-        if(soDT.trim().length()>0)
+        if (soDT.trim().length() > 0) {
             this.soDT = soDT;
-        else
+        } else {
             throw new Exception("Số điện thoại không được rỗng !");
+        }
     }
 
     public String getEmail() {
@@ -63,25 +63,22 @@ public abstract class ConNguoi {
     }
 
     public void setEmail(String email) throws Exception {
-        if(email.trim().length()>0)
+        if (email.trim().length() > 0) {
             this.email = email;
-        else
+        } else {
             throw new Exception("Email không được rỗng !");
+        }
     }
-
 
     public LocalDate getNamSinh() {
         return namSinh;
     }
 
     public void setNamSinh(LocalDate namSinh) throws Exception {
-        if(namSinh.getYear() <= LocalDate.now().getYear())
-            this.namSinh = namSinh;
-        else
-            throw new Exception("Năm sinh không được rỗng !");
+        this.namSinh = namSinh;
     }
 
-    public ConNguoi(String hoTen, String soDT, String email, LocalDate namSinh,DiaChi diaChi,boolean gioiTinh) throws Exception{
+    public ConNguoi(String hoTen, String soDT, String email, LocalDate namSinh, DiaChi diaChi, boolean gioiTinh) throws Exception {
         setHoTen(hoTen);
         setEmail(email);
         setSoDT(soDT);
@@ -89,6 +86,7 @@ public abstract class ConNguoi {
         setDiaChi(diaChi);
         this.gioiTinh = gioiTinh;
     }
+
     public ConNguoi() {
     }
 
@@ -113,7 +111,5 @@ public abstract class ConNguoi {
         final ConNguoi other = (ConNguoi) obj;
         return Objects.equals(this.soDT, other.soDT);
     }
-    
-    
-    
+
 }

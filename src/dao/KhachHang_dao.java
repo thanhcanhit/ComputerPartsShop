@@ -90,8 +90,7 @@ public class KhachHang_dao implements KhachHangInterface {
     public boolean themKhachHang(KhachHang khachHang) {
         int n = 0;
         try {
-            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into KhachHang"
-                    + "values(?,?,?,?,?,?,?,?,?)");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into KhachHang values(?,?,?,?,?,?,?,?,?)");
             st.setString(1, khachHang.getMaKH());
             st.setString(2, khachHang.getHoTen());
             st.setString(3, khachHang.getSoDT());
@@ -167,7 +166,7 @@ public class KhachHang_dao implements KhachHangInterface {
         }
         return i;
     }
-    
+
     public String getMaLonNhat() {
         String s = "KH00000";
 
@@ -179,8 +178,22 @@ public class KhachHang_dao implements KhachHangInterface {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return s;
+    }
+
+    @Override
+    public boolean congDiemKhachHang(String maKH, int diemThem) {
+        int n = 0;
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update KhachHang set diemThanhVien = diemThanhVien + ? where maKhachHang= ?");
+            st.setInt(1, diemThem);
+            st.setString(2, maKH);
+            n = st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return n > 0;
     }
 
 }

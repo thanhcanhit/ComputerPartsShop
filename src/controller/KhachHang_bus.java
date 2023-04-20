@@ -8,7 +8,6 @@ import dao.KhachHang_dao;
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
 import model.connguoi.KhachHang;
-import model.share.ConnectDB;
 import model.share.Utility;
 
 /**
@@ -56,6 +55,11 @@ public class KhachHang_bus implements KhachHangInterface {
         String last = dao.getMaLonNhat();
 
         return Utility.sinhMaTang(last, "KH", 5);
+    }
+
+    @Override
+    public boolean congDiemKhachHang(String maKH, int diemThem) {
+        return dao.congDiemKhachHang(maKH, diemThem);
     }
 
 }

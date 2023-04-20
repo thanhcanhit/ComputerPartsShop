@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
@@ -636,16 +637,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Hủy bỏ hóa đơn hiện tại?", "Xác nhận hủy hóa đơn", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            gioHang = new ArrayList<>();
-            renderCartTable();
-            txt_thanhTien.setText("");
-            txt_sdt.setText("");
-            txt_hangTV.setText("");
-            txt_hoTen.setText("");
-            txt_diaChi.setText("");
-            cmb_phuongThucThanhToan.setSelectedIndex(0);
-            khach = null;
-            subTotal = 0;
+            resetAll();
         }
     }//GEN-LAST:event_btn_cancelActionPerformed
 
@@ -668,20 +660,59 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         frame_diaChi.getDiaChi();
     }//GEN-LAST:event_txt_diaChiMouseClicked
 
+    public void showMessageFocus(String msg, JTextField txt) {
+        JOptionPane.showMessageDialog(this, msg);
+        txt.selectAll();
+        txt.requestFocus();
+    }
     private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
+        if (gioHang.size() == 0) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa thêm hàng vào giỏ");
+            return;
+        }
+
+        String sdt = txt_sdt.getText().trim();
+        String hoTen = txt_hoTen.getText().trim();
+        boolean gioiTinh = cmb_gender.getSelectedIndex() == 1;
+        int diemThem = Long.valueOf(Math.round(subTotal / 10000)).intValue();
+
+//                Validate
+        if (!Pattern.matches("0\\d{9}", sdt)) {
+            showMessageFocus("Số điện thoại không hợp lệ", txt_sdt);
+            return;
+        }
+
+        if (!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)) {
+            showMessageFocus("Họ tên phải ít nhất 2 từ", txt_hoTen);
+            return;
+        }
+
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn này không", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             if (khach == null) {
-                String sdt = txt_sdt.getText().trim();
-                String hoTen = txt_hoTen.getText().trim();
-                DiaChi dc = frame_diaChi.getDiaChi();
-                boolean gioiTinh = cmb_gender.getSelectedIndex() == 0;
-
                 try {
-                    KhachHang kh = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "", null, dc, gioiTinh, 0);
+                    DiaChi dc = frame_diaChi.getDiaChi();
+                    if (dc.getThanhPho().trim().length() == 0) {
+                        showMessageFocus("Bạn chưa điền địa chỉ", txt_diaChi);
+                        return;
+                    }
+
+//                  Kiem tra xem diaChi ton tai trong database chua
+                    String maDiaChiInDatabase = diaChi_bus.getMaDiaChi(dc);
+
+                    // Khong co thi them co thi dung lai
+                    if (maDiaChiInDatabase == null) {
+                        diaChi_bus.themDiaChi(dc);
+                    } else {
+                        dc.setMaDiaChi(maDiaChiInDatabase);
+                    }
+
+                    khach = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "Không", LocalDate.of(2003, 1, 1), dc, gioiTinh, diemThem);
+                    khachHang_bus.themKhachHang(khach);
                 } catch (Exception ex) {
                     Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+            } else {
+                khachHang_bus.congDiemKhachHang(khach.getMaKH(), diemThem);
             }
 
 //        Phat sinh hoa don
@@ -691,30 +722,39 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             if (hoaDon_bus.themHoaDon(hoaDon)) {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
                 // Reset
-                gioHang = new ArrayList<>();
-                renderCartTable();
-                txt_thanhTien.setText("");
-                txt_sdt.setText("");
-                txt_hangTV.setText("");
-                txt_hoTen.setText("");
-                txt_diaChi.setText("");
-                cmb_phuongThucThanhToan.setSelectedIndex(0);
-                khach = null;
-                subTotal = 0;
-                renderPage();
+                resetAll();
             } else {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
             }
         }
     }//GEN-LAST:event_btn_exportActionPerformed
 
+    public void resetAll() {
+        gioHang = new ArrayList<>();
+        renderCartTable();
+        txt_thanhTien.setText("");
+        txt_sdt.setText("");
+        txt_hangTV.setText("");
+        txt_hoTen.setText("");
+        txt_diaChi.setText("");
+        cmb_phuongThucThanhToan.setSelectedIndex(0);
+        cmb_gender.setSelectedIndex(0);
+        khach = null;
+        subTotal = 0;
+        renderPage();
+    }
+
     private void renderKhachHang() {
         txt_hoTen.setEditable(false);
         txt_hoTen.setText(khach.getHoTen());
         txt_hangTV.setText(khach.getHang());
         cmb_gender.setSelectedIndex(khach.isGioiTinh() ? 1 : 0);
-        String diaChi = diaChi_bus.getDiaChiTheoMa(khach.getDiaChi().getMaDiaChi()).toString();
-        txt_diaChi.setText(diaChi);
+        try {
+            String diaChi = diaChi_bus.getDiaChiTheoMa(khach.getDiaChi().getMaDiaChi()).toString();
+            txt_diaChi.setText(diaChi);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void getKhachHangNeuTonTai() {
