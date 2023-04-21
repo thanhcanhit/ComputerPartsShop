@@ -55,23 +55,10 @@ public class HoaDon_bus implements HoaDonInterface{
     }
 
     @Override
-    public ArrayList<HoaDon> getHoaDonTheoSoDienThoaiKhach(String soDienThoai) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public ArrayList<HoaDon> getHoaDonTheoDieuKien(String ma, String sdt, String giaBatDau, String giaKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
+        return dao.getHoaDonTheoDieuKien(ma, sdt, giaBatDau, giaKetThuc, ngayBatDau, ngayKetThuc);
     }
 
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoNgay(LocalDate begin, LocalDate end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoMaNV(String maNV) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoTong(Double begin, Double end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 
 }

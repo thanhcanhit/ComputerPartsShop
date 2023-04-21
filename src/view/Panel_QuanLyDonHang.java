@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
@@ -77,6 +78,12 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab2ChiTietDonNhap.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
         tbl_tab2ChiTietDonNhap.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
         tbl_tab2ChiTietDonNhap.setDefaultEditor(Object.class, null);
+        
+        
+        tbl_tab3DanhSachHoaDon.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
+        tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
+        tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
     }
 
     public void addCustomEvent() {
@@ -168,7 +175,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
             HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
             KhachHang kh = khachHang_bus.getKhachHangTheoMa(hoaDon.getKhachHang().getMaKH()).get(0);
             NhanVien nv = nhanVien_bus.getNhanVienTheoMa(hoaDon.getNhanVien().getMaNV()).get(0);
-            tblModel_tab3DanhSachHoaDon.addRow(new Object[]{hoaDon.getMaHoaDon(), nv.getHoTen(), kh.getHoTen(), hoaDon.getPhuongThucThanhToan(), hoaDon.getNgayLap(), hoaDon.getTongTien()});
+            tblModel_tab3DanhSachHoaDon.addRow(new Object[]{hoaDon.getMaHoaDon(), nv.getHoTen(), kh.getHoTen(), hoaDon.getPhuongThucThanhToan(), hoaDon.getNgayLap(), Utility.getVND(hoaDon.getTongTien())});
         }
     }
 
@@ -176,7 +183,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tblModel_tab3ChiTietHoaDon.setRowCount(0);
         for (ChiTietHoaDon chiTietHoaDon : list) {
             SanPham sp = sanPham_bus.getSanPhamTheoMa(chiTietHoaDon.getSanPham().getMaSP()).get(0);
-            tblModel_tab3ChiTietHoaDon.addRow(new Object[]{chiTietHoaDon.getSanPham().getMaSP(), sp.getTenSP(), sp.getTenLoai(), chiTietHoaDon.getSoLuong(), sp.getGiaBan(), sp.getGiaBan() * chiTietHoaDon.getSoLuong()});
+            tblModel_tab3ChiTietHoaDon.addRow(new Object[]{chiTietHoaDon.getSanPham().getMaSP(), sp.getTenSP(), sp.getTenLoai(), chiTietHoaDon.getSoLuong(), Utility.getVND(sp.getGiaBan()), Utility.getVND(sp.getGiaBan() * chiTietHoaDon.getSoLuong())});
         }
     }
 
@@ -188,7 +195,48 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         txt_tab3SoDienThoai.setText(kh.getSoDT());
         txt_tab3NgayLap.setText(hd.getNgayLap().toString());
         txt_tab3NhanVien.setText(nv.getHoTen());
-        txt_tab3TongTien.setText(String.valueOf(hoaDon.getTongTien()));
+        txt_tab3TongTien.setText(Utility.getVND(hoaDon.getTongTien()));
+    }
+
+    public boolean validateFields() {
+        boolean isValid = true;
+        String phoneRegex = "^0\\d{9}$";
+        String employeeIdRegex = "^NV\\d{4}$";
+        String priceRegex = "^\\d+(\\.\\d+)?$";
+
+        // Kiểm tra số điện thoại
+        String sdt = txt_tab3SDT.getText().trim();
+        if (!sdt.equals("") && !sdt.matches(phoneRegex)) {
+            isValid = false;
+            // Hiển thị thông báo lỗi cho người dùng
+            JOptionPane.showMessageDialog(null, "Số điện thoại không hợp lệ!.");
+        }
+
+        // Kiểm tra mã nhân viên
+        String maNV = txt_tab3MaNhanVien.getText().trim();
+        if (!maNV.equals("") && !maNV.matches(employeeIdRegex)) {
+            isValid = false;
+            // Hiển thị thông báo lỗi cho người dùng
+            JOptionPane.showMessageDialog(null, "Mã nhân viên không hợp lệ! Vui lòng nhập mã nhân viên có dạng NVxxxx.");
+        }
+
+        // Kiểm tra giá từ
+        String giaTu = txt_tab3GiaTu.getText().trim();
+        if (!giaTu.equals("") && (!giaTu.matches(priceRegex) || Double.parseDouble(giaTu) < 0)) {
+            isValid = false;
+            // Hiển thị thông báo lỗi cho người dùng
+            JOptionPane.showMessageDialog(null, "Giá không hợp lệ! Vui lòng nhập số không âm.");
+        }
+
+        // Kiểm tra giá đến
+        String giaDen = txt_tab3GiaDen.getText().trim();
+        if (!giaDen.equals("") && (!giaDen.matches(priceRegex) || Double.parseDouble(giaDen) < 0)) {
+            isValid = false;
+            // Hiển thị thông báo lỗi cho người dùng
+            JOptionPane.showMessageDialog(null, "Giá không hợp lệ! Vui lòng nhập số không âm.");
+        }
+
+        return isValid;
     }
 
     /**
@@ -1009,72 +1057,20 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
     private void btn_tab3SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3SearchActionPerformed
 // TODO add your handling code here:
-        ArrayList<HoaDon> list = new ArrayList<>();
-        ArrayList<HoaDon> xoa = new ArrayList<>();
-        list = hoaDon_bus.getAllHoaDon();
-        String sdt = txt_tab3SDT.getText();
-        String manv = txt_tab3MaNhanVien.getText();
-        String giaTu = txt_tab3GiaTu.getText();
-        String giaDen = txt_tab3GiaDen.getText();
-        if (sdt.trim().length() > 0) {
-            for (HoaDon hoaDon : list) {
-                HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
-                KhachHang kh = khachHang_bus.getKhachHangTheoMa(hoaDon.getKhachHang().getMaKH()).get(0);
-                if (!kh.getSoDT().equals(sdt)) {
-                    xoa.add(hoaDon);
-                }
-            }
-            list.removeAll(xoa);
-        }
-        xoa.clear();
-        if (manv.trim().length() > 0) {
+        if (validateFields()) {
+            String manv = txt_tab3MaNhanVien.getText();
+            String sdt = txt_tab3SDT.getText();
+            String giaTu = txt_tab3GiaTu.getText();
+            String giaDen = txt_tab3GiaDen.getText();
+            Date begin = jdate_tab3TuNgay.getDate();
+            LocalDate tuNgay = begin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date end = jdate_tab3DenNgay.getDate();
+            LocalDate denNgay = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            ArrayList<HoaDon> list = hoaDon_bus.getHoaDonTheoDieuKien(manv, sdt, giaTu, giaDen, tuNgay, denNgay);
 
-            for (HoaDon hoaDon : list) {
-                if (!hoaDon.getNhanVien().getMaNV().equals(manv)) {
-                    xoa.add(hoaDon);
-                }
-            }
-            list.removeAll(xoa);
+            renderTab3DanhSachHoaDon(list);
         }
-        xoa.clear();
-        if (giaTu.trim().length() > 0) {
-            for (HoaDon hoaDon : list) {
-                if (hoaDon.getTongTien() < Double.parseDouble(giaTu)) {
-                    xoa.add(hoaDon);
-                }
-            }
-            list.removeAll(xoa);
-        }
-        xoa.clear();
-        if (giaDen.trim().length() > 0) {
-            for (HoaDon hoaDon : list) {
-                if (hoaDon.getTongTien() > Double.parseDouble(giaDen)) {
-                    xoa.add(hoaDon);
-                }
-            }
-            list.removeAll(xoa);
-        }
-        xoa.clear();
-//        Date begin = jdate_tab3TuNgay.getDate();
-//        LocalDate tuNgay = begin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        for (HoaDon hoaDon : list) {
-//            HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
-//            if (hd.getNgayLap().isAfter(tuNgay)) {
-//                xoa.add(hoaDon);
-//            }
-//        }
-//        list.removeAll(xoa);
-//        xoa.clear();
-//        Date end = jdate_tab3DenNgay.getDate();
-//        LocalDate denNgay = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//        for (HoaDon hoaDon : list) {
-//            HoaDon hd = hoaDon_bus.getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
-//            if (hd.getNgayLap().isBefore(denNgay)) {
-//                xoa.add(hoaDon);
-//            }
-//        }
-//        list.removeAll(xoa);
-        renderTab3DanhSachHoaDon(list);        // TODO add your handling code here:
+
     }//GEN-LAST:event_btn_tab3SearchActionPerformed
 
     private void btn_tab3ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3ResetActionPerformed

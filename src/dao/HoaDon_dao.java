@@ -4,6 +4,7 @@
  */
 package dao;
 
+import controller.KhachHang_bus;
 import interface_dao.HoaDonInterface;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -128,23 +129,67 @@ public class HoaDon_dao implements HoaDonInterface {
     }
 
     @Override
-    public ArrayList<HoaDon> getHoaDonTheoSoDienThoaiKhach(String soDienThoai) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    public ArrayList<HoaDon> getHoaDonTheoDieuKien(String manv, String sdt, String giaTu, String giaDen, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        ArrayList<HoaDon> xoa = new ArrayList<>();
+        list = getAllHoaDon();
+        KhachHang_bus khachHang_bus = new KhachHang_bus();
+        if (sdt.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+                KhachHang kh = khachHang_bus.getKhachHangTheoMa(hoaDon.getKhachHang().getMaKH()).get(0);
+                if (!kh.getSoDT().equals(sdt)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (manv.trim().length() > 0) {
 
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoNgay(LocalDate begin, LocalDate end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoMaNV(String maNV) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public ArrayList<HoaDon> getHoaDonTheoTong(Double begin, Double end) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+            for (HoaDon hoaDon : list) {
+                if (!hoaDon.getNhanVien().getMaNV().equals(manv)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaTu.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() < Double.parseDouble(giaTu)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaDen.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() > Double.parseDouble(giaDen)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+       
+        for (HoaDon hoaDon : list) {
+            HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+            if (hd.getNgayLap().isBefore(ngayBatDau)) {
+                xoa.add(hoaDon);
+            }
+        }
+        list.removeAll(xoa);
+        xoa.clear();
+        for (HoaDon hoaDon : list) {
+            HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+            if (hd.getNgayLap().isAfter(ngayKetThuc)) {
+                xoa.add(hoaDon);
+            }
+        }
+        list.removeAll(xoa);
+        return list;
     }
 
 }
