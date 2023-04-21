@@ -67,4 +67,9 @@ public class KhachHang_bus implements KhachHangInterface {
         return dao.congDiemKhachHang(maKH, diemThem);
     }
 
+    @Override
+    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
+        return dao.getKhachHangTheoMa(maKH);
+    }
+
 }

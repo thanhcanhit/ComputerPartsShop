@@ -19,4 +19,5 @@ public interface KhachHangInterface {
     public boolean themKhachHang(KhachHang khachHang);
     public boolean capNhatKhachHang(String maKH, KhachHang khachHang);
     public boolean congDiemKhachHang(String maKH, int diemThem);
+    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH);
 }

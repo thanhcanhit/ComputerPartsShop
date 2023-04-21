@@ -10,9 +10,11 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
@@ -85,6 +87,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         tbl_dsKhachHang.getColumnModel().getColumn(2).setCellRenderer(rightAlign);
         tbl_dsKhachHang.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
         tbl_dsKhachHang.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
+        tbl_dsKhachHang.getColumnModel().getColumn(6).setCellRenderer(rightAlign);
         
         // set khong chinh sua dong trong table
         tbl_dsKhachHang.setDefaultEditor(Object.class, null);
@@ -97,13 +100,18 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
      public void renderListToTable(ArrayList<KhachHang> listKH) {
         model_dsKhachHang.setRowCount(0);
         for(KhachHang kh:listKH){
+            String maST;
+            if(kh.getMaSoThue()=="Null"){
+                maST = " ";
+            }else
+                maST=kh.getMaSoThue();
             String gioiTinh="";
             if(kh.isGioiTinh()){
                 gioiTinh="Nam";
             }else{
                 gioiTinh="Nữ";
             }
-           model_dsKhachHang.addRow(new Object[] {kh.getMaKH(),kh.getHoTen(),kh.getDiemThanhVien(),kh.getSoDT(),kh.getMaSoThue(),kh.getDiaChi(),kh.getNamSinh(),gioiTinh,kh.getEmail()});
+           model_dsKhachHang.addRow(new Object[] {kh.getMaKH(),kh.getHoTen(),kh.getDiemThanhVien(),kh.getSoDT(),maST,kh.getDiaChi(),kh.getNamSinh(),gioiTinh,kh.getEmail()});
         }
         
     }
@@ -439,6 +447,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         tbl_dsKhachHang.setModel(model_dsKhachHang);
         tbl_dsKhachHang.setRowHeight(30);
+        tbl_dsKhachHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tbl_dsKhachHang);
 
         pnl_dsKhachHang.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -503,6 +512,12 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         txt_maSoThue.setText("");
     }//GEN-LAST:event_btn_xoaTrangActionPerformed
 
+    public void showMessageFocus(String msg, JTextField txt) {
+        JOptionPane.showMessageDialog(this, msg);
+        txt.selectAll();
+        txt.requestFocus();
+    }
+    
     private void btn_themKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themKHActionPerformed
         // TODO add your handling code here:
         String  maKH = KH_bus.sinhMa();
@@ -511,6 +526,24 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         String soDT = txt_soDT.getText();
         String maST = txt_maSoThue.getText();
         String gt = (String) cmb_gioiTinh.getSelectedItem();
+        
+        if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
+            showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
+            return;
+        }
+        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+            showMessageFocus("Email không hợp lệ", txt_email);
+            return;
+        }
+        if(!Pattern.matches("0\\d{9}", soDT)){
+            showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+            return;
+        }
+        if(txt_diaChi.getText().trim().length()<=0){
+            showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
+            return;
+        }
+        
         if(maST.trim().length()<=0)
             maST = null;
         DiaChi dc = frame_diaChi.getDiaChi();
@@ -583,9 +616,27 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             String gt = (String) cmb_gioiTinh.getSelectedItem();
             int diem = Integer.parseInt(txt_hangThanhVien.getText());
 
+            
+           
+            
+            if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
+            showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
+            return;
+            }
+            if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+                showMessageFocus("Email không hợp lệ", txt_email);
+                return;
+            }
+            if(!Pattern.matches("0\\d{9}", soDT)){
+                showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+                return;
+            }
+            if(txt_diaChi.getText().trim().length()<=0){
+                showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
+                return;
+            }
             DiaChi dc = frame_diaChi.getDiaChi();
             dc.setMaDiaChi(KH_bus.getMaDiaChi(maKH));
-        
             boolean gioiTinh;
             if(gt.equals("Nữ"))
                 gioiTinh=false;

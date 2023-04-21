@@ -6,6 +6,7 @@ package controller;
 
 import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import model.hoadon.HoaDon;
 import model.share.Utility;
@@ -52,5 +53,12 @@ public class HoaDon_bus implements HoaDonInterface{
 
         return Utility.sinhMaTang(last, "HD", 5);
     }
+
+    @Override
+    public ArrayList<HoaDon> getHoaDonTheoDieuKien(String ma, String sdt, String giaBatDau, String giaKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
+        return dao.getHoaDonTheoDieuKien(ma, sdt, giaBatDau, giaKetThuc, ngayBatDau, ngayKetThuc);
+    }
+
+   
 
 }
