@@ -22,12 +22,12 @@ public class NhaCungCap_dao implements NhaCungCapInterface {
         ArrayList<NhaCungCap> result = new ArrayList<>();
         try {
             Statement st = ConnectDB.conn.createStatement();
-            ResultSet rs = st.executeQuery("select * from ThuongHieu");
+            ResultSet rs = st.executeQuery("select * from NhaCungCap");
 
             while (rs.next()) {
-                String ma = rs.getString("NhaCungCap");
-                String ten = rs.getString("NhaCungCap");
-                String soDienThoai = rs.getString("NhaCungCap");
+                String ma = rs.getString("maNhaCungCap");
+                String ten = rs.getString("tenNhaCungCap");
+                String soDienThoai = rs.getString("soDienThoai");
                 String maSoThue = rs.getString("maSoThue");
                 String email = rs.getString("email");
                 String maDiaChi = rs.getString("maDiaChi");

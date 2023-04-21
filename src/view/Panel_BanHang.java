@@ -666,7 +666,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         txt.requestFocus();
     }
     private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
-        if (gioHang.size() == 0) {
+        if (gioHang.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Bạn chưa thêm hàng vào giỏ");
             return;
         }

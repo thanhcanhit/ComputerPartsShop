@@ -45,16 +45,17 @@ public class KhachHang_dao implements KhachHangInterface {
         }
         return result;
     }
-    public String getMaDiaChi(String maKH){
+
+    public String getMaDiaChi(String maKH) {
         String maDC = null;
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("Select * from KhachHang where maKhachHang = ?");
             st.setString(1, maKH);
             ResultSet rs = st.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
                 maDC = rs.getString("maDiaChi");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +72,7 @@ public class KhachHang_dao implements KhachHangInterface {
             while (rs.next()) {
                 String ma = rs.getString("maKhachHang");
                 String tenKH = rs.getString("hoTen");
-                
+
                 LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
                 String email = rs.getString("email");
                 String maSoThue = rs.getString("maSoThue");
@@ -106,8 +107,10 @@ public class KhachHang_dao implements KhachHangInterface {
         int n = 0;
         try {
             DiaChi_dao DC_dao = new DiaChi_dao();
-            DC_dao.themDiaChi(khachHang.getDiaChi());
-            
+            if (DC_dao.getMaDiaChi(khachHang.getDiaChi()) == null) {
+                DC_dao.themDiaChi(khachHang.getDiaChi());
+            }
+
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into KhachHang values(?,?,?,?,?,?,?,?,?)");
             st.setString(1, khachHang.getMaKH());
             st.setString(2, khachHang.getHoTen());
@@ -140,7 +143,7 @@ public class KhachHang_dao implements KhachHangInterface {
             LocalDate namSinh = khachHang.getNamSinh();
             st.setDate(4, Date.valueOf(namSinh));
             st.setString(5, khachHang.getMaSoThue());
-            
+
             st.setInt(6, khachHang.getDiemThanhVien());
             st.setBoolean(7, khachHang.isGioiTinh());
             st.setString(8, maKH);
