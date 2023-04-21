@@ -80,7 +80,8 @@ public class NhanVien_dao implements NhanVienInterface {
                 LocalDate ngaySinh = rs.getDate("ngaySinh").toLocalDate();
                 String email = rs.getString("email");
                 String chucDanh = rs.getString("chucDanh");
-                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
+                  DiaChi_dao dao = new DiaChi_dao();
+                DiaChi diaChi = dao.getDiaChiTheoMa(rs.getString("maDiaChi"));
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
                 boolean trangThai = rs.getBoolean("trangThai");
                 NhanVien nv = new NhanVien(ma, chucDanh, tenNV, soDT, email, ngaySinh, diaChi, gioiTinh,trangThai);
@@ -127,7 +128,7 @@ public class NhanVien_dao implements NhanVienInterface {
             st.setBoolean(8, nhanVien.isGioiTinh()); 
             st.setBoolean(9, nhanVien.isTrangThai());
             n = st.executeUpdate();
-            TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"111"));
+            TK_dao.themTaiKhoan(new TaiKhoan(nhanVien.getMaNV(),"1111"));
            
         } catch (Exception e) {
             e.printStackTrace();

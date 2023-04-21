@@ -51,28 +51,31 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         pnl_container = new javax.swing.JPanel();
-        b_5 = new javax.swing.JPanel();
-        lbl_quocGia = new javax.swing.JLabel();
-        txt_quocGia = new javax.swing.JTextField();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
-        b_3 = new javax.swing.JPanel();
-        lbl_tp = new javax.swing.JLabel();
-        txt_tp = new javax.swing.JTextField();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        lbl_quan = new javax.swing.JLabel();
-        txt_quan = new javax.swing.JTextField();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
         b_1 = new javax.swing.JPanel();
         lbl_so = new javax.swing.JLabel();
         txt_so = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_duong = new javax.swing.JLabel();
         txt_duong = new javax.swing.JTextField();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
+        b_3 = new javax.swing.JPanel();
+        lbl_quan = new javax.swing.JLabel();
+        txt_quan = new javax.swing.JTextField();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        lbl_tp = new javax.swing.JLabel();
+        txt_tp = new javax.swing.JTextField();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
+        b_5 = new javax.swing.JPanel();
+        lbl_quocGia = new javax.swing.JLabel();
+        txt_quocGia = new javax.swing.JTextField();
         pnl_footer = new javax.swing.JPanel();
         btn_commit = new javax.swing.JButton();
+        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(32767, 0));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(32767, 0));
+        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 32767));
 
-        setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(500, 250));
         addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -81,56 +84,16 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/location.png"))); // NOI18N
+        jLabel1.setText("Nhập địa chỉ");
+        jLabel1.setPreferredSize(new java.awt.Dimension(42, 40));
+        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
+
         pnl_container.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_container.setPreferredSize(new java.awt.Dimension(20, 250));
         pnl_container.setLayout(new javax.swing.BoxLayout(pnl_container, javax.swing.BoxLayout.Y_AXIS));
-
-        b_5.setPreferredSize(new java.awt.Dimension(0, 50));
-        b_5.setLayout(new javax.swing.BoxLayout(b_5, javax.swing.BoxLayout.X_AXIS));
-
-        lbl_quocGia.setText("Quốc gia:");
-        lbl_quocGia.setToolTipText("");
-        lbl_quocGia.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_5.add(lbl_quocGia);
-
-        txt_quocGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_quocGia.setText("Việt Nam");
-        txt_quocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_quocGia.setPreferredSize(new java.awt.Dimension(70, 70));
-        b_5.add(txt_quocGia);
-
-        pnl_container.add(b_5);
-        pnl_container.add(filler3);
-
-        b_3.setPreferredSize(new java.awt.Dimension(0, 50));
-        b_3.setLayout(new javax.swing.BoxLayout(b_3, javax.swing.BoxLayout.X_AXIS));
-
-        lbl_tp.setText("Tỉnh/Thành phố:");
-        lbl_tp.setToolTipText("");
-        lbl_tp.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_3.add(lbl_tp);
-
-        txt_tp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_tp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_tp.setMinimumSize(new java.awt.Dimension(70, 0));
-        txt_tp.setPreferredSize(new java.awt.Dimension(70, 30));
-        txt_tp.requestFocus();
-        b_3.add(txt_tp);
-        b_3.add(filler2);
-
-        lbl_quan.setText("Quận/Huyện:");
-        lbl_quan.setToolTipText("");
-        lbl_quan.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_3.add(lbl_quan);
-
-        txt_quan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_quan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_quan.setMinimumSize(new java.awt.Dimension(70, 0));
-        txt_quan.setPreferredSize(new java.awt.Dimension(70, 30));
-        b_3.add(txt_quan);
-
-        pnl_container.add(b_3);
-        pnl_container.add(filler4);
 
         b_1.setPreferredSize(new java.awt.Dimension(0, 50));
         b_1.setLayout(new javax.swing.BoxLayout(b_1, javax.swing.BoxLayout.X_AXIS));
@@ -164,22 +127,74 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         b_1.add(txt_duong);
 
         pnl_container.add(b_1);
+        pnl_container.add(filler4);
+
+        b_3.setPreferredSize(new java.awt.Dimension(0, 50));
+        b_3.setLayout(new javax.swing.BoxLayout(b_3, javax.swing.BoxLayout.X_AXIS));
+
+        lbl_quan.setText("Quận/Huyện:");
+        lbl_quan.setToolTipText("");
+        lbl_quan.setPreferredSize(new java.awt.Dimension(100, 0));
+        b_3.add(lbl_quan);
+
+        txt_quan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_quan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_quan.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_quan.setPreferredSize(new java.awt.Dimension(70, 30));
+        b_3.add(txt_quan);
+        b_3.add(filler2);
+
+        lbl_tp.setText("Tỉnh/Thành phố:");
+        lbl_tp.setToolTipText("");
+        lbl_tp.setPreferredSize(new java.awt.Dimension(100, 0));
+        b_3.add(lbl_tp);
+
+        txt_tp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_tp.setMinimumSize(new java.awt.Dimension(70, 0));
+        txt_tp.setPreferredSize(new java.awt.Dimension(70, 30));
+        txt_tp.requestFocus();
+        b_3.add(txt_tp);
+
+        pnl_container.add(b_3);
+        pnl_container.add(filler3);
+
+        b_5.setPreferredSize(new java.awt.Dimension(0, 50));
+        b_5.setLayout(new javax.swing.BoxLayout(b_5, javax.swing.BoxLayout.X_AXIS));
+
+        lbl_quocGia.setText("Quốc gia:");
+        lbl_quocGia.setToolTipText("");
+        lbl_quocGia.setPreferredSize(new java.awt.Dimension(100, 0));
+        b_5.add(lbl_quocGia);
+
+        txt_quocGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_quocGia.setText("Việt Nam");
+        txt_quocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_quocGia.setPreferredSize(new java.awt.Dimension(70, 70));
+        b_5.add(txt_quocGia);
+
+        pnl_container.add(b_5);
 
         getContentPane().add(pnl_container, java.awt.BorderLayout.CENTER);
 
+        pnl_footer.setMinimumSize(new java.awt.Dimension(70, 23));
+        pnl_footer.setPreferredSize(new java.awt.Dimension(70, 43));
         pnl_footer.setLayout(new java.awt.BorderLayout());
 
         btn_commit.setBackground(new java.awt.Color(65, 165, 238));
         btn_commit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_commit.setForeground(new java.awt.Color(255, 255, 255));
         btn_commit.setText("Xác nhận");
-        btn_commit.setPreferredSize(new java.awt.Dimension(78, 43));
+        btn_commit.setPreferredSize(new java.awt.Dimension(65, 43));
         btn_commit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_commitActionPerformed(evt);
             }
         });
         pnl_footer.add(btn_commit, java.awt.BorderLayout.CENTER);
+        pnl_footer.add(filler5, java.awt.BorderLayout.LINE_END);
+        pnl_footer.add(filler6, java.awt.BorderLayout.LINE_START);
+        pnl_footer.add(filler7, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(pnl_footer, java.awt.BorderLayout.SOUTH);
 
@@ -280,6 +295,10 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler5;
+    private javax.swing.Box.Filler filler6;
+    private javax.swing.Box.Filler filler7;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_duong;
     private javax.swing.JLabel lbl_quan;
     private javax.swing.JLabel lbl_quocGia;

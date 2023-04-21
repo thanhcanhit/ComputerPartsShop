@@ -76,7 +76,9 @@ public class KhachHang_dao implements KhachHangInterface {
                 String email = rs.getString("email");
                 String maSoThue = rs.getString("maSoThue");
                 int diem = rs.getInt("diemThanhVien");
-                DiaChi diaChi = new DiaChi(rs.getString("maDiaChi"));
+                DiaChi_dao dao = new DiaChi_dao();
+                DiaChi diaChi = dao.getDiaChiTheoMa(rs.getString("maDiaChi"));
+                
                 boolean gioiTinh = rs.getBoolean("gioiTinh");
 
                 KhachHang kh = new KhachHang(ma, maSoThue, tenKH, soDT, email, ngaySinh, diaChi, gioiTinh, diem);

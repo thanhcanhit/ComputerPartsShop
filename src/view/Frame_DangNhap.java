@@ -39,12 +39,12 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_img = new javax.swing.JPanel();
         lbl_img = new javax.swing.JLabel();
         pnl_form = new javax.swing.JPanel();
         lbl_dangNhap = new javax.swing.JLabel();
         pnl_formInput = new javax.swing.JPanel();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 20), new java.awt.Dimension(0, 20), new java.awt.Dimension(32767, 50));
         pnl_username = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
@@ -61,11 +61,13 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        setPreferredSize(new java.awt.Dimension(600, 300));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
         pnl_img.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_img.setPreferredSize(new java.awt.Dimension(200, 0));
+        pnl_img.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        pnl_img.setPreferredSize(new java.awt.Dimension(250, 0));
         pnl_img.setLayout(new java.awt.BorderLayout());
 
         lbl_img.setBackground(new java.awt.Color(153, 204, 255));
@@ -74,27 +76,30 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         lbl_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Login.png"))); // NOI18N
         lbl_img.setText("ComputerPartsShop");
         lbl_img.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_img.setMaximumSize(new java.awt.Dimension(250, 184));
+        lbl_img.setMinimumSize(new java.awt.Dimension(250, 184));
+        lbl_img.setPreferredSize(new java.awt.Dimension(250, 184));
         lbl_img.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pnl_img.add(lbl_img, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnl_img, java.awt.BorderLayout.EAST);
+        getContentPane().add(pnl_img, java.awt.BorderLayout.WEST);
 
         pnl_form.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_form.setPreferredSize(new java.awt.Dimension(340, 300));
+        pnl_form.setPreferredSize(new java.awt.Dimension(300, 300));
         pnl_form.setLayout(new java.awt.BorderLayout());
 
-        lbl_dangNhap.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lbl_dangNhap.setFont(new java.awt.Font("Damascus", 1, 25)); // NOI18N
         lbl_dangNhap.setForeground(new java.awt.Color(65, 165, 238));
         lbl_dangNhap.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_dangNhap.setText("ĐĂNG NHẬP");
         lbl_dangNhap.setToolTipText("");
+        lbl_dangNhap.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbl_dangNhap.setPreferredSize(new java.awt.Dimension(146, 60));
         pnl_form.add(lbl_dangNhap, java.awt.BorderLayout.PAGE_START);
 
         pnl_formInput.setBackground(new java.awt.Color(255, 255, 255));
         pnl_formInput.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_formInput.setLayout(new javax.swing.BoxLayout(pnl_formInput, javax.swing.BoxLayout.Y_AXIS));
-        pnl_formInput.add(filler4);
 
         pnl_username.setBackground(new java.awt.Color(255, 255, 255));
         pnl_username.setPreferredSize(new java.awt.Dimension(0, 40));
@@ -132,14 +137,15 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_formInput.add(filler2);
 
         pnl_control.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_control.setPreferredSize(new java.awt.Dimension(0, 100));
-        pnl_control.setLayout(new java.awt.GridLayout(2, 0));
+        pnl_control.setPreferredSize(new java.awt.Dimension(0, 120));
+        pnl_control.setLayout(new java.awt.GridLayout(2, 0, 0, 6));
 
         btn_login.setBackground(new java.awt.Color(65, 165, 238));
-        btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btn_login.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         btn_login.setForeground(new java.awt.Color(255, 255, 255));
         btn_login.setText("Đăng nhập");
         btn_login.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_login.setPreferredSize(new java.awt.Dimension(107, 30));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_loginActionPerformed(evt);
@@ -174,13 +180,20 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         String username = txt_username.getText().trim();
         String password = new String(txt_password.getPassword());
-
+        
         boolean isValid = taiKhoan_bus.kiemTraTaiKhoan(username, password);
+        
 
 //        Dang nhap
         if (isValid) {
             try {
                 NhanVien nhanVien = nhanVien_bus.getNhanVienTheoMa(username).get(0);
+                // Neu trang thai = da nghi => khong cho dang nhap
+                if(!nhanVien.isTrangThai()) {
+                    JOptionPane.showMessageDialog(this, "Tài khoản của bạn đã bị vô hiệu hoá !");
+                    return;
+                }
+                    
                 main.login(nhanVien);
                 close();
             } catch (Exception ex) {
@@ -199,7 +212,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler4;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.JLabel jLabel1;
