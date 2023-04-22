@@ -404,7 +404,7 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_lbl_productsMouseClicked
 
     private void lbl_inventoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_inventoryMouseClicked
-        pnl_inventory = new Panel_QuanLyDonHang();
+        pnl_inventory = new Panel_QuanLyDonHang(this.nhanVien);
         pnl_main.add(this.pnl_inventory, "inventory");
         card.show(this.pnl_main, "inventory");
         buttonActive(evt.getComponent());

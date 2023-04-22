@@ -15,13 +15,13 @@ import model.share.Utility;
  *
  * @author macbookk
  */
-public class HoaDon_bus implements HoaDonInterface{
+public class HoaDon_bus implements HoaDonInterface {
+
     private HoaDon_dao dao;
 
     public HoaDon_bus() {
         dao = new HoaDon_dao();
     }
-     
 
     @Override
     public ArrayList<HoaDon> getAllHoaDon() {
@@ -47,7 +47,7 @@ public class HoaDon_bus implements HoaDonInterface{
     public boolean capNhatHoaDon(String maHoaDon, HoaDon hoaDon) {
         return dao.capNhatHoaDon(maHoaDon, hoaDon);
     }
-    
+
     public String sinhMa() {
         String last = dao.getMaLonNhat();
 
@@ -58,7 +58,4 @@ public class HoaDon_bus implements HoaDonInterface{
     public ArrayList<HoaDon> getHoaDonTheoDieuKien(String ma, String sdt, String giaBatDau, String giaKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
         return dao.getHoaDonTheoDieuKien(ma, sdt, giaBatDau, giaKetThuc, ngayBatDau, ngayKetThuc);
     }
-
-   
-
 }

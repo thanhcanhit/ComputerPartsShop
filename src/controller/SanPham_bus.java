@@ -68,12 +68,4 @@ public class SanPham_bus implements SanPhamInterface {
         return Utility.sinhMaTang(last, "SP", 4);
     }
 
-    public static void main(String[] args) {
-        try {
-
-            ConnectDB.connect();
-            System.out.println(new SanPham_bus().sinhMa());
-        } catch (Exception e) {
-        }
-    }
 }

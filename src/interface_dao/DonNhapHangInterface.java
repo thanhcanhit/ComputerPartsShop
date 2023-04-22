@@ -17,4 +17,5 @@ public interface DonNhapHangInterface {
     public boolean xoaDonNhapHang(String maDon);
     public boolean themDonNhapHang(DonNhapHang donNhap);
     public boolean capNhatDonNhapHang(String maDon, DonNhapHang donNhap);
+    public boolean capNhatGiaoDonThanhCong(String maDon);
 }

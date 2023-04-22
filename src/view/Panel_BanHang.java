@@ -10,6 +10,7 @@ import controller.KhachHang_bus;
 import controller.KhoHang_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
+import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -272,6 +273,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setShowGrid(true);
+        tbl_products.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_productsMouseClicked(evt);
+            }
+        });
         scr_products.setViewportView(tbl_products);
 
         pnl_productsTable.add(scr_products, java.awt.BorderLayout.CENTER);
@@ -367,6 +373,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_cart.setRowHeight(30);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_cartMouseClicked(evt);
+            }
+        });
         scr_cart.setViewportView(tbl_cart);
 
         pnl_cartTable.add(scr_cart, java.awt.BorderLayout.CENTER);
@@ -568,7 +579,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         txt_diaChi.setText(dc.toString());
     }
 
-    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+    public void themHang() {
         String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", "Nhập thông tin", JOptionPane.PLAIN_MESSAGE);
 
         try {
@@ -610,9 +621,12 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ", "Lỗi đầu vào", JOptionPane.PLAIN_MESSAGE);
         }
+    }
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        themHang();
     }//GEN-LAST:event_btn_addActionPerformed
 
-    private void btn_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeActionPerformed
+    public void xoaHang() {
         int row = tbl_cart.getSelectedRow();
 
         if (row != -1) {
@@ -622,6 +636,9 @@ public final class Panel_BanHang extends javax.swing.JPanel {
                 renderCartTable();
             }
         }
+    }
+    private void btn_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeActionPerformed
+        xoaHang();
     }//GEN-LAST:event_btn_removeActionPerformed
 
     private void txt_sdtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sdtKeyPressed
@@ -728,6 +745,49 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btn_exportActionPerformed
+
+    private void tbl_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_productsMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            themHang();
+        }
+    }//GEN-LAST:event_tbl_productsMouseClicked
+
+    private void tbl_cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cartMouseClicked
+
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            int row = tbl_cart.getSelectedRow();
+            if (row != -1) {
+                ChiTietHoaDon ct = gioHang.get(row);
+
+                try {
+                    int newSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Thay đổi số lượng", ct.getSoLuong()));
+                    ct.setSoLuong(newSoLuong);
+
+                    if (newSoLuong <= 0) {
+                        JOptionPane.showConfirmDialog(this, "Số lượng phải > 0");
+                        return;
+                    }
+
+                    String maSanPham = tbl_products.getValueAt(row, 0).toString();
+                    SanPham sp = sanPham_bus.getSanPhamTheoMa(maSanPham).get(0);
+
+                    int soLuongTon = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
+
+                    if (newSoLuong > soLuongTon) {
+                        JOptionPane.showMessageDialog(this, "Số lượng trong kho không đủ!", "Kho không đủ hàng", JOptionPane.PLAIN_MESSAGE);
+                        return;
+                    }
+
+                    renderCartTable();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ");
+                }
+            }
+        } else if (evt.getButton() == MouseEvent.BUTTON3) {
+            xoaHang();
+        }
+
+    }//GEN-LAST:event_tbl_cartMouseClicked
 
     public void resetAll() {
         gioHang = new ArrayList<>();

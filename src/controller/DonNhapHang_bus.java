@@ -53,5 +53,10 @@ public class DonNhapHang_bus implements DonNhapHangInterface {
         return Utility.sinhMaTang(last, "DNH", 4);
     }
 
+    @Override
+    public boolean capNhatGiaoDonThanhCong(String maDon) {
+        return dao.capNhatGiaoDonThanhCong(maDon);
+    }
+
 
 }

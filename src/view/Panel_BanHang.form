@@ -142,6 +142,9 @@
                     </Property>
                     <Property name="showGrid" type="boolean" value="true"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_productsMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -360,6 +363,9 @@
                           <JTableSelectionModel selectionMode="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_cartMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

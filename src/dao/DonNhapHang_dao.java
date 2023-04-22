@@ -86,7 +86,29 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
 
     @Override
     public boolean themDonNhapHang(DonNhapHang donNhap) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        int n = 0;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("insert into DonNhapHang (maDonNhap, ngayNhap, maKho, maNhaCungCap, ghiChu, tongTien, daNhan, maNhanVien) values (?, ?, ?, ?, ?, ?, ? ,?)");
+            st.setString(1, donNhap.getMaDonNhap());
+            st.setDate(2, Date.valueOf(donNhap.getNgayNhap()));
+            st.setString(3, "KHO01");
+            st.setString(4, donNhap.getNhaCungCap().getMaNCC());
+            st.setString(5, donNhap.getGhiChu());
+            st.setDouble(6, donNhap.getTongTien());
+            st.setBoolean(7, donNhap.isDanhan());
+            st.setString(8, donNhap.getNhanVien().getMaNV());
+            n = st.executeUpdate();
+
+            for (ChiTietDonNhap ct : donNhap.getChiTietDonNhap()) {
+                ct.setDonNhap(donNhap);
+                new ChiTietDonNhap_dao().themChiTietDonNhap(ct);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return n > 0;
     }
 
     @Override
@@ -107,6 +129,28 @@ public class DonNhapHang_dao implements DonNhapHangInterface {
         }
 
         return s;
+    }
+
+    @Override
+    public boolean capNhatGiaoDonThanhCong(String maDon) {
+        int n = 0;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("update DonNhapHang set daNhan = 1 where maDonNhap = ?");
+            st.setString(1, maDon);
+
+//        Cập nhật số lượng vào kho
+            DonNhapHang donNhap = getDonNhapHangTheoMa(maDon).get(0);
+            for (ChiTietDonNhap ct : donNhap.getChiTietDonNhap()) {
+                new ChiTietKhoHang_dao().congSoLuongChiTietKhoHang("KHO01", ct.getSanPham().getMaSP(), ct.getSoLuong());
+            }
+
+            n = st.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return n > 0;
     }
 
 }
