@@ -8,7 +8,7 @@ import dao.KhachHang_dao;
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
 import model.connguoi.KhachHang;
-import model.share.ConnectDB;
+import model.share.DiaChi;
 import model.share.Utility;
 
 /**
@@ -22,6 +22,10 @@ public class KhachHang_bus implements KhachHangInterface {
     public KhachHang_bus() {
         dao = new KhachHang_dao();
     }
+    
+    public String getMaDiaChi(String maKH){
+        return dao.getMaDiaChi(maKH);
+    }
 
     @Override
     public ArrayList<KhachHang> getAllKhachHang() {
@@ -29,8 +33,8 @@ public class KhachHang_bus implements KhachHangInterface {
     }
 
     @Override
-    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
-        return dao.getKhachHangTheoMa(maKH);
+    public ArrayList<KhachHang> getKhachHangTheoSoDT(String soDT) {
+        return dao.getKhachHangTheoSoDT(soDT);
     }
 
     public boolean xoaKhachHang(String maKH) {
@@ -56,6 +60,16 @@ public class KhachHang_bus implements KhachHangInterface {
         String last = dao.getMaLonNhat();
 
         return Utility.sinhMaTang(last, "KH", 5);
+    }
+
+    @Override
+    public boolean congDiemKhachHang(String maKH, int diemThem) {
+        return dao.congDiemKhachHang(maKH, diemThem);
+    }
+
+    @Override
+    public ArrayList<KhachHang> getKhachHangTheoMa(String maKH) {
+        return dao.getKhachHangTheoMa(maKH);
     }
 
 }

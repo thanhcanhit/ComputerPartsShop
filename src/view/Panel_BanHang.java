@@ -10,6 +10,7 @@ import controller.KhachHang_bus;
 import controller.KhoHang_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
+import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.KhachHang;
@@ -271,6 +273,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setShowGrid(true);
+        tbl_products.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_productsMouseClicked(evt);
+            }
+        });
         scr_products.setViewportView(tbl_products);
 
         pnl_productsTable.add(scr_products, java.awt.BorderLayout.CENTER);
@@ -366,6 +373,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_cart.setRowHeight(30);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_cart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_cartMouseClicked(evt);
+            }
+        });
         scr_cart.setViewportView(tbl_cart);
 
         pnl_cartTable.add(scr_cart, java.awt.BorderLayout.CENTER);
@@ -567,7 +579,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         txt_diaChi.setText(dc.toString());
     }
 
-    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+    public void themHang() {
         String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", "Nhập thông tin", JOptionPane.PLAIN_MESSAGE);
 
         try {
@@ -609,9 +621,12 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ", "Lỗi đầu vào", JOptionPane.PLAIN_MESSAGE);
         }
+    }
+    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
+        themHang();
     }//GEN-LAST:event_btn_addActionPerformed
 
-    private void btn_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeActionPerformed
+    public void xoaHang() {
         int row = tbl_cart.getSelectedRow();
 
         if (row != -1) {
@@ -621,6 +636,9 @@ public final class Panel_BanHang extends javax.swing.JPanel {
                 renderCartTable();
             }
         }
+    }
+    private void btn_removeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_removeActionPerformed
+        xoaHang();
     }//GEN-LAST:event_btn_removeActionPerformed
 
     private void txt_sdtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_sdtKeyPressed
@@ -636,16 +654,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         if (JOptionPane.showConfirmDialog(this, "Hủy bỏ hóa đơn hiện tại?", "Xác nhận hủy hóa đơn", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            gioHang = new ArrayList<>();
-            renderCartTable();
-            txt_thanhTien.setText("");
-            txt_sdt.setText("");
-            txt_hangTV.setText("");
-            txt_hoTen.setText("");
-            txt_diaChi.setText("");
-            cmb_phuongThucThanhToan.setSelectedIndex(0);
-            khach = null;
-            subTotal = 0;
+            resetAll();
         }
     }//GEN-LAST:event_btn_cancelActionPerformed
 
@@ -668,20 +677,59 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         frame_diaChi.getDiaChi();
     }//GEN-LAST:event_txt_diaChiMouseClicked
 
+    public void showMessageFocus(String msg, JTextField txt) {
+        JOptionPane.showMessageDialog(this, msg);
+        txt.selectAll();
+        txt.requestFocus();
+    }
     private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
+        if (gioHang.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa thêm hàng vào giỏ");
+            return;
+        }
+
+        String sdt = txt_sdt.getText().trim();
+        String hoTen = txt_hoTen.getText().trim();
+        boolean gioiTinh = cmb_gender.getSelectedIndex() == 1;
+        int diemThem = Long.valueOf(Math.round(subTotal / 10000)).intValue();
+
+//                Validate
+        if (!Pattern.matches("0\\d{9}", sdt)) {
+            showMessageFocus("Số điện thoại không hợp lệ", txt_sdt);
+            return;
+        }
+
+        if (!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)) {
+            showMessageFocus("Họ tên phải ít nhất 2 từ", txt_hoTen);
+            return;
+        }
+
         if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn này không", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             if (khach == null) {
-                String sdt = txt_sdt.getText().trim();
-                String hoTen = txt_hoTen.getText().trim();
-                DiaChi dc = frame_diaChi.getDiaChi();
-                boolean gioiTinh = cmb_gender.getSelectedIndex() == 0;
-
                 try {
-                    KhachHang kh = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "", null, dc, gioiTinh, 0);
+                    DiaChi dc = frame_diaChi.getDiaChi();
+                    if (dc.getThanhPho().trim().length() == 0) {
+                        showMessageFocus("Bạn chưa điền địa chỉ", txt_diaChi);
+                        return;
+                    }
+
+//                  Kiem tra xem diaChi ton tai trong database chua
+                    String maDiaChiInDatabase = diaChi_bus.getMaDiaChi(dc);
+
+                    // Khong co thi them co thi dung lai
+                    if (maDiaChiInDatabase == null) {
+                        diaChi_bus.themDiaChi(dc);
+                    } else {
+                        dc.setMaDiaChi(maDiaChiInDatabase);
+                    }
+
+                    khach = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "Không", LocalDate.of(2003, 1, 1), dc, gioiTinh, diemThem);
+                    khachHang_bus.themKhachHang(khach);
                 } catch (Exception ex) {
                     Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+            } else {
+                khachHang_bus.congDiemKhachHang(khach.getMaKH(), diemThem);
             }
 
 //        Phat sinh hoa don
@@ -691,30 +739,82 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             if (hoaDon_bus.themHoaDon(hoaDon)) {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
                 // Reset
-                gioHang = new ArrayList<>();
-                renderCartTable();
-                txt_thanhTien.setText("");
-                txt_sdt.setText("");
-                txt_hangTV.setText("");
-                txt_hoTen.setText("");
-                txt_diaChi.setText("");
-                cmb_phuongThucThanhToan.setSelectedIndex(0);
-                khach = null;
-                subTotal = 0;
-                renderPage();
+                resetAll();
             } else {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
             }
         }
     }//GEN-LAST:event_btn_exportActionPerformed
 
+    private void tbl_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_productsMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            themHang();
+        }
+    }//GEN-LAST:event_tbl_productsMouseClicked
+
+    private void tbl_cartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cartMouseClicked
+
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            int row = tbl_cart.getSelectedRow();
+            if (row != -1) {
+                ChiTietHoaDon ct = gioHang.get(row);
+
+                try {
+                    int newSoLuong = Integer.parseInt(JOptionPane.showInputDialog(this, "Thay đổi số lượng", ct.getSoLuong()));
+                    ct.setSoLuong(newSoLuong);
+
+                    if (newSoLuong <= 0) {
+                        JOptionPane.showConfirmDialog(this, "Số lượng phải > 0");
+                        return;
+                    }
+
+                    String maSanPham = tbl_products.getValueAt(row, 0).toString();
+                    SanPham sp = sanPham_bus.getSanPhamTheoMa(maSanPham).get(0);
+
+                    int soLuongTon = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
+
+                    if (newSoLuong > soLuongTon) {
+                        JOptionPane.showMessageDialog(this, "Số lượng trong kho không đủ!", "Kho không đủ hàng", JOptionPane.PLAIN_MESSAGE);
+                        return;
+                    }
+
+                    renderCartTable();
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(this, "Số lượng không hợp lệ");
+                }
+            }
+        } else if (evt.getButton() == MouseEvent.BUTTON3) {
+            xoaHang();
+        }
+
+    }//GEN-LAST:event_tbl_cartMouseClicked
+
+    public void resetAll() {
+        gioHang = new ArrayList<>();
+        renderCartTable();
+        txt_thanhTien.setText("");
+        txt_sdt.setText("");
+        txt_hangTV.setText("");
+        txt_hoTen.setText("");
+        txt_diaChi.setText("");
+        cmb_phuongThucThanhToan.setSelectedIndex(0);
+        cmb_gender.setSelectedIndex(0);
+        khach = null;
+        subTotal = 0;
+        renderPage();
+    }
+
     private void renderKhachHang() {
         txt_hoTen.setEditable(false);
         txt_hoTen.setText(khach.getHoTen());
         txt_hangTV.setText(khach.getHang());
         cmb_gender.setSelectedIndex(khach.isGioiTinh() ? 1 : 0);
-        String diaChi = diaChi_bus.getDiaChiTheoMa(khach.getDiaChi().getMaDiaChi()).toString();
-        txt_diaChi.setText(diaChi);
+        try {
+            String diaChi = diaChi_bus.getDiaChiTheoMa(khach.getDiaChi().getMaDiaChi()).toString();
+            txt_diaChi.setText(diaChi);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void getKhachHangNeuTonTai() {

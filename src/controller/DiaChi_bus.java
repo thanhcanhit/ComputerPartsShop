@@ -52,4 +52,9 @@ public class DiaChi_bus implements DiaChiInterface {
         return Utility.sinhMaTang(last, "DC", 4);
     }
 
+    @Override
+    public String getMaDiaChi(DiaChi diaChi) {
+        return dao.getMaDiaChi(diaChi);
+    }
+
 }

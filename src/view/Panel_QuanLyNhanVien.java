@@ -14,10 +14,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.connguoi.NhanVien;
@@ -29,7 +31,7 @@ import model.share.DiaChi;
  * @author macbookk
  */
 public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
-    private Frame_InputDiaChi frame_diaChi = new Frame_InputDiaChi(this);
+    private Frame_InputDiaChi frame_diaChi;
     private NhanVien_bus NV_bus = new NhanVien_bus();
     private DiaChi_bus DC_bus = new DiaChi_bus();
     private ArrayList<NhanVien> listNV = new ArrayList<NhanVien>();
@@ -55,16 +57,17 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 txt_hoTenNV.setText(model_dsNhanVien.getValueAt(row, 1).toString());
                 txt_mailNV.setText(model_dsNhanVien.getValueAt(row, 2).toString());
                 txt_soDT.setText(model_dsNhanVien.getValueAt(row, 3).toString());
-                txt_chucVu.setText(model_dsNhanVien.getValueAt(row, 5).toString());
+              
+                cmb_chucVu.setSelectedItem(model_dsNhanVien.getValueAt(row, 5).toString());
+                
                 txt_diaChi.setText(model_dsNhanVien.getValueAt(row, 4).toString());
                 LocalDate ngaySinh = (LocalDate) model_dsNhanVien.getValueAt(row, 6);
                 //convert LocalDate to Date
                 txt_date.setDate(Date.from(ngaySinh.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
-                String gt = model_dsNhanVien.getValueAt(row, 7).toString();
-                if(gt.equals("Nam"))
-                    cmb_gioiTinh.setSelectedItem("Nam");
-                else
-                    cmb_gioiTinh.setSelectedItem("Nữ");
+               
+               
+                cmb_gioiTinh.setSelectedItem(model_dsNhanVien.getValueAt(row, 7).toString());
+
             }
            
         });
@@ -89,6 +92,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.getColumnModel().getColumn(7).setPreferredWidth(100);
         
         tbl_dsNhanVien.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        tbl_dsNhanVien.getColumnModel().getColumn(6).setCellRenderer(rightAlign);
         
         tbl_dsNhanVien.setDefaultEditor(Object.class, null);
     }
@@ -166,9 +170,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_diaChi = new javax.swing.JPanel();
         lbl_diaChi = new javax.swing.JLabel();
         txt_diaChi = new javax.swing.JTextField();
+        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_chucVu = new javax.swing.JPanel();
         lbl_chucVu = new javax.swing.JLabel();
-        txt_chucVu = new javax.swing.JTextField();
+        cmb_chucVu = new javax.swing.JComboBox<>();
         filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_namSinh = new javax.swing.JPanel();
         lbl_namSinh = new javax.swing.JLabel();
@@ -444,6 +449,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_formNV.add(pnl_soDT);
         pnl_formNV.add(filler9);
 
+        pnl_diaChi.setMinimumSize(new java.awt.Dimension(65, 40));
         pnl_diaChi.setPreferredSize(new java.awt.Dimension(180, 70));
 
         lbl_diaChi.setForeground(new java.awt.Color(102, 102, 102));
@@ -452,7 +458,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         txt_diaChi.setEditable(false);
         txt_diaChi.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_diaChi.setMaximumSize(new java.awt.Dimension(280, 30));
         txt_diaChi.setMinimumSize(new java.awt.Dimension(65, 30));
         txt_diaChi.setPreferredSize(new java.awt.Dimension(280, 30));
         txt_diaChi.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -480,14 +485,15 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_diaChiLayout.setVerticalGroup(
             pnl_diaChiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_diaChiLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(7, Short.MAX_VALUE)
                 .addGroup(pnl_diaChiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                    .addComponent(txt_diaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
         );
 
         pnl_formNV.add(pnl_diaChi);
+        pnl_formNV.add(filler16);
 
         pnl_chucVu.setPreferredSize(new java.awt.Dimension(180, 70));
 
@@ -495,8 +501,9 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_chucVu.setText("Chức vụ:");
         lbl_chucVu.setPreferredSize(new java.awt.Dimension(85, 17));
 
-        txt_chucVu.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txt_chucVu.setPreferredSize(new java.awt.Dimension(280, 30));
+        cmb_chucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên kinh doanh", " " }));
+        cmb_chucVu.setPreferredSize(new java.awt.Dimension(161, 30));
+        cmb_chucVu.setSize(new java.awt.Dimension(72, 30));
 
         javax.swing.GroupLayout pnl_chucVuLayout = new javax.swing.GroupLayout(pnl_chucVu);
         pnl_chucVu.setLayout(pnl_chucVuLayout);
@@ -505,8 +512,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             .addGroup(pnl_chucVuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbl_chucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addComponent(txt_chucVu, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cmb_chucVu, 0, 281, Short.MAX_VALUE))
         );
         pnl_chucVuLayout.setVerticalGroup(
             pnl_chucVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +521,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnl_chucVuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_chucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_chucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_chucVu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -570,10 +577,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_submit.setPreferredSize(new java.awt.Dimension(180, 70));
         pnl_submit.setLayout(new javax.swing.BoxLayout(pnl_submit, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn_xoaTrang.setBackground(new java.awt.Color(204, 204, 255));
         btn_xoaTrang.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
-        btn_xoaTrang.setForeground(new java.awt.Color(255, 255, 255));
-        btn_xoaTrang.setText("Xoá trắng");
+        btn_xoaTrang.setText("Clear");
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(32767, 32767));
         btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 40));
         btn_xoaTrang.setPreferredSize(new java.awt.Dimension(150, 70));
@@ -601,6 +606,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.setModel(model_dsNhanVien);
         tbl_dsNhanVien.setMaximumSize(new java.awt.Dimension(100, 0));
         tbl_dsNhanVien.setRowHeight(30);
+        tbl_dsNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tbl_dsNhanVien);
 
         pnl_dsNhanVien.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -623,15 +629,38 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private void txt_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_timKiemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_timKiemActionPerformed
-
+    public void showMessageFocus(String msg, JTextField txt) {
+        JOptionPane.showMessageDialog(this, msg);
+        txt.selectAll();
+        txt.requestFocus();
+    }
+    
     private void btn_themNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themNVActionPerformed
         // TODO add your handling code here:
         String  maNV = NV_bus.sinhMa();
         String hoTen = txt_hoTenNV.getText();
         String email = txt_mailNV.getText();
         String soDT = txt_soDT.getText();
-        String chucVu= txt_chucVu.getText();
+        String chucVu= (String) cmb_chucVu.getSelectedItem();
         String gt = (String) cmb_gioiTinh.getSelectedItem();
+        
+        
+        if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
+            showMessageFocus("Họ tên không hợp lệ", txt_hoTenNV);
+            return;
+        }
+        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+            showMessageFocus("Email không hợp lệ", txt_mailNV);
+            return;
+        }
+        if(!Pattern.matches("0\\d{9}", soDT)){
+            showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+            return;
+        }
+        if(txt_diaChi.getText().trim().length()<=0){
+            showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
+            return;
+        }
         
         DiaChi dc = frame_diaChi.getDiaChi();
         boolean gioiTinh;
@@ -657,7 +686,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 txt_hoTenNV.setText("");
                 txt_mailNV.setText("");
                 txt_soDT.setText("");
-                txt_chucVu.setText("");
+               
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -694,6 +723,17 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_diaChiActionPerformed
 
     private void txt_diaChiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_diaChiMouseClicked
+           
+           if(txt_diaChi.getText().trim().length()>0){
+               int row = tbl_dsNhanVien.getSelectedRow();
+               String maNV = (model_dsNhanVien.getValueAt(row, 0).toString());
+               String maDC = NV_bus.getMaDiaChi(maNV);
+               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+               frame_diaChi = new Frame_InputDiaChi(this,dc);
+           }
+           else{
+               frame_diaChi = new Frame_InputDiaChi(this);
+           }
            frame_diaChi.setVisible(true);
            frame_diaChi.getDiaChi();
     }//GEN-LAST:event_txt_diaChiMouseClicked
@@ -703,12 +743,30 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             String hoTen = txt_hoTenNV.getText();
             String email = txt_mailNV.getText();
             String soDT = txt_soDT.getText();
-            String chucVu= txt_chucVu.getText();
+            String chucVu= (String) cmb_chucVu.getSelectedItem();
             String gt = (String) cmb_gioiTinh.getSelectedItem();
 
+           
+            
+            if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
+            showMessageFocus("Họ tên không hợp lệ", txt_hoTenNV);
+            return;
+            }
+            if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+                showMessageFocus("Email không hợp lệ", txt_mailNV);
+                return;
+            }
+            if(!Pattern.matches("0\\d{9}", soDT)){
+                showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+                return;
+            }
+            if(txt_diaChi.getText().trim().length()<=0){
+                showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
+                return;
+            } 
+            
             DiaChi dc = frame_diaChi.getDiaChi();
             dc.setMaDiaChi(NV_bus.getMaDiaChi(maNV));
-        
             boolean gioiTinh;
             if(gt.equals("Nữ"))
                 gioiTinh=false;
@@ -737,9 +795,9 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         txt_hoTenNV.setText("");
         txt_mailNV.setText("");
         txt_soDT.setText("");
-        txt_chucVu.setText("");
         txt_diaChi.setText("");
         cmb_gioiTinh.setSelectedIndex(0);
+      
         
     }//GEN-LAST:event_btn_xoaTrangActionPerformed
 
@@ -784,6 +842,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JButton btn_timKiem;
     private javax.swing.JButton btn_xoaNV;
     private javax.swing.JButton btn_xoaTrang;
+    private javax.swing.JComboBox<String> cmb_chucVu;
     private javax.swing.JComboBox<String> cmb_gioiTinh;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler10;
@@ -792,6 +851,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler13;
     private javax.swing.Box.Filler filler14;
     private javax.swing.Box.Filler filler15;
+    private javax.swing.Box.Filler filler16;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
@@ -826,7 +886,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_timKiem;
     private javax.swing.JPanel pnl_ttNhanVien;
     private javax.swing.JTable tbl_dsNhanVien;
-    private javax.swing.JTextField txt_chucVu;
     private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_diaChi;
     private javax.swing.JTextField txt_hoTenNV;

@@ -16,12 +16,14 @@ public interface ChiTietKhoHangInterface {
     public ArrayList<ChiTietKhoHang> getAll();
 
     public ArrayList<ChiTietKhoHang> getAllChiTietCuaKhoHang(String maKhoHang);
-    
+
     public int getSoLuongTon(String maKhoHang, String maSanPham);
 
     public boolean themChiTietKhoHang(ChiTietKhoHang chiTietKH);
 
     public boolean capNhatChiTietKhoHang(String maKho, String maSanPham, ChiTietKhoHang ct);
-    
+
     public boolean truSoLuongChiTietKhoHang(String maKho, String maSanPham, int soLuong);
+
+    public boolean congSoLuongChiTietKhoHang(String maKho, String maSanPham, int soLuong);
 }

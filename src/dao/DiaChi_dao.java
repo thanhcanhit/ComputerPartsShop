@@ -17,7 +17,7 @@ import java.sql.*;
  * @author macbookk
  */
 public class DiaChi_dao implements DiaChiInterface {
-
+    
     @Override
     public ArrayList<DiaChi> getAllDiaChi() {
         ArrayList<DiaChi> result = new ArrayList<DiaChi>();
@@ -28,7 +28,7 @@ public class DiaChi_dao implements DiaChiInterface {
                 String maDiaChi = rs.getString("maDiaChi");
                 String soNha = rs.getString("soNha");
                 String duong = rs.getString("duong");
-
+                
                 String huyen = rs.getString("huyen");
                 String thanhpho = rs.getString("thanhPho");
                 String quocgia = rs.getString("quocGia");
@@ -40,7 +40,7 @@ public class DiaChi_dao implements DiaChiInterface {
         }
         return result;
     }
-
+    
     @Override
     public DiaChi getDiaChiTheoMa(String maDiaChi) {
         DiaChi result = null;
@@ -49,7 +49,7 @@ public class DiaChi_dao implements DiaChiInterface {
             st.setString(1, maDiaChi);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-
+                
                 String soNha = rs.getString("soNha");
                 String duong = rs.getString("duong");
                 String huyen = rs.getString("huyen");
@@ -57,14 +57,14 @@ public class DiaChi_dao implements DiaChiInterface {
                 String quocgia = rs.getString("quocGia");
                 DiaChi dc = new DiaChi(soNha, duong, huyen, thanhpho, quocgia, maDiaChi);
                 result = dc;
-
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return result;
     }
-
+    
     @Override
     public boolean themDiaChi(DiaChi diaChi) {
         int n = 0;
@@ -77,14 +77,14 @@ public class DiaChi_dao implements DiaChiInterface {
             st.setString(4, diaChi.getQuan());
             st.setString(5, diaChi.getThanhPho());
             st.setString(6, diaChi.getQuocGia());
-
+            
             n = st.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return n > 0;
     }
-
+    
     @Override
     public boolean xoaDiaChi(String maDiaChi) {
         int n = 0;
@@ -97,7 +97,7 @@ public class DiaChi_dao implements DiaChiInterface {
         }
         return n > 0;
     }
-
+    
     @Override
     public boolean capNhatDiaChi(String maDiaChi, DiaChi diaChi) {
         int n = 0;
@@ -117,10 +117,10 @@ public class DiaChi_dao implements DiaChiInterface {
         }
         return n > 0;
     }
-
+    
     public String getMaLonNhat() {
         String s = "SP0000";
-
+        
         try {
             Statement st = ConnectDB.conn.createStatement();
             ResultSet rs = st.executeQuery("select top 1 maDiaChi from DiaChi order by maDiaChi desc");
@@ -132,4 +132,28 @@ public class DiaChi_dao implements DiaChiInterface {
         
         return s;
     }
+    
+    @Override
+    public String getMaDiaChi(DiaChi diaChi) {
+        String result = null;
+        
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from DiaChi where soNha = ? and duong = ? and huyen = ? and thanhPho = ? and quocGia = ?");
+            st.setString(1, diaChi.getSo());
+            st.setString(2, diaChi.getDuong());
+            st.setString(3, diaChi.getQuan());
+            st.setString(4, diaChi.getThanhPho());
+            st.setString(5, diaChi.getQuocGia());
+            ResultSet rs = st.executeQuery();
+            
+            while (rs.next()) {
+                result = rs.getString("maDiaChi");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return result;
+    }
+    
 }

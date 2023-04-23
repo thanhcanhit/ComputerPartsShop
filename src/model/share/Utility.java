@@ -33,8 +33,8 @@ public class Utility {
         return tienTo + nextNum;
     }
 
-    public static String getVND(Double money) {
+    public static String getVND(double money) {
         NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
-        return vnd.format(vnd);
+        return vnd.format(money);
     }
 }

@@ -12,9 +12,16 @@ import model.share.DiaChi;
  * @author macbookk
  */
 public interface DiaChiInterface {
+
     public ArrayList<DiaChi> getAllDiaChi();
+
     public DiaChi getDiaChiTheoMa(String maDiaChi);
+
     public boolean themDiaChi(DiaChi diaChi);
+
     public boolean xoaDiaChi(String maDiaChi);
+
     public boolean capNhatDiaChi(String maDiaChi, DiaChi diaChi);
+    
+    public String getMaDiaChi(DiaChi diaChi);
 }
