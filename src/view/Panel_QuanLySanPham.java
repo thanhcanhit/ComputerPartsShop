@@ -10,7 +10,9 @@ import controller.ThuongHieu_bus;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
@@ -22,7 +24,7 @@ import model.sanpham.ThuongHieu;
 public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
     private DefaultTableModel tbl_ModelProduct;
-    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Giá bán", "Giảm giá", "VAT", "Loại sản phẩm", "Số tháng bảo hành", "Cấu hình"};
+    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Giá bán", "Giảm giá", "VAT", "Bảo hành", "Loại hàng", "Cấu hình"};
     private SanPham_bus sanPham_bus = new SanPham_bus();
     private ThuongHieu_bus thuongHieu_bus = new ThuongHieu_bus();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
@@ -32,8 +34,59 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
      */
     public Panel_QuanLySanPham() {
         tbl_ModelProduct = new DefaultTableModel(str_TenCot, 0);
+        
         initComponents();
+        
         initTableModel();
+        alterTable();
+        
+        
+        
+        tbl_Products.getSelectionModel().addListSelectionListener((e)->{
+            int row = tbl_Products.getSelectedRow();
+            if(row != -1) {
+                txtMaSanPham.setText(tbl_ModelProduct.getValueAt(row, 0).toString());
+                txt_Tensp.setText(tbl_ModelProduct.getValueAt(row, 1).toString());
+                String txt_TH = tbl_ModelProduct.getValueAt(row, 2).toString();
+                cmb_ThuongHieu.setSelectedItem(txt_TH);
+                txt_GiaBan.setText(tbl_ModelProduct.getValueAt(row, 3).toString());
+                txt_GiamGia.setText(tbl_ModelProduct.getValueAt(row, 4).toString());
+                txt_VAT.setText(tbl_ModelProduct.getValueAt(row, 5).toString());
+                txt_BaoHanh.setText(tbl_ModelProduct.getValueAt(row, 6).toString());
+                String txt_LH = tbl_ModelProduct.getValueAt(row, 7).toString();
+                cmb_Loaisp.setSelectedItem(txt_LH);
+                txtarea_CauHinh.setText(tbl_ModelProduct.getValueAt(row, 8).toString());
+
+            }
+        });
+        
+    }
+    
+  
+    
+    
+    
+    private void alterTable() {
+        
+        tbl_Products.setDefaultEditor(Object.class, null);
+        
+        DefaultTableCellRenderer rightAlign = new DefaultTableCellRenderer();
+        rightAlign.setHorizontalAlignment(JLabel.RIGHT);
+        
+        DefaultTableCellRenderer leftAlign = new DefaultTableCellRenderer();
+        leftAlign.setHorizontalAlignment(JLabel.LEFT);
+        
+        tbl_Products.getColumnModel().getColumn(0).setCellRenderer(leftAlign);
+        tbl_Products.getColumnModel().getColumn(1).setCellRenderer(leftAlign);
+        tbl_Products.getColumnModel().getColumn(2).setCellRenderer(leftAlign);
+        tbl_Products.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        tbl_Products.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
+        tbl_Products.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
+        tbl_Products.getColumnModel().getColumn(6).setCellRenderer(leftAlign);
+        tbl_Products.getColumnModel().getColumn(7).setCellRenderer(leftAlign);
+        tbl_Products.getColumnModel().getColumn(8).setCellRenderer(leftAlign);
+        
+        
         tbl_Products.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_Products.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_Products.getColumnModel().getColumn(1).setPreferredWidth(250);
@@ -41,10 +94,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_Products.getColumnModel().getColumn(3).setPreferredWidth(100);
         tbl_Products.getColumnModel().getColumn(4).setPreferredWidth(60);
         tbl_Products.getColumnModel().getColumn(5).setPreferredWidth(60);
-        tbl_Products.getColumnModel().getColumn(6).setPreferredWidth(100);
-        tbl_Products.getColumnModel().getColumn(7).setPreferredWidth(120);
-        tbl_Products.getColumnModel().getColumn(8).setPreferredWidth(200);
-        
+        tbl_Products.getColumnModel().getColumn(6).setPreferredWidth(60);
+        tbl_Products.getColumnModel().getColumn(7).setPreferredWidth(65);
+        tbl_Products.getColumnModel().getColumn(8).setPreferredWidth(500);
     }
     
     private void initTableModel() {
@@ -65,7 +117,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         
         for (SanPham sp : list) {
             ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), th.get(0).toString(), vnd.format(sp.getGiaBan()), Math.round(sp.getGiamGia()) + "%", sp.getVAT(), sp.getTenLoai(), sp.getSoThangBaoHanh(), sp.getCauHinh()};
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), th.get(0).toString(), vnd.format(sp.getGiaBan()), Math.round(sp.getGiamGia()) + "%", sp.getVAT(), Math.round(sp.getSoThangBaoHanh()) + " tháng", sp.getTenLoai(), sp.getCauHinh()};
             tbl_ModelProduct.addRow(row);
         }
     }
@@ -81,26 +133,34 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         jTextField2 = new javax.swing.JTextField();
         pnl_ThongTin = new javax.swing.JPanel();
-        pnl_head_TT = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
         pnl_body_TT = new javax.swing.JPanel();
+        pnl_MaSanPham = new javax.swing.JPanel();
+        lbl_MaSanPham = new javax.swing.JLabel();
+        txtMaSanPham = new javax.swing.JTextField();
         pnl_Tensp = new javax.swing.JPanel();
         lbl_Tensp = new javax.swing.JLabel();
         txt_Tensp = new javax.swing.JTextField();
-        pnl_SoLuong = new javax.swing.JPanel();
-        lbl_SoLuong = new javax.swing.JLabel();
-        txt_SoLuong = new javax.swing.JTextField();
-        pnl_GiaBan = new javax.swing.JPanel();
-        lbl_GiaBan = new javax.swing.JLabel();
-        txt_GiaBan = new javax.swing.JTextField();
-        pnl_Loaisp = new javax.swing.JPanel();
-        lbl_Loaisp = new javax.swing.JLabel();
-        cmp_Loaisp = new javax.swing.JComboBox<>();
         pnl_ThuongHieu = new javax.swing.JPanel();
         lbl_ThuongHieu = new javax.swing.JLabel();
         cmb_ThuongHieu = new javax.swing.JComboBox<>();
+        pnl_GiaBan = new javax.swing.JPanel();
+        lbl_GiaBan = new javax.swing.JLabel();
+        txt_GiaBan = new javax.swing.JTextField();
+        pnl_GiamGia = new javax.swing.JPanel();
+        lbl_GiamGia = new javax.swing.JLabel();
+        txt_GiamGia = new javax.swing.JTextField();
+        pnl_VAT = new javax.swing.JPanel();
+        lbl_VAT = new javax.swing.JLabel();
+        txt_VAT = new javax.swing.JTextField();
+        pnl_Loaisp = new javax.swing.JPanel();
+        lbl_Loaisp = new javax.swing.JLabel();
+        cmb_Loaisp = new javax.swing.JComboBox<>();
+        pnl_BaoHanh = new javax.swing.JPanel();
+        lbl_BaoHanh = new javax.swing.JLabel();
+        txt_BaoHanh = new javax.swing.JTextField();
         pnl_CauHinh = new javax.swing.JPanel();
         lbl_CauHinh = new javax.swing.JLabel();
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jScrollPane2 = new javax.swing.JScrollPane();
         txtarea_CauHinh = new javax.swing.JTextArea();
         pnl_NutQuanLy = new javax.swing.JPanel();
@@ -126,7 +186,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_headerTH = new javax.swing.JPanel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(40, 0), new java.awt.Dimension(20, 0), new java.awt.Dimension(40, 32767));
         lbl_headerTH = new javax.swing.JLabel();
-        cmb_headerThuongHieu = new javax.swing.JComboBox<>();
+        cmb_headerThuongHieu = new javax.swing.JComboBox<String>();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         pnl_DanhSach = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -142,23 +202,27 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_ThongTin.setPreferredSize(new java.awt.Dimension(320, 600));
         pnl_ThongTin.setLayout(new java.awt.BorderLayout());
 
-        pnl_head_TT.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_head_TT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 240, 240)));
-        pnl_head_TT.setLayout(new java.awt.BorderLayout());
-
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/QLhanghoa/img_Sanpham (200px).png"))); // NOI18N
-        jLabel13.setToolTipText("");
-        jLabel13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel13.setPreferredSize(new java.awt.Dimension(200, 250));
-        pnl_head_TT.add(jLabel13, java.awt.BorderLayout.CENTER);
-
-        pnl_ThongTin.add(pnl_head_TT, java.awt.BorderLayout.NORTH);
-
         pnl_body_TT.setBackground(new java.awt.Color(255, 255, 255));
         pnl_body_TT.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_body_TT.setPreferredSize(new java.awt.Dimension(140, 20));
         pnl_body_TT.setLayout(new javax.swing.BoxLayout(pnl_body_TT, javax.swing.BoxLayout.Y_AXIS));
+
+        pnl_MaSanPham.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_MaSanPham.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_MaSanPham.setLayout(new javax.swing.BoxLayout(pnl_MaSanPham, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_MaSanPham.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_MaSanPham.setText("Mã sản phẩm");
+        lbl_MaSanPham.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_MaSanPham.add(lbl_MaSanPham);
+
+        txtMaSanPham.setEditable(false);
+        txtMaSanPham.setMaximumSize(new java.awt.Dimension(1000, 500));
+        txtMaSanPham.setMinimumSize(new java.awt.Dimension(140, 16));
+        txtMaSanPham.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_MaSanPham.add(txtMaSanPham);
+
+        pnl_body_TT.add(pnl_MaSanPham);
 
         pnl_Tensp.setBackground(new java.awt.Color(255, 255, 255));
         pnl_Tensp.setPreferredSize(new java.awt.Dimension(0, 30));
@@ -181,21 +245,25 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         pnl_body_TT.add(pnl_Tensp);
 
-        pnl_SoLuong.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_SoLuong.setPreferredSize(new java.awt.Dimension(0, 30));
-        pnl_SoLuong.setLayout(new javax.swing.BoxLayout(pnl_SoLuong, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_ThuongHieu.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_ThuongHieu.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_ThuongHieu.setLayout(new javax.swing.BoxLayout(pnl_ThuongHieu, javax.swing.BoxLayout.LINE_AXIS));
 
-        lbl_SoLuong.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_SoLuong.setText("Số lượng:");
-        lbl_SoLuong.setPreferredSize(new java.awt.Dimension(120, 0));
-        pnl_SoLuong.add(lbl_SoLuong);
+        lbl_ThuongHieu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_ThuongHieu.setText("Thương hiệu:");
+        lbl_ThuongHieu.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_ThuongHieu.add(lbl_ThuongHieu);
 
-        txt_SoLuong.setMaximumSize(new java.awt.Dimension(1000, 500));
-        txt_SoLuong.setMinimumSize(new java.awt.Dimension(140, 16));
-        txt_SoLuong.setPreferredSize(new java.awt.Dimension(160, 24));
-        pnl_SoLuong.add(txt_SoLuong);
+        for(ThuongHieu th:thuongHieu_bus.getAllThuongHieu())
+        {
+            cmb_ThuongHieu.addItem(th.toString());
+        }
+        cmb_ThuongHieu.setMaximumSize(new java.awt.Dimension(1000, 500));
+        cmb_ThuongHieu.setMinimumSize(new java.awt.Dimension(140, 16));
+        cmb_ThuongHieu.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_ThuongHieu.add(cmb_ThuongHieu);
 
-        pnl_body_TT.add(pnl_SoLuong);
+        pnl_body_TT.add(pnl_ThuongHieu);
 
         pnl_GiaBan.setBackground(new java.awt.Color(255, 255, 255));
         pnl_GiaBan.setPreferredSize(new java.awt.Dimension(0, 30));
@@ -213,40 +281,71 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         pnl_body_TT.add(pnl_GiaBan);
 
+        pnl_GiamGia.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_GiamGia.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_GiamGia.setLayout(new javax.swing.BoxLayout(pnl_GiamGia, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_GiamGia.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_GiamGia.setText("Giảm giá:");
+        lbl_GiamGia.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_GiamGia.add(lbl_GiamGia);
+
+        txt_GiamGia.setMaximumSize(new java.awt.Dimension(1000, 500));
+        txt_GiamGia.setMinimumSize(new java.awt.Dimension(140, 16));
+        txt_GiamGia.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_GiamGia.add(txt_GiamGia);
+
+        pnl_body_TT.add(pnl_GiamGia);
+
+        pnl_VAT.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_VAT.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_VAT.setLayout(new javax.swing.BoxLayout(pnl_VAT, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_VAT.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_VAT.setText("VAT:");
+        lbl_VAT.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_VAT.add(lbl_VAT);
+
+        txt_VAT.setMaximumSize(new java.awt.Dimension(1000, 500));
+        txt_VAT.setMinimumSize(new java.awt.Dimension(140, 16));
+        txt_VAT.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_VAT.add(txt_VAT);
+
+        pnl_body_TT.add(pnl_VAT);
+
         pnl_Loaisp.setBackground(new java.awt.Color(255, 255, 255));
         pnl_Loaisp.setPreferredSize(new java.awt.Dimension(0, 30));
         pnl_Loaisp.setLayout(new javax.swing.BoxLayout(pnl_Loaisp, javax.swing.BoxLayout.LINE_AXIS));
 
         lbl_Loaisp.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_Loaisp.setText("Loại sản phẩm:");
+        lbl_Loaisp.setText("Loại hàng:");
         lbl_Loaisp.setPreferredSize(new java.awt.Dimension(120, 0));
         pnl_Loaisp.add(lbl_Loaisp);
 
-        cmp_Loaisp.setMaximumRowCount(6);
-        cmp_Loaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPU", "MainBoard", "VGA", "RAM", "Ổ cứng", "Nguồn", "Case", "Tản nhiệt", "Chuột", "Bàn phím" }));
-        cmp_Loaisp.setMaximumSize(new java.awt.Dimension(1000, 500));
-        cmp_Loaisp.setMinimumSize(new java.awt.Dimension(140, 16));
-        cmp_Loaisp.setPreferredSize(new java.awt.Dimension(160, 24));
-        pnl_Loaisp.add(cmp_Loaisp);
+        cmb_Loaisp.setMaximumRowCount(6);
+        cmb_Loaisp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPU", "MainBoard", "VGA", "RAM", "Ổ cứng", "Nguồn", "Case", "Tản nhiệt", "Chuột", "Bàn phím" }));
+        cmb_Loaisp.setMaximumSize(new java.awt.Dimension(1000, 500));
+        cmb_Loaisp.setMinimumSize(new java.awt.Dimension(140, 16));
+        cmb_Loaisp.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_Loaisp.add(cmb_Loaisp);
 
         pnl_body_TT.add(pnl_Loaisp);
 
-        pnl_ThuongHieu.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_ThuongHieu.setPreferredSize(new java.awt.Dimension(0, 30));
-        pnl_ThuongHieu.setLayout(new javax.swing.BoxLayout(pnl_ThuongHieu, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_BaoHanh.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_BaoHanh.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_BaoHanh.setLayout(new javax.swing.BoxLayout(pnl_BaoHanh, javax.swing.BoxLayout.LINE_AXIS));
 
-        lbl_ThuongHieu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_ThuongHieu.setText("Thương hiêu:");
-        lbl_ThuongHieu.setPreferredSize(new java.awt.Dimension(120, 0));
-        pnl_ThuongHieu.add(lbl_ThuongHieu);
+        lbl_BaoHanh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_BaoHanh.setText("Bảo hành (tháng):");
+        lbl_BaoHanh.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_BaoHanh.add(lbl_BaoHanh);
 
-        cmb_ThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmb_ThuongHieu.setMaximumSize(new java.awt.Dimension(1000, 500));
-        cmb_ThuongHieu.setMinimumSize(new java.awt.Dimension(140, 16));
-        cmb_ThuongHieu.setPreferredSize(new java.awt.Dimension(160, 24));
-        pnl_ThuongHieu.add(cmb_ThuongHieu);
+        txt_BaoHanh.setMaximumSize(new java.awt.Dimension(1000, 500));
+        txt_BaoHanh.setMinimumSize(new java.awt.Dimension(140, 16));
+        txt_BaoHanh.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_BaoHanh.add(txt_BaoHanh);
 
-        pnl_body_TT.add(pnl_ThuongHieu);
+        pnl_body_TT.add(pnl_BaoHanh);
 
         pnl_CauHinh.setBackground(new java.awt.Color(255, 255, 255));
         pnl_CauHinh.setPreferredSize(new java.awt.Dimension(0, 30));
@@ -256,6 +355,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         lbl_CauHinh.setText("Cấu hình:");
         lbl_CauHinh.setPreferredSize(new java.awt.Dimension(138, 138));
         pnl_CauHinh.add(lbl_CauHinh);
+        pnl_CauHinh.add(filler2);
+
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         txtarea_CauHinh.setColumns(20);
         txtarea_CauHinh.setRows(5);
@@ -274,6 +376,11 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         btn_Them.setText("Thêm");
         btn_Them.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_Them.setPreferredSize(new java.awt.Dimension(80, 32));
+        btn_Them.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ThemActionPerformed(evt);
+            }
+        });
         pnl_NutQuanLy.add(btn_Them);
 
         btn_Xoa.setText("Xóa");
@@ -387,7 +494,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         lbl_headerTH.setPreferredSize(new java.awt.Dimension(120, 0));
         pnl_headerTH.add(lbl_headerTH);
 
-        cmb_headerThuongHieu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        for (ThuongHieu th : thuongHieu_bus.getAllThuongHieu()) {
+            cmb_headerThuongHieu.addItem(th.toString());
+        }
         pnl_headerTH.add(cmb_headerThuongHieu);
 
         pnl_headerLoaiTH.add(pnl_headerTH);
@@ -405,6 +514,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setToolTipText("");
         jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         tbl_Products.setModel(tbl_ModelProduct);
@@ -433,45 +543,63 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         searchTheoTen();
     }//GEN-LAST:event_txt_searchKeyReleased
 
+    private void btn_ThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemActionPerformed
+        // TODO add your handling code here:
+//        String tenSP = txtMaSanPham.getText();
+//        String giaNhap = txt_GiaBan.getText();
+//        String giamGia = txt_GiamGia.getText();
+//        String loai = cmb_Loaisp;
+//        String VAT = txt_VAT.getText();
+//        String thuongHieu = cmb_ThuongHieu;
+//        String soThangBaoHanh = txt_BaoHanh.getText();
+//        String cauHinh = txtarea_CauHinh.getText();
+        
+    }//GEN-LAST:event_btn_ThemActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Sua;
     private javax.swing.JButton btn_Them;
     private javax.swing.JButton btn_Xoa;
+    private javax.swing.JComboBox<String> cmb_Loaisp;
     private javax.swing.JComboBox<String> cmb_ThuongHieu;
     private javax.swing.JComboBox<String> cmb_headerLoai;
     private javax.swing.JComboBox<String> cmb_headerThuongHieu;
-    private javax.swing.JComboBox<String> cmp_Loaisp;
     private javax.swing.Box.Filler filler12;
+    private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lbl_BaoHanh;
     private javax.swing.JLabel lbl_CauHinh;
     private javax.swing.JLabel lbl_GiaBan;
+    private javax.swing.JLabel lbl_GiamGia;
     private javax.swing.JLabel lbl_Loaisp;
-    private javax.swing.JLabel lbl_SoLuong;
+    private javax.swing.JLabel lbl_MaSanPham;
     private javax.swing.JLabel lbl_Tensp;
     private javax.swing.JLabel lbl_ThuongHieu;
+    private javax.swing.JLabel lbl_VAT;
     private javax.swing.JLabel lbl_headerCauHinh;
     private javax.swing.JLabel lbl_headerLoai;
     private javax.swing.JLabel lbl_headerTH;
     private javax.swing.JLabel lbl_headerTen;
+    private javax.swing.JPanel pnl_BaoHanh;
     private javax.swing.JPanel pnl_CauHinh;
     private javax.swing.JPanel pnl_DanhSach;
     private javax.swing.JPanel pnl_GiaBan;
+    private javax.swing.JPanel pnl_GiamGia;
     private javax.swing.JPanel pnl_Loaisp;
+    private javax.swing.JPanel pnl_MaSanPham;
     private javax.swing.JPanel pnl_NutQuanLy;
-    private javax.swing.JPanel pnl_SoLuong;
     private javax.swing.JPanel pnl_Tensp;
     private javax.swing.JPanel pnl_ThongTin;
     private javax.swing.JPanel pnl_ThuongHieu;
     private javax.swing.JPanel pnl_TimKiem;
+    private javax.swing.JPanel pnl_VAT;
     private javax.swing.JPanel pnl_body_TT;
-    private javax.swing.JPanel pnl_head_TT;
     private javax.swing.JPanel pnl_headerCauHinh;
     private javax.swing.JPanel pnl_headerLoai;
     private javax.swing.JPanel pnl_headerLoaiTH;
@@ -482,9 +610,12 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JScrollPane scr_cauHinh;
     private javax.swing.JTable tbl_Products;
     private javax.swing.JTextArea txa_headerCauHinh;
+    private javax.swing.JTextField txtMaSanPham;
+    private javax.swing.JTextField txt_BaoHanh;
     private javax.swing.JTextField txt_GiaBan;
-    private javax.swing.JTextField txt_SoLuong;
+    private javax.swing.JTextField txt_GiamGia;
     private javax.swing.JTextField txt_Tensp;
+    private javax.swing.JTextField txt_VAT;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextArea txtarea_CauHinh;
     // End of variables declaration//GEN-END:variables
