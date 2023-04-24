@@ -38,17 +38,7 @@ public class MainView extends javax.swing.JFrame {
         initComponents();
 
         card = (CardLayout) this.pnl_main.getLayout();
-//        logout();
-
-//  Khi ra mắt phải chỉnh lại chưa đăng nhập
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
-        try {
-//            Nhân viên kinh doanh
-            NhanVien nhanVien = new NhanVien("NV0001", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
-            login(nhanVien);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        logout();
 
 //        Sự kiện đóng
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -67,11 +57,11 @@ public class MainView extends javax.swing.JFrame {
         });
 
 //        Sự kiện đổi size
-//        this.addComponentListener(new ComponentAdapter() {
-//            public void componentResized(ComponentEvent e) {
-//                ((Panel_Home) pnl_home).resizeImg();
-//            }
-//        });
+        this.addComponentListener(new ComponentAdapter() {
+            public void componentResized(ComponentEvent e) {
+                ((Panel_Home) pnl_home).resize();
+            }
+        });
     }
 
     public void connectDB() {

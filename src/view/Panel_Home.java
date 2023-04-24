@@ -1,10 +1,12 @@
 package view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author thanh
@@ -18,6 +20,24 @@ public class Panel_Home extends javax.swing.JPanel {
         initComponents();
     }
 
+    public void resize() {
+        ImageIcon icon = new ImageIcon(getClass().getResource("/images/HomePage.png"));
+        double ratio = (double) icon.getIconWidth() / icon.getIconHeight();
+
+        int newWidth = this.getWidth();
+        int newHeight = (int) (this.getWidth()/ ratio);
+
+        if (newHeight > this.getHeight()) {
+            newHeight = this.getHeight();
+            newWidth = (int) (newHeight * ratio);
+        }
+
+//        System.out.println(newWidth + " "  + newHeight);
+        ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH));
+
+        lbl_img.setIcon(imageIcon);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,6 +49,7 @@ public class Panel_Home extends javax.swing.JPanel {
 
         lbl_img = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new java.awt.BorderLayout());
 
         lbl_img.setBackground(new java.awt.Color(255, 255, 255));
