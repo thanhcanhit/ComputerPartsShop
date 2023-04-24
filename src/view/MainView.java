@@ -8,6 +8,8 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.time.LocalDate;
 import java.util.Arrays;
 import javax.swing.JFrame;
@@ -63,6 +65,13 @@ public class MainView extends javax.swing.JFrame {
                 }
             }
         });
+
+//        Sự kiện đổi size
+//        this.addComponentListener(new ComponentAdapter() {
+//            public void componentResized(ComponentEvent e) {
+//                ((Panel_Home) pnl_home).resizeImg();
+//            }
+//        });
     }
 
     public void connectDB() {
@@ -136,8 +145,7 @@ public class MainView extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         lbl_logout = new javax.swing.JLabel();
         pnl_main = new javax.swing.JPanel();
-        pnl_home = new Panel_Home();
-        lbl_main = new javax.swing.JLabel();
+        pnl_home = new javax.swing.JPanel();
         pnl_cart = new javax.swing.JPanel();
         pnl_products = new javax.swing.JPanel();
         pnl_inventory = new javax.swing.JPanel();
@@ -354,13 +362,7 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_home.setBackground(new java.awt.Color(255, 255, 255));
         pnl_home.setLayout(new java.awt.BorderLayout());
-
-        lbl_main.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_main.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HomePage.png"))); // NOI18N
-        lbl_main.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_main.setMaximumSize(new java.awt.Dimension(0, 0));
-        pnl_home.add(lbl_main, java.awt.BorderLayout.CENTER);
-
+        pnl_home = new Panel_Home();
         pnl_main.add(pnl_home, "home");
 
         pnl_cart.setBackground(new java.awt.Color(255, 255, 255));
@@ -385,6 +387,7 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
+        
         card.show(this.pnl_main, "home");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_homeMouseClicked
@@ -472,7 +475,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_inventory;
     private javax.swing.JLabel lbl_logout;
-    private javax.swing.JLabel lbl_main;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_products;
     private javax.swing.JPanel pnl_cart;

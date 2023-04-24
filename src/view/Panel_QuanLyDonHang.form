@@ -681,7 +681,7 @@
                           <Dimension value="[75, 50]"/>
                         </Property>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                          <Dimension value="[30, 40]"/>
+                          <Dimension value="[50, 50]"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1803,6 +1803,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbl_tab3DanhSachHoaDonMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>

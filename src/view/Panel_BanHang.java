@@ -740,6 +740,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
                 // Reset
                 resetAll();
+                new Frame_HoaDon(hoaDon).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
             }

@@ -31,6 +31,8 @@ public class Panel_Home extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
+        lbl_img.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HomePage.png"))); // NOI18N
         add(lbl_img, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
