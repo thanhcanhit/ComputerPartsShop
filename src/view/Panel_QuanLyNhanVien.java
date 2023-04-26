@@ -241,7 +241,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_themNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_themNV.setIconTextGap(10);
         btn_themNV.setMaximumSize(new java.awt.Dimension(125, 50));
-        btn_themNV.setPreferredSize(new java.awt.Dimension(180, 50));
+        btn_themNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_themNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_themNVActionPerformed(evt);
@@ -257,7 +257,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_xoaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_xoaNV.setIconTextGap(10);
         btn_xoaNV.setMaximumSize(new java.awt.Dimension(115, 50));
-        btn_xoaNV.setPreferredSize(new java.awt.Dimension(180, 50));
+        btn_xoaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_xoaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xoaNVActionPerformed(evt);
@@ -273,7 +273,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_suaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_suaNV.setIconTextGap(10);
         btn_suaNV.setMaximumSize(new java.awt.Dimension(117, 50));
-        btn_suaNV.setPreferredSize(new java.awt.Dimension(180, 50));
+        btn_suaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_suaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_suaNVActionPerformed(evt);
@@ -289,7 +289,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_capNhatMKNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btn_capNhatMKNV.setIconTextGap(10);
         btn_capNhatMKNV.setMaximumSize(new java.awt.Dimension(145, 50));
-        btn_capNhatMKNV.setPreferredSize(new java.awt.Dimension(190, 50));
+        btn_capNhatMKNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_capNhatMKNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_capNhatMKNVActionPerformed(evt);
@@ -443,7 +443,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             pnl_soDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_soDTLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_soDT, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                .addComponent(lbl_soDT, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txt_soDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -547,6 +547,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_namSinh.setText("Năm sinh: ");
         lbl_namSinh.setPreferredSize(new java.awt.Dimension(85, 17));
 
+        lbl_gioiTinh.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbl_gioiTinh.setForeground(new java.awt.Color(102, 102, 102));
         lbl_gioiTinh.setText("Giới tính:");
 
@@ -761,7 +762,16 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             String chucVu= (String) cmb_chucVu.getSelectedItem();
             String gt = (String) cmb_gioiTinh.getSelectedItem();
 
-           
+           if(txt_diaChi.getText().trim().length()>0){
+               int row = tbl_dsNhanVien.getSelectedRow();
+               String ma = (model_dsNhanVien.getValueAt(row, 0).toString());
+               String maDC = NV_bus.getMaDiaChi(ma);
+               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+               frame_diaChi = new Frame_InputDiaChi(this,dc);
+           }
+           else{
+               frame_diaChi = new Frame_InputDiaChi(this);
+           }
             
             if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
             showMessageFocus("Họ tên không hợp lệ", txt_hoTenNV);

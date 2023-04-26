@@ -26,7 +26,7 @@ import model.share.DiaChi;
  * @author macbookk
  */
 public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
-    Frame_InputDiaChi frame_diaChi = new Frame_InputDiaChi(this);
+    private Frame_InputDiaChi frame_diaChi ;
     private KhachHang_bus KH_bus = new KhachHang_bus();
     private DiaChi_bus DC_bus = new DiaChi_bus();
     private ArrayList<KhachHang> listKH = new ArrayList<KhachHang>();
@@ -387,6 +387,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_namSinh.add(txt_date);
         pnl_namSinh.add(filler16);
 
+        lbl_gioiTinh.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbl_gioiTinh.setForeground(new java.awt.Color(102, 102, 102));
         lbl_gioiTinh.setText("Giới tính:");
         pnl_namSinh.add(lbl_gioiTinh);
@@ -558,18 +559,20 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
             return;
         }
-        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
-            showMessageFocus("Email không hợp lệ", txt_email);
+        if(txt_diaChi.getText().trim().length()<=0){
+            showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
             return;
         }
         if(!Pattern.matches("0\\d{9}", soDT)){
             showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
             return;
         }
-        if(txt_diaChi.getText().trim().length()<=0){
-            showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
+        if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+            showMessageFocus("Email không hợp lệ", txt_email);
             return;
         }
+        
+        
         
         if(maST.trim().length()<=0)
             maST = null;
@@ -642,28 +645,40 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             String maST = txt_maSoThue.getText();
             String gt = (String) cmb_gioiTinh.getSelectedItem();
             int diem = Integer.parseInt(txt_hangThanhVien.getText());
-
+            if(txt_diaChi.getText().trim().length()>0){
+               int row = tbl_dsKhachHang.getSelectedRow();
+               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
+               String maDC = KH_bus.getMaDiaChi(ma);
+               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+               frame_diaChi = new Frame_InputDiaChi(this,dc);
+           }
+           else{
+               frame_diaChi = new Frame_InputDiaChi(this);
+           }
             
            
             
             if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
-            showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
-            return;
-            }
-            if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
-                showMessageFocus("Email không hợp lệ", txt_email);
-                return;
-            }
-            if(!Pattern.matches("0\\d{9}", soDT)){
-                showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+                showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
                 return;
             }
             if(txt_diaChi.getText().trim().length()<=0){
                 showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
                 return;
             }
+            if(!Pattern.matches("0\\d{9}", soDT)){
+                showMessageFocus("Số điện thoại không hợp lệ", txt_soDT);
+                return;
+            }
+            if(!Pattern.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", email)){
+                showMessageFocus("Email không hợp lệ", txt_email);
+                return;
+            }
+            
+            
             DiaChi dc = frame_diaChi.getDiaChi();
             dc.setMaDiaChi(KH_bus.getMaDiaChi(maKH));
+            
             boolean gioiTinh;
             if(gt.equals("Nữ"))
                 gioiTinh=false;

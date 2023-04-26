@@ -81,7 +81,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         lbl_img.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pnl_img.add(lbl_img, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnl_img, java.awt.BorderLayout.WEST);
+        getContentPane().add(pnl_img, java.awt.BorderLayout.EAST);
 
         pnl_form.setBackground(new java.awt.Color(255, 255, 255));
         pnl_form.setPreferredSize(new java.awt.Dimension(300, 300));
