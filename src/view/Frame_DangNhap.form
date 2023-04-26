@@ -202,6 +202,9 @@
                     <Property name="text" type="java.lang.String" value="NV0003"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_usernameKeyPressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -269,6 +272,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="1111"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_passwordKeyPressed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

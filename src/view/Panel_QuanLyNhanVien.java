@@ -234,12 +234,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.setLayout(new javax.swing.BoxLayout(pnl_controlgroup, javax.swing.BoxLayout.LINE_AXIS));
         pnl_controlgroup.add(filler8);
 
-        btn_themNV.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_themNV.setForeground(new java.awt.Color(102, 102, 102));
+        btn_themNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btn_themNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/add-group.png"))); // NOI18N
         btn_themNV.setText("Thêm Nhân Viên");
         btn_themNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_themNV.setIconTextGap(8);
+        btn_themNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_themNV.setIconTextGap(10);
         btn_themNV.setMaximumSize(new java.awt.Dimension(125, 50));
         btn_themNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_themNV.addActionListener(new java.awt.event.ActionListener() {
@@ -250,12 +250,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(btn_themNV);
         pnl_controlgroup.add(filler4);
 
-        btn_xoaNV.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_xoaNV.setForeground(new java.awt.Color(102, 102, 102));
+        btn_xoaNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btn_xoaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user.png"))); // NOI18N
         btn_xoaNV.setText("Xoá trạng thái");
         btn_xoaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_xoaNV.setIconTextGap(8);
+        btn_xoaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_xoaNV.setIconTextGap(10);
         btn_xoaNV.setMaximumSize(new java.awt.Dimension(115, 50));
         btn_xoaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_xoaNV.addActionListener(new java.awt.event.ActionListener() {
@@ -266,12 +266,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(btn_xoaNV);
         pnl_controlgroup.add(filler5);
 
-        btn_suaNV.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_suaNV.setForeground(new java.awt.Color(102, 102, 102));
+        btn_suaNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btn_suaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/transaction.png"))); // NOI18N
         btn_suaNV.setText("Sửa Nhân Viên");
         btn_suaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_suaNV.setIconTextGap(8);
+        btn_suaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_suaNV.setIconTextGap(10);
         btn_suaNV.setMaximumSize(new java.awt.Dimension(117, 50));
         btn_suaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_suaNV.addActionListener(new java.awt.event.ActionListener() {
@@ -282,12 +282,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(btn_suaNV);
         pnl_controlgroup.add(filler6);
 
-        btn_capNhatMKNV.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        btn_capNhatMKNV.setForeground(new java.awt.Color(102, 102, 102));
+        btn_capNhatMKNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         btn_capNhatMKNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/password.png"))); // NOI18N
         btn_capNhatMKNV.setText("Cập Nhật Mật Khẩu");
         btn_capNhatMKNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn_capNhatMKNV.setIconTextGap(5);
+        btn_capNhatMKNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_capNhatMKNV.setIconTextGap(10);
         btn_capNhatMKNV.setMaximumSize(new java.awt.Dimension(145, 50));
         btn_capNhatMKNV.setPreferredSize(new java.awt.Dimension(200, 50));
         btn_capNhatMKNV.addActionListener(new java.awt.event.ActionListener() {
@@ -302,7 +302,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         add(pnl_Control, java.awt.BorderLayout.SOUTH);
 
-        pnl_ttNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
+        pnl_ttNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_ttNhanVien.setPreferredSize(new java.awt.Dimension(400, 300));
         pnl_ttNhanVien.setLayout(new java.awt.BorderLayout());
 
@@ -326,7 +326,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_maNV.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_maNV.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_maNV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_maNV.setForeground(new java.awt.Color(102, 102, 102));
         lbl_maNV.setText("Mã nhân viên:");
         lbl_maNV.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -363,7 +363,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_hoTenNV.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_hoTen.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_hoTen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_hoTen.setForeground(new java.awt.Color(102, 102, 102));
         lbl_hoTen.setText("Họ tên:");
         lbl_hoTen.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -396,7 +396,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_email.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_mailNV.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_mailNV.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_mailNV.setForeground(new java.awt.Color(102, 102, 102));
         lbl_mailNV.setText("Email:");
         lbl_mailNV.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -429,7 +429,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_soDT.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_soDT.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_soDT.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_soDT.setForeground(new java.awt.Color(102, 102, 102));
         lbl_soDT.setText("Số điện thoại: ");
         lbl_soDT.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -463,7 +463,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_diaChi.setMinimumSize(new java.awt.Dimension(65, 40));
         pnl_diaChi.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_diaChi.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_diaChi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_diaChi.setForeground(new java.awt.Color(102, 102, 102));
         lbl_diaChi.setText("Địa chỉ:");
         lbl_diaChi.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -509,14 +509,13 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_chucVu.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_chucVu.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_chucVu.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_chucVu.setForeground(new java.awt.Color(102, 102, 102));
         lbl_chucVu.setText("Chức vụ:");
         lbl_chucVu.setPreferredSize(new java.awt.Dimension(85, 17));
 
         cmb_chucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên kinh doanh", " " }));
         cmb_chucVu.setPreferredSize(new java.awt.Dimension(161, 30));
-        cmb_chucVu.setSize(new java.awt.Dimension(72, 30));
 
         javax.swing.GroupLayout pnl_chucVuLayout = new javax.swing.GroupLayout(pnl_chucVu);
         pnl_chucVu.setLayout(pnl_chucVuLayout);
@@ -543,7 +542,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         pnl_namSinh.setPreferredSize(new java.awt.Dimension(180, 70));
 
-        lbl_namSinh.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        lbl_namSinh.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_namSinh.setForeground(new java.awt.Color(102, 102, 102));
         lbl_namSinh.setText("Năm sinh: ");
         lbl_namSinh.setPreferredSize(new java.awt.Dimension(85, 17));
@@ -565,7 +564,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbl_namSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(txt_date, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_gioiTinh)
                 .addGap(8, 8, 8)
@@ -592,8 +591,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_submit.setPreferredSize(new java.awt.Dimension(180, 70));
         pnl_submit.setLayout(new javax.swing.BoxLayout(pnl_submit, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn_xoaTrang.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
-        btn_xoaTrang.setForeground(new java.awt.Color(102, 102, 102));
+        btn_xoaTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btn_xoaTrang.setText("Clear");
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(32767, 32767));
         btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 40));
@@ -612,7 +610,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         add(pnl_ttNhanVien, java.awt.BorderLayout.EAST);
 
-        pnl_dsNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
+        pnl_dsNhanVien.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Danh sách nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_dsNhanVien.setPreferredSize(new java.awt.Dimension(450, 370));
         pnl_dsNhanVien.setLayout(new java.awt.BorderLayout());
 
@@ -623,6 +621,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.setMaximumSize(new java.awt.Dimension(100, 0));
         tbl_dsNhanVien.setRowHeight(30);
         tbl_dsNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_dsNhanVien.setShowGrid(true);
+        tbl_dsNhanVien.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tbl_dsNhanVien);
 
         pnl_dsNhanVien.add(jScrollPane1, java.awt.BorderLayout.CENTER);

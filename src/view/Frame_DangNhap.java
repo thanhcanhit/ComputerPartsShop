@@ -113,6 +113,11 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         txt_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_username.setText("NV0003");
         txt_username.setToolTipText("");
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyPressed(evt);
+            }
+        });
         pnl_username.add(txt_username);
 
         pnl_formInput.add(pnl_username);
@@ -130,6 +135,11 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         txt_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_password.setText("1111");
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
+            }
+        });
         pnl_password.add(txt_password);
 
         pnl_formInput.add(pnl_password);
@@ -175,8 +185,8 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         close();
     }//GEN-LAST:event_btn_cancelActionPerformed
-
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+    
+    public void handleLogin() {
         String username = txt_username.getText().trim();
         String password = new String(txt_password.getPassword());
         
@@ -203,7 +213,22 @@ public class Frame_DangNhap extends javax.swing.JFrame {
             txt_username.selectAll();
             txt_username.requestFocus();
         }
+    }
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        handleLogin();
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void txt_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyPressed
+        if (evt.getKeyCode() == 10) {
+            handleLogin();
+        }
+    }//GEN-LAST:event_txt_usernameKeyPressed
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+        if (evt.getKeyCode() == 10) {
+            handleLogin();
+        }
+    }//GEN-LAST:event_txt_passwordKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
