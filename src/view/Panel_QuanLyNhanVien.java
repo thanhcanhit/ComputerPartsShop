@@ -210,7 +210,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_timKiem.add(txt_timKiem);
         pnl_timKiem.add(filler11);
 
-        btn_timKiem.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btn_timKiem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btn_timKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
         btn_timKiem.setText("Tìm nhân viên");
         btn_timKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -592,6 +592,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_submit.setLayout(new javax.swing.BoxLayout(pnl_submit, javax.swing.BoxLayout.LINE_AXIS));
 
         btn_xoaTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_xoaTrang.setForeground(new java.awt.Color(102, 102, 102));
         btn_xoaTrang.setText("Clear");
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(32767, 32767));
         btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 40));
