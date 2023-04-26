@@ -4,17 +4,116 @@
  */
 package view;
 
+import controller.SanPham_bus;
+
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import model.sanpham.SanPham;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+
+import org.jfree.chart.plot.PlotOrientation;
+
+import org.jfree.data.category.DefaultCategoryDataset;
+
+
+
 /**
  *
  * @author macbookk
  */
 public class Panel_ThongKe extends javax.swing.JPanel {
 
+    DefaultTableModel model_dsSanPham;
+    private final SanPham_bus sp_bus = new SanPham_bus();
+
     /**
      * Creates new form Panel_ThongKe
      */
     public Panel_ThongKe() {
+        String colname[] = {"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Tổng doanh thu"};
+        model_dsSanPham = new DefaultTableModel(colname, 0);
         initComponents();
+        ChartPanel chartPanel = new ChartPanel(createLineChart());
+
+        chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
+        pnl_chart.add(chartPanel);
+        
+       
+
+        alterTable();
+        renderListToTable(sp_bus.getAllSanPham());
+
+    }
+        private static DefaultCategoryDataset createDataset() {
+
+
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+
+        dataset.addValue(5.37, "Total", "1");
+
+
+        dataset.addValue(6.78, "Total", "2");
+        dataset.addValue(6.78, "Total", "3");
+        dataset.addValue(6.78, "Total", "4");
+        dataset.addValue(6.78, "Total", "5");
+        dataset.addValue(6.78, "Total", "6");
+        dataset.addValue(6.78, "Total", "7");
+        dataset.addValue(6.78, "Total", "8");
+        dataset.addValue(6.78, "Total", "9");
+        dataset.addValue(6.78, "Total", "10");
+        dataset.addValue(6.78, "Total", "11");
+        dataset.addValue(6.78, "Total", "12");
+        
+        
+
+
+
+
+        return dataset;
+
+
+    }
+
+
+    
+
+
+    public static JFreeChart createLineChart() {
+
+
+        JFreeChart lineChart = ChartFactory.createLineChart(
+
+
+                "BarChart".toUpperCase(),
+
+
+                "Month", "Total", createDataset(),
+
+
+                PlotOrientation.VERTICAL, false, false, false);
+
+
+        return lineChart;
+
+
+    }
+
+    public void renderListToTable(ArrayList<SanPham> list) {
+        model_dsSanPham.setRowCount(0);
+        for (SanPham sp : list) {
+            String gioiTinh;
+            model_dsSanPham.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getThuongHieu().getMaTH(), sp.getGiaBan()});
+        }
+
+    }
+
+    
+
+    public void alterTable() {
+        tbl_sanPham.setRowHeight(80);
     }
 
     /**
@@ -30,7 +129,7 @@ public class Panel_ThongKe extends javax.swing.JPanel {
         pnl_img = new javax.swing.JPanel();
         pnl_topItem = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_sanPham = new javax.swing.JTable();
         pnl_chart = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -57,18 +156,9 @@ public class Panel_ThongKe extends javax.swing.JPanel {
         pnl_topItem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Top sản phẩm bán chạy trong tháng : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_topItem.setLayout(new javax.swing.BoxLayout(pnl_topItem, javax.swing.BoxLayout.Y_AXIS));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl_sanPham.setModel(model_dsSanPham
+        );
+        jScrollPane1.setViewportView(tbl_sanPham);
 
         pnl_topItem.add(jScrollPane1);
 
@@ -83,10 +173,10 @@ public class Panel_ThongKe extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel pnl_chart;
     private javax.swing.JPanel pnl_header;
     private javax.swing.JPanel pnl_img;
     private javax.swing.JPanel pnl_topItem;
+    private javax.swing.JTable tbl_sanPham;
     // End of variables declaration//GEN-END:variables
 }
