@@ -244,14 +244,14 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
             return;
         }
 
-        if (container instanceof Panel_BanHang panel_BanHang) {
-            panel_BanHang.updateDiaChi(getDiaChi());
+        if (container instanceof Panel_BanHang) {
+            ((Panel_BanHang)container).updateDiaChi(getDiaChi());
         }
-        if (container instanceof Panel_QuanLyNhanVien panel_QuanLyNhanVien) {
-            panel_QuanLyNhanVien.updateDiaChi(getDiaChi());
+        if (container instanceof Panel_QuanLyNhanVien) {
+            ((Panel_QuanLyNhanVien)container).updateDiaChi(getDiaChi());
         }
-        if (container instanceof Panel_QuanLyKhachHang panel_QuanLyKhachHang) {
-            panel_QuanLyKhachHang.updateDiaChi(getDiaChi());
+        if (container instanceof Panel_QuanLyKhachHang) {
+            ((Panel_QuanLyKhachHang)container).updateDiaChi(getDiaChi());
         }
         this.setVisible(false);
     }

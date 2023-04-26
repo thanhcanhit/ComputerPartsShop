@@ -54,14 +54,14 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         txt_password = new javax.swing.JPasswordField();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 40), new java.awt.Dimension(0, 40), new java.awt.Dimension(32767, 50));
+        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 30), new java.awt.Dimension(32767, 50));
         pnl_control = new javax.swing.JPanel();
         btn_login = new javax.swing.JButton();
         btn_cancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(600, 300));
+        setPreferredSize(new java.awt.Dimension(600, 320));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 
@@ -81,7 +81,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         lbl_img.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pnl_img.add(lbl_img, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnl_img, java.awt.BorderLayout.EAST);
+        getContentPane().add(pnl_img, java.awt.BorderLayout.WEST);
 
         pnl_form.setBackground(new java.awt.Color(255, 255, 255));
         pnl_form.setPreferredSize(new java.awt.Dimension(300, 300));
@@ -101,7 +101,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_formInput.setLayout(new javax.swing.BoxLayout(pnl_formInput, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_username.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_username.setPreferredSize(new java.awt.Dimension(0, 40));
+        pnl_username.setPreferredSize(new java.awt.Dimension(0, 50));
         pnl_username.setLayout(new javax.swing.BoxLayout(pnl_username, javax.swing.BoxLayout.X_AXIS));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -124,7 +124,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_formInput.add(filler5);
 
         pnl_password.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_password.setPreferredSize(new java.awt.Dimension(0, 40));
+        pnl_password.setPreferredSize(new java.awt.Dimension(0, 50));
         pnl_password.setLayout(new javax.swing.BoxLayout(pnl_password, javax.swing.BoxLayout.X_AXIS));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -146,8 +146,9 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_formInput.add(filler2);
 
         pnl_control.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_control.setPreferredSize(new java.awt.Dimension(0, 120));
-        pnl_control.setLayout(new java.awt.GridLayout(2, 0, 0, 6));
+        pnl_control.setMinimumSize(new java.awt.Dimension(112, 100));
+        pnl_control.setPreferredSize(new java.awt.Dimension(0, 100));
+        pnl_control.setLayout(new java.awt.GridLayout(2, 0, 0, 4));
 
         btn_login.setBackground(new java.awt.Color(65, 165, 238));
         btn_login.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
