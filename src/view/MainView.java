@@ -8,19 +8,19 @@ import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.time.LocalDate;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
 import model.share.ConnectDB;
-import model.share.DiaChi;
 
 /**
  *
  * @author thanh
  */
-public class MainView extends javax.swing.JFrame {
+public final class MainView extends javax.swing.JFrame {
 
     NhanVien nhanVien = null;
     /**
@@ -36,17 +36,7 @@ public class MainView extends javax.swing.JFrame {
         initComponents();
 
         card = (CardLayout) this.pnl_main.getLayout();
-//        logout();
-
-//  Khi ra mắt phải chỉnh lại chưa đăng nhập
-        DiaChi dc = new DiaChi("s", "ds", "dsf", "dsà", "dsf", "dc0");
-        try {
-//            Nhân viên kinh doanh
-            NhanVien nhanVien = new NhanVien("NV0001", "Quản lí", "Nguyễn Thanh Cảnh", "0123123123", "thanhcanhit@gmail.com", LocalDate.of(2003, 1, 1), dc, false);
-            login(nhanVien);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        logout();
 
 //        Sự kiện đóng
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -61,6 +51,14 @@ public class MainView extends javax.swing.JFrame {
                     ConnectDB.disconnect();
                     System.exit(0);
                 }
+            }
+        });
+
+//        Sự kiện đổi size
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                ((Panel_Home) pnl_home).resize();
             }
         });
     }
@@ -136,8 +134,7 @@ public class MainView extends javax.swing.JFrame {
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         lbl_logout = new javax.swing.JLabel();
         pnl_main = new javax.swing.JPanel();
-        pnl_home = new Panel_Home();
-        lbl_main = new javax.swing.JLabel();
+        pnl_home = new javax.swing.JPanel();
         pnl_cart = new javax.swing.JPanel();
         pnl_products = new javax.swing.JPanel();
         pnl_inventory = new javax.swing.JPanel();
@@ -354,13 +351,7 @@ public class MainView extends javax.swing.JFrame {
 
         pnl_home.setBackground(new java.awt.Color(255, 255, 255));
         pnl_home.setLayout(new java.awt.BorderLayout());
-
-        lbl_main.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_main.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/HomePage.png"))); // NOI18N
-        lbl_main.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_main.setMaximumSize(new java.awt.Dimension(0, 0));
-        pnl_home.add(lbl_main, java.awt.BorderLayout.CENTER);
-
+        pnl_home = new Panel_Home();
         pnl_main.add(pnl_home, "home");
 
         pnl_cart.setBackground(new java.awt.Color(255, 255, 255));
@@ -385,6 +376,7 @@ public class MainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbl_homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_homeMouseClicked
+        
         card.show(this.pnl_main, "home");
         buttonActive(evt.getComponent());
     }//GEN-LAST:event_lbl_homeMouseClicked
@@ -472,7 +464,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_home;
     private javax.swing.JLabel lbl_inventory;
     private javax.swing.JLabel lbl_logout;
-    private javax.swing.JLabel lbl_main;
     private javax.swing.JLabel lbl_name;
     private javax.swing.JLabel lbl_products;
     private javax.swing.JPanel pnl_cart;

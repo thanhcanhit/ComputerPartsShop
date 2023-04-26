@@ -66,7 +66,6 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         setType(java.awt.Window.Type.POPUP);
 
         pnl_img.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_img.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
         pnl_img.setPreferredSize(new java.awt.Dimension(250, 0));
         pnl_img.setLayout(new java.awt.BorderLayout());
 
@@ -82,7 +81,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         lbl_img.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pnl_img.add(lbl_img, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnl_img, java.awt.BorderLayout.WEST);
+        getContentPane().add(pnl_img, java.awt.BorderLayout.EAST);
 
         pnl_form.setBackground(new java.awt.Color(255, 255, 255));
         pnl_form.setPreferredSize(new java.awt.Dimension(300, 300));
@@ -114,6 +113,11 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         txt_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_username.setText("NV0003");
         txt_username.setToolTipText("");
+        txt_username.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_usernameKeyPressed(evt);
+            }
+        });
         pnl_username.add(txt_username);
 
         pnl_formInput.add(pnl_username);
@@ -131,6 +135,11 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         txt_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_password.setText("1111");
+        txt_password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_passwordKeyPressed(evt);
+            }
+        });
         pnl_password.add(txt_password);
 
         pnl_formInput.add(pnl_password);
@@ -176,8 +185,8 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         close();
     }//GEN-LAST:event_btn_cancelActionPerformed
-
-    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+    
+    public void handleLogin() {
         String username = txt_username.getText().trim();
         String password = new String(txt_password.getPassword());
         
@@ -204,7 +213,22 @@ public class Frame_DangNhap extends javax.swing.JFrame {
             txt_username.selectAll();
             txt_username.requestFocus();
         }
+    }
+    private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+        handleLogin();
     }//GEN-LAST:event_btn_loginActionPerformed
+
+    private void txt_usernameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_usernameKeyPressed
+        if (evt.getKeyCode() == 10) {
+            handleLogin();
+        }
+    }//GEN-LAST:event_txt_usernameKeyPressed
+
+    private void txt_passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_passwordKeyPressed
+        if (evt.getKeyCode() == 10) {
+            handleLogin();
+        }
+    }//GEN-LAST:event_txt_passwordKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

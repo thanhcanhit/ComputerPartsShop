@@ -4,7 +4,6 @@
  */
 package view;
 
-import controller.ChiTietHoaDon_bus;
 import controller.DonNhapHang_bus;
 import controller.HoaDon_bus;
 import controller.KhachHang_bus;
@@ -134,6 +133,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
         tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
         tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
+        tbl_tab3DanhSachHoaDon.setDefaultEditor(Object.class, null);
+        tbl_tab3ChiTietHoaDon.setDefaultEditor(Object.class, null);
     }
 
     public void addCustomEvent() {
@@ -510,6 +511,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1DanhSachHangHoa.setAutoscrolls(false);
         tbl_tab1DanhSachHangHoa.setRowHeight(30);
         tbl_tab1DanhSachHangHoa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab1DanhSachHangHoa.setShowGrid(true);
+        tbl_tab1DanhSachHangHoa.setShowVerticalLines(false);
         tbl_tab1DanhSachHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_tab1DanhSachHangHoaMouseClicked(evt);
@@ -533,6 +536,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1ChiTietDonNhap.setDoubleBuffered(true);
         tbl_tab1ChiTietDonNhap.setRowHeight(30);
         tbl_tab1ChiTietDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab1ChiTietDonNhap.setShowGrid(true);
+        tbl_tab1ChiTietDonNhap.setShowVerticalLines(false);
         tbl_tab1ChiTietDonNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_tab1ChiTietDonNhapMouseClicked(evt);
@@ -724,7 +729,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         btn_tab1Reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_tab1Reset.setMaximumSize(new java.awt.Dimension(75, 50));
         btn_tab1Reset.setMinimumSize(new java.awt.Dimension(75, 50));
-        btn_tab1Reset.setPreferredSize(new java.awt.Dimension(30, 40));
+        btn_tab1Reset.setPreferredSize(new java.awt.Dimension(50, 50));
         btn_tab1Reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_tab1ResetActionPerformed(evt);
@@ -750,6 +755,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         }, 0));
         tbl_tab2DanhSachDonNhap.setRowHeight(30);
         tbl_tab2DanhSachDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab2DanhSachDonNhap.setShowGrid(true);
+        tbl_tab2DanhSachDonNhap.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tbl_tab2DanhSachDonNhap);
 
         pnl_danhSachDon.add(jScrollPane1);
@@ -767,6 +774,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         }, 0));
         tbl_tab2ChiTietDonNhap.setRowHeight(30);
         tbl_tab2ChiTietDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab2ChiTietDonNhap.setShowGrid(true);
+        tbl_tab2ChiTietDonNhap.setShowVerticalLines(false);
         jScrollPane2.setViewportView(tbl_tab2ChiTietDonNhap);
         if (tbl_tab2ChiTietDonNhap.getColumnModel().getColumnCount() > 0) {
             tbl_tab2ChiTietDonNhap.getColumnModel().getColumn(0).setResizable(false);
@@ -788,7 +797,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jPanel17.add(lbl_tinhTrang);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setLayout(new java.awt.GridLayout());
+        jPanel11.setLayout(new java.awt.GridLayout(1, 0));
 
         rad_chuaNhan.setText("Chưa nhận");
         jPanel11.add(rad_chuaNhan);
@@ -1051,6 +1060,18 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jScrollPane7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
         tbl_tab3DanhSachHoaDon.setModel(tblModel_tab3DanhSachHoaDon = new DefaultTableModel(new String[]{"Mã hóa đơn", "Nhân Viên", "Khách Hàng", "Ngày", "Hình Thức Thanh Toán", "Tổng"},0));
+        tbl_tab3DanhSachHoaDon.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tbl_tab3DanhSachHoaDon.setFocusCycleRoot(true);
+        tbl_tab3DanhSachHoaDon.setRowHeight(30);
+        tbl_tab3DanhSachHoaDon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_tab3DanhSachHoaDon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab3DanhSachHoaDon.setShowGrid(true);
+        tbl_tab3DanhSachHoaDon.setShowVerticalLines(false);
+        tbl_tab3DanhSachHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_tab3DanhSachHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane7.setViewportView(tbl_tab3DanhSachHoaDon);
 
         pnl_center.add(jScrollPane7);
@@ -1063,6 +1084,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         tbl_tab3ChiTietHoaDon.setModel(tblModel_tab3ChiTietHoaDon = new DefaultTableModel(new String[]{"Mã", "Tên", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
+        tbl_tab3ChiTietHoaDon.setDoubleBuffered(true);
+        tbl_tab3ChiTietHoaDon.setRowHeight(30);
+        tbl_tab3ChiTietHoaDon.setRowSelectionAllowed(true);
+        tbl_tab3ChiTietHoaDon.setShowGrid(true);
+        tbl_tab3ChiTietHoaDon.setShowVerticalLines(false);
         jScrollPane8.setViewportView(tbl_tab3ChiTietHoaDon);
         if (tbl_tab3ChiTietHoaDon.getColumnModel().getColumnCount() > 0) {
             tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(0).setResizable(false);
@@ -1168,7 +1194,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         txt_tab3TongTien.setEditable(false);
         txt_tab3TongTien.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tab3TongTien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txt_tab3TongTien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txt_tab3TongTien.setForeground(new java.awt.Color(65, 165, 238));
+        txt_tab3TongTien.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txt_tab3TongTien.setBorder(null);
         txt_tab3TongTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1371,6 +1399,15 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
             xoaHang();
         }
     }//GEN-LAST:event_tbl_tab1ChiTietDonNhapMouseClicked
+
+    private void tbl_tab3DanhSachHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_tab3DanhSachHoaDonMouseClicked
+        if (evt.getClickCount() == 2 && evt.getButton() == MouseEvent.BUTTON1) {
+            int row = tbl_tab3DanhSachHoaDon.getSelectedRow();
+            String ma = tbl_tab3DanhSachHoaDon.getValueAt(row, 0).toString();
+            HoaDon temp = hoaDon_bus.getHoaDonTheoMa(ma).get(0);
+            new Frame_HoaDon(temp).setVisible(true);
+        }
+    }//GEN-LAST:event_tbl_tab3DanhSachHoaDonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
