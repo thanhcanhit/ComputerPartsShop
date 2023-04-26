@@ -61,6 +61,14 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 cmb_chucVu.setSelectedItem(model_dsNhanVien.getValueAt(row, 5).toString());
                 
                 txt_diaChi.setText(model_dsNhanVien.getValueAt(row, 4).toString());
+                if (txt_diaChi.getText().trim().length() > 0) {
+                    String ma = (model_dsNhanVien.getValueAt(row, 0).toString());
+                    String maDC = NV_bus.getMaDiaChi(ma);
+                    DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+                    frame_diaChi = new Frame_InputDiaChi(this, dc);
+                } else {
+                    frame_diaChi = new Frame_InputDiaChi(this);
+                }
                 LocalDate ngaySinh = (LocalDate) model_dsNhanVien.getValueAt(row, 6);
                 //convert LocalDate to Date
                 txt_date.setDate(Date.from(ngaySinh.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
@@ -679,6 +687,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             return;
         }
         
+        
         DiaChi dc = frame_diaChi.getDiaChi();
         boolean gioiTinh;
         if(gt.equals("Nữ"))
@@ -747,10 +756,13 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                String maDC = NV_bus.getMaDiaChi(maNV);
                DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
                frame_diaChi = new Frame_InputDiaChi(this,dc);
+               
            }
            else{
                frame_diaChi = new Frame_InputDiaChi(this);
            }
+           
+                  
            frame_diaChi.setVisible(true);
            frame_diaChi.getDiaChi();
     }//GEN-LAST:event_txt_diaChiMouseClicked
@@ -763,16 +775,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             String chucVu= (String) cmb_chucVu.getSelectedItem();
             String gt = (String) cmb_gioiTinh.getSelectedItem();
 
-           if(txt_diaChi.getText().trim().length()>0){
-               int row = tbl_dsNhanVien.getSelectedRow();
-               String ma = (model_dsNhanVien.getValueAt(row, 0).toString());
-               String maDC = NV_bus.getMaDiaChi(ma);
-               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
-               frame_diaChi = new Frame_InputDiaChi(this,dc);
-           }
-           else{
-               frame_diaChi = new Frame_InputDiaChi(this);
-           }
+           
             
             if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
             showMessageFocus("Họ tên không hợp lệ", txt_hoTenNV);
