@@ -66,7 +66,6 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         setType(java.awt.Window.Type.POPUP);
 
         pnl_img.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_img.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
         pnl_img.setPreferredSize(new java.awt.Dimension(250, 0));
         pnl_img.setLayout(new java.awt.BorderLayout());
 
@@ -82,7 +81,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         lbl_img.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         pnl_img.add(lbl_img, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnl_img, java.awt.BorderLayout.WEST);
+        getContentPane().add(pnl_img, java.awt.BorderLayout.EAST);
 
         pnl_form.setBackground(new java.awt.Color(255, 255, 255));
         pnl_form.setPreferredSize(new java.awt.Dimension(300, 300));
