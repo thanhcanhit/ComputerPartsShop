@@ -8,6 +8,7 @@ import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import model.connguoi.KhachHang;
 import model.hoadon.HoaDon;
 import model.share.Utility;
 
@@ -55,7 +56,66 @@ public class HoaDon_bus implements HoaDonInterface {
     }
 
     @Override
-    public ArrayList<HoaDon> getHoaDonTheoDieuKien(String ma, String sdt, String giaBatDau, String giaKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
-        return dao.getHoaDonTheoDieuKien(ma, sdt, giaBatDau, giaKetThuc, ngayBatDau, ngayKetThuc);
+    public ArrayList<HoaDon> getHoaDonTheoDieuKien(String manv, String sdt, String giaTu, String giaDen, LocalDate ngayBatDau, LocalDate ngayKetThuc) {
+        ArrayList<HoaDon> list = new ArrayList<>();
+        ArrayList<HoaDon> xoa = new ArrayList<>();
+        list = dao.getAllHoaDon();
+        KhachHang_bus khachHang_bus = new KhachHang_bus();
+        if (sdt.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+                KhachHang kh = khachHang_bus.getKhachHangTheoMa(hoaDon.getKhachHang().getMaKH()).get(0);
+                if (!kh.getSoDT().equals(sdt)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (manv.trim().length() > 0) {
+
+            for (HoaDon hoaDon : list) {
+                if (!hoaDon.getNhanVien().getMaNV().equals(manv)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaTu.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() < Double.parseDouble(giaTu)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+        if (giaDen.trim().length() > 0) {
+            for (HoaDon hoaDon : list) {
+                if (hoaDon.getTongTien() > Double.parseDouble(giaDen)) {
+                    xoa.add(hoaDon);
+                }
+            }
+            list.removeAll(xoa);
+        }
+        xoa.clear();
+       
+        for (HoaDon hoaDon : list) {
+            HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+            if (hd.getNgayLap().isBefore(ngayBatDau)) {
+                xoa.add(hoaDon);
+            }
+        }
+        list.removeAll(xoa);
+        xoa.clear();
+        for (HoaDon hoaDon : list) {
+            HoaDon hd = getHoaDonTheoMa(hoaDon.getMaHoaDon()).get(0);
+            if (hd.getNgayLap().isAfter(ngayKetThuc)) {
+                xoa.add(hoaDon);
+            }
+        }
+        list.removeAll(xoa);
+        return list;
     }
 }

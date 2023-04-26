@@ -13,9 +13,11 @@ import controller.NhanVien_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -75,6 +77,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         renderCMB_NhaCungCap();
         renderAllTab2DanhSachDonNhap();
         renderAllTab3DanhSachHoaDon();
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        jdate_tab3TuNgay.setDate(cal.getTime());
+
+// Thiết lập giá trị mặc định cho txt_tab3GiaDen
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        jdate_tab3DenNgay.setDate(cal.getTime());
     }
 
     public void renderCMB_NhaCungCap() {
@@ -97,7 +106,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1DanhSachHangHoa.getColumnModel().getColumn(4).setPreferredWidth(100);
         tbl_tab1DanhSachHangHoa.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
         tbl_tab1DanhSachHangHoa.setDefaultEditor(Object.class, null);
-        
+
         tbl_tab1ChiTietDonNhap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_tab1ChiTietDonNhap.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_tab1ChiTietDonNhap.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -278,6 +287,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         txt_tab3NgayLap.setText(hd.getNgayLap().toString());
         txt_tab3NhanVien.setText(nv.getHoTen());
         txt_tab3TongTien.setText(Utility.getVND(hoaDon.getTongTien()));
+        
     }
 
     public boolean validateFields() {
@@ -320,6 +330,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         return isValid;
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1175,7 +1186,9 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         txt_tab3TongTien.setEditable(false);
         txt_tab3TongTien.setBackground(new java.awt.Color(255, 255, 255));
-        txt_tab3TongTien.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txt_tab3TongTien.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        txt_tab3TongTien.setForeground(new java.awt.Color(65, 165, 238));
+        txt_tab3TongTien.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txt_tab3TongTien.setBorder(null);
         txt_tab3TongTien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1302,6 +1315,19 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
     private void btn_tab3ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3ResetActionPerformed
         // TODO add your handling code here:
+        txt_tab3GiaDen.setText("");
+        txt_tab3GiaDen.setText("");
+        txt_tab3SDT.setText("");
+        txt_tab3MaNhanVien.setText("");
+        // Thiết lập giá trị mặc định cho txt_tab3GiaTu
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        jdate_tab3TuNgay.setDate(cal.getTime());
+
+// Thiết lập giá trị mặc định cho txt_tab3GiaDen
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        jdate_tab3DenNgay.setDate(cal.getTime());
+
         renderTab3DanhSachHoaDon(hoaDon_bus.getAllHoaDon());
     }//GEN-LAST:event_btn_tab3ResetActionPerformed
 
