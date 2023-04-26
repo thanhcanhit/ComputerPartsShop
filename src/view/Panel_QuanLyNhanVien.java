@@ -113,7 +113,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             if(nv.isTrangThai()){
                 tt="Đang làm";
             }else{
-                tt="Đã nghĩ";
+                tt="Đã nghỉ";
             }
            model_dsNhanVien.addRow(new Object[] {nv.getMaNV(),nv.getHoTen(),nv.getEmail(),nv.getSoDT(),nv.getDiaChi().toString(),nv.getChucDanh(),nv.getNamSinh(),gioiTinh,tt});
         }
