@@ -554,7 +554,16 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             return;
         }
         
-        
+        if(txt_diaChi.getText().trim().length()>0){
+               int row = tbl_dsKhachHang.getSelectedRow();
+               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
+               String maDC = KH_bus.getMaDiaChi(ma);
+               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+               frame_diaChi = new Frame_InputDiaChi(this,dc);
+           }
+           else{
+               frame_diaChi = new Frame_InputDiaChi(this);
+           }
         
         if(maST.trim().length()<=0)
             maST = null;

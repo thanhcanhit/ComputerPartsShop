@@ -677,6 +677,16 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             showMessageFocus("Địa chỉ không được rỗng", txt_diaChi);
             return;
         }
+        if(txt_diaChi.getText().trim().length()>0){
+               int row = tbl_dsNhanVien.getSelectedRow();
+               String ma = (model_dsNhanVien.getValueAt(row, 0).toString());
+               String maDC = NV_bus.getMaDiaChi(ma);
+               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+               frame_diaChi = new Frame_InputDiaChi(this,dc);
+           }
+           else{
+               frame_diaChi = new Frame_InputDiaChi(this);
+           }
         
         DiaChi dc = frame_diaChi.getDiaChi();
         boolean gioiTinh;
