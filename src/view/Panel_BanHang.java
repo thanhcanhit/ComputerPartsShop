@@ -273,6 +273,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_products.setShowGrid(true);
+        tbl_products.setShowVerticalLines(false);
         tbl_products.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_productsMouseClicked(evt);
@@ -373,6 +374,8 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_cart.setRowHeight(30);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_cart.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_cart.setShowGrid(true);
+        tbl_cart.setShowVerticalLines(false);
         tbl_cart.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_cartMouseClicked(evt);

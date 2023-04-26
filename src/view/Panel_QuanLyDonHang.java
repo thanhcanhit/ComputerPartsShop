@@ -4,7 +4,6 @@
  */
 package view;
 
-import controller.ChiTietHoaDon_bus;
 import controller.DonNhapHang_bus;
 import controller.HoaDon_bus;
 import controller.KhachHang_bus;
@@ -77,13 +76,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         renderCMB_NhaCungCap();
         renderAllTab2DanhSachDonNhap();
         renderAllTab3DanhSachHoaDon();
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DAY_OF_MONTH, 1);
-        jdate_tab3TuNgay.setDate(cal.getTime());
+//         Calendar cal = Calendar.getInstance();
+//         cal.set(Calendar.DAY_OF_MONTH, 1);
+//         jdate_tab3TuNgay.setDate(cal.getTime());
 
-// Thiết lập giá trị mặc định cho txt_tab3GiaDen
-        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-        jdate_tab3DenNgay.setDate(cal.getTime());
+// // Thiết lập giá trị mặc định cho txt_tab3GiaDen
+//         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+//         jdate_tab3DenNgay.setDate(cal.getTime());
     }
 
     public void renderCMB_NhaCungCap() {
@@ -523,6 +522,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1DanhSachHangHoa.setAutoscrolls(false);
         tbl_tab1DanhSachHangHoa.setRowHeight(30);
         tbl_tab1DanhSachHangHoa.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab1DanhSachHangHoa.setShowGrid(true);
+        tbl_tab1DanhSachHangHoa.setShowVerticalLines(false);
         tbl_tab1DanhSachHangHoa.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_tab1DanhSachHangHoaMouseClicked(evt);
@@ -546,6 +547,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1ChiTietDonNhap.setDoubleBuffered(true);
         tbl_tab1ChiTietDonNhap.setRowHeight(30);
         tbl_tab1ChiTietDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab1ChiTietDonNhap.setShowGrid(true);
+        tbl_tab1ChiTietDonNhap.setShowVerticalLines(false);
         tbl_tab1ChiTietDonNhap.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_tab1ChiTietDonNhapMouseClicked(evt);
@@ -763,6 +766,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         }, 0));
         tbl_tab2DanhSachDonNhap.setRowHeight(30);
         tbl_tab2DanhSachDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab2DanhSachDonNhap.setShowGrid(true);
+        tbl_tab2DanhSachDonNhap.setShowVerticalLines(false);
         jScrollPane1.setViewportView(tbl_tab2DanhSachDonNhap);
 
         pnl_danhSachDon.add(jScrollPane1);
@@ -780,6 +785,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         }, 0));
         tbl_tab2ChiTietDonNhap.setRowHeight(30);
         tbl_tab2ChiTietDonNhap.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab2ChiTietDonNhap.setShowGrid(true);
+        tbl_tab2ChiTietDonNhap.setShowVerticalLines(false);
         jScrollPane2.setViewportView(tbl_tab2ChiTietDonNhap);
         if (tbl_tab2ChiTietDonNhap.getColumnModel().getColumnCount() > 0) {
             tbl_tab2ChiTietDonNhap.getColumnModel().getColumn(0).setResizable(false);
@@ -1064,6 +1071,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         jScrollPane7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
 
         tbl_tab3DanhSachHoaDon.setModel(tblModel_tab3DanhSachHoaDon = new DefaultTableModel(new String[]{"Mã hóa đơn", "Nhân Viên", "Khách Hàng", "Ngày", "Hình Thức Thanh Toán", "Tổng"},0));
+        tbl_tab3DanhSachHoaDon.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        tbl_tab3DanhSachHoaDon.setFocusCycleRoot(true);
+        tbl_tab3DanhSachHoaDon.setRowHeight(30);
+        tbl_tab3DanhSachHoaDon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tbl_tab3DanhSachHoaDon.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbl_tab3DanhSachHoaDon.setShowGrid(true);
+        tbl_tab3DanhSachHoaDon.setShowVerticalLines(false);
         tbl_tab3DanhSachHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_tab3DanhSachHoaDonMouseClicked(evt);
@@ -1081,6 +1095,11 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
         tbl_tab3ChiTietHoaDon.setModel(tblModel_tab3ChiTietHoaDon = new DefaultTableModel(new String[]{"Mã", "Tên", "Nhóm hàng", "Số lượng", "Đơn giá", "Tổng"
         }, 0));
+        tbl_tab3ChiTietHoaDon.setDoubleBuffered(true);
+        tbl_tab3ChiTietHoaDon.setRowHeight(30);
+        tbl_tab3ChiTietHoaDon.setRowSelectionAllowed(true);
+        tbl_tab3ChiTietHoaDon.setShowGrid(true);
+        tbl_tab3ChiTietHoaDon.setShowVerticalLines(false);
         jScrollPane8.setViewportView(tbl_tab3ChiTietHoaDon);
         if (tbl_tab3ChiTietHoaDon.getColumnModel().getColumnCount() > 0) {
             tbl_tab3ChiTietHoaDon.getColumnModel().getColumn(0).setResizable(false);

@@ -10,19 +10,17 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.time.LocalDate;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
 import model.share.ConnectDB;
-import model.share.DiaChi;
 
 /**
  *
  * @author thanh
  */
-public class MainView extends javax.swing.JFrame {
+public final class MainView extends javax.swing.JFrame {
 
     NhanVien nhanVien = null;
     /**
@@ -58,6 +56,7 @@ public class MainView extends javax.swing.JFrame {
 
 //        Sự kiện đổi size
         this.addComponentListener(new ComponentAdapter() {
+            @Override
             public void componentResized(ComponentEvent e) {
                 ((Panel_Home) pnl_home).resize();
             }
