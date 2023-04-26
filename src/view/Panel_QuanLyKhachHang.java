@@ -50,6 +50,14 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
                 txt_soDT.setText(model_dsKhachHang.getValueAt(row, 3).toString());
                 txt_hangThanhVien.setText(model_dsKhachHang.getValueAt(row, 2).toString());
                 txt_diaChi.setText(model_dsKhachHang.getValueAt(row, 5).toString());
+                if (txt_diaChi.getText().trim().length() > 0) {
+                    String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
+                    String maDC = KH_bus.getMaDiaChi(ma);
+                    DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+                    frame_diaChi = new Frame_InputDiaChi(this, dc);
+                } else {
+                    frame_diaChi = new Frame_InputDiaChi(this);
+                }
                 txt_maSoThue.setText(model_dsKhachHang.getValueAt(row, 4).toString());
                 LocalDate ngaySinh = (LocalDate) model_dsKhachHang.getValueAt(row, 6);
                 //convert LocalDate to Date
@@ -101,7 +109,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         model_dsKhachHang.setRowCount(0);
         for(KhachHang kh:listKH){
             String maST;
-            if(kh.getMaSoThue()=="Null"){
+            if(kh.getMaSoThue()== "Null"){
                 maST = " ";
             }else
                 maST=kh.getMaSoThue();
@@ -572,19 +580,9 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             return;
         }
         
-        if(txt_diaChi.getText().trim().length()>0){
-               int row = tbl_dsKhachHang.getSelectedRow();
-               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
-               String maDC = KH_bus.getMaDiaChi(ma);
-               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
-               frame_diaChi = new Frame_InputDiaChi(this,dc);
-           }
-           else{
-               frame_diaChi = new Frame_InputDiaChi(this);
-           }
         
         if(maST.trim().length()<=0)
-            maST = null;
+            maST = "Null";
         DiaChi dc = frame_diaChi.getDiaChi();
         boolean gioiTinh;
         if(gt.equals("Nữ"))
@@ -631,6 +629,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
                String maDC = KH_bus.getMaDiaChi(maKH);
                DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
                frame_diaChi = new Frame_InputDiaChi(this,dc);
+              
            }
            else{
                frame_diaChi = new Frame_InputDiaChi(this);
@@ -654,16 +653,16 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             String maST = txt_maSoThue.getText();
             String gt = (String) cmb_gioiTinh.getSelectedItem();
             int diem = Integer.parseInt(txt_hangThanhVien.getText());
-            if(txt_diaChi.getText().trim().length()>0){
-               int row = tbl_dsKhachHang.getSelectedRow();
-               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
-               String maDC = KH_bus.getMaDiaChi(ma);
-               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
-               frame_diaChi = new Frame_InputDiaChi(this,dc);
-           }
-           else{
-               frame_diaChi = new Frame_InputDiaChi(this);
-           }
+//            if(txt_diaChi.getText().trim().length()>0){
+//               int row = tbl_dsKhachHang.getSelectedRow();
+//               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
+//               String maDC = KH_bus.getMaDiaChi(ma);
+//               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
+//               frame_diaChi = new Frame_InputDiaChi(this,dc);
+//           }
+//           else{
+//               frame_diaChi = new Frame_InputDiaChi(this);
+//           }
             
            
             
