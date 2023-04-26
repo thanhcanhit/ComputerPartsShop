@@ -23,19 +23,20 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
      */
     private JPanel container;
     private DiaChi dc = null;
+
     public Frame_InputDiaChi(JPanel container, DiaChi dc) {
-        this.dc=dc;
+        this.dc = dc;
         initComponents();
         txt_duong.setText(dc.getDuong());
         txt_so.setText(dc.getSo());
         txt_quan.setText(dc.getQuan());
         txt_quocGia.setText(dc.getQuocGia());
         txt_tp.setText(dc.getThanhPho());
-        
+
         this.container = container;
-        
 
     }
+
     public Frame_InputDiaChi(JPanel container) {
         initComponents();
         this.container = container;
@@ -51,7 +52,6 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         pnl_container = new javax.swing.JPanel();
         b_1 = new javax.swing.JPanel();
         lbl_so = new javax.swing.JLabel();
@@ -76,20 +76,15 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(32767, 0));
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 32767));
 
+        setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
+        setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/location.png")).getImage());
         setPreferredSize(new java.awt.Dimension(500, 250));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);
             }
         });
-
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/location.png"))); // NOI18N
-        jLabel1.setText("Nhập địa chỉ");
-        jLabel1.setPreferredSize(new java.awt.Dimension(42, 40));
-        getContentPane().add(jLabel1, java.awt.BorderLayout.PAGE_START);
 
         pnl_container.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_container.setPreferredSize(new java.awt.Dimension(20, 250));
@@ -212,7 +207,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_duongKeyPressed
 
     private void formComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentShown
-        if(dc==null)
+        if (dc == null)
             reset();
     }//GEN-LAST:event_formComponentShown
 
@@ -224,18 +219,8 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         String tp = txt_tp.getText().trim();
         String qg = txt_quocGia.getText().trim();
 
-        if (!Pattern.matches(".+", qg)) {
-            showMessageFocus("Quốc gia không được rỗng", txt_quocGia);
-            return;
-        }
-
-        if (!Pattern.matches(".+", tp)) {
-            showMessageFocus("Tỉnh/Thành Phố không được rỗng", txt_tp);
-            return;
-        }
-
-        if (!Pattern.matches(".+", quan)) {
-            showMessageFocus("Quận/Huyện không được rỗng", txt_quan);
+        if (!Pattern.matches(".+", so)) {
+            showMessageFocus("Số nhà không được rỗng", txt_so);
             return;
         }
 
@@ -244,19 +229,29 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
             return;
         }
 
-        if (!Pattern.matches(".+", so)) {
-            showMessageFocus("Số nhà không được rỗng", txt_so);
+        if (!Pattern.matches(".+", quan)) {
+            showMessageFocus("Quận/Huyện không được rỗng", txt_quan);
             return;
         }
 
-        if (container instanceof Panel_BanHang) {
-            ((Panel_BanHang) container).updateDiaChi(getDiaChi());
+        if (!Pattern.matches(".+", tp)) {
+            showMessageFocus("Tỉnh/Thành Phố không được rỗng", txt_tp);
+            return;
         }
-        if(container instanceof Panel_QuanLyNhanVien){
-            ((Panel_QuanLyNhanVien) container).updateDiaChi(getDiaChi());
+
+        if (!Pattern.matches(".+", qg)) {
+            showMessageFocus("Quốc gia không được rỗng", txt_quocGia);
+            return;
         }
-        if(container instanceof Panel_QuanLyKhachHang){
-            ((Panel_QuanLyKhachHang) container).updateDiaChi(getDiaChi());
+
+        if (container instanceof Panel_BanHang panel_BanHang) {
+            panel_BanHang.updateDiaChi(getDiaChi());
+        }
+        if (container instanceof Panel_QuanLyNhanVien panel_QuanLyNhanVien) {
+            panel_QuanLyNhanVien.updateDiaChi(getDiaChi());
+        }
+        if (container instanceof Panel_QuanLyKhachHang panel_QuanLyKhachHang) {
+            panel_QuanLyKhachHang.updateDiaChi(getDiaChi());
         }
         this.setVisible(false);
     }
@@ -265,7 +260,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         javax.swing.JTextField[] list = {txt_duong, txt_quan, txt_quocGia, txt_so, txt_tp};
         Arrays.stream(list).forEach(txt -> txt.setText(""));
         txt_quocGia.setText("Việt Nam");
-        txt_tp.requestFocus();
+        txt_so.requestFocus();
     }
 
     public void showMessageFocus(String msg, JTextField txt) {
@@ -281,8 +276,8 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         String tp = txt_tp.getText().trim();
         String qg = txt_quocGia.getText().trim();
 
-        DiaChi dc = new DiaChi(so, duong, quan, tp, qg, new DiaChi_bus().sinhMa());
-        return dc;
+        DiaChi dcm = new DiaChi(so, duong, quan, tp, qg, new DiaChi_bus().sinhMa());
+        return dcm;
     }
 
 
@@ -298,7 +293,6 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbl_duong;
     private javax.swing.JLabel lbl_quan;
     private javax.swing.JLabel lbl_quocGia;
