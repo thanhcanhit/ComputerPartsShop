@@ -100,17 +100,18 @@ public class SanPham_dao implements SanPhamInterface {
 
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update SanPham"
-                    + " set tenSanPham = ?, giaNhap = ?, giamGia = ?, loai = ?, vat = ?, thuongHieu = ?, soThangBaoHanh = ?, cauHinh = ?"
+                    + " set tenSanPham = ?, giaNhap = ?, giamGia = ?, cauHinh = ?, soThangBaoHanh = ?, maLoai = ?, VAT = ?, maThuongHieu = ?"
                     + " where maSanPham = ?");
             int i = 1;
+            
             st.setString(i++, sanPham.getTenSP());
             st.setDouble(i++, sanPham.getGiaNhap());
             st.setDouble(i++, sanPham.getGiamGia());
+            st.setString(i++, sanPham.getCauHinh());
+            st.setInt(i++, sanPham.getSoThangBaoHanh());
             st.setInt(i++, sanPham.getLoai());
             st.setDouble(i++, sanPham.getVAT());
             st.setString(i++, sanPham.getThuongHieu().getMaTH());
-            st.setInt(i++, sanPham.getSoThangBaoHanh());
-            st.setString(i++, sanPham.getCauHinh());
             st.setString(i++, maSanPham);
             n = st.executeUpdate();
         } catch (Exception e) {
@@ -126,19 +127,19 @@ public class SanPham_dao implements SanPhamInterface {
 
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into SanPham"
-                    + " values (?, ?, ?, ?, ?, ?, ?, ?)");
-            int i = 1;
-            st.setString(i++, sanPham.getMaSP());
-            st.setString(i++, sanPham.getTenSP());
-            st.setDouble(i++, sanPham.getGiaNhap());
-            st.setDouble(i++, sanPham.getGiamGia());
-            st.setInt(i++, sanPham.getLoai());
-            st.setDouble(i++, sanPham.getVAT());
-            st.setString(i++, sanPham.getThuongHieu().getMaTH());
-            st.setInt(i++, sanPham.getSoThangBaoHanh());
-            st.setString(i++, sanPham.getCauHinh());
+                    + " values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            st.setString(1, sanPham.getMaSP());
+            st.setString(2, sanPham.getTenSP());
+            st.setDouble(3, sanPham.getGiaNhap());
+            st.setDouble(4, sanPham.getGiamGia());
+            st.setString(5, sanPham.getCauHinh());
+            st.setInt(6, sanPham.getSoThangBaoHanh());
+            st.setInt(7, sanPham.getLoai());
+            st.setDouble(8, sanPham.getVAT());
+            st.setString(9, sanPham.getThuongHieu().getMaTH());
 
             n = st.executeUpdate();
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -220,6 +221,87 @@ public class SanPham_dao implements SanPhamInterface {
         }
 
         return result;
+    }
+    
+    public ArrayList<SanPham> timSanPhamTheoCauHinh(String input) {
+         ArrayList<SanPham> result = new ArrayList<>();
+          try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from SanPham where cauHinh like N'%" + input + "%'");
+//            st.setString(1, cauHinh);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSP = rs.getString("maSanPham");
+                String tenSP = rs.getString("tenSanPham");
+                double giaNhap = rs.getDouble("giaNhap");
+                double giamGia = rs.getDouble("giamGia");
+                int loai = rs.getInt("maLoai");
+                double vat = rs.getDouble("VAT");
+                ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
+                int soThangBaohanh = rs.getInt("soThangBaoHanh");
+                String cauHinh = rs.getString("cauHinh");
+                SanPham sp = new SanPham(maSP, tenSP, giaNhap, giamGia, loai, vat, thuongHieu, soThangBaohanh, cauHinh);
+
+                result.add(sp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return result;
+    }
+    
+    public ArrayList<SanPham> timSanPhamTheoLoai(int input) {
+         ArrayList<SanPham> result = new ArrayList<>();
+          try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from SanPham where maLoai =" + input);
+//            st.setString(1, cauHinh);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSP = rs.getString("maSanPham");
+                String tenSP = rs.getString("tenSanPham");
+                double giaNhap = rs.getDouble("giaNhap");
+                double giamGia = rs.getDouble("giamGia");
+                int loai = rs.getInt("maLoai");
+                double vat = rs.getDouble("VAT");
+                ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
+                int soThangBaohanh = rs.getInt("soThangBaoHanh");
+                String cauHinh = rs.getString("cauHinh");
+                SanPham sp = new SanPham(maSP, tenSP, giaNhap, giamGia, loai, vat, thuongHieu, soThangBaohanh, cauHinh);
+
+                result.add(sp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return result;
+    }
+    
+    public ArrayList<SanPham> timSanPhamTheoThuongHieu(String input) {
+         ArrayList<SanPham> result = new ArrayList<>();
+          try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select * from SanPham where maThuongHieu like N'" + input + "'");
+//            st.setString(1, cauHinh);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSP = rs.getString("maSanPham");
+                String tenSP = rs.getString("tenSanPham");
+                double giaNhap = rs.getDouble("giaNhap");
+                double giamGia = rs.getDouble("giamGia");
+                int loai = rs.getInt("maLoai");
+                double vat = rs.getDouble("VAT");
+                ThuongHieu thuongHieu = new ThuongHieu(rs.getString("maThuongHieu"));
+                int soThangBaohanh = rs.getInt("soThangBaoHanh");
+                String cauHinh = rs.getString("cauHinh");
+                SanPham sp = new SanPham(maSP, tenSP, giaNhap, giamGia, loai, vat, thuongHieu, soThangBaohanh, cauHinh);
+
+                result.add(sp);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         return result;
     }
 
     public String getMaLonNhat() {
