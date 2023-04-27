@@ -635,9 +635,15 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="14" style="0"/>
                         </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="99" green="99" red="99" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="M&#xe3; s&#x1ea3;n ph&#x1ea9;m"/>
                         <Property name="toolTipText" type="java.lang.String" value="Vui l&#xf2;ng nh&#x1ead;p m&#xe3; s&#x1ea3;n ph&#x1ea9;m"/>
                       </Properties>
                       <Events>
+                        <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_tab1SearchFocusGained"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_tab1SearchFocusLost"/>
                         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_tab1SearchKeyPressed"/>
                       </Events>
                     </Component>
@@ -1901,7 +1907,6 @@
                             </Property>
                             <Property name="doubleBuffered" type="boolean" value="true"/>
                             <Property name="rowHeight" type="int" value="30"/>
-                            <Property name="rowSelectionAllowed" type="boolean" value="true"/>
                             <Property name="showGrid" type="boolean" value="true"/>
                             <Property name="showVerticalLines" type="boolean" value="false"/>
                             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -2250,11 +2255,7 @@
                                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ee" green="a5" red="41" type="rgb"/>
                                 </Property>
-<<<<<<< HEAD
-                                <Property name="horizontalAlignment" type="int" value="4"/>
-=======
                                 <Property name="horizontalAlignment" type="int" value="11"/>
->>>>>>> d4e96be3b850e699332470b1dcaf400ff52eabb1
                                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                                   <Border info="null"/>
                                 </Property>
