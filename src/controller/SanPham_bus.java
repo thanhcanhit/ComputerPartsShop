@@ -4,6 +4,7 @@ import dao.SanPham_dao;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
 import model.sanpham.SanPham;
+import model.sanpham.ThuongHieu;
 import model.share.ConnectDB;
 import model.share.Utility;
 
@@ -77,6 +78,63 @@ public class SanPham_bus implements SanPhamInterface {
         String maThuongHieu = thuongHieuParseMa(input);
         return dao.timSanPhamTheoThuongHieu(maThuongHieu);
     }
+     
+     
+    public ArrayList<SanPham> searchTheoDieuKien(String ten, String loaiSanPham, String thuongHieu, String cauHinh){
+        ArrayList<SanPham> ds = new ArrayList<>();
+        ds = getAllSanPham();
+        ArrayList<SanPham> xoa = new ArrayList<>();
+        
+        System.out.println(ten);
+        
+        System.out.println(loaiSanPham);
+        
+        System.out.println(thuongHieu);
+        
+        System.out.println(cauHinh);
+        
+        
+        if(ten.length()>0){
+            for(SanPham sp:ds) {
+                if(!sp.getTenSP().contains(ten)) {
+                    xoa.add(sp);
+                }
+            }
+            ds.removeAll(xoa);
+        }
+        xoa.clear();
+        if(!loaiSanPham.equals("Tất cả")) {
+            for(SanPham sp:ds) {
+                if(!loaiSanPham.equals(sp.getTenLoai())) {
+                    xoa.add(sp);
+                }
+            }
+            ds.removeAll(xoa);
+        }
+        xoa.clear();
+        if(!thuongHieu.equals("Tất cả")) {
+            for(SanPham sp:ds) {
+                ThuongHieu th = new ThuongHieu_bus().getThuongHieuTheoMa(sp.getThuongHieu().getMaTH()).get(0);
+                System.out.println(th);
+                if(!thuongHieu.equals(th.toString())) {
+                    xoa.add(sp);
+                }
+            }
+            ds.removeAll(xoa);
+        }
+        xoa.clear();
+        if(cauHinh.trim().length()>0) {
+            for(SanPham sp:ds) {
+                if(!sp.getCauHinh().contains(cauHinh)) {
+                    xoa.add(sp);
+                }
+            }
+            ds.removeAll(xoa);
+        }
+       
+        
+        return ds;
+    }
 
     public String sinhMa() {
         String last = dao.getMaLonNhat();
@@ -113,6 +171,14 @@ public class SanPham_bus implements SanPhamInterface {
                 result = 9;
         }
         return result;
+    }
+    
+    public void searchCauHinhTheoThongTin(String input) {
+        String[] inputs = input.split("; ");
+        for(int i = 0; i<inputs.length; i++){
+            
+        }
+        
     }
 
 }

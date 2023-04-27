@@ -100,17 +100,18 @@ public class SanPham_dao implements SanPhamInterface {
 
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("update SanPham"
-                    + " set tenSanPham = ?, giaNhap = ?, giamGia = ?, loai = ?, vat = ?, thuongHieu = ?, soThangBaoHanh = ?, cauHinh = ?"
+                    + " set tenSanPham = ?, giaNhap = ?, giamGia = ?, cauHinh = ?, soThangBaoHanh = ?, maLoai = ?, VAT = ?, maThuongHieu = ?"
                     + " where maSanPham = ?");
             int i = 1;
+            
             st.setString(i++, sanPham.getTenSP());
             st.setDouble(i++, sanPham.getGiaNhap());
             st.setDouble(i++, sanPham.getGiamGia());
+            st.setString(i++, sanPham.getCauHinh());
+            st.setInt(i++, sanPham.getSoThangBaoHanh());
             st.setInt(i++, sanPham.getLoai());
             st.setDouble(i++, sanPham.getVAT());
             st.setString(i++, sanPham.getThuongHieu().getMaTH());
-            st.setInt(i++, sanPham.getSoThangBaoHanh());
-            st.setString(i++, sanPham.getCauHinh());
             st.setString(i++, maSanPham);
             n = st.executeUpdate();
         } catch (Exception e) {
@@ -131,11 +132,11 @@ public class SanPham_dao implements SanPhamInterface {
             st.setString(2, sanPham.getTenSP());
             st.setDouble(3, sanPham.getGiaNhap());
             st.setDouble(4, sanPham.getGiamGia());
-            st.setInt(5, sanPham.getLoai());
-            st.setDouble(6, sanPham.getVAT());
-            st.setString(7, sanPham.getThuongHieu().getMaTH());
-            st.setInt(8, sanPham.getSoThangBaoHanh());
-            st.setString(9, sanPham.getCauHinh());
+            st.setString(5, sanPham.getCauHinh());
+            st.setInt(6, sanPham.getSoThangBaoHanh());
+            st.setInt(7, sanPham.getLoai());
+            st.setDouble(8, sanPham.getVAT());
+            st.setString(9, sanPham.getThuongHieu().getMaTH());
 
             n = st.executeUpdate();
             

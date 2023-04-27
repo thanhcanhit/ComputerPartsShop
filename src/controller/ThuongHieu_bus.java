@@ -69,8 +69,6 @@ public class ThuongHieu_bus implements ThuongHieuInterface {
             String parts[] = string.split(" - ");
             String tenTH = parts[0];
             String quocGia = parts[1]; 
-            System.out.println(tenTH);
-            System.err.println(quocGia);
             ThuongHieu th = new ThuongHieu(sinhMa(), tenTH, quocGia);
             themThuongHieu(th);
             return th;
