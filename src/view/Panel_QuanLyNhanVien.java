@@ -257,7 +257,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(filler8);
 
         btn_themNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btn_themNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/add-group.png"))); // NOI18N
+        btn_themNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/add.png"))); // NOI18N
         btn_themNV.setText("Thêm Nhân Viên");
         btn_themNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_themNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -273,7 +273,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(filler4);
 
         btn_xoaNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btn_xoaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user.png"))); // NOI18N
+        btn_xoaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/remove.png"))); // NOI18N
         btn_xoaNV.setText("Xoá trạng thái");
         btn_xoaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_xoaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -289,7 +289,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_controlgroup.add(filler5);
 
         btn_suaNV.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
-        btn_suaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/transaction.png"))); // NOI18N
+        btn_suaNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/edit.png"))); // NOI18N
         btn_suaNV.setText("Sửa Nhân Viên");
         btn_suaNV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_suaNV.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);

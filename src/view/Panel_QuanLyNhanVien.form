@@ -175,7 +175,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/add-group.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m Nh&#xe2;n Vi&#xea;n"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -210,7 +210,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/user.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/remove.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Xo&#xe1; tr&#x1ea1;ng th&#xe1;i"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -245,7 +245,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/transaction.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a Nh&#xe2;n Vi&#xea;n"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

@@ -129,9 +129,9 @@ public final class MainView extends javax.swing.JFrame {
         lbl_cart = new javax.swing.JLabel();
         lbl_products = new javax.swing.JLabel();
         lbl_inventory = new javax.swing.JLabel();
+        lbl_analystic = new javax.swing.JLabel();
         lbl_customers = new javax.swing.JLabel();
         lbl_employees = new javax.swing.JLabel();
-        lbl_analystic = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         lbl_logout = new javax.swing.JLabel();
         pnl_main = new javax.swing.JPanel();
@@ -275,6 +275,28 @@ public final class MainView extends javax.swing.JFrame {
         });
         pnl_control.add(lbl_inventory);
 
+        lbl_analystic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_analystic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analystic.png"))); // NOI18N
+        lbl_analystic.setToolTipText("Thống kê");
+        lbl_analystic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_analystic.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_analystic.setMaximumSize(new java.awt.Dimension(70, 50));
+        lbl_analystic.setMinimumSize(new java.awt.Dimension(70, 50));
+        lbl_analystic.setOpaque(true);
+        lbl_analystic.setPreferredSize(new java.awt.Dimension(70, 70));
+        lbl_analystic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_analysticMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                buttonHover(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                buttonExitHover(evt);
+            }
+        });
+        pnl_control.add(lbl_analystic);
+
         lbl_customers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_customers.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.png"))); // NOI18N
         lbl_customers.setToolTipText("Quản lí khách hàng");
@@ -320,28 +342,6 @@ public final class MainView extends javax.swing.JFrame {
             }
         });
         pnl_control.add(lbl_employees);
-
-        lbl_analystic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_analystic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analystic.png"))); // NOI18N
-        lbl_analystic.setToolTipText("Thống kê");
-        lbl_analystic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lbl_analystic.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        lbl_analystic.setMaximumSize(new java.awt.Dimension(70, 50));
-        lbl_analystic.setMinimumSize(new java.awt.Dimension(70, 50));
-        lbl_analystic.setOpaque(true);
-        lbl_analystic.setPreferredSize(new java.awt.Dimension(70, 70));
-        lbl_analystic.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_analysticMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                buttonHover(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                buttonExitHover(evt);
-            }
-        });
-        pnl_control.add(lbl_analystic);
         pnl_control.add(filler1);
 
         lbl_logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
