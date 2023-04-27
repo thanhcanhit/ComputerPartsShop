@@ -5,7 +5,6 @@
 package view;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
-import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import model.share.ConnectDB;
 
@@ -13,7 +12,7 @@ import model.share.ConnectDB;
  *
  * @author macbookk
  */
-public class test_ThongKe extends javax.swing.JFrame {
+public final class test_ThongKe extends javax.swing.JFrame {
 
     /**
      * Creates new form test_ThongKe

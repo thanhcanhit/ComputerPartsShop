@@ -1438,6 +1438,9 @@
                               </Properties>
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="jdate_tab3TuNgay">
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jdate_tab3TuNgay.setLocale(new Locale(&quot;vi&quot;,&quot;VN&quot;));"/>
+                              </AuxValues>
                             </Component>
                             <Component class="javax.swing.Box$Filler" name="filler27">
                               <Properties>
@@ -1464,6 +1467,9 @@
                               </Properties>
                             </Component>
                             <Component class="com.toedter.calendar.JDateChooser" name="jdate_tab3DenNgay">
+                              <AuxValues>
+                                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jdate_tab3DenNgay.setLocale(new Locale(&quot;vi&quot;,&quot;VN&quot;));"/>
+                              </AuxValues>
                             </Component>
                             <Component class="javax.swing.Box$Filler" name="filler14">
                               <Properties>

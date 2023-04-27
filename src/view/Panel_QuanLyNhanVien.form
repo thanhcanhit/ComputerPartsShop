@@ -954,6 +954,9 @@
                       <Dimension value="[64, 30]"/>
                     </Property>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="txt_date.setLocale(new Locale(&quot;vi&quot;,&quot;VN&quot;));"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
