@@ -55,5 +55,14 @@ public class ThongKe_bus implements ThongKeInterface {
     public double[] getDoanhThu12Thang() {
         return dao.getDoanhThu12Thang();
     }
+    public int getSoLuongBanSanPham(String maSanPham,int thang){
+        return dao.getSoLuongBanSanPham(maSanPham, thang);
+    }
 
+    public int getSoLuongBanSanPham(String maSanPham,int thang,int nam){
+        return dao.getSoLuongBanSanPham(maSanPham, thang, nam);
+    }
+    public int getSoLuongBanSanPham(String maSanPham){
+        return dao.getSoLuongBanSanPham(maSanPham);
+    }
 }

@@ -7,12 +7,12 @@ package view;
 import controller.DiaChi_bus;
 import controller.NhanVien_bus;
 import controller.TaiKhoan_bus;
-import dao.NhanVien_dao;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -586,6 +586,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         cmb_gioiTinh.setPreferredSize(new java.awt.Dimension(72, 30));
 
         txt_date.setPreferredSize(new java.awt.Dimension(64, 30));
+        txt_date.setLocale(new Locale("vi","VN"));
 
         javax.swing.GroupLayout pnl_namSinhLayout = new javax.swing.GroupLayout(pnl_namSinh);
         pnl_namSinh.setLayout(pnl_namSinhLayout);
@@ -595,7 +596,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbl_namSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_date, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_gioiTinh)
                 .addGap(8, 8, 8)
@@ -719,6 +720,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         }
         Date ns = txt_date.getDate();
         LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if((LocalDate.now().getYear()-ngaySinh.getYear())<18){
+            JOptionPane.showMessageDialog(this, "Nhân viên phải đủ 18 tuổi");
+            return;
+        }
         try {
             NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh, dc, gioiTinh);
             int count = 0;
@@ -747,14 +752,19 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private void btn_xoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaNVActionPerformed
         // TODO add your handling code here:
         int row = tbl_dsNhanVien.getSelectedRow();
+        if(row==-1){
+            JOptionPane.showMessageDialog(this, "Bạn cần chọn nhân viên để xoá !");
+             return;
+        }
+             
         String maNV = model_dsNhanVien.getValueAt(row, 0).toString();
         String trangThai = model_dsNhanVien.getValueAt(row, 8).toString();
         boolean tt;
         if (trangThai.equals("Đang làm")) {
-            NhanVien_dao dao = new NhanVien_dao();
+            
             tt = false;
             if (JOptionPane.showConfirmDialog(this, "Bạn có muốn cập nhật trạng thái làm việc nhân viên?", "Chú ý!!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                if (dao.capNhatTrangThaiNhanVien(maNV, tt)) {
+                if (NV_bus.capNhatTrangThaiNhanVien(maNV, tt)) {
                     JOptionPane.showMessageDialog(this, "Cập nhật trạng thái thành công !");
                     renderAll();
                 }
@@ -775,6 +785,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
         if (txt_diaChi.getText().trim().length() > 0) {
             int row = tbl_dsNhanVien.getSelectedRow();
+            if(row==-1)
+                    return;
             String maNV = (model_dsNhanVien.getValueAt(row, 0).toString());
             String maDC = NV_bus.getMaDiaChi(maNV);
             DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
@@ -789,12 +801,17 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_diaChiMouseClicked
 
     private void btn_suaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaNVActionPerformed
+        int row = tbl_dsNhanVien.getSelectedRow();
+        if(row==-1){
+            JOptionPane.showMessageDialog(this, "Bạn cần chọn nhân viên để sửa !");
+             return;
+        }
         String maNV = txt_maNV.getText();
         String hoTen = txt_hoTenNV.getText();
         String email = txt_mailNV.getText();
         String soDT = txt_soDT.getText();
-        String chucVu = (String) cmb_chucVu.getSelectedItem();
-        String gt = (String) cmb_gioiTinh.getSelectedItem();
+        String chucVu =  cmb_chucVu.getSelectedItem().toString();
+        String gt =  cmb_gioiTinh.getSelectedItem().toString();
 
         if (!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)) {
             showMessageFocus("Họ tên không hợp lệ", txt_hoTenNV);
@@ -823,6 +840,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         }
         Date ns = txt_date.getDate();
         LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if((LocalDate.now().getYear()-ngaySinh.getYear())<18){
+            JOptionPane.showMessageDialog(this, "Nhân viên phải đủ 18 tuổi");
+            return;
+        }
         try {
             NhanVien nv = new NhanVien(maNV, chucVu, hoTen, soDT, email, ngaySinh, dc, gioiTinh);
             if (NV_bus.capNhatNhanVien(maNV, nv)) {
@@ -852,6 +873,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private void btn_capNhatMKNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capNhatMKNVActionPerformed
         // TODO add your handling code here:
         String soTK = JOptionPane.showInputDialog(this, "Nhập số tài khoản cần đổi mật khẩu !");
+        if(soTK.trim().length()<=0){
+            JOptionPane.showMessageDialog(this, "Số tài khoản không được rỗng!");
+            return;
+        }
         String mk = JOptionPane.showInputDialog(this, "Nhập mật khấu mới !");
         TaiKhoan_bus TK_bus = new TaiKhoan_bus();
         TaiKhoan taiKhoan;

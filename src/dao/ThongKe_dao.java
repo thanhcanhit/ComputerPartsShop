@@ -73,6 +73,86 @@ public class ThongKe_dao implements ThongKeInterface {
 
         return result;
     }
+    
+     public int getSoLuongBanSanPham(String maSanPham,int thang) {
+        int nam = LocalDate.now().getYear();
+        int result = 0;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("""
+                                                                   select SUM(soLuong) as sl
+                                                                   from ChiTietHoaDon as ct join HoaDon as hd on ct.maHoaDon = hd.maHoaDon
+                                                                   where MONTH(ngayLap) = ? and Year(NgayLap) = ? and maSanPham = ?
+                                                                   group by maSanPham 
+                                                                   order by SUM(soLuong) desc""");
+            st.setInt(1, thang);
+            st.setInt(2, nam);
+            st.setString(3, maSanPham);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                result = rs.getInt("sl");
+   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+     public int getSoLuongBanSanPham(String maSanPham) {
+        int thang = LocalDate.now().getMonthValue();
+        int nam = LocalDate.now().getYear();
+        int result = 0;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("""
+                                                                   select SUM(soLuong) as sl
+                                                                   from ChiTietHoaDon as ct join HoaDon as hd on ct.maHoaDon = hd.maHoaDon
+                                                                   where MONTH(ngayLap) = ? and Year(NgayLap) = ? and maSanPham = ?
+                                                                   group by maSanPham 
+                                                                   order by SUM(soLuong) desc""");
+            st.setInt(1, thang);
+            st.setInt(2, nam);
+            st.setString(3, maSanPham);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                result = rs.getInt("sl");
+   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+     
+      public int getSoLuongBanSanPham(String maSanPham, int thang, int nam) {
+        int result = 0;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("""
+                                                                   select SUM(soLuong) as sl
+                                                                   from ChiTietHoaDon as ct join HoaDon as hd on ct.maHoaDon = hd.maHoaDon
+                                                                   where MONTH(ngayLap) = ? and Year(NgayLap) = ? and maSanPham = ?
+                                                                   group by maSanPham 
+                                                                   order by SUM(soLuong) desc""");
+            st.setInt(1, thang);
+            st.setInt(2, nam);
+            st.setString(3, maSanPham);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                result = rs.getInt("sl");
+   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
     @Override
     public ArrayList<SanPham> get3sanPhamBanChay(int thang, int nam) {
@@ -185,7 +265,7 @@ public class ThongKe_dao implements ThongKeInterface {
         int nam = LocalDate.now().getYear();
 
         try {
-            PreparedStatement st = ConnectDB.conn.prepareStatement("select MONTH(ngayLap), sum(tongTien) from HoaDon where YEAR(ngayLap) = ? group by MONTH(ngayLap)");
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select MONTH(ngayLap) as thang, sum(tongTien) as tong from HoaDon where YEAR(ngayLap) = ? group by MONTH(ngayLap)");
             st.setInt(1, nam);
             ResultSet rs = st.executeQuery();
 

@@ -57,4 +57,7 @@ public class NhanVien_bus implements NhanVienInterface {
     public String getMaDiaChi(String maNV){
         return dao.getMaDiaChi(maNV);
     }
+    public boolean capNhatTrangThaiNhanVien(String maNV, boolean trangThai){
+        return dao.capNhatTrangThaiNhanVien(maNV, trangThai);
+    }
 }

@@ -18,6 +18,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -932,12 +933,16 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         lbl_timTuNgay.setText("Ngày lập:");
         lbl_timTuNgay.setPreferredSize(new java.awt.Dimension(80, 16));
         pnl_timKiemTheoNgay.add(lbl_timTuNgay);
+
+        jdate_tab3TuNgay.setLocale(new Locale("vi","VN"));
         pnl_timKiemTheoNgay.add(jdate_tab3TuNgay);
         pnl_timKiemTheoNgay.add(filler27);
 
         lbl_timDenNgay.setText("đến");
         lbl_timDenNgay.setPreferredSize(new java.awt.Dimension(53, 16));
         pnl_timKiemTheoNgay.add(lbl_timDenNgay);
+
+        jdate_tab3DenNgay.setLocale(new Locale("vi","VN"));
         pnl_timKiemTheoNgay.add(jdate_tab3DenNgay);
         pnl_timKiemTheoNgay.add(filler14);
 

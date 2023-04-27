@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -286,7 +287,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         lbl_hangThanhVien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lbl_hangThanhVien.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_hangThanhVien.setText("Hạng thành viên: ");
+        lbl_hangThanhVien.setText("Điểm thành viên: ");
         lbl_hangThanhVien.setPreferredSize(new java.awt.Dimension(110, 18));
         pnl_hangThanhVien.add(lbl_hangThanhVien);
 
@@ -402,6 +403,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         txt_date.setMaximumSize(new java.awt.Dimension(100000, 2147483647));
         txt_date.setMinimumSize(new java.awt.Dimension(100, 23));
         txt_date.setPreferredSize(new java.awt.Dimension(55, 30));
+        txt_date.setLocale(new Locale("vi","VN"));
         pnl_namSinh.add(txt_date);
         pnl_namSinh.add(filler16);
 
@@ -584,7 +586,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         String email = txt_email.getText();
         String soDT = txt_soDT.getText();
         String maST = txt_maSoThue.getText();
-        String gt = (String) cmb_gioiTinh.getSelectedItem();
+        String gt =  cmb_gioiTinh.getSelectedItem().toString();
         
         if(!Pattern.matches("^\\p{L}+\\s+\\p{L}+.*$", hoTen)){
             showMessageFocus("Họ tên không hợp lệ", txt_tenKH);
@@ -614,6 +616,10 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             gioiTinh=true;
         Date ns = txt_date.getDate();
         LocalDate ngaySinh = ns.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        if((LocalDate.now().getYear()-ngaySinh.getYear())<3){
+            JOptionPane.showMessageDialog(this, "Khách hàng phải trên 3 tuổi");
+            return;
+        }
         try {
             KhachHang kh = new KhachHang(maKH, maST, hoTen, soDT, email, ngaySinh, dc, gioiTinh, 0);
             int count=0;
@@ -648,6 +654,8 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(txt_diaChi.getText().trim().length()>0){
                int row = tbl_dsKhachHang.getSelectedRow();
+               if(row==-1)
+                    return;
                String maKH = (model_dsKhachHang.getValueAt(row, 0).toString());
                String maDC = KH_bus.getMaDiaChi(maKH);
                DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
@@ -669,23 +677,20 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
     private void btn_capNhatKHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capNhatKHActionPerformed
         // TODO add your handling code here:
+            int row = tbl_dsKhachHang.getSelectedRow();
+            if(row==-1){
+                JOptionPane.showMessageDialog(this, "Chọn khách hàng cần sửa !");
+                return;
+            }
             String  maKH = txt_maKH.getText();
             String hoTen = txt_tenKH.getText();
             String email = txt_email.getText();
             String soDT = txt_soDT.getText();
             String maST = txt_maSoThue.getText();
-            String gt = (String) cmb_gioiTinh.getSelectedItem();
+            String gt =  cmb_gioiTinh.getSelectedItem().toString();
+            
+            
             int diem = Integer.parseInt(txt_hangThanhVien.getText());
-//            if(txt_diaChi.getText().trim().length()>0){
-//               int row = tbl_dsKhachHang.getSelectedRow();
-//               String ma = (model_dsKhachHang.getValueAt(row, 0).toString());
-//               String maDC = KH_bus.getMaDiaChi(ma);
-//               DiaChi dc = DC_bus.getDiaChiTheoMa(maDC);
-//               frame_diaChi = new Frame_InputDiaChi(this,dc);
-//           }
-//           else{
-//               frame_diaChi = new Frame_InputDiaChi(this);
-//           }
             
            
             
