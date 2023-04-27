@@ -60,14 +60,14 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         lbl_duong = new javax.swing.JLabel();
         txt_duong = new javax.swing.JTextField();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
-        b_3 = new javax.swing.JPanel();
+        b_2 = new javax.swing.JPanel();
         lbl_quan = new javax.swing.JLabel();
         txt_quan = new javax.swing.JTextField();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         lbl_tp = new javax.swing.JLabel();
         txt_tp = new javax.swing.JTextField();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 5), new java.awt.Dimension(32767, 10));
-        b_5 = new javax.swing.JPanel();
+        b_3 = new javax.swing.JPanel();
         lbl_quocGia = new javax.swing.JLabel();
         txt_quocGia = new javax.swing.JTextField();
         pnl_footer = new javax.swing.JPanel();
@@ -124,51 +124,51 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         pnl_container.add(b_1);
         pnl_container.add(filler4);
 
-        b_3.setPreferredSize(new java.awt.Dimension(0, 50));
-        b_3.setLayout(new javax.swing.BoxLayout(b_3, javax.swing.BoxLayout.X_AXIS));
+        b_2.setPreferredSize(new java.awt.Dimension(0, 50));
+        b_2.setLayout(new javax.swing.BoxLayout(b_2, javax.swing.BoxLayout.X_AXIS));
 
         lbl_quan.setText("Quận/Huyện:");
         lbl_quan.setToolTipText("");
         lbl_quan.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_3.add(lbl_quan);
+        b_2.add(lbl_quan);
 
         txt_quan.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_quan.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_quan.setMinimumSize(new java.awt.Dimension(70, 0));
         txt_quan.setPreferredSize(new java.awt.Dimension(70, 30));
-        b_3.add(txt_quan);
-        b_3.add(filler2);
+        b_2.add(txt_quan);
+        b_2.add(filler2);
 
         lbl_tp.setText("Tỉnh/Thành phố:");
         lbl_tp.setToolTipText("");
         lbl_tp.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_3.add(lbl_tp);
+        b_2.add(lbl_tp);
 
         txt_tp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_tp.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_tp.setMinimumSize(new java.awt.Dimension(70, 0));
         txt_tp.setPreferredSize(new java.awt.Dimension(70, 30));
         txt_tp.requestFocus();
-        b_3.add(txt_tp);
+        b_2.add(txt_tp);
 
-        pnl_container.add(b_3);
+        pnl_container.add(b_2);
         pnl_container.add(filler3);
 
-        b_5.setPreferredSize(new java.awt.Dimension(0, 50));
-        b_5.setLayout(new javax.swing.BoxLayout(b_5, javax.swing.BoxLayout.X_AXIS));
+        b_3.setPreferredSize(new java.awt.Dimension(0, 50));
+        b_3.setLayout(new javax.swing.BoxLayout(b_3, javax.swing.BoxLayout.X_AXIS));
 
         lbl_quocGia.setText("Quốc gia:");
         lbl_quocGia.setToolTipText("");
         lbl_quocGia.setPreferredSize(new java.awt.Dimension(100, 0));
-        b_5.add(lbl_quocGia);
+        b_3.add(lbl_quocGia);
 
         txt_quocGia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_quocGia.setText("Việt Nam");
         txt_quocGia.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txt_quocGia.setPreferredSize(new java.awt.Dimension(70, 70));
-        b_5.add(txt_quocGia);
+        b_3.add(txt_quocGia);
 
-        pnl_container.add(b_5);
+        pnl_container.add(b_3);
 
         getContentPane().add(pnl_container, java.awt.BorderLayout.CENTER);
 
@@ -283,8 +283,8 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel b_1;
+    private javax.swing.JPanel b_2;
     private javax.swing.JPanel b_3;
-    private javax.swing.JPanel b_5;
     private javax.swing.JButton btn_commit;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;

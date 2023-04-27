@@ -5,7 +5,6 @@
 package view;
 
 import controller.DiaChi_bus;
-import controller.HoaDon_bus;
 import controller.KhachHang_bus;
 import controller.NhanVien_bus;
 import controller.SanPham_bus;
@@ -14,7 +13,6 @@ import model.connguoi.NhanVien;
 import model.hoadon.ChiTietHoaDon;
 import model.hoadon.HoaDon;
 import model.sanpham.SanPham;
-import model.share.ConnectDB;
 import model.share.DiaChi;
 import model.share.Utility;
 
@@ -75,7 +73,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
     private void initComponents() {
 
         pnl_main = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scr_hoaDon = new javax.swing.JScrollPane();
         txa_hoaDon = new javax.swing.JTextArea();
         pnl_footer = new javax.swing.JPanel();
         btn_xacNhan = new javax.swing.JButton();
@@ -92,8 +90,8 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         pnl_main.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
         pnl_main.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setBorder(null);
+        scr_hoaDon.setBackground(new java.awt.Color(255, 255, 255));
+        scr_hoaDon.setBorder(null);
 
         txa_hoaDon.setEditable(false);
         txa_hoaDon.setBackground(new java.awt.Color(255, 255, 255));
@@ -105,9 +103,9 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         txa_hoaDon.setBorder(null);
         txa_hoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txa_hoaDon.setFocusable(false);
-        jScrollPane1.setViewportView(txa_hoaDon);
+        scr_hoaDon.setViewportView(txa_hoaDon);
 
-        pnl_main.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnl_main.add(scr_hoaDon, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnl_main, java.awt.BorderLayout.CENTER);
 
@@ -138,9 +136,9 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_xacNhan;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnl_footer;
     private javax.swing.JPanel pnl_main;
+    private javax.swing.JScrollPane scr_hoaDon;
     private javax.swing.JTextArea txa_hoaDon;
     // End of variables declaration//GEN-END:variables
 }

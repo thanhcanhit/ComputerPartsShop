@@ -202,27 +202,27 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_orderInfo = new javax.swing.JPanel();
         pnl_box1 = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
-        lbl_sdt1 = new javax.swing.JLabel();
+        lbl_sdt = new javax.swing.JLabel();
         txt_sdt = new javax.swing.JTextField("", 10);
         pnl_box2 = new javax.swing.JPanel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
-        lbl_sdt = new javax.swing.JLabel();
+        lbl_hoTen = new javax.swing.JLabel();
         txt_hoTen = new javax.swing.JTextField();
         cmb_gender = new javax.swing.JComboBox<>();
         pnl_box5 = new javax.swing.JPanel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
-        lbl_sdt2 = new javax.swing.JLabel();
+        lbl_diaChi = new javax.swing.JLabel();
         txt_diaChi = new javax.swing.JTextField();
         pnl_box3 = new javax.swing.JPanel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
-        lbl_sdt4 = new javax.swing.JLabel();
+        lbl_thanhToan = new javax.swing.JLabel();
         cmb_phuongThucThanhToan = new javax.swing.JComboBox<>();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         lbl_ten = new javax.swing.JLabel();
         txt_hangTV = new javax.swing.JTextField();
         pnl_box4 = new javax.swing.JPanel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
-        lbl_sdt3 = new javax.swing.JLabel();
+        lbl_thanhTien = new javax.swing.JLabel();
         txt_thanhTien = new javax.swing.JTextField();
         pnl_cartControl = new javax.swing.JPanel();
         btn_cancel = new javax.swing.JButton();
@@ -426,11 +426,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box1.setLayout(new javax.swing.BoxLayout(pnl_box1, javax.swing.BoxLayout.LINE_AXIS));
         pnl_box1.add(filler1);
 
-        lbl_sdt1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_sdt1.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_sdt1.setText("SĐT");
-        lbl_sdt1.setPreferredSize(new java.awt.Dimension(90, 70));
-        pnl_box1.add(lbl_sdt1);
+        lbl_sdt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_sdt.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_sdt.setText("SĐT");
+        lbl_sdt.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box1.add(lbl_sdt);
 
         txt_sdt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txt_sdt.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -452,11 +452,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box2.setLayout(new javax.swing.BoxLayout(pnl_box2, javax.swing.BoxLayout.LINE_AXIS));
         pnl_box2.add(filler2);
 
-        lbl_sdt.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_sdt.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_sdt.setText("Họ tên");
-        lbl_sdt.setPreferredSize(new java.awt.Dimension(90, 70));
-        pnl_box2.add(lbl_sdt);
+        lbl_hoTen.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_hoTen.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_hoTen.setText("Họ tên");
+        lbl_hoTen.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box2.add(lbl_hoTen);
 
         txt_hoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_hoTen.setPreferredSize(new java.awt.Dimension(100, 0));
@@ -472,11 +472,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box5.setLayout(new javax.swing.BoxLayout(pnl_box5, javax.swing.BoxLayout.LINE_AXIS));
         pnl_box5.add(filler6);
 
-        lbl_sdt2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_sdt2.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_sdt2.setText("Địa chỉ");
-        lbl_sdt2.setPreferredSize(new java.awt.Dimension(90, 70));
-        pnl_box5.add(lbl_sdt2);
+        lbl_diaChi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_diaChi.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_diaChi.setText("Địa chỉ");
+        lbl_diaChi.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box5.add(lbl_diaChi);
 
         txt_diaChi.setEditable(false);
         txt_diaChi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -495,11 +495,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box3.setLayout(new javax.swing.BoxLayout(pnl_box3, javax.swing.BoxLayout.LINE_AXIS));
         pnl_box3.add(filler3);
 
-        lbl_sdt4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_sdt4.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_sdt4.setText("Thanh toán");
-        lbl_sdt4.setPreferredSize(new java.awt.Dimension(90, 70));
-        pnl_box3.add(lbl_sdt4);
+        lbl_thanhToan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_thanhToan.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_thanhToan.setText("Thanh toán");
+        lbl_thanhToan.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box3.add(lbl_thanhToan);
 
         cmb_phuongThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "ATM", "Ví điện tử" }));
         cmb_phuongThucThanhToan.setPreferredSize(new java.awt.Dimension(100, 22));
@@ -524,11 +524,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box4.setLayout(new javax.swing.BoxLayout(pnl_box4, javax.swing.BoxLayout.LINE_AXIS));
         pnl_box4.add(filler4);
 
-        lbl_sdt3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lbl_sdt3.setForeground(new java.awt.Color(102, 102, 102));
-        lbl_sdt3.setText("Thành tiền");
-        lbl_sdt3.setPreferredSize(new java.awt.Dimension(90, 70));
-        pnl_box4.add(lbl_sdt3);
+        lbl_thanhTien.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_thanhTien.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_thanhTien.setText("Thành tiền");
+        lbl_thanhTien.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box4.add(lbl_thanhTien);
 
         txt_thanhTien.setEditable(false);
         txt_thanhTien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -889,13 +889,13 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.JLabel lbl_diaChi;
+    private javax.swing.JLabel lbl_hoTen;
     private javax.swing.JLabel lbl_sdt;
-    private javax.swing.JLabel lbl_sdt1;
-    private javax.swing.JLabel lbl_sdt2;
-    private javax.swing.JLabel lbl_sdt3;
-    private javax.swing.JLabel lbl_sdt4;
     private javax.swing.JLabel lbl_soTrang;
     private javax.swing.JLabel lbl_ten;
+    private javax.swing.JLabel lbl_thanhTien;
+    private javax.swing.JLabel lbl_thanhToan;
     private javax.swing.JPanel pnl_addToCart;
     private javax.swing.JPanel pnl_box1;
     private javax.swing.JPanel pnl_box2;

@@ -6,6 +6,7 @@ package view;
 
 import controller.NhanVien_bus;
 import controller.TaiKhoan_bus;
+import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
 import model.connguoi.NhanVien;
 
@@ -15,10 +16,10 @@ import model.connguoi.NhanVien;
  */
 public class Frame_DangNhap extends javax.swing.JFrame {
 
-    private MainView main;
+    private final MainView main;
 
-    private TaiKhoan_bus taiKhoan_bus = new TaiKhoan_bus();
-    private NhanVien_bus nhanVien_bus = new NhanVien_bus();
+    private final TaiKhoan_bus taiKhoan_bus = new TaiKhoan_bus();
+    private final NhanVien_bus nhanVien_bus = new NhanVien_bus();
 
     public Frame_DangNhap(MainView main) {
         this.main = main;
@@ -39,19 +40,18 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_img = new javax.swing.JPanel();
         lbl_img = new javax.swing.JLabel();
         pnl_form = new javax.swing.JPanel();
         lbl_dangNhap = new javax.swing.JLabel();
         pnl_formInput = new javax.swing.JPanel();
         pnl_username = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_ma = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         txt_username = new javax.swing.JTextField();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 20));
         pnl_password = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lbl_pass = new javax.swing.JLabel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         txt_password = new javax.swing.JPasswordField();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 30), new java.awt.Dimension(0, 30), new java.awt.Dimension(32767, 50));
@@ -104,10 +104,10 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_username.setPreferredSize(new java.awt.Dimension(0, 50));
         pnl_username.setLayout(new javax.swing.BoxLayout(pnl_username, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Mã nhân viên:");
-        jLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
-        pnl_username.add(jLabel1);
+        lbl_ma.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_ma.setText("Mã nhân viên:");
+        lbl_ma.setPreferredSize(new java.awt.Dimension(100, 30));
+        pnl_username.add(lbl_ma);
         pnl_username.add(filler1);
 
         txt_username.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -127,10 +127,10 @@ public class Frame_DangNhap extends javax.swing.JFrame {
         pnl_password.setPreferredSize(new java.awt.Dimension(0, 50));
         pnl_password.setLayout(new javax.swing.BoxLayout(pnl_password, javax.swing.BoxLayout.X_AXIS));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Mật khẩu:");
-        jLabel2.setPreferredSize(new java.awt.Dimension(100, 30));
-        pnl_password.add(jLabel2);
+        lbl_pass.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_pass.setText("Mật khẩu:");
+        lbl_pass.setPreferredSize(new java.awt.Dimension(100, 30));
+        pnl_password.add(lbl_pass);
         pnl_password.add(filler6);
 
         txt_password.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -206,7 +206,7 @@ public class Frame_DangNhap extends javax.swing.JFrame {
                     
                 main.login(nhanVien);
                 close();
-            } catch (Exception ex) {
+            } catch (HeadlessException ex) {
                 ex.printStackTrace();
             }
         } else {
@@ -237,13 +237,12 @@ public class Frame_DangNhap extends javax.swing.JFrame {
     private javax.swing.JButton btn_login;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbl_dangNhap;
     private javax.swing.JLabel lbl_img;
+    private javax.swing.JLabel lbl_ma;
+    private javax.swing.JLabel lbl_pass;
     private javax.swing.JPanel pnl_control;
     private javax.swing.JPanel pnl_form;
     private javax.swing.JPanel pnl_formInput;

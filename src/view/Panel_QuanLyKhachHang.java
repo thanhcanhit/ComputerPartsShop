@@ -145,10 +145,9 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu1 = new javax.swing.JMenu();
         pnl_ttKhachHang = new javax.swing.JPanel();
         pnl_avata = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_img = new javax.swing.JLabel();
         pnl_ttKH = new javax.swing.JPanel();
         pnl_maKH = new javax.swing.JPanel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
@@ -202,7 +201,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_xoaTrang = new javax.swing.JPanel();
         btn_xoaTrang = new javax.swing.JButton();
         pnl_dsKhachHang = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scr_1 = new javax.swing.JScrollPane();
         tbl_dsKhachHang = new javax.swing.JTable();
         pnl_control = new javax.swing.JPanel();
         pnl_timKiem = new javax.swing.JPanel();
@@ -211,8 +210,6 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
-
-        jMenu1.setText("jMenu1");
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new java.awt.BorderLayout());
@@ -225,10 +222,10 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_avata.setBackground(new java.awt.Color(255, 255, 255));
         pnl_avata.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
-        pnl_avata.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lbl_img.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
+        pnl_avata.add(lbl_img, java.awt.BorderLayout.CENTER);
 
         pnl_ttKH.setBackground(new java.awt.Color(255, 255, 255));
         pnl_ttKH.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -491,17 +488,17 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_dsKhachHang.setPreferredSize(new java.awt.Dimension(600, 370));
         pnl_dsKhachHang.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scr_1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scr_1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         tbl_dsKhachHang.setModel(model_dsKhachHang);
         tbl_dsKhachHang.setRowHeight(30);
         tbl_dsKhachHang.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_dsKhachHang.setShowGrid(true);
         tbl_dsKhachHang.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(tbl_dsKhachHang);
+        scr_1.setViewportView(tbl_dsKhachHang);
 
-        pnl_dsKhachHang.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnl_dsKhachHang.add(scr_1, java.awt.BorderLayout.CENTER);
 
         add(pnl_dsKhachHang, java.awt.BorderLayout.CENTER);
 
@@ -779,13 +776,11 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_diaChi;
     private javax.swing.JLabel lbl_email;
     private javax.swing.JLabel lbl_gioiTinh;
     private javax.swing.JLabel lbl_hangThanhVien;
+    private javax.swing.JLabel lbl_img;
     private javax.swing.JLabel lbl_maKH;
     private javax.swing.JLabel lbl_maSoThue;
     private javax.swing.JLabel lbl_namSinh;
@@ -807,6 +802,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_ttKH;
     private javax.swing.JPanel pnl_ttKhachHang;
     private javax.swing.JPanel pnl_xoaTrang;
+    private javax.swing.JScrollPane scr_1;
     private javax.swing.JTable tbl_dsKhachHang;
     private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_diaChi;
