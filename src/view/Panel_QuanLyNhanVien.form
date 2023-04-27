@@ -23,6 +23,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="pnl_timKiem">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1000, 40]"/>
         </Property>
@@ -52,12 +55,21 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_timKiem">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="99" green="99" red="99" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
             <Property name="toolTipText" type="java.lang.String" value="Nh&#x1ead;p m&#xe3; nh&#xe2;n vi&#xea;n"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[300, 23]"/>
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_timKiemFocusGained"/>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txt_timKiemFocusLost"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_timKiemActionPerformed"/>
             <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_timKiemKeyPressed"/>
           </Events>
@@ -78,12 +90,12 @@
         <Component class="javax.swing.JButton" name="btn_timKiem">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Helvetica Neue" size="13" style="1"/>
+              <Font name="Segoe UI" size="13" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/images/banhang/cartSearch.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="T&#xec;m nh&#xe2;n vi&#xea;n"/>
+            <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -115,6 +127,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pnl_Control">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -134,6 +149,9 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="pnl_controlgroup">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[996, 100]"/>
             </Property>
@@ -157,7 +175,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/add-group.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/add.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Th&#xea;m Nh&#xe2;n Vi&#xea;n"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -192,7 +210,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/user.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/remove.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Xo&#xe1; tr&#x1ea1;ng th&#xe1;i"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -227,7 +245,7 @@
                   <Font name="Segoe UI" size="13" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/quanlynhanvien/transaction.png"/>
+                  <Image iconType="3" name="/images/quanlynhanvien/edit.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="S&#x1eed;a Nh&#xe2;n Vi&#xea;n"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -297,6 +315,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pnl_ttNhanVien">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Th&#xf4;ng tin nh&#xe2;n vi&#xea;n">
@@ -322,6 +343,9 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="pnl_avata">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[32767, 100]"/>
             </Property>
@@ -361,6 +385,9 @@
         </Container>
         <Container class="javax.swing.JPanel" name="pnl_formNV">
           <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                 <EtchetBorder/>
@@ -385,6 +412,9 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="pnl_maNV">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -461,6 +491,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_hoTenNV">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -529,6 +562,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_email">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -597,6 +633,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_soDT">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -665,6 +704,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_diaChi">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[65, 40]"/>
                 </Property>
@@ -745,6 +787,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_chucVu">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -820,6 +865,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_namSinh">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[180, 70]"/>
                 </Property>
@@ -921,6 +969,9 @@
             </Component>
             <Container class="javax.swing.JPanel" name="pnl_submit">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[78, 30]"/>
                 </Property>
@@ -972,6 +1023,9 @@
     </Container>
     <Container class="javax.swing.JPanel" name="pnl_dsNhanVien">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder title="Danh s&#xe1;ch nh&#xe2;n vi&#xea;n">

@@ -6,6 +6,7 @@ package view;
 
 import controller.DiaChi_bus;
 import controller.KhachHang_bus;
+import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -216,20 +217,25 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new java.awt.BorderLayout());
 
+        pnl_ttKhachHang.setBackground(new java.awt.Color(255, 255, 255));
         pnl_ttKhachHang.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_ttKhachHang.setPreferredSize(new java.awt.Dimension(400, 300));
         pnl_ttKhachHang.setLayout(new java.awt.BorderLayout());
 
+        pnl_avata.setBackground(new java.awt.Color(255, 255, 255));
         pnl_avata.setLayout(new java.awt.BorderLayout());
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
         pnl_avata.add(jLabel1, java.awt.BorderLayout.CENTER);
 
+        pnl_ttKH.setBackground(new java.awt.Color(255, 255, 255));
         pnl_ttKH.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnl_ttKH.setPreferredSize(new java.awt.Dimension(338, 370));
         pnl_ttKH.setLayout(new javax.swing.BoxLayout(pnl_ttKH, javax.swing.BoxLayout.Y_AXIS));
 
+        pnl_maKH.setBackground(new java.awt.Color(255, 255, 255));
         pnl_maKH.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_maKH.setLayout(new javax.swing.BoxLayout(pnl_maKH, javax.swing.BoxLayout.LINE_AXIS));
         pnl_maKH.add(filler1);
@@ -255,6 +261,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler8.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler8);
 
+        pnl_tenKH.setBackground(new java.awt.Color(255, 255, 255));
         pnl_tenKH.setMinimumSize(new java.awt.Dimension(65, 30));
         pnl_tenKH.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_tenKH.setLayout(new javax.swing.BoxLayout(pnl_tenKH, javax.swing.BoxLayout.LINE_AXIS));
@@ -275,6 +282,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler7.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler7);
 
+        pnl_hangThanhVien.setBackground(new java.awt.Color(255, 255, 255));
         pnl_hangThanhVien.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_hangThanhVien.setLayout(new javax.swing.BoxLayout(pnl_hangThanhVien, javax.swing.BoxLayout.LINE_AXIS));
         pnl_hangThanhVien.add(filler3);
@@ -295,6 +303,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler17.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler17);
 
+        pnl_diaChi.setBackground(new java.awt.Color(255, 255, 255));
         pnl_diaChi.setMinimumSize(new java.awt.Dimension(65, 30));
         pnl_diaChi.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_diaChi.setLayout(new javax.swing.BoxLayout(pnl_diaChi, javax.swing.BoxLayout.LINE_AXIS));
@@ -321,6 +330,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler6.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler6);
 
+        pnl_soDT.setBackground(new java.awt.Color(255, 255, 255));
         pnl_soDT.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_soDT.setLayout(new javax.swing.BoxLayout(pnl_soDT, javax.swing.BoxLayout.LINE_AXIS));
         pnl_soDT.add(filler20);
@@ -340,6 +350,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler5.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler5);
 
+        pnl_maSoThue.setBackground(new java.awt.Color(255, 255, 255));
         pnl_maSoThue.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_maSoThue.setLayout(new javax.swing.BoxLayout(pnl_maSoThue, javax.swing.BoxLayout.LINE_AXIS));
         pnl_maSoThue.add(filler21);
@@ -359,6 +370,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler9.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler9);
 
+        pnl_email.setBackground(new java.awt.Color(255, 255, 255));
         pnl_email.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_email.setLayout(new javax.swing.BoxLayout(pnl_email, javax.swing.BoxLayout.LINE_AXIS));
         pnl_email.add(filler22);
@@ -378,6 +390,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler11.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler11);
 
+        pnl_namSinh.setBackground(new java.awt.Color(255, 255, 255));
         pnl_namSinh.setPreferredSize(new java.awt.Dimension(180, 40));
         pnl_namSinh.setLayout(new javax.swing.BoxLayout(pnl_namSinh, javax.swing.BoxLayout.LINE_AXIS));
         pnl_namSinh.add(filler23);
@@ -395,7 +408,6 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_namSinh.add(txt_date);
         pnl_namSinh.add(filler16);
 
-        lbl_gioiTinh.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         lbl_gioiTinh.setForeground(new java.awt.Color(102, 102, 102));
         lbl_gioiTinh.setText("Giới tính:");
         pnl_namSinh.add(lbl_gioiTinh);
@@ -411,6 +423,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler10.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler10);
 
+        pnl_capNhat.setBackground(new java.awt.Color(255, 255, 255));
         pnl_capNhat.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         pnl_capNhat.setMinimumSize(new java.awt.Dimension(65, 30));
         pnl_capNhat.setPreferredSize(new java.awt.Dimension(180, 50));
@@ -450,6 +463,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         filler18.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         pnl_ttKH.add(filler18);
 
+        pnl_xoaTrang.setBackground(new java.awt.Color(255, 255, 255));
         pnl_xoaTrang.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
         pnl_xoaTrang.setPreferredSize(new java.awt.Dimension(180, 30));
         pnl_xoaTrang.setLayout(new javax.swing.BoxLayout(pnl_xoaTrang, javax.swing.BoxLayout.LINE_AXIS));
@@ -472,6 +486,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         add(pnl_ttKhachHang, java.awt.BorderLayout.EAST);
 
+        pnl_dsKhachHang.setBackground(new java.awt.Color(255, 255, 255));
         pnl_dsKhachHang.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Danh sách khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_dsKhachHang.setPreferredSize(new java.awt.Dimension(600, 370));
         pnl_dsKhachHang.setLayout(new java.awt.BorderLayout());
@@ -490,7 +505,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
 
         add(pnl_dsKhachHang, java.awt.BorderLayout.CENTER);
 
-        pnl_control.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnl_control.setBackground(new java.awt.Color(255, 255, 255));
         pnl_control.setPreferredSize(new java.awt.Dimension(726, 50));
         pnl_control.setLayout(new javax.swing.BoxLayout(pnl_control, javax.swing.BoxLayout.LINE_AXIS));
 
@@ -499,8 +514,19 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_timKiem.setLayout(new javax.swing.BoxLayout(pnl_timKiem, javax.swing.BoxLayout.LINE_AXIS));
         pnl_timKiem.add(filler4);
 
+        txt_timKiem.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_timKiem.setForeground(new java.awt.Color(153, 153, 153));
+        txt_timKiem.setText("Số điện thoại");
         txt_timKiem.setToolTipText("Nhập số điện thoại");
         txt_timKiem.setPreferredSize(new java.awt.Dimension(300, 40));
+        txt_timKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_timKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_timKiemFocusLost(evt);
+            }
+        });
         txt_timKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_timKiemKeyPressed(evt);
@@ -509,7 +535,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         pnl_timKiem.add(txt_timKiem);
         pnl_timKiem.add(filler13);
 
-        btn_timKiem.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
+        btn_timKiem.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btn_timKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartSearch.png"))); // NOI18N
         btn_timKiem.setText("Tìm kiếm");
         btn_timKiem.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -708,6 +734,20 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
            ex.printStackTrace();
         }
     }//GEN-LAST:event_btn_capNhatKHActionPerformed
+
+    private void txt_timKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_timKiemFocusGained
+        if (txt_timKiem.getText().equals("Số điện thoại")) {
+            txt_timKiem.setText("");
+            txt_timKiem.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txt_timKiemFocusGained
+
+    private void txt_timKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_timKiemFocusLost
+        if (txt_timKiem.getText().trim().equals("")) {
+            txt_timKiem.setText("Số điện thoại");
+            txt_timKiem.setForeground(new Color(153,153,153));
+        }
+    }//GEN-LAST:event_txt_timKiemFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

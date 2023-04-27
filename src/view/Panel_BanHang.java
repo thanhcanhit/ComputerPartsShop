@@ -10,6 +10,7 @@ import controller.KhachHang_bus;
 import controller.KhoHang_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
 import java.time.LocalDate;
@@ -235,7 +236,17 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_search.setLayout(new javax.swing.BoxLayout(pnl_search, javax.swing.BoxLayout.X_AXIS));
 
         txt_search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_search.setForeground(new java.awt.Color(153, 153, 153));
+        txt_search.setText("Mã sản phẩm");
         txt_search.setToolTipText("Vui lòng nhập mã sản phẩm");
+        txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_searchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_searchFocusLost(evt);
+            }
+        });
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_searchKeyPressed(evt);
@@ -571,6 +582,8 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         txt_search.setText("");
         page = 1;
         renderPage();
+        txt_search.setText("Mã sản phẩm");
+        txt_search.setForeground(new Color(153, 153, 153));
     }//GEN-LAST:event_btn_resetActionPerformed
 
     private void txt_searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyPressed
@@ -651,7 +664,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_sdtKeyPressed
 
     private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
-        if (txt_sdt.getText().length() >= 10)
+        if (txt_sdt.getText().length() >= 0)
             getKhachHangNeuTonTai();
     }//GEN-LAST:event_txt_sdtFocusLost
 
@@ -792,6 +805,20 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_tbl_cartMouseClicked
+
+    private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
+        if (txt_search.getText().equals("Mã sản phẩm")) {
+            txt_search.setText("");
+            txt_search.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txt_searchFocusGained
+
+    private void txt_searchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusLost
+        if (txt_search.getText().trim().equals("")) {
+            txt_search.setText("Mã sản phẩm");
+            txt_search.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txt_searchFocusLost
 
     public void resetAll() {
         gioHang = new ArrayList<>();

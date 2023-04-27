@@ -11,10 +11,13 @@ import controller.NhaCungCap_bus;
 import controller.NhanVien_bus;
 import controller.SanPham_bus;
 import controller.ThuongHieu_bus;
+import java.awt.Color;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -74,6 +77,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         renderCMB_NhaCungCap();
         renderAllTab2DanhSachDonNhap();
         renderAllTab3DanhSachHoaDon();
+         Calendar cal = Calendar.getInstance();
+         cal.set(Calendar.DAY_OF_MONTH, 1);
+         jdate_tab3TuNgay.setDate(cal.getTime());
+
+// // Thiết lập giá trị mặc định cho txt_tab3GiaDen
+         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+         jdate_tab3DenNgay.setDate(cal.getTime());
     }
 
     public void renderCMB_NhaCungCap() {
@@ -96,7 +106,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         tbl_tab1DanhSachHangHoa.getColumnModel().getColumn(4).setPreferredWidth(100);
         tbl_tab1DanhSachHangHoa.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
         tbl_tab1DanhSachHangHoa.setDefaultEditor(Object.class, null);
-        
+
         tbl_tab1ChiTietDonNhap.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_tab1ChiTietDonNhap.getColumnModel().getColumn(0).setPreferredWidth(100);
         tbl_tab1ChiTietDonNhap.getColumnModel().getColumn(1).setPreferredWidth(200);
@@ -277,6 +287,7 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         txt_tab3NgayLap.setText(hd.getNgayLap().toString());
         txt_tab3NhanVien.setText(nv.getHoTen());
         txt_tab3TongTien.setText(Utility.getVND(hoaDon.getTongTien()));
+
     }
 
     public boolean validateFields() {
@@ -702,7 +713,17 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         pnl_search.setLayout(new javax.swing.BoxLayout(pnl_search, javax.swing.BoxLayout.X_AXIS));
 
         txt_tab1Search.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tab1Search.setForeground(new java.awt.Color(153, 153, 153));
+        txt_tab1Search.setText("Mã sản phẩm");
         txt_tab1Search.setToolTipText("Vui lòng nhập mã sản phẩm");
+        txt_tab1Search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_tab1SearchFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_tab1SearchFocusLost(evt);
+            }
+        });
         txt_tab1Search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_tab1SearchKeyPressed(evt);
@@ -1086,7 +1107,6 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         }, 0));
         tbl_tab3ChiTietHoaDon.setDoubleBuffered(true);
         tbl_tab3ChiTietHoaDon.setRowHeight(30);
-        tbl_tab3ChiTietHoaDon.setRowSelectionAllowed(true);
         tbl_tab3ChiTietHoaDon.setShowGrid(true);
         tbl_tab3ChiTietHoaDon.setShowVerticalLines(false);
         jScrollPane8.setViewportView(tbl_tab3ChiTietHoaDon);
@@ -1242,6 +1262,8 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
     private void btn_tab1ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab1ResetActionPerformed
         txt_tab1Search.setText("");
         search();
+        txt_tab1Search.setText("Mã sản phẩm");
+        txt_tab1Search.setForeground(new Color(153,153,153));
     }//GEN-LAST:event_btn_tab1ResetActionPerformed
 
     public void search() {
@@ -1323,6 +1345,19 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
     private void btn_tab3ResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_tab3ResetActionPerformed
         // TODO add your handling code here:
+        txt_tab3GiaDen.setText("");
+        txt_tab3GiaDen.setText("");
+        txt_tab3SDT.setText("");
+        txt_tab3MaNhanVien.setText("");
+        // Thiết lập giá trị mặc định cho txt_tab3GiaTu
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, 1);
+        jdate_tab3TuNgay.setDate(cal.getTime());
+
+// Thiết lập giá trị mặc định cho txt_tab3GiaDen
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        jdate_tab3DenNgay.setDate(cal.getTime());
+
         renderTab3DanhSachHoaDon(hoaDon_bus.getAllHoaDon());
     }//GEN-LAST:event_btn_tab3ResetActionPerformed
 
@@ -1408,6 +1443,20 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
             new Frame_HoaDon(temp).setVisible(true);
         }
     }//GEN-LAST:event_tbl_tab3DanhSachHoaDonMouseClicked
+
+    private void txt_tab1SearchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tab1SearchFocusGained
+        if (txt_tab1Search.getText().equals("Mã sản phẩm")) {
+            txt_tab1Search.setText("");
+            txt_tab1Search.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_txt_tab1SearchFocusGained
+
+    private void txt_tab1SearchFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tab1SearchFocusLost
+        if (txt_tab1Search.getText().trim().equals("")) {
+            txt_tab1Search.setText("Mã sản phẩm");
+            txt_tab1Search.setForeground(new Color(153, 153, 153));
+        }
+    }//GEN-LAST:event_txt_tab1SearchFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
