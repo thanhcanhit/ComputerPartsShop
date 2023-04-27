@@ -76,13 +76,13 @@ public class Panel_QuanLyDonHang extends javax.swing.JPanel {
         renderCMB_NhaCungCap();
         renderAllTab2DanhSachDonNhap();
         renderAllTab3DanhSachHoaDon();
-//         Calendar cal = Calendar.getInstance();
-//         cal.set(Calendar.DAY_OF_MONTH, 1);
-//         jdate_tab3TuNgay.setDate(cal.getTime());
+         Calendar cal = Calendar.getInstance();
+         cal.set(Calendar.DAY_OF_MONTH, 1);
+         jdate_tab3TuNgay.setDate(cal.getTime());
 
 // // Thiết lập giá trị mặc định cho txt_tab3GiaDen
-//         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
-//         jdate_tab3DenNgay.setDate(cal.getTime());
+         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+         jdate_tab3DenNgay.setDate(cal.getTime());
     }
 
     public void renderCMB_NhaCungCap() {

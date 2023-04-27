@@ -115,4 +115,19 @@ public class ThuongHieu_dao implements ThuongHieuInterface {
 
         return n > 0;
     }
+    
+    public String getMaLonNhat() {
+        String s = "THHI01";
+
+        try {
+            Statement st = ConnectDB.conn.createStatement();
+            ResultSet rs = st.executeQuery("select top 1 maThuongHieu from ThuongHieu order by maThuongHieu desc");
+            rs.next();
+            s = rs.getString("maThuongHieu");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    }
 }

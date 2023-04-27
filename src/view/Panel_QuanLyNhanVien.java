@@ -118,10 +118,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 gioiTinh = "Nữ";
             }
             String tt;
-            if (nv.isTrangThai()) {
-                tt = "Đang làm";
-            } else {
-                tt = "Đã nghĩ";
+            if(nv.isTrangThai()){
+                tt="Đang làm";
+            }else{
+                tt="Đã nghỉ";
             }
             model_dsNhanVien.addRow(new Object[]{nv.getMaNV(), nv.getHoTen(), nv.getEmail(), nv.getSoDT(), nv.getDiaChi().toString(), nv.getChucDanh(), nv.getNamSinh(), gioiTinh, tt});
         }
