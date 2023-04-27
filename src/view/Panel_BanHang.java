@@ -664,7 +664,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_sdtKeyPressed
 
     private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
-        if (txt_sdt.getText().length() >= 0)
+        if (txt_sdt.getText().length()> 0)
             getKhachHangNeuTonTai();
     }//GEN-LAST:event_txt_sdtFocusLost
 
