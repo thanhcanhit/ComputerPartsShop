@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import java.util.regex.Pattern;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -31,6 +32,7 @@ import model.hoadon.HoaDon;
 import model.sanpham.SanPham;
 import model.sanpham.ThuongHieu;
 import model.share.DiaChi;
+import model.share.Utility;
 
 /**
  *
@@ -85,13 +87,14 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
 //        Products Width
         int i = 0;
+        tbl_products.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(80);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(250);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(100);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(120);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(100);
+        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(100);
         tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(350);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(150);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(200);
-        tbl_products.getColumnModel().getColumn(i++).setPreferredWidth(200);
 
 //        Align
         tbl_products.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
@@ -101,12 +104,13 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tbl_products.setDefaultEditor(Object.class, null);
 
 //        Cart Width
-        i = 0;
-        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(120);
-        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(350);
-        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(120);
-        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(200);
-
+//        i = 0;
+//        tbl_cart.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(120);
+//        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(350);
+//        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(120);
+//        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(200);
+//        tbl_cart.getColumnModel().getColumn(i++).setPreferredWidth(200);
 //        Align
         tbl_cart.getColumnModel().getColumn(2).setCellRenderer(rightAlign);
         tbl_cart.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
@@ -129,7 +133,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         }, 0);
 
         // Carts
-        tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá"
+        tblModel_carts = new DefaultTableModel(new String[]{"Mã SP", "Tên SP", "Số lượng", "Đơn giá", "Tổng"
         }, 0);
     }
 
@@ -151,6 +155,10 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
             int soLuong = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
 
+            if (soLuong == 0) {
+                continue;
+            }
+
             Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, Math.round(sp.getGiamGia()) + "%", vnd.format(sp.getGiaBan())};
             tblModel_product.addRow(row);
         }
@@ -161,7 +169,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         tblModel_carts.setRowCount(0);
         subTotal = 0;
         for (ChiTietHoaDon sp : list) {
-            tblModel_carts.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSoLuong(), vnd.format(sp.getGiaBan())});
+            tblModel_carts.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSoLuong(), Utility.getVND(sp.getGiaBan()), Utility.getVND(sp.getSoLuong() * sp.getGiaBan())});
             subTotal += sp.getGiaBan() * sp.getSoLuong();
         }
         txt_thanhTien.setText(vnd.format(subTotal));
@@ -224,6 +232,13 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_thanhTien = new javax.swing.JLabel();
         txt_thanhTien = new javax.swing.JTextField();
+        pnl_box6 = new javax.swing.JPanel();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
+        lbl_tienKhachDua = new javax.swing.JLabel();
+        txt_tienKhachDua = new javax.swing.JTextField("", 10);
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        lbl_tienThoi = new javax.swing.JLabel();
+        txt_tienThoi = new javax.swing.JTextField("", 10);
         pnl_cartControl = new javax.swing.JPanel();
         btn_cancel = new javax.swing.JButton();
         btn_export = new javax.swing.JButton();
@@ -370,7 +385,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
         add(pnl_products, java.awt.BorderLayout.CENTER);
 
-        pnl_cart.setPreferredSize(new java.awt.Dimension(400, 0));
+        pnl_cart.setPreferredSize(new java.awt.Dimension(500, 0));
         pnl_cart.setLayout(new java.awt.BorderLayout());
 
         pnl_cartCenter.setPreferredSize(new java.awt.Dimension(400, 600));
@@ -418,7 +433,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
         pnl_orderInfo.setBackground(new java.awt.Color(255, 255, 255));
         pnl_orderInfo.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
-        pnl_orderInfo.setPreferredSize(new java.awt.Dimension(400, 250));
+        pnl_orderInfo.setPreferredSize(new java.awt.Dimension(400, 280));
         pnl_orderInfo.setLayout(new javax.swing.BoxLayout(pnl_orderInfo, javax.swing.BoxLayout.Y_AXIS));
 
         pnl_box1.setBackground(new java.awt.Color(255, 255, 255));
@@ -537,6 +552,43 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
         pnl_orderInfo.add(pnl_box4);
 
+        pnl_box6.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_box6.setPreferredSize(new java.awt.Dimension(400, 30));
+        pnl_box6.setLayout(new javax.swing.BoxLayout(pnl_box6, javax.swing.BoxLayout.LINE_AXIS));
+        pnl_box6.add(filler8);
+
+        lbl_tienKhachDua.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_tienKhachDua.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_tienKhachDua.setText("Tiền khách đưa");
+        lbl_tienKhachDua.setPreferredSize(new java.awt.Dimension(90, 70));
+        pnl_box6.add(lbl_tienKhachDua);
+
+        txt_tienKhachDua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tienKhachDua.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_tienKhachDuaFocusLost(evt);
+            }
+        });
+        txt_tienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_tienKhachDuaKeyPressed(evt);
+            }
+        });
+        pnl_box6.add(txt_tienKhachDua);
+        pnl_box6.add(filler9);
+
+        lbl_tienThoi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_tienThoi.setForeground(new java.awt.Color(102, 102, 102));
+        lbl_tienThoi.setText("Tiền trả lại");
+        lbl_tienThoi.setPreferredSize(new java.awt.Dimension(80, 70));
+        pnl_box6.add(lbl_tienThoi);
+
+        txt_tienThoi.setEditable(false);
+        txt_tienThoi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        pnl_box6.add(txt_tienThoi);
+
+        pnl_orderInfo.add(pnl_box6);
+
         pnl_cartCenter.add(pnl_orderInfo, java.awt.BorderLayout.SOUTH);
 
         pnl_cart.add(pnl_cartCenter, java.awt.BorderLayout.CENTER);
@@ -596,7 +648,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }
 
     public void themHang() {
-        String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", "Nhập thông tin", JOptionPane.PLAIN_MESSAGE);
+        String s_quantity = JOptionPane.showInputDialog(this, "Số lượng", 1);
 
         try {
             int row = tbl_products.getSelectedRow();
@@ -664,7 +716,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_sdtKeyPressed
 
     private void txt_sdtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_sdtFocusLost
-        if (txt_sdt.getText().length()> 0)
+        if (txt_sdt.getText().length() > 0)
             getKhachHangNeuTonTai();
     }//GEN-LAST:event_txt_sdtFocusLost
 
@@ -720,47 +772,45 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             return;
         }
 
-        if (JOptionPane.showConfirmDialog(this, "Bạn có muốn xuất hóa đơn này không", "Xác nhận", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            if (khach == null) {
-                try {
-                    DiaChi dc = frame_diaChi.getDiaChi();
-                    if (dc.getThanhPho().trim().length() == 0) {
-                        showMessageFocus("Bạn chưa điền địa chỉ", txt_diaChi);
-                        return;
-                    }
+        if (khach == null) {
+            try {
+                DiaChi dc = frame_diaChi.getDiaChi();
+                if (dc.getThanhPho().trim().length() == 0) {
+                    showMessageFocus("Bạn chưa điền địa chỉ", txt_diaChi);
+                    return;
+                }
 
 //                  Kiem tra xem diaChi ton tai trong database chua
-                    String maDiaChiInDatabase = diaChi_bus.getMaDiaChi(dc);
+                String maDiaChiInDatabase = diaChi_bus.getMaDiaChi(dc);
 
-                    // Khong co thi them co thi dung lai
-                    if (maDiaChiInDatabase == null) {
-                        diaChi_bus.themDiaChi(dc);
-                    } else {
-                        dc.setMaDiaChi(maDiaChiInDatabase);
-                    }
-
-                    khach = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "Không", LocalDate.of(2003, 1, 1), dc, gioiTinh, diemThem);
-                    khachHang_bus.themKhachHang(khach);
-                } catch (Exception ex) {
-                    Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
+                // Khong co thi them co thi dung lai
+                if (maDiaChiInDatabase == null) {
+                    diaChi_bus.themDiaChi(dc);
+                } else {
+                    dc.setMaDiaChi(maDiaChiInDatabase);
                 }
-            } else {
-                khachHang_bus.congDiemKhachHang(khach.getMaKH(), diemThem);
+
+                khach = new KhachHang(khachHang_bus.sinhMa(), null, hoTen, sdt, "Không", LocalDate.of(2003, 1, 1), dc, gioiTinh, diemThem);
+                khachHang_bus.themKhachHang(khach);
+            } catch (Exception ex) {
+                Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
             }
+        } else {
+            khachHang_bus.congDiemKhachHang(khach.getMaKH(), diemThem);
+        }
 
 //        Phat sinh hoa don
-            String maHoaDon = hoaDon_bus.sinhMa();
-            HoaDon hoaDon = new HoaDon(maHoaDon, LocalDate.now(), cmb_phuongThucThanhToan.getSelectedItem().toString(), nhanVien, khach, gioHang, subTotal);
+        String maHoaDon = hoaDon_bus.sinhMa();
+        HoaDon hoaDon = new HoaDon(maHoaDon, LocalDate.now(), cmb_phuongThucThanhToan.getSelectedItem().toString(), nhanVien, khach, gioHang, subTotal);
 
-            if (hoaDon_bus.themHoaDon(hoaDon)) {
-                JOptionPane.showMessageDialog(this, "Tạo hóa đơn thành công");
-                // Reset
-                resetAll();
-                new Frame_HoaDon(hoaDon).setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
-            }
+        if (hoaDon_bus.themHoaDon(hoaDon)) {
+            // Reset
+            resetAll();
+            new Frame_HoaDon(hoaDon).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Tạo hóa đơn thất bại");
         }
+
     }//GEN-LAST:event_btn_exportActionPerformed
 
     private void tbl_productsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_productsMouseClicked
@@ -819,6 +869,33 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             txt_search.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txt_searchFocusLost
+
+    private void txt_tienKhachDuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tienKhachDuaFocusLost
+        handleTienKhachDua();
+    }//GEN-LAST:event_txt_tienKhachDuaFocusLost
+
+    private void txt_tienKhachDuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_tienKhachDuaKeyPressed
+        if (evt.getKeyCode() == 10)
+            handleTienKhachDua();
+    }//GEN-LAST:event_txt_tienKhachDuaKeyPressed
+
+    public void handleTienKhachDua() {
+        String s_khachDua = txt_tienKhachDua.getText().trim();
+        if (!txt_thanhTien.getText().equals("")) {
+
+            try {
+                double khachDua = Double.parseDouble(s_khachDua);
+                double tienThoi = khachDua - subTotal;
+                if (tienThoi < 0) {
+                    showMessageFocus("Tiền khách ít hơn thành tiền", txt_tienKhachDua);
+                    return;
+                }
+                txt_tienThoi.setText(Utility.getVND(tienThoi));
+            } catch (Exception e) {
+                showMessageFocus("Tiền khách đưa không hợp lệ", txt_tienKhachDua);
+            }
+        }
+    }
 
     public void resetAll() {
         gioHang = new ArrayList<>();
@@ -889,6 +966,8 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
     private javax.swing.JLabel lbl_diaChi;
     private javax.swing.JLabel lbl_hoTen;
     private javax.swing.JLabel lbl_sdt;
@@ -896,12 +975,15 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_ten;
     private javax.swing.JLabel lbl_thanhTien;
     private javax.swing.JLabel lbl_thanhToan;
+    private javax.swing.JLabel lbl_tienKhachDua;
+    private javax.swing.JLabel lbl_tienThoi;
     private javax.swing.JPanel pnl_addToCart;
     private javax.swing.JPanel pnl_box1;
     private javax.swing.JPanel pnl_box2;
     private javax.swing.JPanel pnl_box3;
     private javax.swing.JPanel pnl_box4;
     private javax.swing.JPanel pnl_box5;
+    private javax.swing.JPanel pnl_box6;
     private javax.swing.JPanel pnl_cart;
     private javax.swing.JPanel pnl_cartCenter;
     private javax.swing.JPanel pnl_cartControl;
@@ -923,5 +1005,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_thanhTien;
+    private javax.swing.JTextField txt_tienKhachDua;
+    private javax.swing.JTextField txt_tienThoi;
     // End of variables declaration//GEN-END:variables
 }
