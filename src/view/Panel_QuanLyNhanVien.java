@@ -42,7 +42,6 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     /**
      * Creates new form Panel_QuanLyNhanVien
      */
-
     public Panel_QuanLyNhanVien() {
         String col[] = {"Mã nhân viên", "Họ tên", "Email", "Số điện thoại", "Địa chỉ", "Chức danh", "Năm sinh", "Giới tính", "Trạng thái"};
         model_dsNhanVien = new DefaultTableModel(col, 0);
@@ -159,7 +158,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
         pnl_ttNhanVien = new javax.swing.JPanel();
         pnl_avata = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_img = new javax.swing.JLabel();
         pnl_formNV = new javax.swing.JPanel();
         pnl_maNV = new javax.swing.JPanel();
         lbl_maNV = new javax.swing.JLabel();
@@ -195,7 +194,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         btn_xoaTrang = new javax.swing.JButton();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         pnl_dsNhanVien = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scr_1 = new javax.swing.JScrollPane();
         tbl_dsNhanVien = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -347,12 +346,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_avata.setPreferredSize(new java.awt.Dimension(0, 300));
         pnl_avata.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.setIconTextGap(10);
-        jLabel1.setPreferredSize(new java.awt.Dimension(200, 200));
-        pnl_avata.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lbl_img.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/quanlynhanvien/user-4.png"))); // NOI18N
+        lbl_img.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_img.setIconTextGap(10);
+        lbl_img.setPreferredSize(new java.awt.Dimension(200, 200));
+        pnl_avata.add(lbl_img, java.awt.BorderLayout.CENTER);
 
         pnl_ttNhanVien.add(pnl_avata, java.awt.BorderLayout.CENTER);
 
@@ -663,8 +662,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_dsNhanVien.setPreferredSize(new java.awt.Dimension(450, 370));
         pnl_dsNhanVien.setLayout(new java.awt.BorderLayout());
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scr_1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scr_1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         tbl_dsNhanVien.setModel(model_dsNhanVien);
         tbl_dsNhanVien.setMaximumSize(new java.awt.Dimension(100, 0));
@@ -672,9 +671,9 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         tbl_dsNhanVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbl_dsNhanVien.setShowGrid(true);
         tbl_dsNhanVien.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(tbl_dsNhanVien);
+        scr_1.setViewportView(tbl_dsNhanVien);
 
-        pnl_dsNhanVien.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        pnl_dsNhanVien.add(scr_1, java.awt.BorderLayout.CENTER);
 
         add(pnl_dsNhanVien, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -971,12 +970,11 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_chucVu;
     private javax.swing.JLabel lbl_diaChi;
     private javax.swing.JLabel lbl_gioiTinh;
     private javax.swing.JLabel lbl_hoTen;
+    private javax.swing.JLabel lbl_img;
     private javax.swing.JLabel lbl_maNV;
     private javax.swing.JLabel lbl_mailNV;
     private javax.swing.JLabel lbl_namSinh;
@@ -996,6 +994,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_submit;
     private javax.swing.JPanel pnl_timKiem;
     private javax.swing.JPanel pnl_ttNhanVien;
+    private javax.swing.JScrollPane scr_1;
     private javax.swing.JTable tbl_dsNhanVien;
     private com.toedter.calendar.JDateChooser txt_date;
     private javax.swing.JTextField txt_diaChi;

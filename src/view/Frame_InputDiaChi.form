@@ -154,7 +154,7 @@
             <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
           </AuxValues>
         </Component>
-        <Container class="javax.swing.JPanel" name="b_3">
+        <Container class="javax.swing.JPanel" name="b_2">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 50]"/>
@@ -252,7 +252,7 @@
             <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.VerticalStrut"/>
           </AuxValues>
         </Component>
-        <Container class="javax.swing.JPanel" name="b_5">
+        <Container class="javax.swing.JPanel" name="b_3">
           <Properties>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[0, 50]"/>
