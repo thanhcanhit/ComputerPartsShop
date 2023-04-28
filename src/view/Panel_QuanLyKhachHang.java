@@ -111,8 +111,8 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         model_dsKhachHang.setRowCount(0);
         for(KhachHang kh:listKH){
             String maST;
-            if(kh.getMaSoThue()== "Null"){
-                maST = " ";
+            if(kh.getMaSoThue()==null || kh.getMaSoThue().equalsIgnoreCase("NULL")){
+                maST = "";
             }else
                 maST=kh.getMaSoThue();
             String gioiTinh="";
@@ -211,7 +211,10 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         txt_timKiem = new javax.swing.JTextField();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
+        filler24 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        btn_reset = new javax.swing.JButton();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        filler25 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
 
         jMenu1.setText("jMenu1");
 
@@ -549,7 +552,19 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             }
         });
         pnl_timKiem.add(btn_timKiem);
+        pnl_timKiem.add(filler24);
+
+        btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
+        btn_reset.setMaximumSize(new java.awt.Dimension(40, 40));
+        btn_reset.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+        pnl_timKiem.add(btn_reset);
         pnl_timKiem.add(filler14);
+        pnl_timKiem.add(filler25);
 
         pnl_control.add(pnl_timKiem);
 
@@ -610,7 +625,7 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         
         
         if(maST.trim().length()<=0)
-            maST = "Null";
+            maST = null;
         DiaChi dc = frame_diaChi.getDiaChi();
         boolean gioiTinh;
         if(gt.equals("Nữ"))
@@ -754,9 +769,16 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txt_timKiemFocusLost
 
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        renderAll();
+        txt_timKiem.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_resetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_capNhatKH;
+    private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_themKH;
     private javax.swing.JButton btn_timKiem;
     private javax.swing.JButton btn_xoaTrang;
@@ -777,6 +799,8 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler21;
     private javax.swing.Box.Filler filler22;
     private javax.swing.Box.Filler filler23;
+    private javax.swing.Box.Filler filler24;
+    private javax.swing.Box.Filler filler25;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;

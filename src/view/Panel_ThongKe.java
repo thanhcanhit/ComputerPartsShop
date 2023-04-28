@@ -4,22 +4,25 @@
  */
 package view;
 
-import com.toedter.calendar.JCalendar;
-import controller.SanPham_bus;
+
 import controller.ThongKe_bus;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
-import java.awt.LinearGradientPaint;
-import java.awt.color.ColorSpace;
+
+import java.awt.font.TextAttribute;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.text.AttributedString;
+import java.time.LocalDate;
 
 import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Locale;
 import javax.swing.JLabel;
-import javax.swing.JTable;
+import javax.swing.JPanel;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
+
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import model.sanpham.SanPham;
@@ -27,6 +30,9 @@ import model.share.Utility;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.CategoryPlot;
 
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarRenderer;
@@ -41,6 +47,8 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
 
     DefaultTableModel model_dsSanPham;
     public final ThongKe_bus tk_bus = new ThongKe_bus();
+    private ChartPanel chartPanel;
+    
 
     /**
      * Creates new form Panel_ThongKe
@@ -52,7 +60,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
        
         initComponents();
 
-        ChartPanel chartPanel = new ChartPanel(createBarChart());
+        chartPanel = new ChartPanel(createBarChart(LocalDate.now().getYear()));
 
         pnl_chart.add(chartPanel);
 
@@ -65,8 +73,9 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
             public void propertyChange(PropertyChangeEvent evt) {
                 if ("month".equals(evt.getPropertyName())) {
                     int month = jMonth_thang.getMonth();
+                    int year = jYear_nam.getYear();
                     // Xử lý sự kiện khi người dùng thay đổi dữ liệu trong JCalendar
-                    renderListToTable(tk_bus.get3sanPhamBanChay(month+1));
+                    renderListToTable(tk_bus.get3sanPhamBanChay(month+1,year), month+1,year);
                 }
             }
         });
@@ -77,7 +86,11 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
                     int year = jYear_nam.getYear();
                     int month = jMonth_thang.getMonth();
                     // Xử lý sự kiện khi người dùng thay đổi dữ liệu trong JCalendar
-                    renderListToTable(tk_bus.get3sanPhamBanChay(month+1, year));
+                    renderListToTable(tk_bus.get3sanPhamBanChay(month+1, year), month+1, year);
+                    pnl_chart.updateUI();
+                    chartPanel.setChart(createBarChart(year));
+                    pnl_chart.add(chartPanel);
+                    
                 }
             }
         });
@@ -88,34 +101,62 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         double total[] = tk_bus.getDoanhThu12Thang();
+        
+        for(int i=0;i<12;i++){
+            dataset.addValue(total[i] / 1000000, "Doanh thu", Integer.toString(i + 1));
+        }
 
-        dataset.addValue(total[0] / 1000000, "Doanh thu", "1");
-        dataset.addValue(total[1] / 1000000, "Doanh thu", "2");
-        dataset.addValue(total[2] / 1000000, "Doanh thu", "3");
-        dataset.addValue(total[3] / 1000000, "Doanh thu", "4");
-        dataset.addValue(total[4] / 1000000, "Doanh thu", "5");
-        dataset.addValue(total[5] / 1000000, "Doanh thu", "6");
-        dataset.addValue(total[6] / 1000000, "Doanh thu", "7");
-        dataset.addValue(total[7] / 1000000, "Doanh thu", "8");
-        dataset.addValue(total[8] / 1000000, "Doanh thu", "9");
-        dataset.addValue(total[9] / 1000000, "Doanh thu", "10");
-        dataset.addValue(total[10] / 1000000, "Doanh thu", "11");
-        dataset.addValue(total[11] / 1000000, "Doanh thu", "12");
 
         return dataset;
     }
+    public DefaultCategoryDataset createDataset(int year) {
+        
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+       
+        double total[] = tk_bus.getDoanhThu12Thang(year);
+        for(int i=0;i<12;i++){
+            
+            dataset.addValue(total[i] / 1000000, "Doanh thu", Integer.toString(i + 1));
+        }
 
-    public JFreeChart createBarChart() {
 
+        return dataset;
+    }
+    
+
+    public JFreeChart createBarChart(int year) {
+        System.out.println(year);
         JFreeChart barChart = ChartFactory.createBarChart(
                 "Doanh thu theo tháng".toUpperCase(),
-                "THÁNG", "DOANH THU (triệu đồng)", createDataset(),
+                "THÁNG", "DOANH THU (triệu đồng)", createDataset(year),
                 PlotOrientation.VERTICAL, true, true, false);
 
         barChart.getTitle().setPaint(new Color(65,165,238));
+        
        
         barChart.getPlot().setBackgroundPaint(new Color(250,250,250));
         BarRenderer renderer = (BarRenderer) barChart.getCategoryPlot().getRenderer();
+        
+        CategoryPlot plot = barChart.getCategoryPlot();
+        // Lấy đối tượng CategoryAxis và ValueAxis từ CategoryPlot
+        CategoryAxis domainAxis = plot.getDomainAxis();
+        ValueAxis rangeAxis = plot.getRangeAxis();
+
+        // Set màu cho title trục x
+        Font xLabelFont = new Font("Segoe UI", Font.BOLD, 14);
+        Color xLabelColor = new Color(65,165,238);
+        AttributedString xLabel = new AttributedString("THÁNG");
+        xLabel.addAttribute(TextAttribute.FONT, xLabelFont);
+        xLabel.addAttribute(TextAttribute.FOREGROUND, xLabelColor);
+        domainAxis.setAttributedLabel(xLabel);
+
+        // Set màu cho title trục y
+        Font yLabelFont = new Font("Segoe UI", Font.BOLD, 14);
+        Color yLabelColor = new Color(65,165,238);
+        AttributedString yLabel = new AttributedString("DOANH THU (triệu đồng)");
+        yLabel.addAttribute(TextAttribute.FONT, yLabelFont);
+        yLabel.addAttribute(TextAttribute.FOREGROUND, yLabelColor);
+        rangeAxis.setAttributedLabel(yLabel);
       
         Color color = new Color(65,165,238);
         renderer.setSeriesPaint(0, color);
@@ -139,8 +180,20 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
     public void renderListToTable(ArrayList<SanPham> list) {
         model_dsSanPham.setRowCount(0);
         for (SanPham sp : list) {
-            String gioiTinh;
+            if(tk_bus.getSoLuongBanSanPham(sp.getMaSP())<=0)
+                continue;
             model_dsSanPham.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(),tk_bus.getSoLuongBanSanPham(sp.getMaSP()),Utility.getVND(tk_bus.getDoanhThuSanPham(sp.getMaSP()))});
+        }
+
+    }
+
+    public void renderListToTable(ArrayList<SanPham> list, int month, int year) {
+        model_dsSanPham.setRowCount(0);
+        for (SanPham sp : list) {
+            
+            if(tk_bus.getSoLuongBanSanPham(sp.getMaSP(),month,year)<=0)
+                continue;
+            model_dsSanPham.addRow(new Object[]{sp.getMaSP(), sp.getTenSP(),tk_bus.getSoLuongBanSanPham(sp.getMaSP(), month, year),Utility.getVND(tk_bus.getDoanhThuSanPham(sp.getMaSP(),month, year))});
         }
 
     }

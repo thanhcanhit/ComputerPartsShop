@@ -144,6 +144,8 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        btn_reset = new javax.swing.JButton();
+        filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         pnl_Control = new javax.swing.JPanel();
         pnl_controlgroup = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
@@ -243,6 +245,17 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         });
         pnl_timKiem.add(btn_timKiem);
         pnl_timKiem.add(filler13);
+
+        btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
+        btn_reset.setMaximumSize(new java.awt.Dimension(40, 40));
+        btn_reset.setPreferredSize(new java.awt.Dimension(40, 40));
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resetActionPerformed(evt);
+            }
+        });
+        pnl_timKiem.add(btn_reset);
+        pnl_timKiem.add(filler17);
 
         add(pnl_timKiem, java.awt.BorderLayout.NORTH);
 
@@ -909,6 +922,12 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             txt_timKiem.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_txt_timKiemFocusLost
+
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
+        renderAll();
+        txt_timKiem.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_resetActionPerformed
     public void timKiem() {
         String ma = txt_timKiem.getText().trim();
         if (ma.length() > 0) {
@@ -927,6 +946,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_capNhatMKNV;
+    private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_suaNV;
     private javax.swing.JButton btn_themNV;
     private javax.swing.JButton btn_timKiem;
@@ -942,6 +962,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler14;
     private javax.swing.Box.Filler filler15;
     private javax.swing.Box.Filler filler16;
+    private javax.swing.Box.Filler filler17;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;

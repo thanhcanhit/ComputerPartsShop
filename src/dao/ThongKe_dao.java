@@ -282,4 +282,31 @@ public class ThongKe_dao implements ThongKeInterface {
         return result;
     }
 
+    public double[] getDoanhThu12Thang(int year) {
+        double[] result = new double[12];
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = 0;
+        }
+
+        ;
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("select MONTH(ngayLap) as thang, sum(tongTien) as tong from HoaDon where YEAR(ngayLap) = ? group by MONTH(ngayLap)");
+            st.setInt(1, year);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                int thang = rs.getInt("thang");
+                double tong = rs.getDouble("tong");
+
+                result[thang - 1] = tong;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
 }
