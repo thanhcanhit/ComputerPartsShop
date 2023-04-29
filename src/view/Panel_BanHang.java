@@ -13,6 +13,7 @@ import controller.ThuongHieu_bus;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -25,6 +26,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.NumberFormatter;
 import model.connguoi.KhachHang;
 import model.connguoi.NhanVien;
 import model.hoadon.ChiTietHoaDon;
@@ -114,6 +116,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 //        Align
         tbl_cart.getColumnModel().getColumn(2).setCellRenderer(rightAlign);
         tbl_cart.getColumnModel().getColumn(3).setCellRenderer(rightAlign);
+        tbl_cart.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
 
         tbl_cart.setDefaultEditor(Object.class, null);
     }
@@ -235,7 +238,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         pnl_box6 = new javax.swing.JPanel();
         filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(0, 0));
         lbl_tienKhachDua = new javax.swing.JLabel();
-        txt_tienKhachDua = new javax.swing.JTextField("", 10);
+        txt_tienKhachDua1 = new javax.swing.JFormattedTextField();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         lbl_tienThoi = new javax.swing.JLabel();
         txt_tienThoi = new javax.swing.JTextField("", 10);
@@ -518,6 +521,11 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
         cmb_phuongThucThanhToan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiền mặt", "ATM", "Ví điện tử" }));
         cmb_phuongThucThanhToan.setPreferredSize(new java.awt.Dimension(100, 22));
+        cmb_phuongThucThanhToan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmb_phuongThucThanhToanItemStateChanged(evt);
+            }
+        });
         pnl_box3.add(cmb_phuongThucThanhToan);
         pnl_box3.add(filler5);
 
@@ -563,18 +571,19 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         lbl_tienKhachDua.setPreferredSize(new java.awt.Dimension(90, 70));
         pnl_box6.add(lbl_tienKhachDua);
 
-        txt_tienKhachDua.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_tienKhachDua.addFocusListener(new java.awt.event.FocusAdapter() {
+        txt_tienKhachDua1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txt_tienKhachDua1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txt_tienKhachDua1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_tienKhachDuaFocusLost(evt);
+                txt_tienKhachDua1FocusLost(evt);
             }
         });
-        txt_tienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+        txt_tienKhachDua1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_tienKhachDuaKeyPressed(evt);
+                txt_tienKhachDua1KeyPressed(evt);
             }
         });
-        pnl_box6.add(txt_tienKhachDua);
+        pnl_box6.add(txt_tienKhachDua1);
         pnl_box6.add(filler9);
 
         lbl_tienThoi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -870,29 +879,43 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txt_searchFocusLost
 
-    private void txt_tienKhachDuaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tienKhachDuaFocusLost
-        handleTienKhachDua();
-    }//GEN-LAST:event_txt_tienKhachDuaFocusLost
+    private void cmb_phuongThucThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_phuongThucThanhToanItemStateChanged
+        
+        txt_tienKhachDua1.setEnabled(cmb_phuongThucThanhToan.getSelectedItem().toString().equalsIgnoreCase("Tiền mặt"));
+        txt_tienKhachDua1.setText("");
+        txt_tienThoi.setText("");
+    }//GEN-LAST:event_cmb_phuongThucThanhToanItemStateChanged
 
-    private void txt_tienKhachDuaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_tienKhachDuaKeyPressed
+    private void txt_tienKhachDua1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tienKhachDua1FocusLost
+       handleTienKhachDua();
+    }//GEN-LAST:event_txt_tienKhachDua1FocusLost
+
+    private void txt_tienKhachDua1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_tienKhachDua1KeyPressed
         if (evt.getKeyCode() == 10)
-            handleTienKhachDua();
-    }//GEN-LAST:event_txt_tienKhachDuaKeyPressed
+        handleTienKhachDua();
+    }//GEN-LAST:event_txt_tienKhachDua1KeyPressed
 
     public void handleTienKhachDua() {
-        String s_khachDua = txt_tienKhachDua.getText().trim();
+        String s_khachDua = txt_tienKhachDua1.getText().trim();
+//        try {
+//            System.out.println("");
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         if (!txt_thanhTien.getText().equals("")) {
 
             try {
-                double khachDua = Double.parseDouble(s_khachDua);
+//                double khachDua = Double.parseDouble(s_khachDua);
+                double khachDua = NumberFormat.getInstance().parse(s_khachDua).doubleValue();
+                System.out.println(khachDua);
                 double tienThoi = khachDua - subTotal;
                 if (tienThoi < 0) {
-                    showMessageFocus("Tiền khách ít hơn thành tiền", txt_tienKhachDua);
+                    showMessageFocus("Tiền khách ít hơn thành tiền", txt_tienKhachDua1);
                     return;
                 }
                 txt_tienThoi.setText(Utility.getVND(tienThoi));
             } catch (Exception e) {
-                showMessageFocus("Tiền khách đưa không hợp lệ", txt_tienKhachDua);
+                showMessageFocus("Tiền khách đưa không hợp lệ", txt_tienKhachDua1);
             }
         }
     }
@@ -905,6 +928,8 @@ public final class Panel_BanHang extends javax.swing.JPanel {
         txt_hangTV.setText("");
         txt_hoTen.setText("");
         txt_diaChi.setText("");
+        txt_tienKhachDua1.setText("");
+        txt_tienThoi.setText("");
         cmb_phuongThucThanhToan.setSelectedIndex(0);
         cmb_gender.setSelectedIndex(0);
         khach = null;
@@ -1005,7 +1030,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private javax.swing.JTextField txt_sdt;
     private javax.swing.JTextField txt_search;
     private javax.swing.JTextField txt_thanhTien;
-    private javax.swing.JTextField txt_tienKhachDua;
+    private javax.swing.JFormattedTextField txt_tienKhachDua1;
     private javax.swing.JTextField txt_tienThoi;
     // End of variables declaration//GEN-END:variables
 }
