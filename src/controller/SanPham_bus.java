@@ -64,39 +64,14 @@ public class SanPham_bus implements SanPhamInterface {
     public ArrayList<SanPham> timSanPhamTheoTen(String input) {
         return dao.timSanPhamTheoTen(input);
     }
-    
-    public ArrayList<SanPham> timSanPhamTheoCauHinh(String input) {
-        return dao.timSanPhamTheoCauHinh(input);
-    }
-    
-    public ArrayList<SanPham> timSanPhamTheoLoai(String input) {
-        int intLoai = loaiParseInt(input);
-        return dao.timSanPhamTheoLoai(intLoai);
-    }
-    
-     public ArrayList<SanPham> timSanPhamTheoThuongHieu(String input) {
-        String maThuongHieu = thuongHieuParseMa(input);
-        return dao.timSanPhamTheoThuongHieu(maThuongHieu);
-    }
-     
-     
+  
     public ArrayList<SanPham> searchTheoDieuKien(String ten, String loaiSanPham, String thuongHieu, String cauHinh){
         ArrayList<SanPham> ds = new ArrayList<>();
         ds = getAllSanPham();
         ArrayList<SanPham> xoa = new ArrayList<>();
-        
-        System.out.println(ten);
-        
-        System.out.println(loaiSanPham);
-        
-        System.out.println(thuongHieu);
-        
-        System.out.println(cauHinh);
-        
-        
         if(ten.length()>0){
             for(SanPham sp:ds) {
-                if(!sp.getTenSP().contains(ten)) {
+                if(!sp.getTenSP().toLowerCase().contains(ten.toLowerCase().trim())) {
                     xoa.add(sp);
                 }
             }
@@ -115,7 +90,6 @@ public class SanPham_bus implements SanPhamInterface {
         if(!thuongHieu.equals("Tất cả")) {
             for(SanPham sp:ds) {
                 ThuongHieu th = new ThuongHieu_bus().getThuongHieuTheoMa(sp.getThuongHieu().getMaTH()).get(0);
-                System.out.println(th);
                 if(!thuongHieu.equals(th.toString())) {
                     xoa.add(sp);
                 }
@@ -124,15 +98,19 @@ public class SanPham_bus implements SanPhamInterface {
         }
         xoa.clear();
         if(cauHinh.trim().length()>0) {
-            for(SanPham sp:ds) {
-                if(!sp.getCauHinh().contains(cauHinh)) {
+            String[] thanhPhanCauHinh = cauHinh.split(";");
+            for(SanPham sp :ds) {
+                int flag = 0;
+                for(int i = 0; i<thanhPhanCauHinh.length; i++){
+                    if(!sp.getCauHinh().toLowerCase().contains(thanhPhanCauHinh[i].toLowerCase().trim()))
+                        flag++;
+                }
+                if(flag != 0) {
                     xoa.add(sp);
                 }
             }
             ds.removeAll(xoa);
         }
-       
-        
         return ds;
     }
 
@@ -142,7 +120,6 @@ public class SanPham_bus implements SanPhamInterface {
     }
     
     public String thuongHieuParseMa(String string) {
-        System.out.println(thuongHieu_bus.timMaThuongHieuTheoToString(string));
         return thuongHieu_bus.timMaThuongHieuTheoToString(string);
     }
     
@@ -172,13 +149,4 @@ public class SanPham_bus implements SanPhamInterface {
         }
         return result;
     }
-    
-    public void searchCauHinhTheoThongTin(String input) {
-        String[] inputs = input.split("; ");
-        for(int i = 0; i<inputs.length; i++){
-            
-        }
-        
-    }
-
 }
