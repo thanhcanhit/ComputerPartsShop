@@ -142,7 +142,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         txt_timKiem = new javax.swing.JTextField();
         filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
+        filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(3, 32767));
         btn_reset = new javax.swing.JButton();
         filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
         pnl_Control = new javax.swing.JPanel();
@@ -243,7 +243,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
             }
         });
         pnl_timKiem.add(btn_timKiem);
-        pnl_timKiem.add(filler13);
+        pnl_timKiem.add(filler18);
 
         btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
         btn_reset.setMaximumSize(new java.awt.Dimension(40, 40));
@@ -957,11 +957,11 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler10;
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler13;
     private javax.swing.Box.Filler filler14;
     private javax.swing.Box.Filler filler15;
     private javax.swing.Box.Filler filler16;
     private javax.swing.Box.Filler filler17;
+    private javax.swing.Box.Filler filler18;
     private javax.swing.Box.Filler filler2;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;

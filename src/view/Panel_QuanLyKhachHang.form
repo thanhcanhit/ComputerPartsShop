@@ -1043,7 +1043,7 @@
                   <Dimension value="[5, 0]"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[5, 0]"/>
+                  <Dimension value="[3, 0]"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -1065,19 +1065,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_resetActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.Box$Filler" name="filler14">
-              <Properties>
-                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[32767, 0]"/>
-                </Property>
-                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                  <Dimension value="[3, 0]"/>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="classDetails" type="java.lang.String" value="Box.Filler.HorizontalGlue"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.Box$Filler" name="filler25">
               <Properties>

@@ -210,9 +210,8 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
         txt_timKiem = new javax.swing.JTextField();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         btn_timKiem = new javax.swing.JButton();
-        filler24 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
+        filler24 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(5, 32767));
         btn_reset = new javax.swing.JButton();
-        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(3, 0), new java.awt.Dimension(32767, 0));
         filler25 = new javax.swing.Box.Filler(new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 0), new java.awt.Dimension(5, 32767));
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
@@ -560,7 +559,6 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
             }
         });
         pnl_timKiem.add(btn_reset);
-        pnl_timKiem.add(filler14);
         pnl_timKiem.add(filler25);
 
         pnl_control.add(pnl_timKiem);
@@ -785,7 +783,6 @@ public class Panel_QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.Box.Filler filler11;
     private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler13;
-    private javax.swing.Box.Filler filler14;
     private javax.swing.Box.Filler filler15;
     private javax.swing.Box.Filler filler16;
     private javax.swing.Box.Filler filler17;

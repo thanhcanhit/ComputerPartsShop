@@ -68,4 +68,8 @@ public class ThongKe_bus implements ThongKeInterface {
     public int getSoLuongBanSanPham(String maSanPham){
         return dao.getSoLuongBanSanPham(maSanPham);
     }
+ 
+    public ArrayList<SanPham> getsanPham(int thang, int nam) {
+        return dao.getsanPham(thang, nam);
+    }
 }

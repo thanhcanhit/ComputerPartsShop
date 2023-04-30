@@ -45,6 +45,7 @@ public class ThongKe_dao implements ThongKeInterface {
 
         return result;
     }
+    
 
     @Override
     public ArrayList<SanPham> get3sanPhamBanChay(int thang) {
@@ -161,6 +162,32 @@ public class ThongKe_dao implements ThongKeInterface {
         try {
             PreparedStatement st = ConnectDB.conn.prepareStatement("""
                                                                    select top 3 maSanPham
+                                                                   from ChiTietHoaDon as ct join HoaDon as hd on ct.maHoaDon = hd.maHoaDon
+                                                                   where MONTH(ngayLap) = ? and Year(NgayLap) = ?
+                                                                   group by maSanPham 
+                                                                   order by SUM(soLuong) desc""");
+            st.setInt(1, thang);
+            st.setInt(2, nam);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                String maSP = rs.getString(1);
+                result.add(
+                        new SanPham_dao().getSanPhamTheoMa(maSP).get(0));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+    public ArrayList<SanPham> getsanPham(int thang, int nam) {
+        ArrayList<SanPham> result = new ArrayList<>();
+
+        try {
+            PreparedStatement st = ConnectDB.conn.prepareStatement("""
+                                                                   select maSanPham
                                                                    from ChiTietHoaDon as ct join HoaDon as hd on ct.maHoaDon = hd.maHoaDon
                                                                    where MONTH(ngayLap) = ? and Year(NgayLap) = ?
                                                                    group by maSanPham 
