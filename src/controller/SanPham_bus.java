@@ -60,10 +60,6 @@ public class SanPham_bus implements SanPhamInterface {
     public int getSoTrangMax() {
         return dao.getSoTrangMax();
     }
-
-    public ArrayList<SanPham> timSanPhamTheoTen(String input) {
-        return dao.timSanPhamTheoTen(input);
-    }
   
     public ArrayList<SanPham> searchTheoDieuKien(String ten, String loaiSanPham, String thuongHieu, String cauHinh){
         ArrayList<SanPham> ds = new ArrayList<>();
@@ -97,13 +93,15 @@ public class SanPham_bus implements SanPhamInterface {
             ds.removeAll(xoa);
         }
         xoa.clear();
+        
         if(cauHinh.trim().length()>0) {
             String[] thanhPhanCauHinh = cauHinh.split(";");
             for(SanPham sp :ds) {
                 int flag = 0;
                 for(int i = 0; i<thanhPhanCauHinh.length; i++){
-                    if(!sp.getCauHinh().toLowerCase().contains(thanhPhanCauHinh[i].toLowerCase().trim()))
+                    if(!sp.getCauHinh().toLowerCase().contains(thanhPhanCauHinh[i].toLowerCase().trim())) {
                         flag++;
+                    }
                 }
                 if(flag != 0) {
                     xoa.add(sp);

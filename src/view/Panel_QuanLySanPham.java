@@ -35,6 +35,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private ThuongHieu_bus thuongHieu_bus = new ThuongHieu_bus();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
+    
+    private int page = 1;
     /**
      * Creates new form Panel_QuanLySanPham
      */
@@ -42,8 +44,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_ModelProduct = new DefaultTableModel(str_TenCot, 0);
 
         initComponents();
-
-        initTableModel();
+        renderPage();
         alterTable();
 
         tbl_products.getSelectionModel().addListSelectionListener((e) -> {
@@ -102,15 +103,17 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_products.getColumnModel().getColumn(8).setPreferredWidth(65);
         tbl_products.getColumnModel().getColumn(9).setPreferredWidth(500);
     }
-
-    private void initTableModel() {
-        ArrayList<SanPham> list = new ArrayList<>();
-        renderProductTable(sanPham_bus.getAllSanPham());
-    }
     
     public void renderAll() {
         ArrayList<SanPham> list = sanPham_bus.getAllSanPham();
         renderProductTable(list);
+    }
+    
+        public void renderPage() {
+        if (lbl_soTrang != null) {
+            lbl_soTrang.setText(page + "/" + sanPham_bus.getSoTrangMax());
+        }
+        renderProductTable(sanPham_bus.getSanPhamTrang(page));
     }
 
     private void renderProductTable(ArrayList<SanPham> list) {
@@ -194,6 +197,14 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_danhSach = new javax.swing.JPanel();
         scr_3 = new javax.swing.JScrollPane();
         tbl_products = new javax.swing.JTable();
+        pnl_left = new javax.swing.JPanel();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        btn_prev = new javax.swing.JButton();
+        lbl_soTrang = new javax.swing.JLabel();
+        btn_next = new javax.swing.JButton();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new java.awt.BorderLayout());
@@ -302,6 +313,11 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         txt_giamGia.setMaximumSize(new java.awt.Dimension(1000, 500));
         txt_giamGia.setMinimumSize(new java.awt.Dimension(140, 16));
         txt_giamGia.setPreferredSize(new java.awt.Dimension(160, 24));
+        txt_giamGia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_giamGiaActionPerformed(evt);
+            }
+        });
         pnl_giamGia.add(txt_giamGia);
 
         pnl_bodyTT.add(pnl_giamGia);
@@ -433,11 +449,6 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         txt_search.setToolTipText("Nhập tên sản phẩm");
         txt_search.setMinimumSize(new java.awt.Dimension(30, 22));
         txt_search.setPreferredSize(new java.awt.Dimension(650, 0));
-        txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_searchKeyReleased(evt);
-            }
-        });
         pnl_headerSearch.add(txt_search);
 
         pnl_dieuKhienBtn.setMaximumSize(new java.awt.Dimension(4001111, 2147483647));
@@ -558,29 +569,55 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         pnl_danhSach.add(scr_3, java.awt.BorderLayout.CENTER);
 
+        pnl_left.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_left.setLayout(new java.awt.GridLayout(1, 0));
+        pnl_left.add(filler1);
+        pnl_left.add(filler9);
+
+        btn_prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartPrev.png"))); // NOI18N
+        btn_prev.setToolTipText("Trang trước");
+        btn_prev.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_prev.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_prev.setIconTextGap(10);
+        btn_prev.setPreferredSize(new java.awt.Dimension(45, 45));
+        btn_prev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_prevActionPerformed(evt);
+            }
+        });
+        pnl_left.add(btn_prev);
+
+        lbl_soTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_soTrang.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_soTrang.setToolTipText("");
+        lbl_soTrang.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        lbl_soTrang.setPreferredSize(new java.awt.Dimension(45, 45));
+        pnl_left.add(lbl_soTrang);
+
+        btn_next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartNext.png"))); // NOI18N
+        btn_next.setToolTipText("Trang kế");
+        btn_next.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_next.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btn_next.setIconTextGap(10);
+        btn_next.setPreferredSize(new java.awt.Dimension(45, 45));
+        btn_next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_nextActionPerformed(evt);
+            }
+        });
+        pnl_left.add(btn_next);
+        pnl_left.add(filler8);
+        pnl_left.add(filler3);
+
+        pnl_danhSach.add(pnl_left, java.awt.BorderLayout.PAGE_END);
+
         add(pnl_danhSach, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_timKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_timKiemActionPerformed
         // TODO add your handling code here:
-        
-        String cauHinh = txa_headerCauHinh.getText();
-        if(!Pattern.matches("(.*:.*;)*", cauHinh)){  
-            JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
-            txa_cauHinh.selectAll();
-            txa_cauHinh.requestFocus();
-        }
-        else {
-            ArrayList<SanPham> ds = new ArrayList<>();
-            ds = sanPham_bus.searchTheoDieuKien(txt_search.getText().trim(), cmb_headerLoai.getSelectedItem().toString(), cmb_headerThuongHieu.getSelectedItem().toString(), cauHinh);
-            renderProductTable(ds);
-        }
+        search();
     }//GEN-LAST:event_btn_timKiemActionPerformed
-
-    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
-        // TODO add your handling code here:
-        searchTheoTen();
-    }//GEN-LAST:event_txt_searchKeyReleased
 
     private void btn_themActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_themActionPerformed
         // TODO add your handling code here:
@@ -634,7 +671,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 int loai = sanPham_bus.loaiParseInt(cmb_loaiSP.getSelectedItem().toString());
                 double VAT = Double.parseDouble(txt_vat.getText().trim()) ;
                 int soThangBaoHanh = Integer.parseInt(txt_baoHanh.getText().trim()) ;
-                String cauHinh = txa_cauHinh.getText().trim();
+                String cauHinh = txa_cauHinh.getText().replace(";\n", "; ").trim();
                 try {
                     if (thuongHieu_bus.timMaThuongHieuTheoToString(thuongHieu) == null) {
                        ThuongHieu th = thuongHieu_bus.taoThuongHieu(thuongHieu);
@@ -662,14 +699,47 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         txa_headerCauHinh.setText("");
         cmb_headerLoai.setSelectedIndex(0);
         cmb_headerThuongHieu.setSelectedIndex(0);
-        renderAll();
+        renderPage();
     }//GEN-LAST:event_btn_resetActionPerformed
+
+    private void btn_prevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_prevActionPerformed
+        if (page > 1) {
+            page--;
+            renderPage();
+        }
+    }//GEN-LAST:event_btn_prevActionPerformed
+
+    private void btn_nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nextActionPerformed
+        if (page < sanPham_bus.getSoTrangMax()) {
+            page++;
+            renderPage();
+        }
+    }//GEN-LAST:event_btn_nextActionPerformed
+
+    private void txt_giamGiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_giamGiaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_giamGiaActionPerformed
+
     
-    public void searchTheoTen() {
-        String input = txt_search.getText().trim();
-        if (input.length() > 0) {
-            ArrayList<SanPham> list = sanPham_bus.timSanPhamTheoTen(input);
-            renderProductTable(list);
+    public void search() {
+        String tenSP = txt_search.getText().trim();
+        String loaiSP = cmb_headerLoai.getSelectedItem().toString();
+        String thuongHieuSP = cmb_headerThuongHieu.getSelectedItem().toString();
+        String cauHinh = txa_headerCauHinh.getText().trim().replace("\n", " ");
+        
+        if (tenSP.length()==0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length() == 0) {
+            page = 1;
+            renderPage();
+        }
+        else if(!Pattern.matches("((\\p{L}+\\s*)*:\\s*.*;)*", cauHinh)) {
+            JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
+                txa_cauHinh.selectAll();
+                txa_cauHinh.requestFocus();
+        }
+        else {
+            ArrayList<SanPham> ds = sanPham_bus.searchTheoDieuKien(tenSP, loaiSP, thuongHieuSP, cauHinh);
+            lbl_soTrang.setText("");
+            renderProductTable(ds);
         }
     }
     
@@ -718,7 +788,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         String strGiamGia = txt_giamGia.getText().trim();
         String strVat = txt_vat.getText().trim();
         String strSoThang = txt_baoHanh.getText().trim();
-        String cauHinh = txa_cauHinh.getText().trim();
+        String cauHinh = txa_cauHinh.getText().replace(";\n", "; ").trim();
          if (tenSP.length() == 0) {
             showMessageFocus("Vui lòng nhập tên sản phẩm", txt_tenSP);
             return false;
@@ -754,7 +824,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
             return false;
         }
         
-        if(!Pattern.matches("^((.*)+:(.*)+;)+$", cauHinh)){  
+        if(!Pattern.matches("((\\p{L}+\\s*)*:\\s.+;)+", cauHinh)){  
             JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
             txa_cauHinh.selectAll();
             txa_cauHinh.requestFocus();
@@ -793,6 +863,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_next;
+    private javax.swing.JButton btn_prev;
     private javax.swing.JButton btn_reset;
     private javax.swing.JButton btn_sua;
     private javax.swing.JButton btn_them;
@@ -801,9 +873,13 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cmb_headerLoai;
     private javax.swing.JComboBox<String> cmb_headerThuongHieu;
     private javax.swing.JComboBox<String> cmb_loaiSP;
+    private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
+    private javax.swing.Box.Filler filler9;
     private javax.swing.JLabel lbl_baoHanh;
     private javax.swing.JLabel lbl_cauHinh;
     private javax.swing.JLabel lbl_giaBan;
@@ -815,6 +891,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_headerTen;
     private javax.swing.JLabel lbl_loaiSP;
     private javax.swing.JLabel lbl_maSanPham;
+    private javax.swing.JLabel lbl_soTrang;
     private javax.swing.JLabel lbl_tenSP;
     private javax.swing.JLabel lbl_thuongHieu;
     private javax.swing.JLabel lbl_vat;
@@ -832,6 +909,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_headerOption;
     private javax.swing.JPanel pnl_headerSearch;
     private javax.swing.JPanel pnl_headerTH;
+    private javax.swing.JPanel pnl_left;
     private javax.swing.JPanel pnl_loaiSP;
     private javax.swing.JPanel pnl_maSanPham;
     private javax.swing.JPanel pnl_nutQuanLy;
