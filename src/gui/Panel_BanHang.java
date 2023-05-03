@@ -571,11 +571,6 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
         txt_tienKhachDua1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         txt_tienKhachDua1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        txt_tienKhachDua1.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_tienKhachDua1FocusLost(evt);
-            }
-        });
         txt_tienKhachDua1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_tienKhachDua1KeyPressed(evt);
@@ -878,19 +873,20 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_txt_searchFocusLost
 
     private void cmb_phuongThucThanhToanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_phuongThucThanhToanItemStateChanged
-        
-        txt_tienKhachDua1.setEnabled(cmb_phuongThucThanhToan.getSelectedItem().toString().equalsIgnoreCase("Tiền mặt"));
-        txt_tienKhachDua1.setText("");
-        txt_tienThoi.setText("");
+        if (cmb_phuongThucThanhToan.getSelectedItem().toString().equalsIgnoreCase("Tiền mặt")) {
+            txt_tienKhachDua1.setEnabled(true);
+            txt_tienKhachDua1.setText("");
+            txt_tienThoi.setText("");
+        } else {
+            txt_tienKhachDua1.setEnabled(false);
+            txt_tienKhachDua1.setText(subTotal+"");
+            txt_tienThoi.setText("0");
+        }
     }//GEN-LAST:event_cmb_phuongThucThanhToanItemStateChanged
-
-    private void txt_tienKhachDua1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_tienKhachDua1FocusLost
-       handleTienKhachDua();
-    }//GEN-LAST:event_txt_tienKhachDua1FocusLost
 
     private void txt_tienKhachDua1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_tienKhachDua1KeyPressed
         if (evt.getKeyCode() == 10)
-        handleTienKhachDua();
+            handleTienKhachDua();
     }//GEN-LAST:event_txt_tienKhachDua1KeyPressed
 
     public void handleTienKhachDua() {
