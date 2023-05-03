@@ -888,11 +888,22 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
     private void btn_capNhatMKNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_capNhatMKNVActionPerformed
         // TODO add your handling code here:
         String soTK = JOptionPane.showInputDialog(this, "Nhập số tài khoản cần đổi mật khẩu !");
+        if(soTK==null)
+        {
+            return;
+        }
         if(soTK.trim().length()<=0){
             JOptionPane.showMessageDialog(this, "Số tài khoản không được rỗng!");
             return;
         }
         String mk = JOptionPane.showInputDialog(this, "Nhập mật khấu mới !");
+        if(mk==null){
+            return;
+        }
+        if(mk.trim().length()<=0)
+        {
+            JOptionPane.showMessageDialog(this, "Mật khẩu không được rỗng !");
+        }
         TaiKhoan_bus TK_bus = new TaiKhoan_bus();
         TaiKhoan taiKhoan;
         try {
