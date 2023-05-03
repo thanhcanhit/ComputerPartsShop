@@ -727,12 +727,16 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         String thuongHieuSP = cmb_headerThuongHieu.getSelectedItem().toString();
         String cauHinh = txa_headerCauHinh.getText().trim().replace("\n", "");
         
+        String namString = "Nguyễn Xuân Nảm";
+        System.out.println(namString);
+        System.out.println(cauHinh);
         if (tenSP.length()==0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length()==0) {
             page = 1;
             renderPage();
         }
-//        else if(!Pattern.matches("((\\p{L}+\\s*)*:\\s*.*;)*", cauHinh)) {
-        else if(!Pattern.matches("(.*:\\s.+;)*", cauHinh)){
+//        else if(!Pattern.matches("(([\p{L}\p{Mn}\p{Pd}\p{Pc}\\ạăằẳẵặâầấẩẫậđéèẻẽẹêềếểễệíìỉĩịóòỏõọôồốổỗộơờớởỡợúùủũụưừứửữựýỳỷỹỵ]+):\\s[^;]*;)*", cauHinh)) {
+        else if(!Pattern.matches("((\\p{L}+\\s*)*:\\s*.*;)*", cauHinh)) {
+            System.out.println(cauHinh);
             JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
                 txa_cauHinh.selectAll();
                 txa_cauHinh.requestFocus();
@@ -827,7 +831,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         
 //        if(!Pattern.matches("((\\p{L}+\\s*)*:\\s.+;)+", cauHinh)){  
         if(!Pattern.matches("(.*:\\s.+;)+", cauHinh)){
-            JOptionPane.showMessageDialog(this, "Hãy điền thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
+            JOptionPane.showMessageDialog(this, " Thuộc tính: dữ liệu;");
             txa_cauHinh.selectAll();
             txa_cauHinh.requestFocus();
             return false;
