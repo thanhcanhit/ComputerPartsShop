@@ -4,7 +4,6 @@
  */
 package gui;
 
-
 import bus.SanPham_bus;
 import bus.ThuongHieu_bus;
 import java.awt.Color;
@@ -35,8 +34,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private ThuongHieu_bus thuongHieu_bus = new ThuongHieu_bus();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
-    
     private int page = 1;
+
     /**
      * Creates new form Panel_QuanLySanPham
      */
@@ -62,7 +61,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 txt_vat.setText(Double.toString(sanPham.getVAT()));
                 txt_baoHanh.setText(Integer.toString(sanPham.getSoThangBaoHanh()));
                 cmb_loaiSP.setSelectedItem(sanPham.getTenLoai());
-                
+
                 txa_cauHinh.setText(sanPham.getCauHinh().replace("; ", ";\n"));
 
             }
@@ -103,13 +102,13 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_products.getColumnModel().getColumn(8).setPreferredWidth(65);
         tbl_products.getColumnModel().getColumn(9).setPreferredWidth(500);
     }
-    
+
     public void renderAll() {
         ArrayList<SanPham> list = sanPham_bus.getAllSanPham();
         renderProductTable(list);
     }
-    
-        public void renderPage() {
+
+    public void renderPage() {
         if (lbl_soTrang != null) {
             lbl_soTrang.setText(page + "/" + sanPham_bus.getSoTrangMax());
         }
@@ -625,15 +624,15 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
             String maSP = sanPham_bus.sinhMa();
             String tenSP = txt_tenSP.getText().trim();
             String thuongHieu = txt_thuongHieu.getText().trim();
-            double giaNhap = Double.parseDouble(txt_giaNhap.getText().trim()) ;
+            double giaNhap = Double.parseDouble(txt_giaNhap.getText().trim());
             double giamGia = Double.parseDouble(txt_giamGia.getText().trim());
-            int loai = sanPham_bus.loaiParseInt(cmb_loaiSP.getSelectedItem().toString());    
-            double VAT = Double.parseDouble(txt_vat.getText().trim()) ;
-            int soThangBaoHanh = Integer.parseInt(txt_baoHanh.getText().trim()) ;
+            int loai = sanPham_bus.loaiParseInt(cmb_loaiSP.getSelectedItem().toString());
+            double VAT = Double.parseDouble(txt_vat.getText().trim());
+            int soThangBaoHanh = Integer.parseInt(txt_baoHanh.getText().trim());
             String cauHinh = txa_cauHinh.getText().trim();
             try {
                 if (thuongHieu_bus.timMaThuongHieuTheoToString(thuongHieu) == null) {
-                   ThuongHieu th = thuongHieu_bus.taoThuongHieu(thuongHieu);
+                    ThuongHieu th = thuongHieu_bus.taoThuongHieu(thuongHieu);
                 }
                 ThuongHieu TH = thuongHieu_bus.getThuongHieuTheoMa(thuongHieu_bus.timMaThuongHieuTheoToString(thuongHieu)).get(0);
 
@@ -646,35 +645,35 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 }
             } catch (Exception ex) {
                 Logger.getLogger(Panel_QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         }
         renderAll();
     }//GEN-LAST:event_btn_themActionPerformed
-        
+
     private void btn_xoaTrangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_xoaTrangActionPerformed
         // TODO add your handling code here:
         xoaTrang();
     }//GEN-LAST:event_btn_xoaTrangActionPerformed
-    
+
     private void btn_suaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_suaActionPerformed
         // TODO add your handling code here:
-         if (tieuChuanSua()) {
+        if (tieuChuanSua()) {
             String maSP = txt_maSanPham.getText();
-            if (maSP.length() == 0  ) {
+            if (maSP.length() == 0) {
                 showMessageFocus("Chưa có mã sản phẩm", txt_maSanPham);
-            }else{
-                
+            } else {
+
                 String tenSP = txt_tenSP.getText().trim();
                 String thuongHieu = txt_thuongHieu.getText().trim();
-                double giaNhap = Double.parseDouble(txt_giaNhap.getText().trim()) ;
-                double giamGia = Double.parseDouble(txt_giamGia.getText().trim()) ;
+                double giaNhap = Double.parseDouble(txt_giaNhap.getText().trim());
+                double giamGia = Double.parseDouble(txt_giamGia.getText().trim());
                 int loai = sanPham_bus.loaiParseInt(cmb_loaiSP.getSelectedItem().toString());
-                double VAT = Double.parseDouble(txt_vat.getText().trim()) ;
-                int soThangBaoHanh = Integer.parseInt(txt_baoHanh.getText().trim()) ;
+                double VAT = Double.parseDouble(txt_vat.getText().trim());
+                int soThangBaoHanh = Integer.parseInt(txt_baoHanh.getText().trim());
                 String cauHinh = txa_cauHinh.getText().replace(";\n", "; ").trim();
                 try {
                     if (thuongHieu_bus.timMaThuongHieuTheoToString(thuongHieu) == null) {
-                       ThuongHieu th = thuongHieu_bus.taoThuongHieu(thuongHieu);
+                        ThuongHieu th = thuongHieu_bus.taoThuongHieu(thuongHieu);
                     }
                     ThuongHieu TH = thuongHieu_bus.getThuongHieuTheoMa(thuongHieu_bus.timMaThuongHieuTheoToString(thuongHieu)).get(0);
 
@@ -689,7 +688,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                     Logger.getLogger(Panel_QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
+
         }
         renderAll();
     }//GEN-LAST:event_btn_suaActionPerformed
@@ -720,40 +719,33 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_giamGiaActionPerformed
 
-    
     public void search() {
         String tenSP = txt_search.getText().trim();
         String loaiSP = cmb_headerLoai.getSelectedItem().toString();
         String thuongHieuSP = cmb_headerThuongHieu.getSelectedItem().toString();
         String cauHinh = txa_headerCauHinh.getText().trim().replace("\n", "");
-        
-        String namString = "Nguyễn Xuân Nảm";
-        System.out.println(namString);
+
         System.out.println(cauHinh);
-        if (tenSP.length()==0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length()==0) {
+        if (tenSP.length() == 0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length() == 0) {
             page = 1;
             renderPage();
-        }
-//        else if(!Pattern.matches("(([\p{L}\p{Mn}\p{Pd}\p{Pc}\\ạăằẳẵặâầấẩẫậđéèẻẽẹêềếểễệíìỉĩịóòỏõọôồốổỗộơờớởỡợúùủũụưừứửữựýỳỷỹỵ]+):\\s[^;]*;)*", cauHinh)) {
-        else if(!Pattern.matches("((\\p{L}+\\s*)*:\\s*.*;)*", cauHinh)) {
-            System.out.println(cauHinh);
-            JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
-                txa_cauHinh.selectAll();
-                txa_cauHinh.requestFocus();
-        }
-        else {
+        } else if (!Pattern.matches(".*(\\p{L}*\\s*:\\s*\\p{L}*;)*", cauHinh)) {
+            JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: giá trị;");
+            txa_cauHinh.selectAll();
+            txa_cauHinh.requestFocus();
+        } else {
             ArrayList<SanPham> ds = sanPham_bus.searchTheoDieuKien(tenSP, loaiSP, thuongHieuSP, cauHinh);
             lbl_soTrang.setText("");
             renderProductTable(ds);
         }
     }
-    
+
     private void showMessageFocus(String msg, JTextField txt) {
         JOptionPane.showMessageDialog(this, msg);
         txt.selectAll();
         txt.requestFocus();
     }
-    
+
     private void xoaTrang() {
         txt_maSanPham.setText("");
         txt_tenSP.setText("");
@@ -767,16 +759,16 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         txa_cauHinh.setText("");
 
     }
-    
+
     private boolean tieuChuanThem() {
         String maSP = txt_maSanPham.getText();
         if (maSP.length() > 0) {
             showMessageFocus("Mã sản phẩm đã tồn tại", txt_maSanPham);
-            return false;    
+            return false;
         }
         return tieuChuanChung();
     }
-    
+
     private boolean tieuChuanSua() {
         String maSP = txt_maSanPham.getText();
         if (maSP.length() == 0) {
@@ -785,7 +777,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         }
         return tieuChuanChung();
     }
-    
+
     private boolean tieuChuanChung() {
         String tenSP = txt_tenSP.getText().trim();
         String thuongHieu = txt_thuongHieu.getText().trim();
@@ -794,7 +786,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         String strVat = txt_vat.getText().trim();
         String strSoThang = txt_baoHanh.getText().trim();
         String cauHinh = txa_cauHinh.getText().replace(";\n", "; ").trim();
-         if (tenSP.length() == 0) {
+        if (tenSP.length() == 0) {
             showMessageFocus("Vui lòng nhập tên sản phẩm", txt_tenSP);
             return false;
         } else if (thuongHieu.length() == 0) {
@@ -803,61 +795,55 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         } else if (strGiaNhap.length() <= 0) {
             showMessageFocus("Vui lòng nhập giá nhập", txt_giaNhap);
             return false;
-        }
-        else if(strGiamGia.length()<=0){
+        } else if (strGiamGia.length() <= 0) {
             showMessageFocus("Vui lòng nhập giá giảm", txt_giamGia);
             return false;
-        }
-        
-        else if(strVat.length()<=0){
+        } else if (strVat.length() <= 0) {
             showMessageFocus("Vui lòng nhập giá trị VAT", txt_vat);
             return false;
-        }
-
-        else if(strSoThang.length()<=0){
+        } else if (strSoThang.length() <= 0) {
             showMessageFocus("Vui lòng nhập số tháng bảo hành", txt_baoHanh);
             return false;
-        }
-        else if(cauHinh.length()<=0){
+        } else if (cauHinh.length() <= 0) {
             showMessageFocus("Vui lòng nhập cấu hình sản phẩm", txt_tenSP);
             return false;
         }
-        
-        if(!Pattern.matches("^(\\p{L}+-*\\p{L}+\\s*)+-(\\s*\\p{L}+)+$", thuongHieu)){
-            
+
+        if (!Pattern.matches("^(\\p{L}+-*\\p{L}+\\s*)+-(\\s*\\p{L}+)+$", thuongHieu)) {
+
             showMessageFocus("Hãy nhập dưới dạng:\n Thương hiệu - Quốc gia", txt_thuongHieu);
             return false;
         }
-        
+
 //        if(!Pattern.matches("((\\p{L}+\\s*)*:\\s.+;)+", cauHinh)){  
-        if(!Pattern.matches("(.*:\\s.+;)+", cauHinh)){
+        if (!Pattern.matches("(.*:\\s.+;)+", cauHinh)) {
             JOptionPane.showMessageDialog(this, " Thuộc tính: dữ liệu;");
             txa_cauHinh.selectAll();
             txa_cauHinh.requestFocus();
             return false;
         }
-        
+
         try {
             Double.parseDouble(strGiaNhap);
         } catch (Exception e) {
             showMessageFocus("Giá nhập không hợp lệ", txt_giaNhap);
             return false;
         }
-        
+
         try {
             Double.parseDouble(strGiamGia);
         } catch (Exception e) {
-             showMessageFocus("Giảm giá không hợp lệ", txt_giamGia);
+            showMessageFocus("Giảm giá không hợp lệ", txt_giamGia);
             return false;
         }
-        
+
         try {
             Double.parseDouble(strVat);
         } catch (Exception e) {
             showMessageFocus("Giá trị VAT không hợp lệ", txt_vat);
             return false;
         }
-        
+
         try {
             Integer.parseInt(strSoThang);
         } catch (Exception e) {
@@ -865,7 +851,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
             return false;
         }
         return true;
-     }
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
