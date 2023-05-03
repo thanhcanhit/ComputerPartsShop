@@ -44,7 +44,6 @@ public final class Panel_BanHang extends javax.swing.JPanel {
     private DefaultTableModel tblModel_product;
     private DefaultTableModel tblModel_carts;
     private ArrayList<ChiTietHoaDon> gioHang = new ArrayList<>();
-    NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
     // variable
     private int page = 1;
@@ -160,7 +159,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
                 continue;
             }
 
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, Math.round(sp.getGiamGia()) + "%", vnd.format(sp.getGiaBan())};
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), sp.getTenLoai(), th.get(0).toString(), soLuong, Math.round(sp.getGiamGia()) + "%", Utility.getVND(sp.getGiaBan())};
             tblModel_product.addRow(row);
         }
     }
@@ -173,7 +172,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             tblModel_carts.addRow(new Object[]{sp.getSanPham().getMaSP(), sp.getSanPham().getTenSP(), sp.getSoLuong(), Utility.getVND(sp.getGiaBan()), Utility.getVND(sp.getSoLuong() * sp.getGiaBan())});
             subTotal += sp.getGiaBan() * sp.getSoLuong();
         }
-        txt_thanhTien.setText(vnd.format(subTotal));
+        txt_thanhTien.setText(Utility.getVND(subTotal));
     }
 
     /**
@@ -879,7 +878,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
             txt_tienThoi.setText("");
         } else {
             txt_tienKhachDua1.setEnabled(false);
-            txt_tienKhachDua1.setText(subTotal+"");
+            txt_tienKhachDua1.setText(NumberFormat.getInstance().format(subTotal));
             txt_tienThoi.setText("0");
         }
     }//GEN-LAST:event_cmb_phuongThucThanhToanItemStateChanged
