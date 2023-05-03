@@ -732,7 +732,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
             renderPage();
         }
 //        else if(!Pattern.matches("((\\p{L}+\\s*)*:\\s*.*;)*", cauHinh)) {
-        else if(!Pattern.matches("(.*:\\s.+;)+", cauHinh)){
+        else if(!Pattern.matches("(.*:\\s.+;)*", cauHinh)){
             JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: dữ liệu;");
                 txa_cauHinh.selectAll();
                 txa_cauHinh.requestFocus();
