@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DiaChi_bus;
+import bus.DiaChi_bus;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import model.share.DiaChi;
+import entity.share.DiaChi;
 
 /**
  *
@@ -79,7 +79,6 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/location.png")).getImage());
-        setPreferredSize(new java.awt.Dimension(500, 250));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);

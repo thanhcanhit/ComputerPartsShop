@@ -5,7 +5,7 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.connguoi.KhachHang;
+import entity.connguoi.KhachHang;
 
 /**
  *

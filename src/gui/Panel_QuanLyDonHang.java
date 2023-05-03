@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DonNhapHang_bus;
-import controller.HoaDon_bus;
-import controller.KhachHang_bus;
-import controller.NhaCungCap_bus;
-import controller.NhanVien_bus;
-import controller.SanPham_bus;
-import controller.ThuongHieu_bus;
+import bus.DonNhapHang_bus;
+import bus.HoaDon_bus;
+import bus.KhachHang_bus;
+import bus.NhaCungCap_bus;
+import bus.NhanVien_bus;
+import bus.SanPham_bus;
+import bus.ThuongHieu_bus;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
@@ -24,17 +24,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import model.connguoi.KhachHang;
-import model.connguoi.NhaCungCap;
-import model.connguoi.NhanVien;
-import model.hoadon.ChiTietHoaDon;
-import model.hoadon.HoaDon;
-import model.kho.ChiTietDonNhap;
-import model.kho.DonNhapHang;
-import model.kho.KhoHang;
-import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
-import model.share.Utility;
+import entity.connguoi.KhachHang;
+import entity.connguoi.NhaCungCap;
+import entity.connguoi.NhanVien;
+import entity.hoadon.ChiTietHoaDon;
+import entity.hoadon.HoaDon;
+import entity.kho.ChiTietDonNhap;
+import entity.kho.DonNhapHang;
+import entity.kho.KhoHang;
+import entity.sanpham.SanPham;
+import entity.sanpham.ThuongHieu;
+import entity.share.Utility;
 
 /**
  *

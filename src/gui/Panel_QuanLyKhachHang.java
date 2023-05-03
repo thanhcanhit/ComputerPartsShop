@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DiaChi_bus;
-import controller.KhachHang_bus;
+import bus.DiaChi_bus;
+import bus.KhachHang_bus;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import javax.swing.table.DefaultTableModel;
-import model.connguoi.KhachHang;
-import model.share.DiaChi;
+import entity.connguoi.KhachHang;
+import entity.share.DiaChi;
 
 /**
  *

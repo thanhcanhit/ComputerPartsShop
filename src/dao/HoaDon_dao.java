@@ -4,18 +4,18 @@
  */
 package dao;
 
-import controller.KhachHang_bus;
+import bus.KhachHang_bus;
 import interface_dao.HoaDonInterface;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import model.connguoi.KhachHang;
-import model.connguoi.NhanVien;
-import model.hoadon.HoaDon;
-import model.share.ConnectDB;
+import entity.connguoi.KhachHang;
+import entity.connguoi.NhanVien;
+import entity.hoadon.HoaDon;
+import entity.share.ConnectDB;
 import java.sql.*;
-import model.hoadon.ChiTietHoaDon;
+import entity.hoadon.ChiTietHoaDon;
 
 /**
  *

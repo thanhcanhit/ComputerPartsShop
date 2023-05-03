@@ -2,7 +2,7 @@ package interface_dao;
 
 
 import java.util.ArrayList;
-import model.sanpham.SanPham;
+import entity.sanpham.SanPham;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

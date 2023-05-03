@@ -6,9 +6,9 @@ package dao;
 
 import interface_dao.TaiKhoanInterface;
 import java.util.ArrayList;
-import model.connguoi.TaiKhoan;
+import entity.connguoi.TaiKhoan;
 import java.sql.*;
-import model.share.ConnectDB;
+import entity.share.ConnectDB;
 
 /**
  *

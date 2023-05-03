@@ -1,12 +1,12 @@
-package controller;
+package bus;
 
 import dao.SanPham_dao;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
-import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
-import model.share.ConnectDB;
-import model.share.Utility;
+import entity.sanpham.SanPham;
+import entity.sanpham.ThuongHieu;
+import entity.share.ConnectDB;
+import entity.share.Utility;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

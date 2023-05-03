@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.KhachHang_dao;
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
-import model.connguoi.KhachHang;
-import model.share.DiaChi;
-import model.share.Utility;
+import entity.connguoi.KhachHang;
+import entity.share.DiaChi;
+import entity.share.Utility;
 
 /**
  *

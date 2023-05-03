@@ -6,14 +6,14 @@ package dao;
 
 import interface_dao.DonNhapHangInterface;
 import java.util.ArrayList;
-import model.kho.DonNhapHang;
+import entity.kho.DonNhapHang;
 import java.sql.*;
 import java.time.LocalDate;
-import model.connguoi.NhaCungCap;
-import model.connguoi.NhanVien;
-import model.kho.ChiTietDonNhap;
-import model.kho.KhoHang;
-import model.share.ConnectDB;
+import entity.connguoi.NhaCungCap;
+import entity.connguoi.NhanVien;
+import entity.kho.ChiTietDonNhap;
+import entity.kho.KhoHang;
+import entity.share.ConnectDB;
 
 /**
  *

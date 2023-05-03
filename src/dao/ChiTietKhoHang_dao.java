@@ -8,10 +8,10 @@ import interface_dao.ChiTietKhoHangInterface;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.kho.ChiTietKhoHang;
-import model.kho.KhoHang;
-import model.sanpham.SanPham;
-import model.share.ConnectDB;
+import entity.kho.ChiTietKhoHang;
+import entity.kho.KhoHang;
+import entity.sanpham.SanPham;
+import entity.share.ConnectDB;
 import java.sql.*;
 
 /**

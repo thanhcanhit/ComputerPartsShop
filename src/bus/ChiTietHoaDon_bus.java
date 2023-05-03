@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import interface_dao.ChiTietHoaDonInterface;
 import java.util.ArrayList;
-import model.hoadon.ChiTietHoaDon;
+import entity.hoadon.ChiTietHoaDon;
 
 /**
  *

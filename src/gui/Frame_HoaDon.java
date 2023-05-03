@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DiaChi_bus;
-import controller.KhachHang_bus;
-import controller.NhanVien_bus;
-import controller.SanPham_bus;
-import model.connguoi.KhachHang;
-import model.connguoi.NhanVien;
-import model.hoadon.ChiTietHoaDon;
-import model.hoadon.HoaDon;
-import model.sanpham.SanPham;
-import model.share.DiaChi;
-import model.share.Utility;
+import bus.DiaChi_bus;
+import bus.KhachHang_bus;
+import bus.NhanVien_bus;
+import bus.SanPham_bus;
+import entity.connguoi.KhachHang;
+import entity.connguoi.NhanVien;
+import entity.hoadon.ChiTietHoaDon;
+import entity.hoadon.HoaDon;
+import entity.sanpham.SanPham;
+import entity.share.DiaChi;
+import entity.share.Utility;
 
 /**
  *
@@ -82,7 +82,6 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         setTitle("Hóa đơn");
         setBackground(new java.awt.Color(255, 255, 255));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
-        setPreferredSize(new java.awt.Dimension(500, 800));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 

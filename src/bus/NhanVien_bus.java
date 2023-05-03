@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.NhanVien_dao;
 import interface_dao.NhanVienInterface;
 import java.util.ArrayList;
-import model.connguoi.NhanVien;
-import model.share.ConnectDB;
-import model.share.Utility;
+import entity.connguoi.NhanVien;
+import entity.share.ConnectDB;
+import entity.share.Utility;
 
 /**
  *

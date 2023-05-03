@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.ThongKe_dao;
 import interface_dao.ThongKeInterface;
 import java.util.ArrayList;
-import model.sanpham.SanPham;
+import entity.sanpham.SanPham;
 
 /**
  *

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
 
-import controller.ThongKe_bus;
+import bus.ThongKe_bus;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -24,8 +24,8 @@ import javax.swing.JLabel;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import model.sanpham.SanPham;
-import model.share.Utility;
+import entity.sanpham.SanPham;
+import entity.share.Utility;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -308,6 +308,8 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1000, 700));
         setLayout(new java.awt.BorderLayout());
 
+        tab_thongKe.setBackground(new java.awt.Color(255, 255, 255));
+
         pnl_thongKeSanPham.setLayout(new java.awt.BorderLayout());
 
         pnl_header.setBackground(new java.awt.Color(255, 255, 255));
@@ -319,7 +321,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         pnl_control.setLayout(new javax.swing.BoxLayout(pnl_control, javax.swing.BoxLayout.LINE_AXIS));
         pnl_control.add(filler3);
 
-        lbl_thang.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lbl_thang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_thang.setText("Thống kê theo : ");
         lbl_thang.setMaximumSize(new java.awt.Dimension(152, 40));
         pnl_control.add(lbl_thang);
@@ -346,7 +348,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         pnl_header.add(pnl_control, java.awt.BorderLayout.NORTH);
 
         pnl_topItem.setBackground(new java.awt.Color(255, 255, 255));
-        pnl_topItem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Top sản phẩm bán chạy trong tháng : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
+        pnl_topItem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Top 3 sản phẩm có số lượng bán cao nhất trong tháng : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(65, 165, 238))); // NOI18N
         pnl_topItem.setLayout(new javax.swing.BoxLayout(pnl_topItem, javax.swing.BoxLayout.Y_AXIS));
 
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
@@ -383,7 +385,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         pnl_control1.setLayout(new javax.swing.BoxLayout(pnl_control1, javax.swing.BoxLayout.LINE_AXIS));
         pnl_control1.add(filler4);
 
-        lbl_thang1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        lbl_thang1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lbl_thang1.setText("Thống kê theo : ");
         lbl_thang1.setMaximumSize(new java.awt.Dimension(152, 40));
         pnl_control1.add(lbl_thang1);

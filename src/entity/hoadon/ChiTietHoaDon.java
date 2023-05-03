@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model.hoadon;
+package entity.hoadon;
 
 
 import java.util.Objects;
-import model.sanpham.SanPham;
+import entity.sanpham.SanPham;
 
 /**
  *

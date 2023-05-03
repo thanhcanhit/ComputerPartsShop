@@ -6,11 +6,11 @@ package dao;
 
 import interface_dao.ChiTietHoaDonInterface;
 import java.util.ArrayList;
-import model.hoadon.ChiTietHoaDon;
+import entity.hoadon.ChiTietHoaDon;
 import java.sql.*;
-import model.hoadon.HoaDon;
-import model.sanpham.SanPham;
-import model.share.ConnectDB;
+import entity.hoadon.HoaDon;
+import entity.sanpham.SanPham;
+import entity.share.ConnectDB;
 
 /**
  *

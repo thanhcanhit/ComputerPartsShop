@@ -1,4 +1,4 @@
-package model.sanpham;
+package entity.sanpham;
 
 import java.util.Objects;
 

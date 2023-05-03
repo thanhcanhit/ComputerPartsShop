@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.ThuongHieu_dao;
 import interface_dao.ThuongHieuInterface;
 import java.nio.file.FileSystemNotFoundException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.sanpham.ThuongHieu;
-import model.share.Utility;
+import entity.sanpham.ThuongHieu;
+import entity.share.Utility;
 
 /**
  *

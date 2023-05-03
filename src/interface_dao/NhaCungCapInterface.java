@@ -5,7 +5,7 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.connguoi.NhaCungCap;
+import entity.connguoi.NhaCungCap;
 
 /**
  *

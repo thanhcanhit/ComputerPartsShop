@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.DonNhapHang_dao;
 import interface_dao.DonNhapHangInterface;
 import java.util.ArrayList;
-import model.kho.DonNhapHang;
-import model.share.Utility;
+import entity.kho.DonNhapHang;
+import entity.share.Utility;
 
 /**
  *

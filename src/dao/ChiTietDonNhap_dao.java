@@ -6,11 +6,11 @@ package dao;
 
 import interface_dao.ChiTietDonNhapInterface;
 import java.util.ArrayList;
-import model.kho.ChiTietDonNhap;
+import entity.kho.ChiTietDonNhap;
 import java.sql.*;
-import model.kho.DonNhapHang;
-import model.sanpham.SanPham;
-import model.share.ConnectDB;
+import entity.kho.DonNhapHang;
+import entity.sanpham.SanPham;
+import entity.share.ConnectDB;
 
 /**
  *

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package gui;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import java.awt.CardLayout;
@@ -13,8 +13,8 @@ import java.awt.event.ComponentEvent;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import model.connguoi.NhanVien;
-import model.share.ConnectDB;
+import entity.connguoi.NhanVien;
+import entity.share.ConnectDB;
 
 /**
  *
@@ -167,6 +167,7 @@ public final class MainView extends javax.swing.JFrame {
         btn_login.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_login.setForeground(new java.awt.Color(65, 165, 238));
         btn_login.setText("Đăng nhập");
+        btn_login.setToolTipText("Đăng nhập vào ứng dụng");
         btn_login.setPreferredSize(new java.awt.Dimension(150, 30));
         btn_login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,7 +209,7 @@ public final class MainView extends javax.swing.JFrame {
 
         lbl_cart.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_cart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cart.png"))); // NOI18N
-        lbl_cart.setToolTipText("Đặt hàng");
+        lbl_cart.setToolTipText("Tạo hóa đơn");
         lbl_cart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_cart.setDisabledIcon(null);
         lbl_cart.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -277,7 +278,7 @@ public final class MainView extends javax.swing.JFrame {
 
         lbl_analystic.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_analystic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/analystic.png"))); // NOI18N
-        lbl_analystic.setToolTipText("Thống kê");
+        lbl_analystic.setToolTipText("Thống kê dữ liệu");
         lbl_analystic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_analystic.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         lbl_analystic.setMaximumSize(new java.awt.Dimension(70, 50));
@@ -346,7 +347,7 @@ public final class MainView extends javax.swing.JFrame {
 
         lbl_logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        lbl_logout.setToolTipText("Đăng xuất");
+        lbl_logout.setToolTipText("Đăng xuất khỏi ứng dụng");
         lbl_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lbl_logout.setDisabledIcon(null);
         lbl_logout.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

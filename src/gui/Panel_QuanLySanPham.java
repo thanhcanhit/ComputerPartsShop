@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
 
-import controller.SanPham_bus;
-import controller.ThuongHieu_bus;
+import bus.SanPham_bus;
+import bus.ThuongHieu_bus;
 import java.awt.Color;
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -20,8 +20,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
+import entity.sanpham.SanPham;
+import entity.sanpham.ThuongHieu;
 
 /**
  *
@@ -726,7 +726,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         String loaiSP = cmb_headerLoai.getSelectedItem().toString();
         String thuongHieuSP = cmb_headerThuongHieu.getSelectedItem().toString();
         String cauHinh = txa_headerCauHinh.getText().trim().replace("\n", " ");
-        
+
         if (tenSP.length()==0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length() == 0) {
             page = 1;
             renderPage();

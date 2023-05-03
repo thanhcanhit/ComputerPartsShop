@@ -5,7 +5,7 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.kho.DonNhapHang;
+import entity.kho.DonNhapHang;
 
 /**
  *

@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DiaChi_bus;
-import controller.NhanVien_bus;
-import controller.TaiKhoan_bus;
+import bus.DiaChi_bus;
+import bus.NhanVien_bus;
+import bus.TaiKhoan_bus;
 import java.awt.Color;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -23,9 +23,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import model.connguoi.NhanVien;
-import model.connguoi.TaiKhoan;
-import model.share.DiaChi;
+import entity.connguoi.NhanVien;
+import entity.connguoi.TaiKhoan;
+import entity.share.DiaChi;
 
 /**
  *
@@ -609,7 +609,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(lbl_namSinh, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_date, javax.swing.GroupLayout.PREFERRED_SIZE, 129, Short.MAX_VALUE)
+                .addComponent(txt_date, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbl_gioiTinh)
                 .addGap(8, 8, 8)

@@ -5,7 +5,7 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.hoadon.ChiTietHoaDon;
+import entity.hoadon.ChiTietHoaDon;
 
 /**
  *

@@ -2,18 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package gui;
 
-import controller.DiaChi_bus;
-import controller.HoaDon_bus;
-import controller.KhachHang_bus;
-import controller.KhoHang_bus;
-import controller.SanPham_bus;
-import controller.ThuongHieu_bus;
+import bus.DiaChi_bus;
+import bus.HoaDon_bus;
+import bus.KhachHang_bus;
+import bus.KhoHang_bus;
+import bus.SanPham_bus;
+import bus.ThuongHieu_bus;
 import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -26,15 +25,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.NumberFormatter;
-import model.connguoi.KhachHang;
-import model.connguoi.NhanVien;
-import model.hoadon.ChiTietHoaDon;
-import model.hoadon.HoaDon;
-import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
-import model.share.DiaChi;
-import model.share.Utility;
+import entity.connguoi.KhachHang;
+import entity.connguoi.NhanVien;
+import entity.hoadon.ChiTietHoaDon;
+import entity.hoadon.HoaDon;
+import entity.sanpham.SanPham;
+import entity.sanpham.ThuongHieu;
+import entity.share.DiaChi;
+import entity.share.Utility;
 
 /**
  *
@@ -897,17 +895,10 @@ public final class Panel_BanHang extends javax.swing.JPanel {
 
     public void handleTienKhachDua() {
         String s_khachDua = txt_tienKhachDua1.getText().trim();
-//        try {
-//            System.out.println("");
-//        } catch (ParseException ex) {
-//            Logger.getLogger(Panel_BanHang.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         if (!txt_thanhTien.getText().equals("")) {
 
             try {
-//                double khachDua = Double.parseDouble(s_khachDua);
                 double khachDua = NumberFormat.getInstance().parse(s_khachDua).doubleValue();
-                System.out.println(khachDua);
                 double tienThoi = khachDua - subTotal;
                 if (tienThoi < 0) {
                     showMessageFocus("Tiền khách ít hơn thành tiền", txt_tienKhachDua1);

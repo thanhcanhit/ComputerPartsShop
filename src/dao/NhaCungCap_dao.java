@@ -6,10 +6,10 @@ package dao;
 
 import interface_dao.NhaCungCapInterface;
 import java.util.ArrayList;
-import model.connguoi.NhaCungCap;
+import entity.connguoi.NhaCungCap;
 import java.sql.*;
-import model.share.ConnectDB;
-import model.share.DiaChi;
+import entity.share.ConnectDB;
+import entity.share.DiaChi;
 
 /**
  *

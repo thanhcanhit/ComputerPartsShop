@@ -8,8 +8,8 @@ import interface_dao.DiaChiInterface;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.share.ConnectDB;
-import model.share.DiaChi;
+import entity.share.ConnectDB;
+import entity.share.DiaChi;
 import java.sql.*;
 
 /**

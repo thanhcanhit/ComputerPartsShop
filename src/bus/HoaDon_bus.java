@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package bus;
 
 import dao.HoaDon_dao;
 import interface_dao.HoaDonInterface;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import model.connguoi.KhachHang;
-import model.hoadon.HoaDon;
-import model.share.Utility;
+import entity.connguoi.KhachHang;
+import entity.hoadon.HoaDon;
+import entity.share.Utility;
 
 /**
  *

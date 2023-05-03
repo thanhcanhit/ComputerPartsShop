@@ -4,14 +4,14 @@
  */
 package dao;
 
-import controller.NhanVien_bus;
+import bus.NhanVien_bus;
 import interface_dao.SanPhamInterface;
 import java.util.ArrayList;
-import model.sanpham.SanPham;
+import entity.sanpham.SanPham;
 import java.sql.*;
-import model.sanpham.ThuongHieu;
-import model.share.ConnectDB;
-import model.share.Utility;
+import entity.sanpham.ThuongHieu;
+import entity.share.ConnectDB;
+import entity.share.Utility;
 
 /**
  *

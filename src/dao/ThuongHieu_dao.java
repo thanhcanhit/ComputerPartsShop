@@ -7,9 +7,9 @@ package dao;
 import interface_dao.ThuongHieuInterface;
 import java.sql.*;
 import java.util.ArrayList;
-import model.sanpham.SanPham;
-import model.sanpham.ThuongHieu;
-import model.share.ConnectDB;
+import entity.sanpham.SanPham;
+import entity.sanpham.ThuongHieu;
+import entity.share.ConnectDB;
 
 /**
  *

@@ -7,9 +7,9 @@ package dao;
 import interface_dao.ThongKeInterface;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import model.sanpham.SanPham;
+import entity.sanpham.SanPham;
 import java.sql.*;
-import model.share.ConnectDB;
+import entity.share.ConnectDB;
 
 /**
  *

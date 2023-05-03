@@ -6,12 +6,12 @@ package dao;
 
 import interface_dao.NhanVienInterface;
 import java.util.ArrayList;
-import model.connguoi.NhanVien;
+import entity.connguoi.NhanVien;
 import java.sql.*;
 import java.time.LocalDate;
-import model.connguoi.TaiKhoan;
-import model.share.ConnectDB;
-import model.share.DiaChi;
+import entity.connguoi.TaiKhoan;
+import entity.share.ConnectDB;
+import entity.share.DiaChi;
 
 /**
  *

@@ -6,7 +6,7 @@ package interface_dao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import model.hoadon.HoaDon;
+import entity.hoadon.HoaDon;
 
 /**
  *

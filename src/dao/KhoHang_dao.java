@@ -6,11 +6,11 @@ package dao;
 
 import interface_dao.KhoHangInterface;
 import java.util.ArrayList;
-import model.kho.KhoHang;
+import entity.kho.KhoHang;
 import java.sql.*;
-import model.kho.ChiTietKhoHang;
-import model.share.ConnectDB;
-import model.share.DiaChi;
+import entity.kho.ChiTietKhoHang;
+import entity.share.ConnectDB;
+import entity.share.DiaChi;
 
 /**
  *

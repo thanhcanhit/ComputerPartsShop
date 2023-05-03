@@ -5,7 +5,7 @@
 package interface_dao;
 
 import java.util.ArrayList;
-import model.sanpham.ThuongHieu;
+import entity.sanpham.ThuongHieu;
 
 /**
  *

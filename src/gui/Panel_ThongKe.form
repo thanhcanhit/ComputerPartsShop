@@ -25,6 +25,11 @@
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
   <SubComponents>
     <Container class="javax.swing.JTabbedPane" name="tab_thongKe">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
           <BorderConstraints direction="Center"/>
@@ -97,7 +102,7 @@
                     <Component class="javax.swing.JLabel" name="lbl_thang">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                          <Font name="Helvetica Neue" size="14" style="1"/>
+                          <Font name="Segoe UI" size="14" style="1"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; theo : "/>
                         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -201,11 +206,11 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Top s&#x1ea3;n ph&#x1ea9;m b&#xe1;n ch&#x1ea1;y trong th&#xe1;ng : ">
+                        <TitledBorder title="Top 3 s&#x1ea3;n ph&#x1ea9;m c&#xf3; s&#x1ed1; l&#x1b0;&#x1ee3;ng b&#xe1;n cao nh&#x1ea5;t trong th&#xe1;ng : ">
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                             <EtchetBorder/>
                           </Border>
-                          <Font PropertyName="font" name="Helvetica Neue" size="14" style="1"/>
+                          <Font PropertyName="font" name="Segoe UI" size="14" style="1"/>
                           <Color PropertyName="color" blue="ee" green="a5" red="41" type="rgb"/>
                         </TitledBorder>
                       </Border>
@@ -338,7 +343,7 @@
                 <Component class="javax.swing.JLabel" name="lbl_thang1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Helvetica Neue" size="14" style="1"/>
+                      <Font name="Segoe UI" size="14" style="1"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea; theo : "/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view;
+package gui;
 
-import controller.NhanVien_bus;
-import controller.TaiKhoan_bus;
+import bus.NhanVien_bus;
+import bus.TaiKhoan_bus;
 import java.awt.HeadlessException;
 import javax.swing.JOptionPane;
-import model.connguoi.NhanVien;
+import entity.connguoi.NhanVien;
 
 /**
  *
@@ -61,7 +61,6 @@ public class Frame_DangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
-        setPreferredSize(new java.awt.Dimension(600, 320));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 

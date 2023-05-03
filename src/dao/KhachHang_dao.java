@@ -6,11 +6,11 @@ package dao;
 
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
-import model.connguoi.KhachHang;
-import model.share.ConnectDB;
+import entity.connguoi.KhachHang;
+import entity.share.ConnectDB;
 import java.sql.*;
 import java.time.LocalDate;
-import model.share.DiaChi;
+import entity.share.DiaChi;
 
 /**
  *
