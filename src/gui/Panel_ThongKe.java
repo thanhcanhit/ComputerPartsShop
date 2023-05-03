@@ -309,6 +309,9 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         setLayout(new java.awt.BorderLayout());
 
         tab_thongKe.setBackground(new java.awt.Color(255, 255, 255));
+        tab_thongKe.setForeground(new java.awt.Color(102, 102, 102));
+        tab_thongKe.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab_thongKe.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         pnl_thongKeSanPham.setLayout(new java.awt.BorderLayout());
 
@@ -412,6 +415,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
         tab_thongKe.addTab("Thống Kê Doanh Thu", pnl_thongKeDoanhThu);
 
         add(tab_thongKe, java.awt.BorderLayout.CENTER);
+        tab_thongKe.getAccessibleContext().setAccessibleName("Thống kê doanhThu");
     }// </editor-fold>//GEN-END:initComponents
 
 

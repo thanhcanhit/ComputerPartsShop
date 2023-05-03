@@ -82,6 +82,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         setTitle("Hóa đơn");
         setBackground(new java.awt.Color(255, 255, 255));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        setPreferredSize(new java.awt.Dimension(500, 800));
         setResizable(false);
         setType(java.awt.Window.Type.POPUP);
 

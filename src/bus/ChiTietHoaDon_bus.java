@@ -12,7 +12,7 @@ import entity.hoadon.ChiTietHoaDon;
  *
  * @author HP
  */
-public class ChiTietHoaDon_bus implements ChiTietHoaDonInterface{
+public class ChiTietHoaDon_bus implements ChiTietHoaDonInterface {
 
     @Override
     public boolean xoaChiTietHoaDon(String maHoaDon) {
@@ -28,5 +28,5 @@ public class ChiTietHoaDon_bus implements ChiTietHoaDonInterface{
     public boolean themChiTietHoaDon(ChiTietHoaDon ct) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

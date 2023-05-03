@@ -32,7 +32,6 @@ public class Panel_Home extends javax.swing.JPanel {
 //            newWidth = (int) (newHeight * ratio);
 //        }
 
-//        System.out.println(newWidth + " "  + newHeight);
         ImageIcon imageIcon = new ImageIcon(icon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_SMOOTH));
 
         lbl_img.setIcon(imageIcon);

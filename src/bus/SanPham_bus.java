@@ -98,7 +98,6 @@ public class SanPham_bus implements SanPhamInterface {
             for (SanPham sp : ds) {
                 for (String ctCauHinh : thanhPhanCauHinh) {
                     if (!sp.getCauHinh().toLowerCase().contains(ctCauHinh.toLowerCase().trim())) {
-                        System.out.println(sp.getCauHinh().toLowerCase() + " - " + ctCauHinh.toLowerCase().trim());
                         xoa.add(sp);
                         break;
                     }

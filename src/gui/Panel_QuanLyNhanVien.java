@@ -246,6 +246,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_timKiem.add(filler18);
 
         btn_reset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/banhang/cartReset.png"))); // NOI18N
+        btn_reset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_reset.setMaximumSize(new java.awt.Dimension(40, 40));
         btn_reset.setPreferredSize(new java.awt.Dimension(40, 40));
         btn_reset.addActionListener(new java.awt.event.ActionListener() {
@@ -637,9 +638,10 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         pnl_submit.setPreferredSize(new java.awt.Dimension(180, 70));
         pnl_submit.setLayout(new javax.swing.BoxLayout(pnl_submit, javax.swing.BoxLayout.LINE_AXIS));
 
-        btn_xoaTrang.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_xoaTrang.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         btn_xoaTrang.setForeground(new java.awt.Color(102, 102, 102));
-        btn_xoaTrang.setText("Clear");
+        btn_xoaTrang.setText("Xóa trắng");
+        btn_xoaTrang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(32767, 32767));
         btn_xoaTrang.setMinimumSize(new java.awt.Dimension(150, 40));
         btn_xoaTrang.setPreferredSize(new java.awt.Dimension(150, 70));

@@ -79,6 +79,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         setTitle("Địa chỉ");
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/location.png")).getImage());
+        setPreferredSize(new java.awt.Dimension(500, 250));
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
                 formComponentShown(evt);

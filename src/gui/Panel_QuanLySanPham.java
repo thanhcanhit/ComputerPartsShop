@@ -396,6 +396,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_nutQuanLy.setBackground(new java.awt.Color(255, 255, 255));
         pnl_nutQuanLy.setLayout(new java.awt.GridLayout(1, 0));
 
+        btn_them.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_them.setForeground(new java.awt.Color(102, 102, 102));
         btn_them.setText("Thêm");
         btn_them.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_them.setPreferredSize(new java.awt.Dimension(80, 32));
@@ -406,6 +408,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         });
         pnl_nutQuanLy.add(btn_them);
 
+        btn_sua.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_sua.setForeground(new java.awt.Color(102, 102, 102));
         btn_sua.setText("Sửa");
         btn_sua.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_sua.setPreferredSize(new java.awt.Dimension(80, 40));
@@ -416,6 +420,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         });
         pnl_nutQuanLy.add(btn_sua);
 
+        btn_xoaTrang.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        btn_xoaTrang.setForeground(new java.awt.Color(102, 102, 102));
         btn_xoaTrang.setLabel("Xóa trắng");
         btn_xoaTrang.setMaximumSize(new java.awt.Dimension(80, 40));
         btn_xoaTrang.setPreferredSize(new java.awt.Dimension(80, 40));
@@ -725,7 +731,6 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         String thuongHieuSP = cmb_headerThuongHieu.getSelectedItem().toString();
         String cauHinh = txa_headerCauHinh.getText().trim().replace("\n", "");
 
-        System.out.println(cauHinh);
         if (tenSP.length() == 0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length() == 0) {
             page = 1;
             renderPage();
