@@ -4,6 +4,7 @@
  */
 package gui;
 
+import bus.KhoHang_bus;
 import bus.SanPham_bus;
 import bus.ThuongHieu_bus;
 import java.awt.Color;
@@ -29,9 +30,10 @@ import entity.sanpham.ThuongHieu;
 public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
     private DefaultTableModel tbl_ModelProduct;
-    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Giá nhập", "Giá bán", "Giảm giá", "VAT", "Bảo hành", "Loại hàng", "Cấu hình"};
+    private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Số lượng tồn", "Giá nhập", "Giá bán", "Giảm giá", "VAT", "Bảo hành", "Loại hàng", "Cấu hình"};
     private SanPham_bus sanPham_bus = new SanPham_bus();
     private ThuongHieu_bus thuongHieu_bus = new ThuongHieu_bus();
+    private KhoHang_bus khoHang_bus = new KhoHang_bus();
     NumberFormat vnd = NumberFormat.getCurrencyInstance(new Locale("vi", "vn"));
 
     private int page = 1;
@@ -55,6 +57,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
                 txt_tenSP.setText(sanPham.getTenSP());
                 ThuongHieu TH = thuongHieu_bus.getThuongHieuTheoMa(sanPham.getThuongHieu().getMaTH()).get(0);
                 txt_thuongHieu.setText(TH.toString().replace("[", "").replace("]", ""));
+                txt_soLuongTon.setText(Integer.toString(khoHang_bus.getSoLuongTon("KHO01", maSanPham)));
                 txt_giaNhap.setText(Double.toString(sanPham.getGiaNhap()));
                 txt_giaBan.setText(Double.toString(sanPham.getGiaBan()));
                 txt_giamGia.setText(Double.toString(sanPham.getGiamGia()));
@@ -86,9 +89,10 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_products.getColumnModel().getColumn(4).setCellRenderer(rightAlign);
         tbl_products.getColumnModel().getColumn(5).setCellRenderer(rightAlign);
         tbl_products.getColumnModel().getColumn(6).setCellRenderer(rightAlign);
-        tbl_products.getColumnModel().getColumn(7).setCellRenderer(leftAlign);
+        tbl_products.getColumnModel().getColumn(7).setCellRenderer(rightAlign);
         tbl_products.getColumnModel().getColumn(8).setCellRenderer(leftAlign);
         tbl_products.getColumnModel().getColumn(9).setCellRenderer(leftAlign);
+        tbl_products.getColumnModel().getColumn(10).setCellRenderer(leftAlign);
 
         tbl_products.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl_products.getColumnModel().getColumn(0).setPreferredWidth(100);
@@ -96,11 +100,12 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         tbl_products.getColumnModel().getColumn(2).setPreferredWidth(100);
         tbl_products.getColumnModel().getColumn(3).setPreferredWidth(100);
         tbl_products.getColumnModel().getColumn(4).setPreferredWidth(100);
-        tbl_products.getColumnModel().getColumn(5).setPreferredWidth(65);
+        tbl_products.getColumnModel().getColumn(5).setPreferredWidth(100);
         tbl_products.getColumnModel().getColumn(6).setPreferredWidth(65);
-        tbl_products.getColumnModel().getColumn(7).setPreferredWidth(70);
-        tbl_products.getColumnModel().getColumn(8).setPreferredWidth(65);
-        tbl_products.getColumnModel().getColumn(9).setPreferredWidth(500);
+        tbl_products.getColumnModel().getColumn(7).setPreferredWidth(65);
+        tbl_products.getColumnModel().getColumn(8).setPreferredWidth(70);
+        tbl_products.getColumnModel().getColumn(9).setPreferredWidth(65);
+        tbl_products.getColumnModel().getColumn(10).setPreferredWidth(500);
     }
 
     public void renderAll() {
@@ -120,7 +125,8 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
 
         for (SanPham sp : list) {
             ArrayList<ThuongHieu> th = thuongHieu_bus.getThuongHieuTheoMa(sp.getThuongHieu().getMaTH());
-            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), th.get(0).toString(), vnd.format(sp.getGiaNhap()), vnd.format(sp.getGiaBan()), Math.round(sp.getGiamGia()) + "%", sp.getVAT(), Math.round(sp.getSoThangBaoHanh()) + " tháng", sp.getTenLoai(), sp.getCauHinh()};
+            int soLuong = khoHang_bus.getSoLuongTon("KHO01", sp.getMaSP());
+            Object[] row = new Object[]{sp.getMaSP(), sp.getTenSP(), th.get(0).toString(), soLuong, vnd.format(sp.getGiaNhap()), vnd.format(sp.getGiaBan()), Math.round(sp.getGiamGia()) + "%", sp.getVAT(), Math.round(sp.getSoThangBaoHanh()) + " tháng", sp.getTenLoai(), sp.getCauHinh()};
             tbl_ModelProduct.addRow(row);
         }
     }
@@ -145,6 +151,9 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_thuongHieu = new javax.swing.JPanel();
         lbl_thuongHieu = new javax.swing.JLabel();
         txt_thuongHieu = new javax.swing.JTextField();
+        pnl_soLuongTon = new javax.swing.JPanel();
+        lbl_soLuongTon = new javax.swing.JLabel();
+        txt_soLuongTon = new javax.swing.JTextField();
         pnl_giaNhap = new javax.swing.JPanel();
         lbl_giaNhap = new javax.swing.JLabel();
         txt_giaNhap = new javax.swing.JTextField();
@@ -266,6 +275,23 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         pnl_thuongHieu.add(txt_thuongHieu);
 
         pnl_bodyTT.add(pnl_thuongHieu);
+
+        pnl_soLuongTon.setBackground(new java.awt.Color(255, 255, 255));
+        pnl_soLuongTon.setPreferredSize(new java.awt.Dimension(0, 30));
+        pnl_soLuongTon.setLayout(new javax.swing.BoxLayout(pnl_soLuongTon, javax.swing.BoxLayout.LINE_AXIS));
+
+        lbl_soLuongTon.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbl_soLuongTon.setText("Số lượng tồn:");
+        lbl_soLuongTon.setPreferredSize(new java.awt.Dimension(120, 0));
+        pnl_soLuongTon.add(lbl_soLuongTon);
+
+        txt_soLuongTon.setEditable(false);
+        txt_soLuongTon.setMaximumSize(new java.awt.Dimension(1000, 500));
+        txt_soLuongTon.setMinimumSize(new java.awt.Dimension(140, 16));
+        txt_soLuongTon.setPreferredSize(new java.awt.Dimension(160, 24));
+        pnl_soLuongTon.add(txt_soLuongTon);
+
+        pnl_bodyTT.add(pnl_soLuongTon);
 
         pnl_giaNhap.setBackground(new java.awt.Color(255, 255, 255));
         pnl_giaNhap.setPreferredSize(new java.awt.Dimension(0, 30));
@@ -734,13 +760,13 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         if (tenSP.length() == 0 && loaiSP.equals("Tất cả") && thuongHieuSP.equals("Tất cả") && cauHinh.length() == 0) {
             page = 1;
             renderPage();
-        } else if (!Pattern.matches(".*(\\p{L}*\\s*:\\s*\\p{L}*;)*", cauHinh)) {
-            JOptionPane.showMessageDialog(this, "Hãy thông tin cần tìm nhập dưới dạng:\n Thuộc tính: giá trị;");
-            txa_cauHinh.selectAll();
-            txa_cauHinh.requestFocus();
+        } else if (!Pattern.matches("(.*:\\s.+;)*", cauHinh)) {
+            JOptionPane.showMessageDialog(this, "Thuộc tính: giá trị;");
+            txa_headerCauHinh.selectAll();
+            txa_headerCauHinh.requestFocus();
         } else {
             ArrayList<SanPham> ds = sanPham_bus.searchTheoDieuKien(tenSP, loaiSP, thuongHieuSP, cauHinh);
-            lbl_soTrang.setText("");
+            lbl_soTrang.setText("1/1");
             renderProductTable(ds);
         }
     }
@@ -755,6 +781,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         txt_maSanPham.setText("");
         txt_tenSP.setText("");
         txt_thuongHieu.setText("");
+        txt_soLuongTon.setText("");
         txt_giaNhap.setText("");
         txt_giaBan.setText("");
         txt_giamGia.setText("");
@@ -815,14 +842,12 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
         }
 
         if (!Pattern.matches("^(\\p{L}+-*\\p{L}+\\s*)+-(\\s*\\p{L}+)+$", thuongHieu)) {
-
-            showMessageFocus("Hãy nhập dưới dạng:\n Thương hiệu - Quốc gia", txt_thuongHieu);
+            showMessageFocus("Thương hiệu - Quốc gia", txt_thuongHieu);
             return false;
         }
 
-//        if(!Pattern.matches("((\\p{L}+\\s*)*:\\s.+;)+", cauHinh)){  
         if (!Pattern.matches("(.*:\\s.+;)+", cauHinh)) {
-            JOptionPane.showMessageDialog(this, " Thuộc tính: dữ liệu;");
+            JOptionPane.showMessageDialog(this, "Thuộc tính: dữ liệu;");
             txa_cauHinh.selectAll();
             txa_cauHinh.requestFocus();
             return false;
@@ -888,6 +913,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JLabel lbl_headerTen;
     private javax.swing.JLabel lbl_loaiSP;
     private javax.swing.JLabel lbl_maSanPham;
+    private javax.swing.JLabel lbl_soLuongTon;
     private javax.swing.JLabel lbl_soTrang;
     private javax.swing.JLabel lbl_tenSP;
     private javax.swing.JLabel lbl_thuongHieu;
@@ -910,6 +936,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JPanel pnl_loaiSP;
     private javax.swing.JPanel pnl_maSanPham;
     private javax.swing.JPanel pnl_nutQuanLy;
+    private javax.swing.JPanel pnl_soLuongTon;
     private javax.swing.JPanel pnl_tenSP;
     private javax.swing.JPanel pnl_thongTin;
     private javax.swing.JPanel pnl_thuongHieu;
@@ -927,6 +954,7 @@ public class Panel_QuanLySanPham extends javax.swing.JPanel {
     private javax.swing.JTextField txt_giamGia;
     private javax.swing.JTextField txt_maSanPham;
     private javax.swing.JTextField txt_search;
+    private javax.swing.JTextField txt_soLuongTon;
     private javax.swing.JTextField txt_tenSP;
     private javax.swing.JTextField txt_thuongHieu;
     private javax.swing.JTextField txt_vat;
