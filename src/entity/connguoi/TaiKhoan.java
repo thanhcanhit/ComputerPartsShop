@@ -35,7 +35,6 @@ public class TaiKhoan {
         if (passWord.trim().length() > 0) {
             this.passWord = passWord;
         } else {
-            throw new Exception("PassWord không được rỗng !");
         }
     }
 

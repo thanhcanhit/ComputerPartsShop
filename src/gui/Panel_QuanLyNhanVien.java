@@ -558,7 +558,7 @@ public class Panel_QuanLyNhanVien extends javax.swing.JPanel {
         lbl_chucVu.setText("Chức vụ:");
         lbl_chucVu.setPreferredSize(new java.awt.Dimension(85, 17));
 
-        cmb_chucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên kinh doanh", " " }));
+        cmb_chucVu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Quản lý", "Nhân viên kinh doanh" }));
         cmb_chucVu.setPreferredSize(new java.awt.Dimension(161, 30));
 
         javax.swing.GroupLayout pnl_chucVuLayout = new javax.swing.GroupLayout(pnl_chucVu);

@@ -40,7 +40,7 @@ import entity.share.Utility;
  *
  * @author HP
  */
-public class Panel_QuanLyDonHang extends javax.swing.JPanel {
+public final class Panel_QuanLyDonHang extends javax.swing.JPanel {
 
     private DefaultTableModel tblModel_tab1DanhSachHangHoa;
     private DefaultTableModel tblModel_tab1ChiTietDonNhap;

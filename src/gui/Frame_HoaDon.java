@@ -80,11 +80,12 @@ public class Frame_HoaDon extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Hóa đơn");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
         setPreferredSize(new java.awt.Dimension(500, 800));
         setResizable(false);
-        setType(java.awt.Window.Type.POPUP);
+        setType(java.awt.Window.Type.UTILITY);
 
         pnl_main.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -116,6 +117,7 @@ public class Frame_HoaDon extends javax.swing.JFrame {
         btn_xacNhan.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_xacNhan.setForeground(new java.awt.Color(255, 255, 255));
         btn_xacNhan.setText("Xác nhận");
+        btn_xacNhan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_xacNhan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_xacNhanActionPerformed(evt);

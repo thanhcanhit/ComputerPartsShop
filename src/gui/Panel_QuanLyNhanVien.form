@@ -875,10 +875,9 @@
                 <Component class="javax.swing.JComboBox" name="cmb_chucVu">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="3">
+                      <StringArray count="2">
                         <StringItem index="0" value="Qu&#x1ea3;n l&#xfd;"/>
                         <StringItem index="1" value="Nh&#xe2;n vi&#xea;n kinh doanh"/>
-                        <StringItem index="2" value=" "/>
                       </StringArray>
                     </Property>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

@@ -6,7 +6,6 @@ package gui;
 
 import bus.SanPham_bus;
 import bus.ThuongHieu_bus;
-import java.awt.Color;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;

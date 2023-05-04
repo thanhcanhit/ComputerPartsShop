@@ -77,6 +77,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 5), new java.awt.Dimension(0, 32767));
 
         setTitle("Địa chỉ");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setIconImage(new javax.swing.ImageIcon(getClass().getResource("/images/location.png")).getImage());
         setPreferredSize(new java.awt.Dimension(500, 250));
@@ -180,6 +181,7 @@ public class Frame_InputDiaChi extends javax.swing.JFrame {
         btn_commit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btn_commit.setForeground(new java.awt.Color(255, 255, 255));
         btn_commit.setText("Xác nhận");
+        btn_commit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_commit.setPreferredSize(new java.awt.Dimension(65, 43));
         btn_commit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
