@@ -17,7 +17,7 @@ GO
 
 USE [ComputerPartsShop]
 GO
-/****** Object:  Table [dbo].[ChiTietDonNhap]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[ChiTietDonNhap]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -34,7 +34,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChiTietHoaDon]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[ChiTietHoaDon]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -52,7 +52,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChiTietKhoHang]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[ChiTietKhoHang]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -68,7 +68,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DiaChi]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[DiaChi]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -86,7 +86,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DonNhapHang]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[DonNhapHang]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,7 +106,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HoaDon]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[HoaDon]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KhachHang]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[KhachHang]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -145,7 +145,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KhoHang]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[KhoHang]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -161,7 +161,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NhaCungCap]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[NhaCungCap]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -179,7 +179,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NhanVien]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[NhanVien]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -200,7 +200,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SanPham]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[SanPham]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -221,7 +221,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -235,7 +235,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ThuongHieu]    Script Date: 5/3/2023 2:41:31 PM ******/
+/****** Object:  Table [dbo].[ThuongHieu]    Script Date: 5/4/2023 1:29:02 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -252,10 +252,13 @@ PRIMARY KEY CLUSTERED
 GO
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0001', N'DNH0001', 100, 32000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0001', N'DNH0003', 100, 59000000)
+INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0001', N'DNH0006', 200, 118000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0002', N'DNH0001', 100, 46000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0002', N'DNH0003', 100, 129000000)
+INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0002', N'DNH0004', 100, 129000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0003', N'DNH0001', 10, 29000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0003', N'DNH0003', 100, 169000000)
+INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0004', N'DNH0005', 100, 65000000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0005', N'DNH0002', 3, 1950000)
 INSERT [dbo].[ChiTietDonNhap] ([maSanPham], [maDonNhap], [soLuongCungCap], [tongTien]) VALUES (N'SP0008', N'DNH0002', 3, 900000)
 GO
@@ -267,13 +270,16 @@ INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [ton
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0002', N'HD00017', 1483500, 1, 1483500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0002', N'HD00018', 1483500, 2, 2967000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0002', N'HD00020', 1483500, 1, 1483500)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0002', N'HD00036', 1483500, 1, 1483500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0003', N'HD00013', 1943500, 1, 1943500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0003', N'HD00018', 1943500, 1, 1943500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0005', N'HD00019', 747500, 3, 2242500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0005', N'HD00024', 747500, 1, 747500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0006', N'HD00008', 1365000, 1, 1365000)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0007', N'HD00036', 1870000, 1, 1870000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0008', N'HD00030', 345000, 4, 1380000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0009', N'HD00003', 230000, 1, 230000)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0009', N'HD00038', 230000, 20, 4600000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0012', N'HD00017', 483000, 1, 483000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0013', N'HD00003', 1380000, 8, 1.104E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0014', N'HD00008', 1023500, 1, 1023500)
@@ -281,19 +287,30 @@ INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [ton
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0023', N'HD00023', 624100, 8, 4992800)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0027', N'HD00014', 1188000, 1, 1188000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0031', N'HD00004', 4885800, 1, 4885800)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0032', N'HD00038', 945200, 18, 1.70136E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0034', N'HD00036', 8638920, 5, 4.31946E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0035', N'HD00036', 4734700, 10, 4.7347E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0036', N'HD00030', 1557300, 8, 1.24584E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0036', N'HD00036', 1557300, 2, 3114600)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0037', N'HD00007', 1206900, 1, 1206900)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0040', N'HD00036', 4418700, 1, 4418700)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0042', N'HD00036', 3070400, 1, 3070400)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0043', N'HD00025', 3404000, 5, 1.702E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0046', N'HD00005', 837810.1, 1, 837810.1)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0046', N'HD00008', 837810.1, 1, 837810.1)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0047', N'HD00036', 564499.5, 3, 1693498.5)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0050', N'HD00015', 1424498.63, 3, 4273496)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0050', N'HD00029', 1424498.63, 100, 142449856)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0061', N'HD00034', 4545000, 6, 2.727E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0064', N'HD00039', 1638000, 10, 1.638E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0067', N'HD00023', 4675356, 4, 18701424)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0067', N'HD00039', 4675356, 40, 187014240)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0074', N'HD00028', 8549760, 10, 8.54976E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0082', N'HD00028', 1980000, 12, 2.376E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0086', N'HD00010', 3675000, 1, 3675000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0089', N'HD00012', 1312500, 1, 1312500)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0089', N'HD00040', 1312500, 50, 6.5625E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0090', N'HD00038', 1365000, 30, 4.095E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0091', N'HD00006', 1417500, 1, 1417500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0093', N'HD00011', 2940000, 1, 2940000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0094', N'HD00032', 6500000, 5, 3.25E+07)
@@ -301,6 +318,8 @@ INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [ton
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0096', N'HD00011', 3150000, 5, 1.575E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0096', N'HD00033', 3150000, 131, 4.1265E+08)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0097', N'HD00009', 7500000, 1, 7500000)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0097', N'HD00038', 7500000, 50, 3.75E+08)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0098', N'HD00040', 1650000, 86, 1.419E+08)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0099', N'HD00002', 1512000, 1, 1512000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0099', N'HD00005', 1512000, 1, 1512000)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0099', N'HD00006', 1512000, 1, 1512000)
@@ -309,10 +328,14 @@ INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [ton
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0109', N'HD00016', 6438850, 10, 6.43885E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0116', N'HD00022', 1575449, 1, 1575449)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0120', N'HD00023', 5134799, 3, 15404397)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0126', N'HD00037', 2662800, 10, 2.6628E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0133', N'HD00010', 2.07E+07, 1, 2.07E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0139', N'HD00037', 9200000, 10, 9.2E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0148', N'HD00009', 9200000, 2, 1.84E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0148', N'HD00021', 9200000, 2, 1.84E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0148', N'HD00030', 9200000, 12, 1.104E+08)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0149', N'HD00037', 1725000, 10, 1.725E+07)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0166', N'HD00037', 1598500, 10, 1.5985E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0167', N'HD00026', 402500, 1, 402500)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0169', N'HD00026', 3218850, 1, 3218850)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0171', N'HD00034', 2758850, 33, 9.104205E+07)
@@ -321,19 +344,20 @@ INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [ton
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0176', N'HD00027', 3043950, 10, 3.04395E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0176', N'HD00031', 3043950, 1, 3043950)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0177', N'HD00026', 2068850, 1, 2068850)
+INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0178', N'HD00037', 3988950, 10, 3.98895E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0181', N'HD00010', 4598850, 1, 4598850)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0182', N'HD00035', 733950, 60, 4.4037E+07)
 INSERT [dbo].[ChiTietHoaDon] ([maSanPham], [maHoaDon], [giaBan], [soLuong], [tongTien]) VALUES (N'SP0183', N'HD00031', 4723950, 3, 1.417185E+07)
 GO
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0001', 192)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0002', 247)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0001', 392)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0002', 346)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0003', 278)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0004', 112)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0004', 212)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0005', 44)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0006', 145)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0007', 131)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0007', 130)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0008', 72)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0009', 20)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0009', 0)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0010', 72)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0011', 3)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0012', 55)
@@ -356,22 +380,22 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0029', 85)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0030', 43)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0031', 72)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0032', 182)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0032', 164)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0033', 30)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0034', 71)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0035', 126)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0036', 23)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0034', 66)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0035', 116)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0036', 21)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0037', 162)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0038', 163)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0039', 113)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0040', 24)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0040', 23)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0041', 0)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0042', 172)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0042', 171)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0043', 111)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0044', 3)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0045', 138)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0046', 86)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0047', 55)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0047', 52)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0048', 83)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0049', 111)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0050', 86)
@@ -388,10 +412,10 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0061', 42)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0062', 56)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0063', 6)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0064', 90)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0064', 80)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0065', 55)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0066', 36)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0067', 193)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0067', 153)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0068', 8)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0069', 58)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0070', 44)
@@ -413,16 +437,16 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0086', 135)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0087', 145)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0088', 127)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0089', 189)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0090', 182)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0089', 139)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0090', 152)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0091', 45)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0092', 29)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0093', 151)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0094', 49)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0095', 6)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0096', 0)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0097', 121)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0098', 185)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0097', 71)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0098', 99)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0099', 87)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0100', 1)
 GO
@@ -451,7 +475,7 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0123', 54)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0124', 21)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0125', 6)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0126', 148)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0126', 138)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0127', 67)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0128', 182)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0129', 180)
@@ -464,7 +488,7 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0136', 9)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0137', 129)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0138', 7)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0139', 93)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0139', 83)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0140', 113)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0141', 158)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0142', 192)
@@ -474,7 +498,7 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0146', 118)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0147', 185)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0148', 174)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0149', 29)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0149', 19)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0150', 26)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0151', 83)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0152', 130)
@@ -491,7 +515,7 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0163', 60)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0164', 21)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0165', 189)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0166', 182)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0166', 172)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0167', 80)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0168', 101)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0169', 58)
@@ -503,7 +527,7 @@ INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0175', 157)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0176', 138)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0177', 110)
-INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0178', 33)
+INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0178', 23)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0179', 175)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0180', 130)
 INSERT [dbo].[ChiTietKhoHang] ([maKho], [maSanPham], [soLuongTon]) VALUES (N'KHO01', N'SP0181', 159)
@@ -587,6 +611,9 @@ GO
 INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0001', CAST(N'2023-04-16' AS Date), N'KHO01', N'NCC01', N'', 1.07E+08, 1, N'NV0001')
 INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0002', CAST(N'2023-04-24' AS Date), N'KHO01', N'NCC04', N'Giao trong 3 ngày', 2850000, 1, N'NV0001')
 INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0003', CAST(N'2023-04-26' AS Date), N'KHO01', N'NCC02', N'Đơn hàng cần giao gấp trước ngày 30/4/2023', 3.57E+08, 1, N'NV0003')
+INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0004', CAST(N'2023-05-03' AS Date), N'KHO01', N'NCC02', N'', 1.29E+08, 1, N'NV0017')
+INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0005', CAST(N'2023-05-03' AS Date), N'KHO01', N'NCC01', N'Giao trước 30/4', 6.5E+07, 1, N'NV0017')
+INSERT [dbo].[DonNhapHang] ([maDonNhap], [ngayNhap], [maKho], [maNhaCungCap], [ghiChu], [tongTien], [daNhan], [maNhanVien]) VALUES (N'DNH0006', CAST(N'2023-05-03' AS Date), N'KHO01', N'NCC01', N'', 1.18E+08, 1, N'NV0017')
 GO
 INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00001', CAST(N'2022-03-16' AS Date), N'ATM', N'NV0005', N'KH00008', 345600)
 INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00002', CAST(N'2022-04-16' AS Date), N'ATM', N'NV0005', N'KH00009', 1857600)
@@ -623,8 +650,13 @@ INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien
 INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00033', CAST(N'2022-04-27' AS Date), N'Tiền mặt', N'NV0004', N'KH00019', 412650000)
 INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00034', CAST(N'2022-04-27' AS Date), N'Tiền mặt', N'NV0004', N'KH00019', 118312050)
 INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00035', CAST(N'2022-04-27' AS Date), N'Tiền mặt', N'NV0004', N'KH00030', 44037000)
+INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00036', CAST(N'2023-01-03' AS Date), N'Tiền mặt', N'NV0007', N'KH00009', 106192298.49739075)
+INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00037', CAST(N'2023-02-08' AS Date), N'ATM', N'NV0007', N'KH00016', 191752500.00041723)
+INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00038', CAST(N'2023-03-16' AS Date), N'ATM', N'NV0010', N'KH00001', 437563600)
+INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00039', CAST(N'2023-04-21' AS Date), N'Tiền mặt', N'NV0010', N'KH00019', 203394246.61216736)
+INSERT [dbo].[HoaDon] ([maHoaDon], [ngayLap], [phuongThucThanhToan], [maNhanVien], [maKhachHang], [tongTien]) VALUES (N'HD00040', CAST(N'2023-05-03' AS Date), N'ATM', N'NV0010', N'KH00017', 207525000)
 GO
-INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00001', N'Trần Minh An', N'0987654321', CAST(N'1990-01-01' AS Date), N'minhan@gmail.com', NULL, N'DC0001', 2417, 1)
+INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00001', N'No Name', N'0987654321', CAST(N'1990-01-01' AS Date), N'noname@gmail.com', N'', N'DC0001', 46173, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00002', N'Nguyễn Thị Bảo Ngọc', N'0123456789', CAST(N'1992-03-15' AS Date), N'bao.ngoc@gmail.com', N'123456789', N'DC0002', 4500, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00003', N'Lê Văn Cường', N'0909234560', CAST(N'1995-05-20' AS Date), N'cuong.le@gmail.com', NULL, N'DC0003', 1800, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00004', N'Phạm Thị Dung', N'0912345678', CAST(N'1987-12-03' AS Date), N'dung.pham@gmail.com', NULL, N'DC0004', 12100, 0)
@@ -632,17 +664,17 @@ INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [em
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00006', N'Vũ Thanh Hải', N'0967333456', CAST(N'1993-02-27' AS Date), N'thanh.hai@gmail.com', N'987654321', N'DC0006', 5200, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00007', N'Hoàng Thị Hồng', N'0987123456', CAST(N'1986-06-18' AS Date), N'hong.hoang@gmail.com', NULL, N'DC0007', 1644, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00008', N'Đặng Văn Khánh', N'0919123456', CAST(N'1994-09-05' AS Date), N'khanh.dang@gmail.com', NULL, N'DC0008', 5893, 1)
-INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00009', N'Trần Thị Lan', N'0903122456', CAST(N'1989-11-11' AS Date), N'lan.tran@gmail.com', N'456789123', N'DC0009', 1560, 0)
+INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00009', N'Trần Thị Lan', N'0903122456', CAST(N'1989-11-11' AS Date), N'lan.tran@gmail.com', N'456789123', N'DC0009', 12179, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00010', N'Phan Văn Minh', N'0918123456', CAST(N'1991-04-25' AS Date), N'minh.phan@gmail.com', NULL, N'DC0010', 17680, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00011', N'Nguyễn Thị Mỹ Linh', N'0937123451', CAST(N'1990-10-05' AS Date), N'mylinh.nguyen@gmail.com', NULL, N'DC0011', 20410, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00012', N'Phạm Minh Ngọc', N'0983123456', CAST(N'1985-06-10' AS Date), N'ngoc.pham@gmail.com', N'789456123', N'DC0012', 3301, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00013', N'Lê Thị Nhàn', N'0962123456', CAST(N'1996-03-20' AS Date), N'nhan.le@gmail.com', NULL, N'DC0013', 1478, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00014', N'Nguyễn Văn Quân', N'0932123456', CAST(N'1993-11-22' AS Date), N'quan.nguyen@gmail.com', NULL, N'DC0014', 3559, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00015', N'Hoàng Thị Quỳnh', N'0945123456', CAST(N'1992-01-15' AS Date), N'quynh.hoang@gmail.com', NULL, N'DC0015', 14935, 0)
-INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00016', N'Đỗ Văn Sơn', N'0986123486', CAST(N'1988-12-30' AS Date), N'son.do@gmail.com', NULL, N'DC0016', 120, 1)
-INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00017', N'Trần Thị Tâm', N'0916123456', CAST(N'1990-07-05' AS Date), N'tam.tran@gmail.com', NULL, N'DC0017', 0, 0)
+INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00016', N'Đỗ Văn Sơn', N'0986123486', CAST(N'1988-12-30' AS Date), N'son.do@gmail.com', NULL, N'DC0016', 19295, 1)
+INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00017', N'Trần Thị Tâm', N'0916123456', CAST(N'1990-07-05' AS Date), N'tam.tran@gmail.com', NULL, N'DC0017', 20753, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00018', N'Nguyễn Văn Thắng', N'0988123456', CAST(N'1987-09-18' AS Date), N'thang.nguyen@gmail.com', NULL, N'DC0018', 0, 1)
-INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00019', N'Lê Thị Thanh', N'0968123456', CAST(N'1994-05-25' AS Date), N'thanh.le@gmail.com', N'654321987', N'DC0019', 56346, 0)
+INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00019', N'Lê Thị Thanh', N'0968123456', CAST(N'1994-05-25' AS Date), N'thanh.le@gmail.com', N'654321987', N'DC0019', 76685, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00020', N'Ngô Văn Tuấn', N'0935123456', CAST(N'1991-08-12' AS Date), N'tuan.ngo@gmail.com', NULL, N'DC0020', 0, 1)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00021', N'Nguyễn Thị Thu Hà', N'0976123456', CAST(N'1995-02-18' AS Date), N'thuha.nguyen@gmail.com', NULL, N'DC0021', 0, 0)
 INSERT [dbo].[KhachHang] ([maKhachHang], [hoTen], [soDienThoai], [ngaySinh], [email], [maSoThue], [maDiaChi], [diemThanhVien], [gioiTinh]) VALUES (N'KH00022', N'Phạm Minh Tâm', N'0981123456', CAST(N'1993-04-03' AS Date), N'minhtam.pham@gmail.com', N'987654321', N'DC0022', 500, 1)
@@ -755,7 +787,7 @@ INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHin
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0049', N'Quạt CPU ID-Cooling SE-207-XT Black (2 fan)', 1190000, 17.731, N'Dạng tản nhiệt: Tản khí; Kích thước quạt(mm): 2 x 120 mm; Chất liệu tản nhiệt: Nhôm, Đồng; Màu sắc: Đen, BạcChiều cao(cm): 15.7cm; Số vòng quay của quạt(RPM): Quạt 1: 700-1800RPM (PWM), Quạt 2: 700-1800RPM (PWM); Khối lượng(kg): 1.3kg (kèm quạt / phụ kiện)Socket được hỗ trợ: Intel LGA 2066, Intel LGA 2011, Intel LGA 1200, Intel LGA 1150, Intel LGA 1151, Intel LGA 1155, Intel LGA 1156, AMD AM4;', 24, 7, 10, N'THHI16')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0050', N'Tản khí Cooler Master MasterAir MA621P TR4 Edition', 1370000, 11.022, N'Dạng tản nhiệt: Tản khí; Kích thước quạt(mm): 1 x 120 mm; Chất liệu tản nhiệt: Nhôm, Đồng; Màu sắc: Đen, Bạc; Đèn LED: RGBChiều cao(cm): 16.45cm; Số vòng quay của quạt(RPM): 600 - 1800 RPM (PWM) ± 10%; Độ ồn(dBA): 31dBA(Max); Khối lượng(kg): 0.87Socket được hỗ trợ: AMD TR4;', 24, 7, 10, N'THHI14')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0051', N'CPU Intel Core I5-7500 (3.4GHz - 3.8GHz)', 5970000, 60, N'CPU: Core i5-7500; Series: Core i5; Socket: 1151; Số nhân xử lý: 4; Số luồng xử lý: 4; Kiến trúc: Kaby Lake (14 nm); Code name: Kaby Lake; Thế hệ: Intel Core thế hệ thứ 7; Tốc độ xử lý: 3.4 GHz - 3.8 GHz; Cache: 6MB;', 36, 0, 10, N'THHI17')
-INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0052', N'CPU AMD Ryzen R7 1800X (3.6GHz - 4GHz)', 9240000, 57.8, N'CPU Ryzen: 7 1800X; Series: Ryzen 7; Socket: AM4; Số nhân xử lý: 8; Số luồng xử lý: 16; Kiến trúc: Zen (14 nm); Code name: Summit Ridge; Thế hệ: AMD Ryzen thế hệ thứ 1; Tốc độ xử lý: 3.6 GHz - 4 GHz; Cache 16MB;', 36, 0, 10, N'THHI18')
+INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0052', N'CPU AMD Ryzen R7 1800X (3.6GHz - 4GHz)', 9240000, 57.8, N'CPU: Ryzen 7 1800X; Series: Ryzen 7; Socket: AM4; Số nhân xử lý: 8; Số luồng xử lý: 16; Kiến trúc: Zen (14 nm); Code name: Summit Ridge; Thế hệ: AMD Ryzen thế hệ thứ 1; Tốc độ xử lý: 3.6 GHz - 4 GHz; Cache 16MB;', 36, 0, 10, N'THHI18')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0053', N'CPU AMD Ryzen R7 1700X (3.4GHz - 3.8GHz)', 8499000, 54, N'CPU: Ryzen 7 1700X; Series: Ryzen 7; Socket: AM4; Số nhân xử lý: 8; Số luồng xử lý: 16; Kiến trúc: Zen (14 nm); Code name: Summit Ridge; Thế hệ: AMD Ryzen thế hệ thứ 1; Tốc độ xử lý: 3.4 GHz - 3.8 GHz; Cache: 16MB;', 36, 0, 10, N'THHI18')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0054', N'CPU Intel Core I5-7600 (3.5GHz - 4.1GHz)', 6230000, 59.88, N'CPU: Core i5-7600; Series: Core i5; Socket: 1151; Số nhân xử lý: 4; Số luồng xử lý: 4; Kiến trúc: Kaby Lake (14 nm); Code name: Kaby Lake; Thế hệ: Intel Core thế hệ thứ 7; Tốc độ xử lý: 3.5 GHz - 4.1 GHz; Cache: 6MB; N', 36, 0, 10, N'THHI17')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0055', N'CPU Intel Core I5-8600K (3.6GHz)', 7300000, 52.14, N'CPU: Core i5-8600K; Series: Core i5; Socket: 1151-v2; Số nhân xử lý: 6; Số luồng xử lý: 6; Kiến trúc: Coffee Lake (14 nm); Code name: Coffee Lake; Thế hệ: Intel Core thế hệ thứ 8; Tốc độ xử lý: 3.6 GHz; Cache: 9MB;', 36, 0, 10, N'THHI17')
@@ -887,7 +919,7 @@ INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHin
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0180', N'Ổ cứng SSD ADATA XPG SX6000 Lite 256GB M.2 PCIe', 699000, 15, N'Dung lượng: 256GB; Kết nối: M.2 PCIe; Bộ nhớ NAND: TLC; Tốc độ đọc: 1800MB/s; Tốc độ ghi: 1200MB/s; Kiểu ổ cứng: SSD; Màu sắc của Ổ cứng: Đen;', 36, 4, 10, N'THHI24')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0181', N'Ổ cứng SSD Intel 660p Series 1TB M.2 PCIe NVMe', 3999000, 0, N'Dung lượng: 1TB; Kết nối: M.2 PCIe NVMe; Bộ nhớ NAND: QLC; Tốc độ đọc: 1800MB/s; Tốc độ ghi: 1800MB/s; Kiểu ổ cứng: SSD; Màu sắc của Ổ cứng: Xám;', 36, 4, 10, N'THHI17')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0182', N'Ổ cứng SSD Transcend 230S 128GB 2.5" SATA 3" SATA 3', 699000, 5, N'Dung lượng: 128GB; Kê´t nô´i: SATA 3; Bộ nhớ NAND: Không; Ki´ch thuo´c: 2.5"; Tô´c dô? do?c: 560MB/s; Tô´c dô? ghi: 520MB/s; Ki?u ? c?ng: SSD; Ma`u sa´c cu?a ? c?ng: Tr?ng;', 36, 4, 5, N'THHI37')
-INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0183', N'Ổ cứng HDD Western Digital Black 4TB 3.5" SATA 3 - WD4005FZBX', 4499000, 5, N'Dung luo?ng: 4TB; Kê´t nô´i: SATA 3; Bô? nho´ NAND: Không; Ki´ch thuo´c: 3.5; Tô´c dô? vo`ng quay: 7200RPM; Cache: 256MB; Ki?u ? c?ng: HDD; Ma`u sa´c cu?a ? c?ng: Ðen; ', 36, 4, 5, N'THHI42')
+INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0183', N'Ổ cứng HDD Western Digital Black 4TB 3.5" SATA 3 - WD4005FZBX', 4499000, 5, N'Dung lượng: 4TB; Kê´t nô´i: SATA 3; Bộ nhớ NAND: Không; Kích thước: 3.5; Tốc độ vòng quay: 7200RPM; Cache: 256MB; Kiểu ổ cứng: HDD; Màu sắc của ổ cứng: Ðen;', 36, 4, 5, N'THHI42')
 INSERT [dbo].[SanPham] ([maSanPham], [tenSanPham], [giaNhap], [giamGia], [cauHinh], [soThangBaoHanh], [maLoai], [VAT], [maThuongHieu]) VALUES (N'SP0184', N'Chuột không dây Logitech M600', 800000, 0, N'Kích thước: 103 x 64 x 40 mm;
 Trọng lượng sản phẩm: 101 g;
 Độ dài dây: N/A;
