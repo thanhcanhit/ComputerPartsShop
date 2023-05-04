@@ -109,9 +109,9 @@ public class KhachHang_dao implements KhachHangInterface {
         int n = 0;
         try {
             DiaChi_dao DC_dao = new DiaChi_dao();
-            if (DC_dao.getMaDiaChi(khachHang.getDiaChi()) == null) {
-                DC_dao.themDiaChi(khachHang.getDiaChi());
-            }
+            
+            DC_dao.themDiaChi(khachHang.getDiaChi());
+            
 
             PreparedStatement st = ConnectDB.conn.prepareStatement("insert into KhachHang values(?,?,?,?,?,?,?,?,?)");
             st.setString(1, khachHang.getMaKH());
@@ -122,6 +122,9 @@ public class KhachHang_dao implements KhachHangInterface {
             st.setString(5, khachHang.getEmail());
             st.setString(6, khachHang.getMaSoThue());
             st.setString(7, khachHang.getDiaChi().getMaDiaChi());
+            
+            System.out.println(khachHang.getDiaChi().getMaDiaChi());
+            
             st.setInt(8, khachHang.getDiemThanhVien());
             st.setBoolean(9, khachHang.isGioiTinh());
 
