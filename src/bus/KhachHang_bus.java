@@ -8,7 +8,6 @@ import dao.KhachHang_dao;
 import interface_dao.KhachHangInterface;
 import java.util.ArrayList;
 import entity.connguoi.KhachHang;
-import entity.share.DiaChi;
 import entity.share.Utility;
 
 /**
