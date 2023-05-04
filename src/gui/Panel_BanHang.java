@@ -949,6 +949,7 @@ public final class Panel_BanHang extends javax.swing.JPanel {
                 txt_hoTen.setEditable(true);
                 txt_hoTen.setText("");
                 txt_diaChi.setText("");
+                txt_hangTV.setText("");
                 cmb_gender.setEnabled(true);
                 txt_hoTen.requestFocus();
             }

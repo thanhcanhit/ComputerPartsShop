@@ -379,7 +379,7 @@ public final class Panel_ThongKe extends javax.swing.JPanel {
 
         pnl_thongKeSanPham.add(pnl_chart1, java.awt.BorderLayout.CENTER);
 
-        tab_thongKe.addTab("Thống Kê Sản Phảm", pnl_thongKeSanPham);
+        tab_thongKe.addTab("Thống Kê Sản Phẩm", pnl_thongKeSanPham);
 
         pnl_thongKeDoanhThu.setLayout(new java.awt.BorderLayout());
 
