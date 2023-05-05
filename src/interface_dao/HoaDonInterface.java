@@ -13,7 +13,6 @@ import java.util.ArrayList;
  * @author thanh
  */
 public interface HoaDonInterface {
-
     public ArrayList<HoaDon> getAllHoaDon();
 
     public ArrayList<HoaDon> getHoaDonTheoMa(String maHoaDon);

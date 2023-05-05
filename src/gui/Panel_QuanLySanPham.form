@@ -592,7 +592,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
-                <Property name="label" type="java.lang.String" value="X&#xf3;a tr&#x1eaf;ng"/>
+                <Property name="text" type="java.lang.String" value="X&#xf3;a tr&#x1eaf;ng"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[80, 40]"/>
                 </Property>
