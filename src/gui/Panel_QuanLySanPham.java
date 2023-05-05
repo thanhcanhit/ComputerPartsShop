@@ -26,7 +26,7 @@ import entity.sanpham.ThuongHieu;
  *
  * @author nxnam
  */
-public class Panel_QuanLySanPham extends javax.swing.JPanel {
+public final class Panel_QuanLySanPham extends javax.swing.JPanel {
 
     private DefaultTableModel tbl_ModelProduct;
     private String[] str_TenCot = new String[]{"Mã sản phẩm", "Tên sản phẩm", "Thương hiệu", "Số lượng tồn", "Giá nhập", "Giá bán", "Giảm giá", "VAT", "Bảo hành", "Loại hàng", "Cấu hình"};

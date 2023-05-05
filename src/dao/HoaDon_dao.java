@@ -5,7 +5,6 @@
 package dao;
 
 import bus.KhachHang_bus;
-import interface_dao.HoaDonInterface;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -16,6 +15,7 @@ import entity.hoadon.HoaDon;
 import entity.share.ConnectDB;
 import java.sql.*;
 import entity.hoadon.ChiTietHoaDon;
+import interface_dao.HoaDonInterface;
 
 /**
  *

@@ -13,11 +13,17 @@ import entity.hoadon.HoaDon;
  * @author macbookk
  */
 public interface HoaDonInterface {
+
     public ArrayList<HoaDon> getAllHoaDon();
+
     public ArrayList<HoaDon> getHoaDonTheoMa(String maHoaDon);
+
     public boolean themHoaDon(HoaDon hoaDon);
+
     public boolean xoaHoaDon(String maHoaDon);
+
     public boolean capNhatHoaDon(String maHoaDon, HoaDon hoaDon);
+
     public ArrayList<HoaDon> getHoaDonTheoDieuKien(String ma, String sdt, String giaBatDau, String giaKetThuc, LocalDate ngayBatDau, LocalDate ngayKetThuc);
-    
+
 }
