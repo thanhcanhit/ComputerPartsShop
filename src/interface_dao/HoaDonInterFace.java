@@ -4,13 +4,13 @@
  */
 package interface_dao;
 
+import entity.hoadon.HoaDon;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import entity.hoadon.HoaDon;
 
 /**
  *
- * @author macbookk
+ * @author thanh
  */
 public interface HoaDonInterface {
 
